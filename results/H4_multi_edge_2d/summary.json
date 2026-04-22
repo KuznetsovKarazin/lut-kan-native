@@ -1,0 +1,173 @@
+{
+  "config": {
+    "target": "feynman_2d",
+    "n_train": 1000,
+    "n_val": 400,
+    "n_test": 400,
+    "seeds": [
+      0,
+      1
+    ],
+    "epochs_lut": 250,
+    "epochs_poly": 1000
+  },
+  "polynomial_kan": [
+    {
+      "method": "polynomial_kan",
+      "hidden_dim": 4,
+      "degree": 6,
+      "memory_bytes": 336,
+      "ops_per_sample": 299,
+      "mean": 0.001157,
+      "std": 0.00043
+    },
+    {
+      "method": "polynomial_kan",
+      "hidden_dim": 4,
+      "degree": 8,
+      "memory_bytes": 432,
+      "ops_per_sample": 395,
+      "mean": 0.000282,
+      "std": 7.9e-05
+    },
+    {
+      "method": "polynomial_kan",
+      "hidden_dim": 8,
+      "degree": 6,
+      "memory_bytes": 672,
+      "ops_per_sample": 599,
+      "mean": 0.0004026,
+      "std": 0.00019
+    },
+    {
+      "method": "polynomial_kan",
+      "hidden_dim": 8,
+      "degree": 8,
+      "memory_bytes": 864,
+      "ops_per_sample": 791,
+      "mean": 0.0004492,
+      "std": 0.00034
+    },
+    {
+      "method": "polynomial_kan",
+      "hidden_dim": 8,
+      "degree": 12,
+      "memory_bytes": 1248,
+      "ops_per_sample": 1175,
+      "mean": 0.001407,
+      "std": 0.00089
+    }
+  ],
+  "lut_kan": [
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 2,
+      "K": 4,
+      "L": 8,
+      "lambda_2": 1.0,
+      "memory_bytes": 288,
+      "ops_per_sample": 125,
+      "mean": 0.00844,
+      "std": 0.00081
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 2,
+      "K": 8,
+      "L": 8,
+      "lambda_2": 1.0,
+      "memory_bytes": 576,
+      "ops_per_sample": 125,
+      "mean": 0.09662,
+      "std": 0.077
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 4,
+      "L": 4,
+      "lambda_2": 0.1,
+      "memory_bytes": 384,
+      "ops_per_sample": 251,
+      "mean": 0.001484,
+      "std": 0.00041
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 4,
+      "L": 4,
+      "lambda_2": 1.0,
+      "memory_bytes": 384,
+      "ops_per_sample": 251,
+      "mean": 0.002738,
+      "std": 0.00063
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 4,
+      "L": 8,
+      "lambda_2": 0.1,
+      "memory_bytes": 576,
+      "ops_per_sample": 251,
+      "mean": 0.01011,
+      "std": 0.00067
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 4,
+      "L": 8,
+      "lambda_2": 1.0,
+      "memory_bytes": 576,
+      "ops_per_sample": 251,
+      "mean": 0.0007933,
+      "std": 3.7e-05
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 8,
+      "L": 8,
+      "lambda_2": 0.1,
+      "memory_bytes": 1152,
+      "ops_per_sample": 251,
+      "mean": 0.4624,
+      "std": 0.38
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 4,
+      "K": 8,
+      "L": 8,
+      "lambda_2": 1.0,
+      "memory_bytes": 1152,
+      "ops_per_sample": 251,
+      "mean": 0.3414,
+      "std": 0.39
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 8,
+      "K": 4,
+      "L": 4,
+      "lambda_2": 1.0,
+      "memory_bytes": 768,
+      "ops_per_sample": 503,
+      "mean": 0.001303,
+      "std": 0.0006
+    },
+    {
+      "method": "direct_lut_kan",
+      "hidden_dim": 8,
+      "K": 4,
+      "L": 8,
+      "lambda_2": 1.0,
+      "memory_bytes": 1152,
+      "ops_per_sample": 503,
+      "mean": 0.005264,
+      "std": 0.00072
+    }
+  ]
+}

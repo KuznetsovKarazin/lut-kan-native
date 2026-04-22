@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "lut-kan-native: direct LUT training for memory-constrained KAN deployment"
+authors:
+  - family-names: "Kuznetsov"
+    given-names: "Oleksandr"
+    affiliation: "eCampus University (Italy); V.N. Karazin Kharkiv National University (Ukraine)"
+    email: "oleksandr.kuznetsov@uniecampus.it"
+version: "0.2.0"
+date-released: "2026-04-20"
+license: MIT
+repository-code: "https://github.com/KuznetsovKarazin/lut-kan-native"
+keywords:
+  - kan
+  - lookup-table
+  - quantization
+  - mcu
+  - edge-ai
+  - kolmogorov-arnold-network
+references:
+  - type: article
+    title: "LUT-KAN: Segment-wise LUT Quantization for Fast KAN Inference"
+    authors:
+      - family-names: "Kuznetsov"
+        given-names: "Oleksandr"
+    year: 2026
+    url: "https://arxiv.org/abs/2601.03332"

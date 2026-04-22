@@ -1,0 +1,98 @@
+{
+  "poly_mse": 6.8966495746281e-05,
+  "regimes": {
+    "A_adam_f32": {
+      "label": "float32+Adam lr=1e-2 \u03bb\u2082=1 (server best)",
+      "seed_mses": [
+        3.568229658412747e-07,
+        3.109010435764503e-07,
+        9.194686754199211e-07
+      ],
+      "mean_mse": 5.290642282792154e-07,
+      "std_mse": 2.766934886555328e-07,
+      "ratio_vs_poly": 130.36
+    },
+    "B_sgd_f32": {
+      "label": "float32+SGD  lr=0.5  \u03bb\u2082=1 (MCU opt)",
+      "seed_mses": [
+        1.862844692368526e-05,
+        1.4760636986466125e-05,
+        1.2215846254548524e-05
+      ],
+      "mean_mse": 1.5201643388233302e-05,
+      "std_mse": 2.6364403805450706e-06,
+      "ratio_vs_poly": 4.54
+    },
+    "C_sgd_fp16": {
+      "label": "fp16-grad+SGD lr=0.5  \u03bb\u2082=1 (MCU sim KEY)",
+      "seed_mses": [
+        1.8628830730449408e-05,
+        1.4760556950932369e-05,
+        1.2215185961395036e-05
+      ],
+      "mean_mse": 1.5201524547592271e-05,
+      "std_mse": 2.636860395986438e-06,
+      "ratio_vs_poly": 4.54
+    },
+    "D_sgd_fp16_noreg": {
+      "label": "fp16-grad+SGD lr=0.5  \u03bb\u2082=0 (MCU no-reg)",
+      "seed_mses": [
+        0.00020186703477520496,
+        0.00018760954844765365,
+        0.00019895746663678437
+      ],
+      "mean_mse": 0.00019614468328654766,
+      "std_mse": 6.1510319853178435e-06,
+      "ratio_vs_poly": 0.35
+    }
+  },
+  "ram": {
+    "A_adam_f32": {
+      "lut_param": 2048,
+      "grad_buf": 2048,
+      "adam_state": 4096,
+      "batch_buf": 768,
+      "total": 8960,
+      "total_kb": 8.75
+    },
+    "B_sgd_f32": {
+      "lut_param": 2048,
+      "grad_buf": 2048,
+      "adam_state": 0,
+      "batch_buf": 768,
+      "total": 4864,
+      "total_kb": 4.75
+    },
+    "C_sgd_fp16": {
+      "lut_param": 2048,
+      "grad_buf": 1024,
+      "adam_state": 0,
+      "batch_buf": 768,
+      "total": 3840,
+      "total_kb": 3.75
+    },
+    "D_sgd_fp16_noreg": {
+      "lut_param": 2048,
+      "grad_buf": 1024,
+      "adam_state": 0,
+      "batch_buf": 768,
+      "total": 3840,
+      "total_kb": 3.75
+    }
+  },
+  "ci_B_vs_C": {
+    "point": 1.0,
+    "ci_lo": 0.753,
+    "ci_hi": 1.314
+  },
+  "ci_A_vs_C": {
+    "point": 0.035,
+    "ci_lo": 0.019,
+    "ci_hi": 0.056
+  },
+  "ci_C_vs_D": {
+    "point": 12.903,
+    "ci_lo": 10.58,
+    "ci_hi": 15.98
+  }
+}

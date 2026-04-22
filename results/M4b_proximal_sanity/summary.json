@@ -1,0 +1,58 @@
+{
+  "config": {
+    "task": "feynman_2d",
+    "alpha": 0.1,
+    "lr": 0.0005,
+    "epochs": 200,
+    "seeds": [
+      0,
+      1
+    ],
+    "lambda_vals": [
+      0.0,
+      0.1,
+      1.0
+    ]
+  },
+  "poly_baseline_mean": 0.0005461583787109703,
+  "results": [
+    {
+      "lambda_init": 0.0,
+      "best_mse_per_seed": [
+        0.00024021757417358458,
+        0.0007354214321821928
+      ],
+      "best_mse_mean": 0.0004878195031778887,
+      "best_mse_std": 0.0003501620060676271,
+      "delta_l1_norm_mean": 1.5058067440986633,
+      "delta_l2_norm_mean": 1.1069385707378387,
+      "vs_poly": 1.1195911093202187
+    },
+    {
+      "lambda_init": 0.1,
+      "best_mse_per_seed": [
+        0.00023645639885216951,
+        0.0007352212560363114
+      ],
+      "best_mse_mean": 0.00048583882744424045,
+      "best_mse_std": 0.0003526800127324466,
+      "delta_l1_norm_mean": 1.423230230808258,
+      "delta_l2_norm_mean": 1.0253543853759766,
+      "vs_poly": 1.124155476794725
+    },
+    {
+      "lambda_init": 1.0,
+      "best_mse_per_seed": [
+        0.0002283563808305189,
+        0.0007338669383898377
+      ],
+      "best_mse_mean": 0.0004811116596101783,
+      "best_mse_std": 0.00035744994321158693,
+      "delta_l1_norm_mean": 1.34491628408432,
+      "delta_l2_norm_mean": 0.8014086186885834,
+      "vs_poly": 1.135200878634902
+    }
+  ],
+  "spread": 1.0139423841300073,
+  "verdict": "null (proximal does not change best-val MSE)"
+}

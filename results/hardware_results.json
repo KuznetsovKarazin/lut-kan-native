@@ -1,0 +1,53 @@
+{
+  "experiment": "M_HARDWARE",
+  "date": "2026-04-21",
+  "target": "tanh(4x) + 0.15x",
+  "n_train": 200,
+  "n_test": 200,
+  "epochs": 800,
+  "lambda2": 1.0,
+  "optimizer": "SGD",
+  "init": "zero",
+  "post_lut_mse": {"L8": 3.7201e-3, "L16": 9.7252e-4, "L32": 2.4582e-4},
+  "platforms": {
+    "pc_pytorch": {
+      "arch": "x86-64, PyTorch SGD float32",
+      "results": [
+        {"K": 4, "L": 8,  "lr": 0.5, "direct_mse": 1.5083e-4, "ratio": 24.7,   "best_ep": 228},
+        {"K": 4, "L": 16, "lr": 1.0, "direct_mse": 1.1959e-6, "ratio": 813.2,  "best_ep": 365},
+        {"K": 4, "L": 32, "lr": 2.0, "direct_mse": 1.2147e-8, "ratio": 20236.7,"best_ep": 506}
+      ]
+    },
+    "arduino_mega2560": {
+      "arch": "ATmega2560, 8-bit AVR, 16 MHz, 8 KB SRAM, no FPU (soft-float)",
+      "free_sram_bytes": 6157,
+      "inference_latency": {
+        "lut_k4_l32_us_per_1000": 188172,
+        "poly_deg16_us_per_1000": 331740,
+        "speed_ratio": 1.76,
+        "note": "Both paths use AVR soft-float; ratio lower than x86 FPU (6x)"
+      },
+      "results": [
+        {"K": 4, "L": 8,  "lr": 0.5, "direct_mse": 1.5071e-4, "ratio": 24.7,   "best_ep": 227, "train_s": 106.0},
+        {"K": 4, "L": 16, "lr": 1.0, "direct_mse": 1.20e-6,   "ratio": 812.9,  "best_ep": 369, "train_s": 109.3},
+        {"K": 4, "L": 32, "lr": 2.0, "direct_mse": 1.0e-8,    "ratio": 20237.8,"best_ep": 506, "train_s": 115.4}
+      ]
+    },
+    "esp32c3_supermini": {
+      "arch": "ESP32-C3, RISC-V RV32IMC, 160 MHz, 400 KB SRAM, no FPU (soft-float)",
+      "free_sram_bytes": 290208,
+      "inference_latency": {
+        "note": "Serial monitor connected after latency section; re-run required"
+      },
+      "results": [
+        {"K": 4, "L": 8,  "lr": 0.5, "direct_mse": 1.5071e-4, "ratio": 24.7,   "best_ep": 227, "train_s": 10.8},
+        {"K": 4, "L": 16, "lr": 1.0, "direct_mse": 1.20e-6,   "ratio": 812.9,  "best_ep": 369, "train_s": 11.1},
+        {"K": 4, "L": 32, "lr": 2.0, "direct_mse": 1.0e-8,    "ratio": 20237.9,"best_ep": 506, "train_s": 11.5}
+      ]
+    }
+  },
+  "cross_platform_reproducibility": {
+    "max_ratio_deviation_percent": 0.01,
+    "note": "Ratios match to 4 significant figures across x86/AVR/RISC-V soft-float"
+  }
+}

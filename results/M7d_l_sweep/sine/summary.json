@@ -1,0 +1,169 @@
+{
+  "poly_mse": 6.8966495746281e-05,
+  "K": {
+    "4": {
+      "8": {
+        "post_mse": 0.04078786075115204,
+        "direct_mean": 0.02479727193713188,
+        "direct_std": 6.6366046667099e-06,
+        "ratio": 1.6,
+        "best_ep_mean": 245.0,
+        "mem_bytes": 48,
+        "data_per_cell": 15.62,
+        "total_cells": 32
+      },
+      "16": {
+        "post_mse": 0.011617010459303856,
+        "direct_mean": 0.0003565041988622397,
+        "direct_std": 1.1604221072047949e-05,
+        "ratio": 32.6,
+        "best_ep_mean": 170.0,
+        "mem_bytes": 80,
+        "data_per_cell": 7.81,
+        "total_cells": 64
+      },
+      "24": {
+        "post_mse": 0.0053428765386343,
+        "direct_mean": 1.814529696275713e-05,
+        "direct_std": 8.40792381495703e-07,
+        "ratio": 294.4,
+        "best_ep_mean": 205.0,
+        "mem_bytes": 112,
+        "data_per_cell": 5.21,
+        "total_cells": 96
+      },
+      "32": {
+        "post_mse": 0.003032454289495945,
+        "direct_mean": 2.6208131203020457e-06,
+        "direct_std": 3.7335803426685743e-07,
+        "ratio": 1157.1,
+        "best_ep_mean": 135.0,
+        "mem_bytes": 144,
+        "data_per_cell": 3.91,
+        "total_cells": 128
+      },
+      "48": {
+        "post_mse": 0.0013748997589573264,
+        "direct_mean": 3.741330516504604e-07,
+        "direct_std": 3.9656029571233375e-08,
+        "ratio": 3674.9,
+        "best_ep_mean": 70.0,
+        "mem_bytes": 208,
+        "data_per_cell": 2.6,
+        "total_cells": 192
+      },
+      "64": {
+        "post_mse": 0.0007880605990067124,
+        "direct_mean": 1.04656670885106e-07,
+        "direct_std": 4.188727587006724e-09,
+        "ratio": 7530.0,
+        "best_ep_mean": 45.0,
+        "mem_bytes": 272,
+        "data_per_cell": 1.95,
+        "total_cells": 256
+      },
+      "96": {
+        "post_mse": 0.00038127630250528455,
+        "direct_mean": 2.6367517946823682e-08,
+        "direct_std": 4.003505083005621e-09,
+        "ratio": 14460.1,
+        "best_ep_mean": 40.0,
+        "mem_bytes": 400,
+        "data_per_cell": 1.3,
+        "total_cells": 384
+      },
+      "128": {
+        "post_mse": 0.00023589182819705456,
+        "direct_mean": 1.0782449155755103e-08,
+        "direct_std": 8.133693718548329e-10,
+        "ratio": 21877.4,
+        "best_ep_mean": 40.0,
+        "mem_bytes": 528,
+        "data_per_cell": 0.98,
+        "total_cells": 512
+      }
+    },
+    "8": {
+      "8": {
+        "post_mse": 0.010986699722707272,
+        "direct_mean": 0.0012343161506578326,
+        "direct_std": 1.7652055248618126e-06,
+        "ratio": 8.9,
+        "best_ep_mean": 120.0,
+        "mem_bytes": 96,
+        "data_per_cell": 7.81,
+        "total_cells": 64
+      },
+      "16": {
+        "post_mse": 0.002848763484507799,
+        "direct_mean": 1.1220979104109574e-05,
+        "direct_std": 2.0540301193250343e-06,
+        "ratio": 253.9,
+        "best_ep_mean": 130.0,
+        "mem_bytes": 160,
+        "data_per_cell": 3.91,
+        "total_cells": 128
+      },
+      "24": {
+        "post_mse": 0.0012916569830849767,
+        "direct_mean": 9.644726333135623e-07,
+        "direct_std": 1.3682358712685527e-07,
+        "ratio": 1339.2,
+        "best_ep_mean": 35.0,
+        "mem_bytes": 224,
+        "data_per_cell": 2.6,
+        "total_cells": 192
+      },
+      "32": {
+        "post_mse": 0.00073774135671556,
+        "direct_mean": 2.928583313632771e-07,
+        "direct_std": 2.33161898677281e-08,
+        "ratio": 2519.1,
+        "best_ep_mean": 40.0,
+        "mem_bytes": 288,
+        "data_per_cell": 1.95,
+        "total_cells": 256
+      },
+      "48": {
+        "post_mse": 0.00035332844709046185,
+        "direct_mean": 8.852634181266694e-08,
+        "direct_std": 3.647592450306547e-09,
+        "ratio": 3991.2,
+        "best_ep_mean": 30.0,
+        "mem_bytes": 416,
+        "data_per_cell": 1.3,
+        "total_cells": 384
+      },
+      "64": {
+        "post_mse": 0.00022235159121919423,
+        "direct_mean": 6.463204194062655e-08,
+        "direct_std": 1.7030926002803426e-08,
+        "ratio": 3440.3,
+        "best_ep_mean": 45.0,
+        "mem_bytes": 544,
+        "data_per_cell": 0.98,
+        "total_cells": 512
+      },
+      "96": {
+        "post_mse": 0.0001298880815738812,
+        "direct_mean": 1.1175023075793433e-06,
+        "direct_std": 4.0201766182690335e-07,
+        "ratio": 116.2,
+        "best_ep_mean": 45.0,
+        "mem_bytes": 800,
+        "data_per_cell": 0.65,
+        "total_cells": 768
+      },
+      "128": {
+        "post_mse": 9.830728231463581e-05,
+        "direct_mean": 5.697676670024521e-06,
+        "direct_std": 4.345963589003077e-07,
+        "ratio": 17.3,
+        "best_ep_mean": 35.0,
+        "mem_bytes": 1056,
+        "data_per_cell": 0.49,
+        "total_cells": 1024
+      }
+    }
+  }
+}

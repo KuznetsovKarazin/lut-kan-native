@@ -1,0 +1,112 @@
+[
+  {
+    "method": "poly_deg20_f32",
+    "memory_bytes": 84,
+    "ops_float": 80,
+    "ops_int": 0,
+    "ops_total": 80,
+    "reads_bytes": 84,
+    "latency_ns_per_sample": 143.37945000306718,
+    "latency_std_ns": 185.56605004357087,
+    "extra": "single-edge, sine"
+  },
+  {
+    "method": "poly_deg16_f32",
+    "memory_bytes": 68,
+    "ops_float": 64,
+    "ops_int": 0,
+    "ops_total": 64,
+    "reads_bytes": 68,
+    "latency_ns_per_sample": 100.26422500004628,
+    "latency_std_ns": 3.543691426406837,
+    "extra": "single-edge, sine (paper v2.1 default)"
+  },
+  {
+    "method": "lut_K16_L32_u8",
+    "memory_bytes": 576,
+    "ops_float": 13,
+    "ops_int": 7,
+    "ops_total": 20,
+    "reads_bytes": 6,
+    "latency_ns_per_sample": 16.432375014119316,
+    "latency_std_ns": 1.2416317519339062,
+    "extra": "single-edge, sine (paper v2.1 default)"
+  },
+  {
+    "method": "lut_K16_L16_u8",
+    "memory_bytes": 320,
+    "ops_float": 13,
+    "ops_int": 7,
+    "ops_total": 20,
+    "reads_bytes": 6,
+    "latency_ns_per_sample": 16.132200005358754,
+    "latency_std_ns": 1.2787687586784315,
+    "extra": "single-edge, sine"
+  },
+  {
+    "method": "lut_K8_L16_u8",
+    "memory_bytes": 160,
+    "ops_float": 13,
+    "ops_int": 7,
+    "ops_total": 20,
+    "reads_bytes": 6,
+    "latency_ns_per_sample": 16.36164998899403,
+    "latency_std_ns": 1.0097152129573013,
+    "extra": "single-edge, sine (MCU-friendly small)"
+  },
+  {
+    "method": "poly_KAN_h4_d8_2d",
+    "memory_bytes": 432,
+    "ops_float": 395,
+    "ops_int": 0,
+    "ops_total": 395,
+    "reads_bytes": 432,
+    "latency_ns_per_sample": null,
+    "latency_std_ns": null,
+    "extra": "multi-edge 2->4->1"
+  },
+  {
+    "method": "poly_KAN_h8_d8_2d",
+    "memory_bytes": 864,
+    "ops_float": 791,
+    "ops_int": 0,
+    "ops_total": 791,
+    "reads_bytes": 864,
+    "latency_ns_per_sample": null,
+    "latency_std_ns": null,
+    "extra": "multi-edge 2->8->1"
+  },
+  {
+    "method": "lut_KAN_h4_K4L4_2d",
+    "memory_bytes": 384,
+    "ops_float": 167,
+    "ops_int": 84,
+    "ops_total": 251,
+    "reads_bytes": 72,
+    "latency_ns_per_sample": null,
+    "latency_std_ns": null,
+    "extra": "multi-edge 2->4->1"
+  },
+  {
+    "method": "lut_KAN_h4_K4L8_2d",
+    "memory_bytes": 576,
+    "ops_float": 167,
+    "ops_int": 84,
+    "ops_total": 251,
+    "reads_bytes": 72,
+    "latency_ns_per_sample": null,
+    "latency_std_ns": null,
+    "extra": "multi-edge 2->4->1"
+  },
+  {
+    "method": "lut_KAN_h8_K4L4_2d",
+    "memory_bytes": 768,
+    "ops_float": 335,
+    "ops_int": 168,
+    "ops_total": 503,
+    "reads_bytes": 144,
+    "latency_ns_per_sample": null,
+    "latency_std_ns": null,
+    "extra": "multi-edge 2->8->1"
+  }
+]

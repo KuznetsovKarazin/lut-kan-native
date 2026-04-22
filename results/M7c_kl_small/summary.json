@@ -1,0 +1,32 @@
+{
+  "sine": {
+    "poly_mse": 6.8966495746281e-05,
+    "best_config": "K8_L32",
+    "best_ratio": 2763.9,
+    "best_mem": 288,
+    "K4_L32_ratio": 1123.7,
+    "K4_L32_mem": 144,
+    "K8_L32_ratio": 2763.9,
+    "K8_L32_mem": 288
+  },
+  "cusp": {
+    "poly_mse": 4.2905317968688905e-05,
+    "best_config": "K8_L32",
+    "best_ratio": 554.7,
+    "best_mem": 288,
+    "K4_L32_ratio": 126.5,
+    "K4_L32_mem": 144,
+    "K8_L32_ratio": 554.7,
+    "K8_L32_mem": 288
+  },
+  "saturating": {
+    "poly_mse": 1.7574702724232338e-06,
+    "best_config": "K4_L32",
+    "best_ratio": 21012.5,
+    "best_mem": 144,
+    "K4_L32_ratio": 21012.5,
+    "K4_L32_mem": 144,
+    "K8_L32_ratio": 16427.6,
+    "K8_L32_mem": 288
+  }
+}

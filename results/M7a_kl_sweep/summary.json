@@ -1,0 +1,47 @@
+{
+  "sine": {
+    "poly_mse": 6.8966495746281e-05,
+    "best_config": "K8_L32",
+    "best_ratio": 2763.9,
+    "best_ratio_ci": [
+      2333.3,
+      3430.6
+    ],
+    "best_memory_bytes": 288,
+    "h1_config_ratio": 611.2,
+    "h1_config_ci": [
+      504.0,
+      734.5
+    ]
+  },
+  "cusp": {
+    "poly_mse": 4.2905317968688905e-05,
+    "best_config": "K16_L32",
+    "best_ratio": 790.0,
+    "best_ratio_ci": [
+      637.7,
+      1032.3
+    ],
+    "best_memory_bytes": 576,
+    "h1_config_ratio": 790.0,
+    "h1_config_ci": [
+      637.7,
+      1032.3
+    ]
+  },
+  "saturating": {
+    "poly_mse": 1.7574702724232338e-06,
+    "best_config": "K8_L32",
+    "best_ratio": 16427.6,
+    "best_ratio_ci": [
+      11997.1,
+      25951.3
+    ],
+    "best_memory_bytes": 288,
+    "h1_config_ratio": 942.5,
+    "h1_config_ci": [
+      442.6,
+      2756.3
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "sine_K4": {
+    "best_L": 128,
+    "best_ratio": 21877.4,
+    "best_mem": 528,
+    "L32_ratio": 1157.1,
+    "L64_ratio": 7530.0,
+    "L96_ratio": 14460.1,
+    "crossover_between": null
+  },
+  "sine_K8": {
+    "best_L": 48,
+    "best_ratio": 3991.2,
+    "best_mem": 416,
+    "L32_ratio": 2519.1,
+    "L64_ratio": 3440.3,
+    "L96_ratio": 116.2,
+    "crossover_between": "L=64\u2013L=96"
+  },
+  "cusp_K4": {
+    "best_L": 128,
+    "best_ratio": 1758.4,
+    "best_mem": 528,
+    "L32_ratio": 128.9,
+    "L64_ratio": 649.1,
+    "L96_ratio": 946.9,
+    "crossover_between": null
+  },
+  "cusp_K8": {
+    "best_L": 64,
+    "best_ratio": 1300.6,
+    "best_mem": 544,
+    "L32_ratio": 544.6,
+    "L64_ratio": 1300.6,
+    "L96_ratio": 43.5,
+    "crossover_between": "L=64\u2013L=96"
+  },
+  "saturating_K4": {
+    "best_L": 64,
+    "best_ratio": 131347.7,
+    "best_mem": 272,
+    "L32_ratio": 22093.9,
+    "L64_ratio": 131347.7,
+    "L96_ratio": 81064.8,
+    "crossover_between": "L=64\u2013L=96"
+  },
+  "saturating_K8": {
+    "best_L": 32,
+    "best_ratio": 13880.6,
+    "best_mem": 288,
+    "L32_ratio": 13880.6,
+    "L64_ratio": 5853.0,
+    "L96_ratio": 6.8,
+    "crossover_between": "L=32\u2013L=48"
+  }
+}

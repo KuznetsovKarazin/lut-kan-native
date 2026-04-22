@@ -1,0 +1,131 @@
+{
+  "config": {
+    "architecture": "2->4->1",
+    "degree": 8,
+    "K_values": [
+      8,
+      16,
+      32
+    ],
+    "L_values": [
+      16,
+      32,
+      64
+    ],
+    "n_edges": 12,
+    "n_samples_per_batch": 400,
+    "n_reps": 20
+  },
+  "polynomial": {
+    "method": "PolyKAN deg=8",
+    "K": null,
+    "L": null,
+    "memory_bytes": 432,
+    "ops_int": 0,
+    "ops_float": 395,
+    "test_mse_uint8": 0.0002768327249214053,
+    "latency_median_us": 1.3501624999889827,
+    "latency_std_us": 43.35564747410626
+  },
+  "lut_variants": [
+    {
+      "method": "LUT-KAN K=8 L=16",
+      "K": 8,
+      "L": 16,
+      "memory_bytes": 1920,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0033295743633061647,
+      "latency_median_us": 1.636147500221341,
+      "latency_std_us": 0.25458797527690363
+    },
+    {
+      "method": "LUT-KAN K=8 L=32",
+      "K": 8,
+      "L": 32,
+      "memory_bytes": 3456,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0012038026470690966,
+      "latency_median_us": 1.6154400003642877,
+      "latency_std_us": 0.26162469201396127
+    },
+    {
+      "method": "LUT-KAN K=8 L=64",
+      "K": 8,
+      "L": 64,
+      "memory_bytes": 6528,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0005881587276235223,
+      "latency_median_us": 1.9371100000853403,
+      "latency_std_us": 39.962689275722994
+    },
+    {
+      "method": "LUT-KAN K=16 L=16",
+      "K": 16,
+      "L": 16,
+      "memory_bytes": 3840,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0012277959613129497,
+      "latency_median_us": 1.7548375001297245,
+      "latency_std_us": 40.062922718104076
+    },
+    {
+      "method": "LUT-KAN K=16 L=32",
+      "K": 16,
+      "L": 32,
+      "memory_bytes": 6912,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0005937779205851257,
+      "latency_median_us": 1.7103262501905192,
+      "latency_std_us": 38.94296408322156
+    },
+    {
+      "method": "LUT-KAN K=16 L=64",
+      "K": 16,
+      "L": 64,
+      "memory_bytes": 13056,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.00039240389014594257,
+      "latency_median_us": 1.7292224998755046,
+      "latency_std_us": 0.2364790566605058
+    },
+    {
+      "method": "LUT-KAN K=32 L=16",
+      "K": 32,
+      "L": 16,
+      "memory_bytes": 7680,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0005789083079434931,
+      "latency_median_us": 1.533280000103332,
+      "latency_std_us": 0.13564130321351012
+    },
+    {
+      "method": "LUT-KAN K=32 L=32",
+      "K": 32,
+      "L": 32,
+      "memory_bytes": 13824,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.00039093627128750086,
+      "latency_median_us": 1.5708362502664386,
+      "latency_std_us": 0.14657663080261565
+    },
+    {
+      "method": "LUT-KAN K=32 L=64",
+      "K": 32,
+      "L": 64,
+      "memory_bytes": 26112,
+      "ops_int": 84,
+      "ops_float": 167,
+      "test_mse_uint8": 0.0003207210684195161,
+      "latency_median_us": 1.7754225007138302,
+      "latency_std_us": 38.95997015634447
+    }
+  ]
+}

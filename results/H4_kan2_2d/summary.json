@@ -1,0 +1,94 @@
+{
+  "config": {
+    "target": "feynman_2d",
+    "architecture": "2->4->1",
+    "degree": 8,
+    "K": 16,
+    "L": 32,
+    "lambda_2": 0.0,
+    "poly_epochs": 800,
+    "lut_epochs": 300,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_edges": 12
+  },
+  "results": {
+    "polynomial_kan": {
+      "test_mse_mean": 0.00038920932565815746,
+      "test_mse_std": 0.00023702018490841047,
+      "test_mse_values": [
+        0.00019310558855067939,
+        0.0007442412315867841,
+        0.0001534720795461908,
+        0.000398561533074826,
+        0.00045666619553230703
+      ],
+      "memory_bytes": 432,
+      "ops_per_sample": {
+        "int_ops": 0,
+        "float_ops": 395
+      }
+    },
+    "post_training_lut_kan": {
+      "test_mse_fp": 0.00028850146918557584,
+      "test_mse_uint8": 0.0002887510636355728,
+      "memory_bytes_uint8": 6912,
+      "memory_bytes_fp32": 24576,
+      "ops_per_sample": {
+        "int_ops": 84,
+        "float_ops": 167
+      }
+    },
+    "direct_lut_kan": {
+      "test_mse_fp_mean": 0.0001743103377521038,
+      "test_mse_fp_std": 1.86891295634509e-05,
+      "test_mse_fp_values": [
+        0.00018649249977897853,
+        0.00017741280316840857,
+        0.00014388523413799703,
+        0.00019185052951797843,
+        0.00017191062215715647
+      ],
+      "test_mse_uint8_mean": 0.00017429304134566336,
+      "test_mse_uint8_std": 1.794722743270983e-05,
+      "test_mse_uint8_values": [
+        0.00018541995086707175,
+        0.00017671231762506068,
+        0.00014465786807704717,
+        0.00019102889928035438,
+        0.00017364617087878287
+      ],
+      "memory_bytes_uint8": 6912,
+      "memory_bytes_fp32": 24576,
+      "ops_per_sample": {
+        "int_ops": 84,
+        "float_ops": 167
+      }
+    }
+  },
+  "statistics": {
+    "ratio_post_over_direct_fp": {
+      "log_ratio_mean": 0.5087846709094854,
+      "log_ratio_ci_lower": 0.4349612909955951,
+      "log_ratio_ci_upper": 0.6082174352865941,
+      "ratio_mean": 1.6632685474526183,
+      "ratio_ci_lower": 1.5449032561269453,
+      "ratio_ci_upper": 1.8371536329954747,
+      "n_seeds": 5
+    },
+    "ratio_poly_over_direct_fp": {
+      "log_ratio_mean": 0.648271613139476,
+      "log_ratio_ci_lower": 0.18596857195486347,
+      "log_ratio_ci_upper": 1.1105746543240884,
+      "ratio_mean": 1.9122328929343477,
+      "ratio_ci_lower": 1.2043844083352782,
+      "ratio_ci_upper": 3.036102602718289,
+      "n_seeds": 5
+    }
+  }
+}

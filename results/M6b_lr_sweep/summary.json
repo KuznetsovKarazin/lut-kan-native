@@ -1,0 +1,41 @@
+{
+  "sine": {
+    "poly_mse": 6.8966495746281e-05,
+    "best_schedule": "flat_2.0",
+    "best_mean_mse": 1.3686355183987569e-06,
+    "best_ratio_vs_poly": 50.39,
+    "flat_05_ratio": 5.55,
+    "flat_10_ratio": 15.25,
+    "ci_10_vs_05": {
+      "point": 2.75,
+      "ci_lo": 2.73,
+      "ci_hi": 2.769
+    }
+  },
+  "cusp": {
+    "poly_mse": 4.2905317968688905e-05,
+    "best_schedule": "flat_2.0",
+    "best_mean_mse": 1.061752901894882e-07,
+    "best_ratio_vs_poly": 404.1,
+    "flat_05_ratio": 67.03,
+    "flat_10_ratio": 142.02,
+    "ci_10_vs_05": {
+      "point": 2.119,
+      "ci_lo": 2.049,
+      "ci_hi": 2.185
+    }
+  },
+  "saturating": {
+    "poly_mse": 1.7574702724232338e-06,
+    "best_schedule": "flat_2.0",
+    "best_mean_mse": 8.880920295458358e-09,
+    "best_ratio_vs_poly": 197.89,
+    "flat_05_ratio": 4.83,
+    "flat_10_ratio": 21.74,
+    "ci_10_vs_05": {
+      "point": 4.505,
+      "ci_lo": 4.267,
+      "ci_hi": 4.753
+    }
+  }
+}

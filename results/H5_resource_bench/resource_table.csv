@@ -1,0 +1,11 @@
+method,memory_bytes,ops_float,ops_int,ops_total,reads_bytes,latency_ns_per_sample,latency_std_ns,extra
+poly_deg20_f32,84,80,0,80,84,143.37945000306718,185.56605004357087,"single-edge, sine"
+poly_deg16_f32,68,64,0,64,68,100.26422500004628,3.543691426406837,"single-edge, sine (paper v2.1 default)"
+lut_K16_L32_u8,576,13,7,20,6,16.432375014119316,1.2416317519339062,"single-edge, sine (paper v2.1 default)"
+lut_K16_L16_u8,320,13,7,20,6,16.132200005358754,1.2787687586784315,"single-edge, sine"
+lut_K8_L16_u8,160,13,7,20,6,16.36164998899403,1.0097152129573013,"single-edge, sine (MCU-friendly small)"
+poly_KAN_h4_d8_2d,432,395,0,395,432,,,multi-edge 2->4->1
+poly_KAN_h8_d8_2d,864,791,0,791,864,,,multi-edge 2->8->1
+lut_KAN_h4_K4L4_2d,384,167,84,251,72,,,multi-edge 2->4->1
+lut_KAN_h4_K4L8_2d,576,167,84,251,72,,,multi-edge 2->4->1
+lut_KAN_h8_K4L4_2d,768,335,168,503,144,,,multi-edge 2->8->1

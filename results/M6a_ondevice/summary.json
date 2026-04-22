@@ -1,0 +1,86 @@
+{
+  "sine": {
+    "poly_mse": 6.8966495746281e-05,
+    "A_adam_f32_mean_mse": 5.290642282792154e-07,
+    "B_sgd_f32_mean_mse": 1.5201643388233302e-05,
+    "C_sgd_fp16_mean_mse": 1.5201524547592271e-05,
+    "D_sgd_fp16_noreg_mean_mse": 0.00019614468328654766,
+    "A_adam_f32_ratio_poly": 130.36,
+    "B_sgd_f32_ratio_poly": 4.54,
+    "C_sgd_fp16_ratio_poly": 4.54,
+    "D_sgd_fp16_noreg_ratio_poly": 0.35,
+    "ci_B_vs_C": {
+      "point": 1.0,
+      "ci_lo": 0.753,
+      "ci_hi": 1.314
+    },
+    "ci_A_vs_C": {
+      "point": 0.035,
+      "ci_lo": 0.019,
+      "ci_hi": 0.056
+    },
+    "ci_C_vs_D": {
+      "point": 12.903,
+      "ci_lo": 10.58,
+      "ci_hi": 15.98
+    },
+    "ram_A_kb": 8.75,
+    "ram_C_kb": 3.75
+  },
+  "cusp": {
+    "poly_mse": 4.2905317968688905e-05,
+    "A_adam_f32_mean_mse": 2.870421719573339e-07,
+    "B_sgd_f32_mean_mse": 1.0839041427364766e-06,
+    "C_sgd_fp16_mean_mse": 1.083401040583946e-06,
+    "D_sgd_fp16_noreg_mean_mse": 4.142030835888969e-05,
+    "A_adam_f32_ratio_poly": 149.47,
+    "B_sgd_f32_ratio_poly": 39.58,
+    "C_sgd_fp16_ratio_poly": 39.6,
+    "D_sgd_fp16_noreg_ratio_poly": 1.04,
+    "ci_B_vs_C": {
+      "point": 1.0,
+      "ci_lo": 0.868,
+      "ci_hi": 1.153
+    },
+    "ci_A_vs_C": {
+      "point": 0.265,
+      "ci_lo": 0.097,
+      "ci_hi": 0.533
+    },
+    "ci_C_vs_D": {
+      "point": 38.232,
+      "ci_lo": 34.075,
+      "ci_hi": 43.023
+    },
+    "ram_A_kb": 8.75,
+    "ram_C_kb": 3.75
+  },
+  "saturating": {
+    "poly_mse": 1.7574702724232338e-06,
+    "A_adam_f32_mean_mse": 2.196669231698441e-08,
+    "B_sgd_f32_mean_mse": 1.7425386052612641e-06,
+    "C_sgd_fp16_mean_mse": 1.743040987397156e-06,
+    "D_sgd_fp16_noreg_mean_mse": 9.462879097554833e-05,
+    "A_adam_f32_ratio_poly": 80.01,
+    "B_sgd_f32_ratio_poly": 1.01,
+    "C_sgd_fp16_ratio_poly": 1.01,
+    "D_sgd_fp16_noreg_ratio_poly": 0.02,
+    "ci_B_vs_C": {
+      "point": 1.0,
+      "ci_lo": 0.463,
+      "ci_hi": 2.049
+    },
+    "ci_A_vs_C": {
+      "point": 0.013,
+      "ci_lo": 0.003,
+      "ci_hi": 0.033
+    },
+    "ci_C_vs_D": {
+      "point": 54.289,
+      "ci_lo": 33.775,
+      "ci_hi": 96.537
+    },
+    "ram_A_kb": 8.75,
+    "ram_C_kb": 3.75
+  }
+}
