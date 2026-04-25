@@ -1,0 +1,7 @@
+sensor,units,nonlinearity,data_source,factory_mae,poly_mae,lut_mae,lut_std,ratio,significance,p
+NTC thermistor,deg C,Strong (exp.),synthetic,0.647,0.2808,0.1696,0.0035,1.656,p<0.01 **,0.0039
+Type K thermocouple,deg C,Smooth (NIST EMF),parametric,0.8458,0.1273,0.1447,0.0103,0.88,ns,0.9961
+LDR photoresistor,log10(lux),Strong (log),parametric,0,0.1399,0.059,0.0005,2.372,p<0.01 **,0.0039
+Humidity (resistive),%RH,Strong (exp.),parametric,2.8624,0.2202,0.1369,0.0019,1.609,p<0.01 **,0.0078
+MQ gas sensor,log10(ppm),Moderate (power),parametric,0,0.0026,0.0033,0.0002,0.793,ns,1.0
+pH electrode,pH units,Linear,parametric,0,0.0011,0.0022,0.0002,0.487,ns,1.0

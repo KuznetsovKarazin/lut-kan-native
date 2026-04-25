@@ -1,0 +1,37 @@
+{
+  "ntc": {
+    "poly": 0.58689,
+    "lut": 0.17436,
+    "ratio": 3.366,
+    "factory": 0.647,
+    "factory_ratio": 3.711
+  },
+  "therm": {
+    "poly": 0.58673,
+    "lut": 0.38477,
+    "ratio": 1.525,
+    "factory": 4.8113,
+    "factory_ratio": 12.504
+  },
+  "hum": {
+    "poly": 0.5504,
+    "lut": 0.15357,
+    "ratio": 3.584,
+    "factory": 4.3331,
+    "factory_ratio": 28.216
+  },
+  "mq": {
+    "poly": 0.00256,
+    "lut": 0.00349,
+    "ratio": 0.736,
+    "factory": null,
+    "factory_ratio": null
+  },
+  "ph": {
+    "poly": 0.00124,
+    "lut": 0.00236,
+    "ratio": 0.525,
+    "factory": null,
+    "factory_ratio": null
+  }
+}

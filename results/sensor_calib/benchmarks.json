@@ -1,0 +1,101 @@
+{
+  "training_time": {
+    "n10": {
+      "mean_s": 1.324,
+      "ms_per_epoch": 3.31,
+      "avr_est_s": 15.9,
+      "esp32_est_s": 2.0
+    },
+    "n20": {
+      "mean_s": 0.261,
+      "ms_per_epoch": 0.65
+    },
+    "n50": {
+      "mean_s": 0.543,
+      "ms_per_epoch": 1.36,
+      "avr_est_s": 6.5,
+      "esp32_est_s": 0.8
+    },
+    "n100": {
+      "mean_s": 1.005,
+      "ms_per_epoch": 2.51,
+      "avr_est_s": 12.1,
+      "esp32_est_s": 1.5
+    }
+  },
+  "inference": {
+    "lut_k1_l32": {
+      "batch_ms": 0.224,
+      "us_per_call": 0.0224
+    },
+    "poly_deg3": {
+      "batch_ms": 0.06,
+      "us_per_call": 0.006,
+      "ratio_vs_lut": 0.27
+    },
+    "poly_deg5": {
+      "batch_ms": 0.063,
+      "us_per_call": 0.0063,
+      "ratio_vs_lut": 0.28
+    },
+    "poly_deg8": {
+      "batch_ms": 0.09,
+      "us_per_call": 0.009,
+      "ratio_vs_lut": 0.4
+    },
+    "poly_deg16": {
+      "batch_ms": 0.159,
+      "us_per_call": 0.0159,
+      "ratio_vs_lut": 0.71
+    }
+  },
+  "memory": {
+    "lut_K1_L8": {
+      "f32_bytes": 32,
+      "u8_bytes": 16
+    },
+    "lut_K1_L16": {
+      "f32_bytes": 64,
+      "u8_bytes": 24
+    },
+    "lut_K1_L32": {
+      "f32_bytes": 128,
+      "u8_bytes": 40
+    },
+    "lut_K2_L16": {
+      "f32_bytes": 128,
+      "u8_bytes": 40
+    },
+    "lut_K4_L16": {
+      "f32_bytes": 256,
+      "u8_bytes": 72
+    },
+    "lut_K4_L32": {
+      "f32_bytes": 512,
+      "u8_bytes": 136
+    },
+    "poly_deg3": {
+      "f32_bytes": 16
+    },
+    "poly_deg5": {
+      "f32_bytes": 24
+    },
+    "poly_deg8": {
+      "f32_bytes": 36
+    },
+    "poly_deg16": {
+      "f32_bytes": 68
+    },
+    "poly_deg20": {
+      "f32_bytes": 84
+    },
+    "training_sram": {
+      "params": 128,
+      "grads_fp16": 64,
+      "batch": 256,
+      "overhead": 512,
+      "total": 960
+    }
+  },
+  "gradient_sparsity_pct": 6.2
+}

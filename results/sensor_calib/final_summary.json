@@ -1,0 +1,72 @@
+{
+  "ntc": {
+    "poly_mean": 0.28082,
+    "lut_mean": 0.17436,
+    "ratio": 1.704,
+    "ci_lo": 1.3731,
+    "ci_hi": 2.026,
+    "wilcoxon_p": 0.0039,
+    "lut_wins": true,
+    "wins_out_of_8": 8,
+    "factory_mean": 0.647,
+    "factory_ratio": 3.711,
+    "label": "NTC Thermistor",
+    "unit": "\u00b0C"
+  },
+  "hum": {
+    "poly_mean": 0.269,
+    "lut_mean": 0.15,
+    "ratio": 1.794,
+    "ci_lo": 1.7674,
+    "ci_hi": 1.82,
+    "wilcoxon_p": 0.0039,
+    "lut_wins": true,
+    "wins_out_of_8": 8,
+    "factory_mean": 4.3,
+    "factory_ratio": 28.667,
+    "label": "Humidity Sensor",
+    "unit": "%RH"
+  },
+  "therm": {
+    "poly_mean": 0.35994,
+    "lut_mean": 0.38477,
+    "ratio": 0.974,
+    "ci_lo": 0.7957,
+    "ci_hi": 1.1593,
+    "wilcoxon_p": 0.7266,
+    "lut_wins": false,
+    "wins_out_of_8": 4,
+    "factory_mean": 4.8113,
+    "factory_ratio": 12.504,
+    "label": "Thermopile IR",
+    "unit": "\u00b0C"
+  },
+  "mq": {
+    "poly_mean": 0.00256,
+    "lut_mean": 0.00347,
+    "ratio": 0.747,
+    "ci_lo": 0.6466,
+    "ci_hi": 0.8498,
+    "wilcoxon_p": 1.0,
+    "lut_wins": false,
+    "wins_out_of_8": 0,
+    "factory_mean": null,
+    "factory_ratio": null,
+    "label": "MQ Gas",
+    "unit": "log\u2081\u2080ppm"
+  },
+  "ph": {
+    "poly_mean": 0.00108,
+    "lut_mean": 0.00228,
+    "ratio": 0.473,
+    "ci_lo": 0.3382,
+    "ci_hi": 0.6023,
+    "wilcoxon_p": 1.0,
+    "lut_wins": false,
+    "wins_out_of_8": 0,
+    "factory_mean": null,
+    "factory_ratio": null,
+    "label": "pH Electrode",
+    "unit": "pH"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "ntc": {
+    "poly_mean": 1.21059,
+    "lut_mean": 0.15302,
+    "ratio": 7.912,
+    "ci_lo": 6.929,
+    "ci_hi": 8.825,
+    "wilcoxon_p": 0.0625,
+    "lut_wins": 

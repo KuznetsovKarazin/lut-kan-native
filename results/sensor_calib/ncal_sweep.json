@@ -1,0 +1,82 @@
+[
+  {
+    "n_cal": 5,
+    "factory_mae": 0.975,
+    "poly3_mae": 3.2948,
+    "lut_mae": 3.1392,
+    "lut_std": 0.0,
+    "kl": 32
+  },
+  {
+    "n_cal": 10,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.5031,
+    "lut_mae": 0.1654,
+    "lut_std": 0.0,
+    "kl": 32
+  },
+  {
+    "n_cal": 15,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.58,
+    "lut_mae": 0.1759,
+    "lut_std": 0.0,
+    "kl": 32
+  },
+  {
+    "n_cal": 20,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.3877,
+    "lut_mae": 0.4836,
+    "lut_std": 0.0,
+    "kl": 32
+  },
+  {
+    "n_cal": 30,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.2135,
+    "lut_mae": 0.1906,
+    "lut_std": 0.0,
+    "kl": 32
+  },
+  {
+    "n_cal": 40,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.2445,
+    "lut_mae": 0.1521,
+    "lut_std": 0.00638,
+    "kl": 32
+  },
+  {
+    "n_cal": 50,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.227,
+    "lut_mae": 0.1605,
+    "lut_std": 0.00129,
+    "kl": 32
+  },
+  {
+    "n_cal": 75,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.2262,
+    "lut_mae": 0.2046,
+    "lut_std": 0.09533,
+    "kl": 32
+  },
+  {
+    "n_cal": 100,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.2125,
+    "lut_mae": 0.135,
+    "lut_std": 0.0129,
+    "kl": 32
+  },
+  {
+    "n_cal": 150,
+    "factory_mae": 0.975,
+    "poly3_mae": 1.2098,
+    "lut_mae": 0.1593,
+    "lut_std": 0.00212,
+    "kl": 32
+  }
+]

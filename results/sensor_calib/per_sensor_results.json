@@ -1,0 +1,232 @@
+{
+  "ntc": [
+    {
+      "label": "NTC_S1",
+      "B": 3920.3,
+      "factory_mae": 0.27,
+      "poly_mae": 1.1212,
+      "lut_mae": 0.1798,
+      "lut_std": 0.00049,
+      "impr_vs_factory": 1.5,
+      "impr_vs_poly": 6.24
+    },
+    {
+      "label": "NTC_S2",
+      "B": 4056.8,
+      "factory_mae": 0.975,
+      "poly_mae": 1.273,
+      "lut_mae": 0.1469,
+      "lut_std": 0.00084,
+      "impr_vs_factory": 6.64,
+      "impr_vs_poly": 8.67
+    },
+    {
+      "label": "NTC_S3",
+      "B": 4005.0,
+      "factory_mae": 0.5009,
+      "poly_mae": 1.2474,
+      "lut_mae": 0.1559,
+      "lut_std": 0.00172,
+      "impr_vs_factory": 3.21,
+      "impr_vs_poly": 8.0
+    },
+    {
+      "label": "NTC_S4",
+      "B": 3973.4,
+      "factory_mae": 0.2127,
+      "poly_mae": 1.2008,
+      "lut_mae": 0.1337,
+      "lut_std": 0.00343,
+      "impr_vs_factory": 1.59,
+      "impr_vs_poly": 8.98
+    },
+    {
+      "label": "NTC_S5",
+      "B": 3868.5,
+      "factory_mae": 0.7387,
+      "poly_mae": 1.1052,
+      "lut_mae": 0.2031,
+      "lut_std": 0.00173,
+      "impr_vs_factory": 3.64,
+      "impr_vs_poly": 5.44
+    },
+    {
+      "label": "NTC_S6",
+      "B": 3868.5,
+      "factory_mae": 0.7388,
+      "poly_mae": 1.1067,
+      "lut_mae": 0.2219,
+      "lut_std": 0.02727,
+      "impr_vs_factory": 3.33,
+      "impr_vs_poly": 4.99
+    },
+    {
+      "label": "NTC_S7",
+      "B": 3845.3,
+      "factory_mae": 0.9482,
+      "poly_mae": 1.0073,
+      "lut_mae": 0.2186,
+      "lut_std": 0.00133,
+      "impr_vs_factory": 4.34,
+      "impr_vs_poly": 4.61
+    },
+    {
+      "label": "NTC_S8",
+      "B": 4036.8,
+      "factory_mae": 0.7915,
+      "poly_mae": 1.2646,
+      "lut_mae": 0.1373,
+      "lut_std": 0.0012,
+      "impr_vs_factory": 5.76,
+      "impr_vs_poly": 9.21
+    }
+  ],
+  "mq": [
+    {
+      "label": "MQ_S1",
+      "A": 2.213,
+      "B_exp": 0.364,
+      "poly_mae": 0.00333,
+      "lut_mae": 0.0043,
+      "lut_std": 3e-05,
+      "impr_vs_poly": 0.77
+    },
+    {
+      "label": "MQ_S2",
+      "A": 2.611,
+      "B_exp": 0.367,
+      "poly_mae": 0.00191,
+      "lut_mae": 0.00219,
+      "lut_std": 0.0,
+      "impr_vs_poly": 0.87
+    },
+    {
+      "label": "MQ_S3",
+      "A": 2.46,
+      "B_exp": 0.343,
+      "poly_mae": 0.00149,
+      "lut_mae": 0.00224,
+      "lut_std": 0.00018,
+      "impr_vs_poly": 0.66
+    },
+    {
+      "label": "MQ_S4",
+      "A": 2.368,
+      "B_exp": 0.377,
+      "poly_mae": 0.00138,
+      "lut_mae": 0.00224,
+      "lut_std": 4e-05,
+      "impr_vs_poly": 0.62
+    },
+    {
+      "label": "MQ_S5",
+      "A": 2.063,
+      "B_exp": 0.372,
+      "poly_mae": 0.00276,
+      "lut_mae": 0.00513,
+      "lut_std": 5e-05,
+      "impr_vs_poly": 0.54
+    },
+    {
+      "label": "MQ_S6",
+      "A": 2.063,
+      "B_exp": 0.35,
+      "poly_mae": 0.00368,
+      "lut_mae": 0.00422,
+      "lut_std": 2e-05,
+      "impr_vs_poly": 0.87
+    },
+    {
+      "label": "MQ_S7",
+      "A": 1.995,
+      "B_exp": 0.349,
+      "poly_mae": 0.00373,
+      "lut_mae": 0.00394,
+      "lut_std": 4e-05,
+      "impr_vs_poly": 0.95
+    },
+    {
+      "label": "MQ_S8",
+      "A": 2.553,
+      "B_exp": 0.349,
+      "poly_mae": 0.00341,
+      "lut_mae": 0.00356,
+      "lut_std": 1e-05,
+      "impr_vs_poly": 0.96
+    }
+  ],
+  "ph": [
+    {
+      "label": "pH_S1",
+      "S": 58.418,
+      "E0": 2.022,
+      "poly_mae": 0.00066,
+      "lut_mae": 0.00261,
+      "lut_std": 3e-05,
+      "impr_vs_poly": 0.25
+    },
+    {
+      "label": "pH_S2",
+      "S": 61.826,
+      "E0": 4.161,
+      "poly_mae": 0.00087,
+      "lut_mae": 0.00132,
+      "lut_std": 8e-05,
+      "impr_vs_poly": 0.66
+    },
+    {
+      "label": "pH_S3",
+      "S": 60.532,
+      "E0": -9.588,
+      "poly_mae": 0.00061,
+      "lut_mae": 0.00133,
+      "lut_std": 0.0001,
+      "impr_vs_poly": 0.46
+    },
+    {
+      "label": "pH_S4",
+      "S": 59.744,
+      "E0": 9.398,
+      "poly_mae": 0.00059,
+      "lut_mae": 0.00161,
+      "lut_std": 0.00024,
+      "impr_vs_poly": 0.37
+    },
+    {
+      "label": "pH_S5",
+      "S": 57.125,
+      "E0": 6.649,
+      "poly_mae": 0.00051,
+      "lut_mae": 0.00322,
+      "lut_std": 4e-05,
+      "impr_vs_poly": 0.16
+    },
+    {
+      "label": "pH_S6",
+      "S": 57.125,
+      "E0": -5.753,
+      "poly_mae": 0.00197,
+      "lut_mae": 0.00277,
+      "lut_std": 4e-05,
+      "impr_vs_poly": 0.71
+    },
+    {
+      "label": "pH_S7",
+      "S": 56.546,
+      "E0": -6.364,
+      "poly_mae": 0.00185,
+      "lut_mae": 0.00257,
+      "lut_std": 1e-05,
+      "impr_vs_poly": 0.72
+    },
+    {
+      "label": "pH_S8",
+      "S": 61.326,
+      "E0": -6.332,
+      "poly_mae": 0.00155,
+      "lut_mae": 0.00227,
+      "lut_std": 0.0,
+      "impr_vs_poly": 0.68
+    }
+  ]
+}
