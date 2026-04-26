@@ -62,8 +62,28 @@ from .training_low_rank import (
     LowRankTrainResult,
     train_low_rank_kan2,
 )
+from .kan_stack import (
+    LUTInterLayerNorm,
+    LUTBlock,
+    LUTKANStack,
+    stack_forward_numpy,
+    coverage_entropy_loss,
+    norm_coverage_loss,
+)
+from .training_stack import (
+    StackTrainConfig,
+    StackTrainResult,
+    train_lut_stack,
+    auto_block_lr_scales,
+)
+from .coverage_stack import (
+    NormCoverageReport,
+    StackCoverageReport,
+    compute_stack_coverage,
+    stack_coverage_to_dict,
+)
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = [
     "LUTEdge", "lut_forward_numpy",
@@ -89,4 +109,8 @@ __all__ = [
     "lut_memory_bytes", "multi_edge_lut_memory_bytes", "polynomial_memory_bytes",
     "lut_ops_per_sample", "polynomial_ops_per_sample", "multi_edge_kan_ops",
     "time_forward",
+    "LUTInterLayerNorm", "LUTBlock", "LUTKANStack", "stack_forward_numpy", "coverage_entropy_loss", "norm_coverage_loss",
+    "StackTrainConfig", "StackTrainResult", "train_lut_stack", "auto_block_lr_scales",
+    "NormCoverageReport", "StackCoverageReport",
+    "compute_stack_coverage", "stack_coverage_to_dict",
 ]

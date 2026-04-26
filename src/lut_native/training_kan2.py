@@ -28,7 +28,12 @@ class KAN2TrainConfig:
     lr: float = 1e-2
     epochs: int = 1500
     batch_size: int = 64
-    init_noise_std_absolute: float = 0.1   # absolute std added to zero-init LUTs
+    # Initialisation: cheby_init=True (default) activates all K LUT segments.
+    # cheby_init=False: Gaussian noise only (legacy).
+    cheby_init:              bool  = True
+    cheby_scale:             float = 1.5
+    cheby_noise:             float = 0.05
+    init_noise_std_absolute: float = 0.1   # used only when cheby_init=False
     seed: int = 0
     eval_every_epochs: int = 10
     # If True AND model.activation=='zscore', run calibrate_activation_stats()

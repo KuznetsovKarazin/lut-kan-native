@@ -1,0 +1,37 @@
+{
+  "config": {
+    "target": "feynman_2d",
+    "arch": "stack_3x4 [2->4->4->1]",
+    "K": 16, "L": 32,
+    "epochs": 300, "lr": 0.01,
+    "seeds": [0, 1, 2],
+    "note": "H8b: EMA norm tracking vs periodic recalibration vs no tracking"
+  },
+  "raw_results": [
+    {"tag":"no_track", "seed":0, "mse_test":0.634906, "best_epoch":50,  "norm_uni":[0.0, 0.0]},
+    {"tag":"no_track", "seed":1, "mse_test":0.647536, "best_epoch":50,  "norm_uni":[0.0, 0.0]},
+    {"tag":"no_track", "seed":2, "mse_test":0.631815, "best_epoch":100, "norm_uni":[0.0, 0.0]},
+    {"tag":"recal50",  "seed":0, "mse_test":0.634906, "best_epoch":50,  "norm_uni":[0.0, 0.0]},
+    {"tag":"ema001",   "seed":0, "mse_test":0.643483, "best_epoch":100, "norm_uni":[0.71,0.75]},
+    {"tag":"ema001",   "seed":1, "mse_test":0.650121, "best_epoch":100, "norm_uni":[0.73,0.76]},
+    {"tag":"ema001",   "seed":2, "mse_test":0.668861, "best_epoch":250, "norm_uni":[0.71,0.76]},
+    {"tag":"ema005",   "seed":0, "mse_test":0.647082, "best_epoch":150, "norm_uni":[0.72,0.74]},
+    {"tag":"ema005",   "seed":1, "mse_test":0.644442, "best_epoch":0,   "norm_uni":[0.76,0.77]},
+    {"tag":"ema005",   "seed":2, "mse_test":0.702564, "best_epoch":100, "norm_uni":[0.73,0.77]},
+    {"tag":"ema001_r50","seed":0,"mse_test":0.644643, "best_epoch":0,   "norm_uni":[0.76,0.77]}
+  ],
+  "summary": {
+    "no_track": {"mse_mean":0.6381, "mse_std":0.0068, "uni_mean":0.000, "best_ep_mean":67},
+    "recal50":  {"mse_mean":0.6349, "mse_std":null,   "uni_mean":0.000, "best_ep_mean":50},
+    "ema001":   {"mse_mean":0.6541, "mse_std":0.0107, "uni_mean":0.717, "best_ep_mean":150},
+    "ema005":   {"mse_mean":0.6647, "mse_std":0.0268, "uni_mean":0.737, "best_ep_mean":83},
+    "ema001_r50":{"mse_mean":0.6446,"mse_std":null,   "uni_mean":0.760, "best_ep_mean":0}
+  },
+  "key_findings": [
+    "EMA (alpha=0.01) maintains norm_uniformity~0.72 vs 0.0 without tracking",
+    "EMA extends active learning window: best_epoch=150 vs 67 for no_track",
+    "At 300 epochs EMA MSE is 1-4% higher (models still converging)",
+    "All gradient-based coverage losses (entropy, penalty, quantile) are unreliable after collapse",
+    "EMA+recal combination causes instability (best_epoch=0), avoid combining"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "config": {
+    "target": "feynman_2d",
+    "K": 16,
+    "L": 32,
+    "epochs": 400,
+    "lr": 0.01,
+    "batch_size": 64,
+    "lambda_2": 1e-05,
+    "n_train": 800,
+    "n_val": 300,
+    "n_test": 400,
+    "seeds": [0, 1, 2],
+    "freeze_norms": true,
+    "recalibrate_every_epochs": 50,
+    "note": "under-converged; full run at 2500ep via scripts/exp_h8_multilevel.py"
+  },
+  "raw_results": [
+    {"tag": "kan2_4",      "seed": 0, "mse_test": 0.646312, "best_epoch": 0,   "elapsed_s": 19.3},
+    {"tag": "kan2_4",      "seed": 1, "mse_test": 0.643024, "best_epoch": 0,   "elapsed_s": 19.1},
+    {"tag": "kan2_4",      "seed": 2, "mse_test": 0.654997, "best_epoch": 0,   "elapsed_s": 19.2},
+    {"tag": "stack_2x4",   "seed": 0, "mse_test": 0.635655, "best_epoch": 50,  "norm_uniformity": [0.0],        "n_lut": 6144,  "n_norm": 8},
+    {"tag": "stack_2x4",   "seed": 1, "mse_test": 0.662057, "best_epoch": 50,  "norm_uniformity": [0.0],        "n_lut": 6144,  "n_norm": 8},
+    {"tag": "stack_2x4",   "seed": 2, "mse_test": 0.619576, "best_epoch": 50,  "norm_uniformity": [0.0],        "n_lut": 6144,  "n_norm": 8},
+    {"tag": "stack_3x4",   "seed": 0, "mse_test": 0.649855, "best_epoch": 400, "norm_uniformity": [0.7288, 0.7275], "n_lut": 14336, "n_norm": 16},
+    {"tag": "stack_3x4",   "seed": 1, "mse_test": 0.647536, "best_epoch": 50,  "norm_uniformity": [0.0, 0.0],   "n_lut": 14336, "n_norm": 16},
+    {"tag": "stack_3x4",   "seed": 2, "mse_test": 0.620265, "best_epoch": 50,  "norm_uniformity": [0.0, 0.0],   "n_lut": 14336, "n_norm": 16},
+    {"tag": "stack_3x8",   "seed": 0, "mse_test": 0.638938, "best_epoch": 50,  "norm_uniformity": [0.0, 0.0],   "n_lut": 45056, "n_norm": 32},
+    {"tag": "poly_4_d20",  "seed": 0, "mse_test": 0.015424, "best_epoch": 400},
+    {"tag": "poly_4_d20",  "seed": 1, "mse_test": 0.020432, "best_epoch": 120},
+    {"tag": "poly_4_d20",  "seed": 2, "mse_test": 0.006175, "best_epoch": 320},
+    {"tag": "poly_8_d20",  "seed": 0, "mse_test": 0.025062, "best_epoch": 400},
+    {"tag": "poly_8_d20",  "seed": 1, "mse_test": 0.015082, "best_epoch": 180},
+    {"tag": "poly_8_d20",  "seed": 2, "mse_test": 0.020131, "best_epoch": 400}
+  ],
+  "summary": {
+    "kan2_4":     {"mse_test_mean": 0.6481, "mse_test_std": 0.0050, "budget_bytes": 5376,  "best_epoch_mean": 0.0},
+    "stack_2x4":  {"mse_test_mean": 0.6391, "mse_test_std": 0.0175, "budget_bytes": 5376,  "best_epoch_mean": 50.0,
+                   "vs_kan2_4": {"ratio_mean": 0.986, "interpretation": "parity"}},
+    "stack_3x4":  {"mse_test_mean": 0.6392, "mse_test_std": 0.0134, "budget_bytes": 9728,  "best_epoch_mean": 167.0,
+                   "vs_kan2_4": {"ratio_mean": 0.986, "interpretation": "parity"}},
+    "stack_3x8":  {"mse_test_mean": 0.6389, "mse_test_std": 0.0,    "budget_bytes": 22528, "best_epoch_mean": 50.0,
+                   "vs_kan2_4": {"ratio_mean": 0.986, "interpretation": "parity", "note": "1 seed only"}},
+    "poly_4_d20": {"mse_test_mean": 0.0140, "mse_test_std": 0.0059, "budget_bytes": 3686,  "best_epoch_mean": 280.0,
+                   "vs_kan2_4": {"ratio_mean": 0.022, "interpretation": "better"}},
+    "poly_8_d20": {"mse_test_mean": 0.0201, "mse_test_std": 0.0041, "budget_bytes": 6400,  "best_epoch_mean": 327.0,
+                   "vs_kan2_4": {"ratio_mean": 0.031, "interpretation": "better"}}
+  }
+}

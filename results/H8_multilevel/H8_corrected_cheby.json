@@ -1,0 +1,34 @@
+{
+  "config": {
+    "target": "feynman_2d",
+    "K": 16, "L": 32,
+    "epochs": 400,
+    "note": "Corrected experiment with Chebyshev init. All prior H8 results used init_noise_std=0.05 which activated only 4/16 segments, causing constant-predictor failure throughout training."
+  },
+  "raw_results": [
+    {"tag":"kan2_4_noise",     "seeds":[0,1,2], "mse_test":[0.646312,0.643024,0.654997], "best_epoch_mean":0,   "note":"old baseline — diverges immediately"},
+    {"tag":"stack_3x4_noise",  "seeds":[0,1,2], "mse_test":[0.649855,0.647536,0.620265], "best_epoch_mean":167, "note":"old H8 'best' — also broken"},
+    {"tag":"stack_1x4_cheby",  "seeds":[0],     "mse_test":[0.364991],                   "best_epoch_mean":50,  "norm_uni":[0.72]},
+    {"tag":"kan2_4_cheby",     "seeds":[0,1,2], "mse_test":[0.40949,0.352568,0.658797],  "best_epoch_mean":67,  "note":"tanh squash, no clamp norm"},
+    {"tag":"stack_2x8_cheby",  "seeds":[0,1,2], "mse_test":[0.363638,0.359338,0.406118], "best_epoch_mean":50,  "norm_uni":[0.70]},
+    {"tag":"stack_3x4_cheby",  "seeds":[0,1,2], "mse_test":[0.618447,0.615621,0.618991], "best_epoch_mean":217, "norm_uni":[0.72]},
+    {"tag":"poly_4_d20",       "seeds":[0,1,2], "mse_test":[0.021006,0.019577,0.023806], "best_epoch_mean":280}
+  ],
+  "summary": {
+    "kan2_4_noise":    {"mse_mean":0.6481, "mse_std":0.0051, "vs_old_baseline": 1.000},
+    "stack_3x4_noise": {"mse_mean":0.6392, "mse_std":0.0134, "vs_old_baseline": 0.986},
+    "stack_1x4_cheby": {"mse_mean":0.3650, "mse_std":0.0,    "vs_old_baseline": 0.563},
+    "kan2_4_cheby":    {"mse_mean":0.4736, "mse_std":0.1330, "vs_old_baseline": 0.731},
+    "stack_2x8_cheby": {"mse_mean":0.3763, "mse_std":0.0211, "vs_old_baseline": 0.581},
+    "stack_3x4_cheby": {"mse_mean":0.6177, "mse_std":0.0015, "vs_old_baseline": 0.953},
+    "poly_4_d20":      {"mse_mean":0.0215, "mse_std":0.0018, "vs_old_baseline": 0.033}
+  },
+  "key_findings": [
+    "init_noise_std=0.05 activates only 4/16 LUT segments — model predicts constant",
+    "Chebyshev init activates all 16/16 segments from step 0",
+    "stack_2x8_cheby: MSE 0.376 = 42% improvement vs old broken baseline 0.648",
+    "stack_3x4 with inter-layer clamp norm: cheby helps little (0.618 vs 0.639)",
+    "poly_4_d20 still 17x better than best LUT config",
+    "H8 conclusion revised: gap is 17x not 45x with correct init"
+  ]
+}

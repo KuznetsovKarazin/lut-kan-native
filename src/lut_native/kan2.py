@@ -145,6 +145,40 @@ class LUTKAN2Layer(nn.Module):
         self.lut_l1.add_(torch.randn_like(self.lut_l1) * std_absolute)
         self.lut_l2.add_(torch.randn_like(self.lut_l2) * std_absolute)
 
+    @torch.no_grad()
+    def cheby_init(self, scale: float = 1.5, noise: float = 0.05) -> None:
+        """
+        Initialise both LUT layers with Chebyshev polynomial basis functions.
+
+        Fixes the dead-init failure: with noise std=0.05 only 4/16 LUT
+        segments are active in layer 2, causing the model to predict a
+        constant (MSE ≈ Var(y)) for all of training.
+
+        Sets lut[si, di, k, r] = T_{di}(x_val) × scale / in_dim for each
+        cell, then adds small per-cell Gaussian noise for diversity.
+        """
+        import numpy as np
+
+        def _fill(lut_param, in_dim, out_dim, K, L, x_min=-1.0, x_max=1.0):
+            seg_w = (x_max - x_min) / K
+            for si in range(in_dim):
+                for di in range(out_dim):
+                    degree = di % max(1, out_dim)
+                    for k in range(K):
+                        for r in range(L):
+                            xv = x_min + (k + r / (L - 1)) * seg_w
+                            xn = 2.0 * (xv - x_min) / (x_max - x_min) - 1.0
+                            xn = float(np.clip(xn, -1 + 1e-6, 1 - 1e-6))
+                            tk = float(np.cos(degree * np.arccos(xn)))
+                            lut_param[si, di, k, r] = tk * scale / in_dim
+            if noise > 0:
+                lut_param.add_(torch.randn_like(lut_param) * noise)
+
+        in_dim, hidden_dim, K, L = self.lut_l1.shape
+        hidden_dim2, out_dim, K2, L2 = self.lut_l2.shape
+        _fill(self.lut_l1, in_dim,     hidden_dim, K,  L)
+        _fill(self.lut_l2, hidden_dim2, out_dim,   K2, L2)
+
     # ---- forward ----------------------------------------------------------
 
     def _edge_forward_bulk(

@@ -1,0 +1,83 @@
+{
+  "config": {
+    "epochs": 2000
+  },
+  "budget_comparison": [
+    {
+      "budget": "tiny",
+      "K": 1,
+      "L": 4,
+      "poly_degree": 3,
+      "params_per_edge": 4,
+      "lut_mse": 0.007252,
+      "lut_best_ep": 2000,
+      "poly_mse": 0.001517,
+      "poly_best_ep": 2000,
+      "lut_wins": false
+    },
+    {
+      "budget": "small",
+      "K": 2,
+      "L": 8,
+      "poly_degree": 15,
+      "params_per_edge": 16,
+      "lut_mse": 0.000386,
+      "lut_best_ep": 900,
+      "poly_mse": 0.015415,
+      "poly_best_ep": 140,
+      "lut_wins": true
+    },
+    {
+      "budget": "medium",
+      "K": 4,
+      "L": 16,
+      "poly_degree": 63,
+      "params_per_edge": 64,
+      "lut_mse": 0.250315,
+      "lut_best_ep": 100,
+      "poly_mse": 0.077191,
+      "poly_best_ep": 1780,
+      "lut_wins": false
+    },
+    {
+      "budget": "large",
+      "K": 8,
+      "L": 32,
+      "poly_degree": 255,
+      "params_per_edge": 256,
+      "lut_mse": 0.344292,
+      "lut_best_ep": 700,
+      "poly_mse": 0.62488,
+      "poly_best_ep": 1960,
+      "lut_wins": true
+    },
+    {
+      "budget": "H8_lut_budget",
+      "K": 16,
+      "L": 32,
+      "poly_degree": 511,
+      "params_per_edge": 512,
+      "lut_mse": 0.470471,
+      "lut_best_ep": 100,
+      "poly_mse": 0.652947,
+      "poly_best_ep": 0,
+      "lut_wins": true
+    },
+    {
+      "budget": "poly_d20_budget",
+      "K": 16,
+      "L": 32,
+      "poly_degree": 20,
+      "params_per_edge": 512,
+      "lut_mse": 0.470471,
+      "lut_best_ep": 100,
+      "poly_mse": 0.002149,
+      "poly_best_ep": 1840,
+      "lut_wins": false
+    }
+  ],
+  "poly_sweep": {
+    "best_lut_mse": 0.470471,
+    "crossover_degree": null
+  }
+}

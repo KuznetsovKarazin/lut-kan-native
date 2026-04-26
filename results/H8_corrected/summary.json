@@ -1,0 +1,298 @@
+{
+  "config": {
+    "K": 16,
+    "L": 32,
+    "epochs": 1500,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "raw_results": [
+    {
+      "tag": "stack_2x4_cheby",
+      "seed": 0,
+      "kind": "stack",
+      "mse_test": 0.35709,
+      "best_epoch": 50,
+      "norm_uni": [
+        0.715
+      ],
+      "elapsed_s": 36.8
+    },
+    {
+      "tag": "stack_3x4_balanced",
+      "seed": 0,
+      "kind": "stack",
+      "mse_test": 0.577582,
+      "best_epoch": 800,
+      "norm_uni": [
+        0.7256,
+        0.7569
+      ],
+      "elapsed_s": 59.4
+    },
+    {
+      "tag": "stack_3x4_uniform",
+      "seed": 0,
+      "kind": "stack",
+      "mse_test": 0.670798,
+      "best_epoch": 300,
+      "norm_uni": [
+        0.7094,
+        0.7375
+      ],
+      "elapsed_s": 59.8
+    },
+    {
+      "tag": "kan2_noise_baseline",
+      "seed": 0,
+      "kind": "kan2",
+      "mse_test": 0.646312,
+      "best_epoch": 0,
+      "elapsed_s": 22.3
+    },
+    {
+      "tag": "poly_4_d20",
+      "seed": 0,
+      "kind": "poly",
+      "mse_test": 0.019597,
+      "best_epoch": 1160,
+      "elapsed_s": 36.7
+    },
+    {
+      "tag": "stack_2x4_cheby",
+      "seed": 1,
+      "kind": "stack",
+      "mse_test": 0.417642,
+      "best_epoch": 50,
+      "norm_uni": [
+        0.7313
+      ],
+      "elapsed_s": 36.3
+    },
+    {
+      "tag": "stack_3x4_balanced",
+      "seed": 1,
+      "kind": "stack",
+      "mse_test": 0.500096,
+      "best_epoch": 1350,
+      "norm_uni": [
+        0.7356,
+        0.7575
+      ],
+      "elapsed_s": 64.5
+    },
+    {
+      "tag": "stack_3x4_uniform",
+      "seed": 1,
+      "kind": "stack",
+      "mse_test": 0.679321,
+      "best_epoch": 200,
+      "norm_uni": [
+        0.7369,
+        0.7769
+      ],
+      "elapsed_s": 69.2
+    },
+    {
+      "tag": "kan2_noise_baseline",
+      "seed": 1,
+      "kind": "kan2",
+      "mse_test": 0.643024,
+      "best_epoch": 0,
+      "elapsed_s": 35.2
+    },
+    {
+      "tag": "poly_4_d20",
+      "seed": 1,
+      "kind": "poly",
+      "mse_test": 0.013497,
+      "best_epoch": 600,
+      "elapsed_s": 55.2
+    },
+    {
+      "tag": "stack_2x4_cheby",
+      "seed": 2,
+      "kind": "stack",
+      "mse_test": 0.401011,
+      "best_epoch": 50,
+      "norm_uni": [
+        0.6994
+      ],
+      "elapsed_s": 52.8
+    },
+    {
+      "tag": "stack_3x4_balanced",
+      "seed": 2,
+      "kind": "stack",
+      "mse_test": 0.544922,
+      "best_epoch": 800,
+      "norm_uni": [
+        0.72,
+        0.7381
+      ],
+      "elapsed_s": 63.1
+    },
+    {
+      "tag": "stack_3x4_uniform",
+      "seed": 2,
+      "kind": "stack",
+      "mse_test": 0.665046,
+      "best_epoch": 200,
+      "norm_uni": [
+        0.7188,
+        0.7175
+      ],
+      "elapsed_s": 76.2
+    },
+    {
+      "tag": "kan2_noise_baseline",
+      "seed": 2,
+      "kind": "kan2",
+      "mse_test": 0.654997,
+      "best_epoch": 0,
+      "elapsed_s": 31.7
+    },
+    {
+      "tag": "poly_4_d20",
+      "seed": 2,
+      "kind": "poly",
+      "mse_test": 0.011552,
+      "best_epoch": 1460,
+      "elapsed_s": 53.8
+    },
+    {
+      "tag": "stack_2x4_cheby",
+      "seed": 3,
+      "kind": "stack",
+      "mse_test": 0.433033,
+      "best_epoch": 50,
+      "norm_uni": [
+        0.7225
+      ],
+      "elapsed_s": 53.8
+    },
+    {
+      "tag": "stack_3x4_balanced",
+      "seed": 3,
+      "kind": "stack",
+      "mse_test": 0.608642,
+      "best_epoch": 1200,
+      "norm_uni": [
+        0.7363,
+        0.7538
+      ],
+      "elapsed_s": 89.8
+    },
+    {
+      "tag": "stack_3x4_uniform",
+      "seed": 3,
+      "kind": "stack",
+      "mse_test": 0.614474,
+      "best_epoch": 250,
+      "norm_uni": [
+        0.7175,
+        0.7294
+      ],
+      "elapsed_s": 88.5
+    },
+    {
+      "tag": "kan2_noise_baseline",
+      "seed": 3,
+      "kind": "kan2",
+      "mse_test": 0.652332,
+      "best_epoch": 0,
+      "elapsed_s": 33.1
+    },
+    {
+      "tag": "poly_4_d20",
+      "seed": 3,
+      "kind": "poly",
+      "mse_test": 0.007231,
+      "best_epoch": 1460,
+      "elapsed_s": 54.9
+    },
+    {
+      "tag": "stack_2x4_cheby",
+      "seed": 4,
+      "kind": "stack",
+      "mse_test": 0.329909,
+      "best_epoch": 50,
+      "norm_uni": [
+        0.7169
+      ],
+      "elapsed_s": 44.9
+    },
+    {
+      "tag": "stack_3x4_balanced",
+      "seed": 4,
+      "kind": "stack",
+      "mse_test": 0.530582,
+      "best_epoch": 1250,
+      "norm_uni": [
+        0.7188,
+        0.7188
+      ],
+      "elapsed_s": 83.6
+    },
+    {
+      "tag": "stack_3x4_uniform",
+      "seed": 4,
+      "kind": "stack",
+      "mse_test": 0.688714,
+      "best_epoch": 700,
+      "norm_uni": [
+        0.715,
+        0.7519
+      ],
+      "elapsed_s": 85.9
+    },
+    {
+      "tag": "kan2_noise_baseline",
+      "seed": 4,
+      "kind": "kan2",
+      "mse_test": 0.64874,
+      "best_epoch": 0,
+      "elapsed_s": 32.7
+    },
+    {
+      "tag": "poly_4_d20",
+      "seed": 4,
+      "kind": "poly",
+      "mse_test": 0.00661,
+      "best_epoch": 1480,
+      "elapsed_s": 54.6
+    }
+  ],
+  "summary": {
+    "stack_2x4_cheby": {
+      "mse_mean": 0.387737,
+      "mse_std": 0.038485,
+      "n_seeds": 5
+    },
+    "stack_3x4_balanced": {
+      "mse_mean": 0.552365,
+      "mse_std": 0.03759,
+      "n_seeds": 5
+    },
+    "stack_3x4_uniform": {
+      "mse_mean": 0.663671,
+      "mse_std": 0.025865,
+      "n_seeds": 5
+    },
+    "kan2_noise_baseline": {
+      "mse_mean": 0.649081,
+      "mse_std": 0.004244,
+      "n_seeds": 5
+    },
+    "poly_4_d20": {
+      "mse_mean": 0.011697,
+      "mse_std": 0.004722,
+      "n_seeds": 5
+    }
+  }
+}

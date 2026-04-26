@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lut-native"
-version = "0.14.0"
+version = "0.15.0"
 description = "Direct LUT training for memory-constrained KAN sensor calibration"
 readme = "README.md"
 license = { text = "MIT" }
