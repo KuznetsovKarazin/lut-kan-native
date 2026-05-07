@@ -1,0 +1,79 @@
+PS E:\lut-kan-native> python scripts/exp_real_world_soc.py --n_train 50 --seeds 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Battery SOC estimation — LUT-KAN vs polynomial baselines
+  n_train=50  noise_std=0.0020  K=4,L=16
+  Deployment: Cortex-M4 no FPU  |  Seeds: 5
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Method                         RMSE% ±        params    bytes   cycles
+  ─────────────────────────────────────────────────────────────────
+  Chebyshev LS d=13            67.818% ±88.245       14       56      882  (server only)
+  B-spline cubic n=4           2449489.743% ±2213363.839        8       32      254  (server only)
+  LUT K=4,L=16 poly-init       62.415% ±86.063       64       80       31  (no grad)
+  LUT K=4,L=16 direct GD       62.431% ±85.723       64       80       31  best_ep≈30
+
+  Notes:
+  - RMSE% is root-mean-squared error in SOC percentage points
+  - Cycles estimated for Cortex-M4 without FPU (soft-float)
+  - LUT memory: 64 bytes uint8 + 16 bytes float32 knots
+  - LUT inference: 31 cycles = 0.5 µs at 64 MHz
+  - B-spline inference: 254 cycles = 4.0 µs at 64 MHz
+
+  LUT accuracy vs Chebyshev LS: 1.2× (LUT better)
+  LUT accuracy vs B-spline LS:  1539387333.3× (LUT better)
+  LUT speed vs Chebyshev:  28× fewer cycles
+  LUT speed vs B-spline:   8× fewer cycles
+PS E:\lut-kan-native> python scripts/exp_real_world_soc.py --n_train 200 --seeds 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Battery SOC estimation — LUT-KAN vs polynomial baselines
+  n_train=200  noise_std=0.0020  K=4,L=16
+  Deployment: Cortex-M4 no FPU  |  Seeds: 5
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Method                         RMSE% ±        params    bytes   cycles
+  ─────────────────────────────────────────────────────────────────
+  Chebyshev LS d=18            29.636% ±41.591       19       76     1227  (server only)
+  B-spline cubic n=25           3.625% ±1.097       29      116      256  (server only)
+  LUT K=4,L=16 poly-init        3.996% ±1.244       64       80       31  (no grad)
+  LUT K=4,L=16 direct GD        3.941% ±0.997       64       80       31  best_ep≈814
+
+  Notes:
+  - RMSE% is root-mean-squared error in SOC percentage points
+  - Cycles estimated for Cortex-M4 without FPU (soft-float)
+  - LUT memory: 64 bytes uint8 + 16 bytes float32 knots
+  - LUT inference: 31 cycles = 0.5 µs at 64 MHz
+  - B-spline inference: 256 cycles = 4.0 µs at 64 MHz
+
+  LUT accuracy vs Chebyshev LS: 56.6× (LUT better)
+  LUT accuracy vs B-spline LS:  0.8× (B-spline better)
+  LUT speed vs Chebyshev:  40× fewer cycles
+  LUT speed vs B-spline:   8× fewer cycles
+PS E:\lut-kan-native> python scripts/exp_real_world_soc.py --n_train 500 --seeds 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Battery SOC estimation — LUT-KAN vs polynomial baselines
+  n_train=500  noise_std=0.0020  K=4,L=16
+  Deployment: Cortex-M4 no FPU  |  Seeds: 5
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Method                         RMSE% ±        params    bytes   cycles
+  ─────────────────────────────────────────────────────────────────
+  Chebyshev LS d=49             3.312% ±0.988       50      200     3366  (server only)
+  B-spline cubic n=2            3.506% ±0.882        6       24      254  (server only)
+  LUT K=4,L=16 poly-init        3.750% ±1.047       64       80       31  (no grad)
+  LUT K=4,L=16 direct GD        3.715% ±1.226       64       80       31  best_ep≈730
+
+  Notes:
+  - RMSE% is root-mean-squared error in SOC percentage points
+  - Cycles estimated for Cortex-M4 without FPU (soft-float)
+  - LUT memory: 64 bytes uint8 + 16 bytes float32 knots
+  - LUT inference: 31 cycles = 0.5 µs at 64 MHz
+  - B-spline inference: 254 cycles = 4.0 µs at 64 MHz
+
+  LUT accuracy vs Chebyshev LS: 0.8× (Cheby better)
+  LUT accuracy vs B-spline LS:  0.9× (B-spline better)
+  LUT speed vs Chebyshev:  109× fewer cycles
+  LUT speed vs B-spline:   8× fewer cycles
+PS E:\lut-kan-native>

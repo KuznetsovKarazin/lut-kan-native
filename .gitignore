@@ -8,10 +8,19 @@ build/
 .eggs/
 *.pyc
 
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Results that are too large for git (plots, large JSONs are fine)
+results/**/*.pt
+results/**/*.npy
+data/
 
 # Virtual envs
 .venv/
@@ -26,6 +35,10 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Hardware build artifacts
+hardware/.pio/
+hardware/libdeps/
 
 # Results (keep JSON, ignore large binaries if added later)
 # results/**/*.pkl

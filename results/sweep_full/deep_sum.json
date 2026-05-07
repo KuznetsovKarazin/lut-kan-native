@@ -1,0 +1,152 @@
+PS E:\lut-kan-native> python scripts/sweep_full.py --mode deep
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Mode: stack  |  Targets: ['sine', 'cusp', 'saturating']
+  n_train=500  epochs=2500  patience=500  λ₂=1.0  lr=0.01
+  seeds=[0, 1, 2]  timing=on (warmup+median)
+  Poly: PolyKANStack (gradient-trained, same dims, degree=K×L-1, same λ₂)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  33 configs × 3 seeds = 99 runs
+  Poly: PolyKANStack (gradient-trained, matched dims + params/edge)
+
+▶  [1→2→1]          K=2 L=16  sine            density=7.8  0.16kB  !
+  [  1/99] seed=0  LUT=2.708e-04  poly=1.624e-03  ratio=6.0×  ep=1450  16.1vs24.0ms
+  [  2/99] seed=1  LUT=5.917e-04  poly=5.220e-04  ratio=0.9×  ep=1100
+  [  3/99] seed=2  LUT=1.677e-04  poly=1.594e-04  ratio=1.0×  ep=700
+   → LUT=3.434e-04±1.8e-04  poly=7.685e-04  ratio=2.2×  cv=0.53  spd=1.49×
+
+▶  [1→2→1]          K=2 L=16  cusp            density=7.8  0.16kB  !
+  [  4/99] seed=0  LUT=1.032e-05  poly=1.764e-02  ratio=1708.9×  ep=475  16.1vs22.1ms
+  [  5/99] seed=1  LUT=1.813e-05  poly=2.125e-03  ratio=117.2×  ep=650
+  [  6/99] seed=2  LUT=1.350e-05  poly=1.147e-04  ratio=8.5×  ep=675
+   → LUT=1.398e-05±3.2e-06  poly=6.627e-03  ratio=473.9×  cv=0.23  spd=1.37×
+
+▶  [1→2→1]          K=2 L=16  saturating      density=7.8  0.16kB  !
+  [  7/99] seed=0  LUT=1.348e-06  poly=1.234e-04  ratio=91.6×  ep=450  16.7vs22.1ms
+  [  8/99] seed=1  LUT=6.389e-07  poly=2.235e-01  ratio=349735.0×  ep=875
+  [  9/99] seed=2  LUT=2.198e-06  poly=5.746e-02  ratio=26136.0×  ep=575
+   → LUT=1.395e-06±6.4e-07  poly=9.368e-02  ratio=67153.5×  cv=0.46  spd=1.32×
+
+▶  [1→2→1]          K=4 L=8   sine            density=7.8  0.19kB  !
+  [ 10/99] seed=0  LUT=3.562e-04  poly=3.302e-02  ratio=92.7×  ep=900  24.3vs33.3ms
+  [ 11/99] seed=1  LUT=3.021e-04  poly=3.671e-02  ratio=121.5×  ep=675
+  [ 12/99] seed=2  LUT=2.270e-04  poly=1.594e-04  ratio=0.7×  ep=700
+   → LUT=2.951e-04±5.3e-05  poly=2.330e-02  ratio=78.9×  cv=0.18  spd=1.37×
+
+▶  [1→2→1]          K=4 L=8   cusp            density=7.8  0.19kB  !
+  [ 13/99] seed=0  LUT=1.491e-05  poly=2.726e-04  ratio=18.3×  ep=650  15.8vs22.4ms
+  [ 14/99] seed=1  LUT=2.243e-05  poly=1.549e-02  ratio=690.8×  ep=975
+  [ 15/99] seed=2  LUT=1.559e-05  poly=1.672e-03  ratio=107.2×  ep=325
+   → LUT=1.764e-05±3.4e-06  poly=5.812e-03  ratio=329.5×  cv=0.19  spd=1.42×
+
+▶  [1→2→1]          K=4 L=8   saturating      density=7.8  0.19kB  !
+  [ 16/99] seed=0  LUT=4.467e-06  poly=9.414e-02  ratio=21074.1×  ep=1025  23.8vs32.3ms
+  [ 17/99] seed=1  LUT=2.943e-06  poly=1.366e-02  ratio=4641.4×  ep=1200
+  [ 18/99] seed=2  LUT=3.438e-06  poly=1.106e-01  ratio=32169.2×  ep=1300
+   → LUT=3.616e-06±6.3e-07  poly=7.280e-02  ratio=20132.0×  cv=0.18  spd=1.36×
+
+▶  [1→2→1]          K=2 L=32  sine            density=3.9  0.28kB  !
+  [ 19/99] seed=0  LUT=3.776e-05  poly=1.262e-02  ratio=334.2×  ep=475  22.1vs54.6ms
+  [ 20/99] seed=1  LUT=4.891e-05  poly=1.461e-01  ratio=2986.5×  ep=1175
+  [ 21/99] seed=2  LUT=5.513e-05  poly=2.716e-02  ratio=492.7×  ep=1200
+   → LUT=4.727e-05±7.2e-06  poly=6.195e-02  ratio=1310.7×  cv=0.15  spd=2.47×
+
+▶  [1→2→1]          K=2 L=32  cusp            density=3.9  0.28kB  !
+  [ 22/99] seed=0  LUT=4.552e-06  poly=1.904e-03  ratio=418.3×  ep=550  21.6vs37.9ms
+  [ 23/99] seed=1  LUT=6.923e-06  poly=9.054e-03  ratio=1307.9×  ep=500
+  [ 24/99] seed=2  LUT=2.335e-06  poly=1.336e-02  ratio=5720.3×  ep=1375
+   → LUT=4.603e-06±1.9e-06  poly=8.106e-03  ratio=1760.8×  cv=0.41  spd=1.75×
+
+▶  [1→2→1]          K=2 L=32  saturating      density=3.9  0.28kB  !
+  [ 25/99] seed=0  LUT=3.331e-07  poly=5.149e-02  ratio=154570.5×  ep=750  26.2vs62.5ms
+  [ 26/99] seed=1  LUT=5.219e-07  poly=5.364e-02  ratio=102790.6×  ep=850
+  [ 27/99] seed=2  LUT=3.633e-07  poly=5.377e-02  ratio=147991.8×  ep=600
+   → LUT=4.061e-07±8.3e-08  poly=5.297e-02  ratio=130428.5×  cv=0.20  spd=2.39×
+
+▶  [1→2→1]          K=4 L=16  sine            density=3.9  0.31kB  !
+  [ 28/99] seed=0  LUT=1.492e-05  poly=7.379e-02  ratio=4945.1×  ep=1075  15.9vs37.5ms
+  [ 29/99] seed=1  LUT=1.860e-04  poly=1.127e-01  ratio=606.0×  ep=1075
+  [ 30/99] seed=2  LUT=4.217e-05  poly=1.059e-03  ratio=25.1×  ep=1775
+   → LUT=8.104e-05±7.5e-05  poly=6.253e-02  ratio=771.5×  cv=0.93  spd=2.36×
+
+▶  [1→2→1]          K=4 L=16  cusp            density=3.9  0.31kB  !
+  [ 31/99] seed=0  LUT=6.229e-06  poly=1.730e-02  ratio=2777.2×  ep=1550  24.7vs56.6ms
+  [ 32/99] seed=1  LUT=7.736e-06  poly=5.787e-03  ratio=748.0×  ep=1000
+  [ 33/99] seed=2  LUT=1.430e-05  poly=9.331e-03  ratio=652.7×  ep=375
+   → LUT=9.421e-06±3.5e-06  poly=1.081e-02  ratio=1147.0×  cv=0.37  spd=2.29×
+
+▶  [1→2→1]          K=4 L=16  saturating      density=3.9  0.31kB  !
+  [ 34/99] seed=0  LUT=1.092e-06  poly=3.297e-02  ratio=30185.4×  ep=800  15.8vs36.9ms
+  [ 35/99] seed=1  LUT=5.479e-07  poly=1.435e-01  ratio=261875.0×  ep=1175
+  [ 36/99] seed=2  LUT=7.422e-07  poly=5.377e-02  ratio=72441.9×  ep=600
+   → LUT=7.942e-07±2.3e-07  poly=7.674e-02  ratio=96632.3×  cv=0.28  spd=2.34×
+
+▶  [1→2→1]          K=8 L=8   sine            density=3.9  0.38kB  !
+  [ 37/99] seed=0  LUT=3.712e-04  poly=1.175e-01  ratio=316.6×  ep=500  23.6vs54.3ms
+  [ 38/99] seed=1  LUT=3.079e-04  poly=3.001e-02  ratio=97.4×  ep=750
+  [ 39/99] seed=2  LUT=4.514e-05  poly=7.148e-02  ratio=1583.5×  ep=1225
+   → LUT=2.414e-04±1.4e-04  poly=7.300e-02  ratio=302.4×  cv=0.58  spd=2.30×
+
+▶  [1→2→1]          K=8 L=8   cusp            density=3.9  0.38kB  !
+  [ 40/99] seed=0  LUT=2.298e-05  poly=5.833e-03  ratio=253.8×  ep=775  15.9vs37.5ms
+  [ 41/99] seed=1  LUT=1.587e-05  poly=1.877e-02  ratio=1182.3×  ep=800
+  [ 42/99] seed=2  LUT=4.419e-05  poly=8.722e-03  ratio=197.4×  ep=1200
+   → LUT=2.768e-05±1.2e-05  poly=1.111e-02  ratio=401.2×  cv=0.43  spd=2.36×
+
+▶  [1→2→1]          K=8 L=8   saturating      density=3.9  0.38kB  !
+  [ 43/99] seed=0  LUT=2.772e-06  poly=1.206e-01  ratio=43510.8×  ep=675  25.0vs57.4ms
+  [ 44/99] seed=1  LUT=2.740e-06  poly=1.446e-01  ratio=52772.4×  ep=1000
+  [ 45/99] seed=2  LUT=5.457e-06  poly=2.047e-01  ratio=37517.3×  ep=675
+   → LUT=3.656e-06±1.3e-06  poly=1.567e-01  ratio=42842.2×  cv=0.35  spd=2.29×
+
+▶  [1→2→2→1]        K=2 L=16  sine            density=3.9  0.31kB  !
+  [ 46/99] seed=0  LUT=1.592e-04  poly=1.487e-02  ratio=93.4×  ep=1100  36.9vs52.2ms
+  [ 47/99] seed=1  LUT=2.782e-04  poly=4.265e-02  ratio=153.3×  ep=2100
+  [ 48/99] seed=2  LUT=1.410e-04  poly=7.076e-03  ratio=50.2×  ep=1450
+   → LUT=1.928e-04±6.1e-05  poly=2.153e-02  ratio=111.7×  cv=0.32  spd=1.41×
+
+▶  [1→2→2→1]        K=2 L=16  cusp            density=3.9  0.31kB  !
+  [ 49/99] seed=0  LUT=1.795e-05  poly=2.531e-02  ratio=1409.9×  ep=550  32.0vs45.6ms
+  [ 50/99] seed=1  LUT=9.226e-06  poly=4.974e-02  ratio=5391.0×  ep=900
+  [ 51/99] seed=2  LUT=1.122e-05  poly=4.600e-03  ratio=409.9×  ep=600
+   → LUT=1.280e-05±3.7e-06  poly=2.655e-02  ratio=2074.3×  cv=0.29  spd=1.43×
+
+▶  [1→2→2→1]        K=2 L=16  saturating      density=3.9  0.31kB  !
+  [ 52/99] seed=0  LUT=1.411e-06  poly=9.817e-02  ratio=69579.2×  ep=1500  39.0vs56.6ms
+  [ 53/99] seed=1  LUT=4.011e-06  poly=1.421e-01  ratio=35426.0×  ep=1475
+  [ 54/99] seed=2  LUT=1.591e-06  poly=5.319e-02  ratio=33430.2×  ep=1775
+   → LUT=2.338e-06±1.2e-06  poly=9.782e-02  ratio=41844.2×  cv=0.51  spd=1.45×
+
+▶  [1→2→2→1]        K=4 L=8   sine            density=3.9  0.38kB  !
+  [ 55/99] seed=0  LUT=1.885e-04  poly=4.886e-02  ratio=259.2×  ep=1675  38.5vs56.6ms
+  [ 56/99] seed=1  LUT=3.501e-04  poly=1.387e-02  ratio=39.6×  ep=950
+  [ 57/99] seed=2  LUT=8.814e-04  poly=4.821e-02  ratio=54.7×  ep=900
+   → LUT=4.733e-04±3.0e-04  poly=3.698e-02  ratio=78.1×  cv=0.63  spd=1.47×
+
+▶  [1→2→2→1]        K=4 L=8   cusp            density=3.9  0.38kB  !
+  [ 58/99] seed=0  LUT=2.174e-05  poly=6.585e-03  ratio=303.0×  ep=850  35.9vs53.2ms
+  [ 59/99] seed=1  LUT=1.958e-05  poly=1.208e-02  ratio=616.9×  ep=500
+  [ 60/99] seed=2  LUT=2.558e-05  poly=7.692e-03  ratio=300.7×  ep=1750
+   → LUT=2.230e-05±2.5e-06  poly=8.786e-03  ratio=394.0×  cv=0.11  spd=1.48×
+
+▶  [1→2→2→1]        K=4 L=8   saturating      density=3.9  0.38kB  !
+  [ 61/99] seed=0  LUT=7.943e-06  poly=5.315e-02  ratio=6692.1×  ep=2200  35.2vs51.8ms
+  [ 62/99] seed=1  LUT=2.903e-06  poly=2.047e-01  ratio=70513.5×  ep=1250
+  [ 63/99] seed=2  LUT=1.086e-05  poly=1.051e-02  ratio=967.8×  ep=1450
+   → LUT=7.234e-06±3.3e-06  poly=8.944e-02  ratio=12364.5×  cv=0.45  spd=1.47×
+
+▶  [1→2→2→2→1]      K=2 L=16  sine            density=3.9  0.47kB  !
+  [ 64/99] seed=0  LUT=1.299e-02  poly=5.022e-01  ratio=38.7×  ep=750  50.3vs71.8ms
+  [ 65/99] seed=1  LUT=1.980e-04  poly=2.995e-01  ratio=1512.3×  ep=1750
+  [ 66/99] seed=2  LUT=7.584e-04  poly=4.232e-01  ratio=558.1×  ep=1500
+   → LUT=4.648e-03±5.9e-03  poly=4.083e-01  ratio=87.8×  cv=1.27  spd=1.43×
+
+▶  [1→2→2→2→1]      K=2 L=16  cusp            density=3.9  0.47kB  !
+  [ 67/99] seed=0  LUT=1.225e-05  poly=1.350e-01  ratio=11020.2×  ep=2000  47.8vs72.1ms
+  [ 68/99] seed=1  LUT=2.918e-05  poly=9.866e-02  ratio=3381.5×  ep=1350
+  [ 69/99] seed=2  LUT=2.895e-05  poly=1.332e-01  ratio=4602.5×  ep=1400
+   → LUT=2.346e-05±7.9e-06  poly=1.223e-01  ratio=5213.4×  cv=0.34  spd=1.51×
+
+▶  [1→2→2→2→1]      K=2 L=16  saturating      density=3.9  0.47kB  !
+  [ 70/99] seed=0  LUT=1.518e-05  poly=8.114e-01  ratio=53456.9×  ep=1875  49.6vs70.2ms

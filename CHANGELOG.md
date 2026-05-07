@@ -1,5 +1,86 @@
 # Changelog
 
+## v0.16.0 (2026-05-xx) — Comprehensive sweep: LUT vs poly-KAN, methodology audit
+
+### New modules
+
+**`src/lut_native/poly_kan_stack.py`** — Matched polynomial KAN baseline
+- `PolyKANStack(dims, degree)` — N-layer Chebyshev polynomial KAN mirroring
+  `LUTKANStack` exactly (same dims, tanh inter-layer, same Adam/lambda_2/seed)
+- `train_poly_stack(...)` — training loop with patience, val-best, identical
+  hyperparameters to `train_lut_stack`
+- degree = K×L−1 → equal parameter count per edge to matched LUT config
+- This is the only valid apples-to-apples comparison: only the activation
+  representation differs
+
+### New scripts
+
+**`scripts/sweep_full.py`** — comprehensive LUT vs poly-KAN benchmark
+- Modes: `quick`, `standard`, `deep`, `single_edge`, `wide`, `budget`, `2d`
+- **Proper timing**: warmup run discarded + median of N=4 repeats (was single
+  elapsed time — ±15% variance; now <3%)
+- **Poly receives same lambda_2**: previously poly had no regularisation
+- **`single_edge` mode**: shows both Poly LS (closed-form) and Poly GD
+  (gradient-trained) columns — distinguishes the two comparison regimes
+- **3+ layer poly baseline**: `PolyKANStack` works for any depth, not just
+  `PolyKAN2Layer` [in→H→out]
+- Coverage density filter per-layer (not total)
+- Pareto front and Key findings sections in output
+
+### Experimental results (M9a, M9b)
+
+**speed crossover confirmed at K×L ≈ 32:**
+- K×L < 32: LUT ≈ poly in ms/epoch (basis overhead ≈ table overhead)
+- K×L = 32: LUT 2.2× faster per epoch
+- K×L = 64: LUT 3.0× faster per epoch
+- All measured with warmup+median protocol, 5 seeds
+
+**deep sweep (99 runs, 3 seeds, 2500 epochs):**
+- LUT wins on 23/23 aggregated configs against gradient-trained poly-KAN
+- Best stable results (cv < 0.30):
+  - [1→2→1] K=2,L=32 saturating: ratio=130 428×, cv=0.20, speed=2.39×
+  - [1→2→1] K=4,L=8  saturating: ratio=20 132×, cv=0.18, speed=1.36×
+  - [1→2→2→1] K=4,L=8 cusp: ratio=394×, cv=0.11, speed=1.48×
+- Median speed across all configs: 1.48× (LUT faster in all 23/23)
+
+**Root cause of poly-KAN failure identified (M9b):**
+High-degree Chebyshev gradient training is numerically unstable in multi-layer
+stacks — backward pass chains two high-degree recurrences → exploding/vanishing
+gradients. LUT backward is a local scatter-add (no recurrence) → bounded
+gradients. This is independent of the accuracy comparison.
+
+**Three-pipeline comparison (M9b):**
+| Pipeline | time | cusp MSE |
+|----------|------|----------|
+| Poly LS d=63 → quantize | 2 ms | 4.7e-3 |
+| Poly GD 300 ep → quantize | 12 000 ms | 1.9e-1 (GD at high degree fails) |
+| Direct LUT GD 500 ep | 3 000 ms | **1.9e-5** (250× better than LS pipeline) |
+
+**Inference cost analysis (MCU, no FPU):**
+| method | cycles/edge | grows with |
+|--------|-------------|-----------|
+| LUT any K,L | **31** | nothing |
+| B-spline cubic | ~256 | constant |
+| Chebyshev d=31 | 2124 | degree |
+
+LUT requires ~6× more parameters than optimal LS to reach equal accuracy,
+but inference is 8–68× faster.
+
+### Methodology audit (M9b)
+
+Three claims now clearly separated:
+1. **Gradient training**: LUT trains stably where poly-KAN diverges (degree ≥ 15, multi-layer)
+2. **Inference speed**: LUT = 31 cycles/edge (O(1)); Chebyshev = O(degree); B-spline = ~256
+3. **On-device training**: first KAN-like model trainable on Cortex-M4/RISC-V without FPU
+
+Claim to avoid: "LUT is more accurate than polynomial approximation."
+(False for single-edge vs optimal LS baseline — poly LS with optimal degree beats LUT.)
+
+### Version
+
+`__version__`: `0.3.0` → `0.4.0`
+`pyproject.toml`: `0.15.0` → `0.16.0`
+
 ## v0.15.0 (2026-05-xx) — Multilayer stacking: bugs, fixes, and correct regime
 
 ### New modules
