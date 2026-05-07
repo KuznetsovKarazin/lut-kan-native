@@ -185,7 +185,7 @@ Tests are organized by module/experiment:
 @software{lut_kan_native,
   title  = {lut-kan-native: Direct LUT Training for KAN on Microcontrollers},
   year   = {2026},
-  url    = {https://github.com/your-repo/lut-kan-native},
+  url    = {https://github.com/KuznetsovKarazin/lut-kan-native},
   note   = {v0.16.0}
 }
 ```
