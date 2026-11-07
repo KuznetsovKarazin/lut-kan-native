@@ -1,7 +1,8 @@
 """Audit supplied UART captures, detect identical content, and retain evidence.
 
-No new MCU measurement is performed. Batch repetitions within one capture
-are not treated as independent device runs.
+No new MCU measurement is performed. Content equality does not establish
+whether files came from the same acquisition or distinct deterministic runs.
+Batch repetitions within one capture are not independent device runs.
 """
 import argparse
 import hashlib
@@ -55,6 +56,8 @@ def main():
     capture_dir.mkdir()
     analysis = dict(evidence_kind="user_supplied_mcu_uart_capture_on_synthetic_fixture",
                     submitted_pairs=len(submissions), unique_capture_contents=len(unique),
+                    independent_session_count=None,
+                    session_identity_status="not_recorded_by_original_capture_protocol",
                     submissions=submissions,
                     numerical_fixture_manifest_sha256=sha((HERE / "mcu/fixture_manifest.json").read_bytes()),
                     analysis_script_sha256=sha(Path(__file__).read_bytes()), captures=[])
@@ -62,7 +65,10 @@ def main():
              f"Received {len(submissions)} log/JSON pairs with {len(unique)} unique parsed contents.",
              "Each raw log parses completely and reproduces its supplied JSON exactly. "
              "Fixture metadata and model payloads match the checked-in manifest.", "",
-             "Identical copies are counted once. A different filename does not establish an independent run. "
+             "Identical recorded content is stored and summarized once. Equal content does not prove a copied acquisition: "
+             "separate deterministic executions can produce identical records. The protocol records no capture-session ID "
+             "or host acquisition timestamps, so the independent-session count cannot be established from these files alone. "
+             "A different filename also does not establish an independent run. "
              "The ten timing batches within a capture measure within-run variation; they are not ten independent boards or reset sessions.", ""]
     for index, (fingerprint, item) in enumerate(unique.items(), 1):
         d = item["parsed"]
@@ -109,7 +115,7 @@ def main():
               "- Cubic/KAN comparisons are against the checked-in general de Boor evaluator. An optimized piecewise-cubic/Horner deployment baseline is still needed before a general speed-superiority claim. The KAN model is one fixed-grid scalar edge plus SiLU.",
               "- Physical execution time is distinct from physical sensor accuracy: all ADC/temperature test pairs are synthetic. These measurements do not establish a new NTC accuracy specification.",
               "- The UART protocol does not embed an ELF/source hash. Matching fixture metadata and numerical checks do not cryptographically identify the flashed firmware. Retain source_hashes.json and packages.txt alongside the device runs.",
-              "- Next: a second reset session on Mega2560, two ESP32-C3 captures with the same fixture, then a separately versioned optimized-baseline experiment and physical NTC measurements.", ""]
+              "- Next: two ESP32-C3 capture sessions with the same fixture. Record a distinct session ID and host acquisition timestamps in future capture tooling; do not repeat Mega runs solely to obtain different numbers. Optimized deployment baselines and physical NTC measurements remain separate stages.", ""]
     (args.out / "analysis.json").write_text(json.dumps(analysis, indent=2) + "\n", encoding="utf8")
     (args.out / "RESULTS.md").write_text("\n".join(lines), encoding="utf8")
     print(json.dumps(dict(submitted_pairs=len(submissions), unique_capture_contents=len(unique),
