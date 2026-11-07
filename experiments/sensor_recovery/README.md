@@ -20,28 +20,33 @@ physical sensor accuracy remains unmeasured.
 - [Previous USB v2 build audit](results/usb_v2_build_20261107/RESULTS.md)
 - [Supplied Mega repeat and session-identity clarification](results/mega_repeat_review_20261107/RESULTS.md)
 - [First complete ESP32-C3 session and comparison with Mega](results/c3_capture_20261108/RESULTS.md)
+- [Two complete ESP32-C3 sessions and repeatability](results/c3_repeat_20261108/RESULTS.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
-The first complete C3 USB v3 session validates all eight model checks, all ten
-timing batches per method and all ten monotone-update batches. The raw log,
-parsed result, acquisition sidecar, hashes and startup acknowledgements agree.
+Two complete C3 USB v3 command sessions validate all eight model checks, all
+ten timing batches per method and all ten monotone-update batches. The raw
+logs, parsed results, distinct acquisition IDs, sidecars, hashes and startup
+acknowledgements agree. Reported accuracy is identical across sessions; the
+largest relative range of session timing medians is 0.001535%. This measures
+repeatability on one C3, not variation across boards or cold boots.
 Uniform LUT32/float32 takes 10.9517 µs/call versus 25.7686 for the selected
 degree-nine polynomial (2.353×), with MAE 0.0524224 versus 0.0476196 °C and
 payload 144 versus 56 bytes. Mega gave a 2.098× ratio for the same comparison.
-These are gross within-capture medians on a synthetic fixture. One separately
-identified C3 session is available; a repeat session is the next hardware
-step. The scalar-KAN/general-cubic evaluator still needs an optimized
-deployment comparator. This result does not establish physical sensor accuracy
+Both sessions give these gross within-capture medians on a synthetic fixture,
+and the projected-update step costs 18.2422 µs in both. The preliminary MCU
+execution/capture checkpoint is complete. The next software stage is an
+optimized cubic/Horner deployment comparator; physical NTC validation remains
+a separate stage. This result does not establish physical sensor accuracy
 or training convergence.
 
 The C3 firmware and capture script remain at the successfully tested v3
-revision. A repeat uses a new output name with `--start-command`; no reflash
-or reset is needed between command sessions.
+revision. No further repeat of unchanged firmware is required for this
+checkpoint; the board can be disconnected until the next hardware stage.
 
 Reproduce the stored capture audit into a fresh directory:
 
 ```bash
-python experiments/sensor_recovery/review_device_runs.py experiments/sensor_recovery/results/c3_capture_20261108/captures/esp32c3_capture01.log --reference-log experiments/sensor_recovery/results/mega_repeat_review_20261107/captures/mega2560_capture01.log --out runs/c3_review
+python experiments/sensor_recovery/review_device_runs.py experiments/sensor_recovery/results/c3_repeat_20261108/captures/esp32c3_capture01.log experiments/sensor_recovery/results/c3_repeat_20261108/captures/esp32c3_capture02.log --reference-log experiments/sensor_recovery/results/mega_repeat_review_20261107/captures/mega2560_capture01.log --out runs/c3_review
 ```
 
 ## Run

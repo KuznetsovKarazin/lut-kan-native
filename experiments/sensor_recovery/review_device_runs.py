@@ -186,6 +186,38 @@ def main():
             for row in comparison:
                 lines.append(f"| {row['method']} | {row['reference_us_per_call']:.6f} | {row['current_us_per_call']:.6f} | {row['reference_over_current']:.3f}× |")
             lines.append("")
+    analysis["repeatability"]={}
+    for board in sorted({c["metadata"]["BOARD"] for c in analysis["captures"]}):
+        captures=[c for c in analysis["captures"] if c["metadata"]["BOARD"]==board]
+        if len(captures)<2:continue
+        rows=[];accuracy_fields=("mae_C","rmse_C","max_C","max_host_gap_C")
+        accuracy_sets=[{m["method"]:tuple(m[k] for k in accuracy_fields) for m in c["models"]} for c in captures]
+        for method in accuracy_sets[0]:
+            values=[next(m["gross_us_per_call"] for m in c["models"] if m["method"]==method) for c in captures]
+            rows.append(dict(method=method,session_medians_us=values,min_us=min(values),max_us=max(values),
+                             relative_range_percent=100*(max(values)-min(values))/min(values)))
+        summary=dict(captures=len(captures),identified_sessions=len({c["session"]["session_id"] for c in captures if c["session"]}),
+                     accuracy_fields_identical=all(a==accuracy_sets[0] for a in accuracy_sets[1:]),
+                     range_definition="100 * (max(session medians) - min(session medians)) / min(session medians)",
+                     max_relative_range_percent=max(r["relative_range_percent"] for r in rows),
+                     update_cost_session_medians_us=[c["update_cost_gross_us"] for c in captures],models=rows)
+        analysis["repeatability"][board]=summary
+        lines += [f"## Between-capture repeatability: {board}","",
+                  f"Reviewed {len(captures)} captures; {summary['identified_sessions']} acquisition IDs have verified sidecars. "
+                  "This checks repeatability of the supplied captures; it does not estimate between-board or cold-boot variation. "
+                  "Timing batches are kept within their sessions rather than pooled as independent acquisitions.","",
+                  f"All four reported accuracy fields identical across captures: {summary['accuracy_fields_identical']}. "
+                  f"Largest relative range of session medians: {summary['max_relative_range_percent']:.6f}%. "
+                  "Relative range is 100 × (maximum − minimum) / minimum; it is not a confidence interval.","",
+                  "| Method | Minimum session median, µs/call | Maximum session median, µs/call | Relative range, % |",
+                  "|---|---:|---:|---:|"]
+        for row in rows:
+            lines.append(f"| {row['method']} | {row['min_us']:.6f} | {row['max_us']:.6f} | {row['relative_range_percent']:.6f} |")
+        lines.append("")
+    c3_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="esp32c3" and c["session"]}
+    next_step=("- The preliminary two-session C3 capture checkpoint is complete. Next: optimized cubic/Horner deployment comparators, followed by physical NTC measurements. No further repeat of unchanged firmware is required for this checkpoint."
+               if len(c3_sessions)>=2 else
+               "- Next: complete at least two separately identified ESP32-C3 command sessions with the same fixture; do not repeat Mega runs solely to obtain different numbers. Optimized deployment baselines and physical NTC measurements remain separate stages.")
     lines += ["## Interpretation and remaining work", "",
               "- Compare the reported speed ratios together with accuracy and payload: float32 LUT32 stores 144 bytes versus 56 for the selected degree-nine Chebyshev model. A speed gain does not establish an accuracy or memory gain.",
               "- Int16 LUT32 reduces the payload to 88 bytes, but inference reconstructs floating-point values. It is not fixed-point integer inference; quantization need not reduce latency.",
@@ -193,7 +225,7 @@ def main():
               "- Cubic/KAN comparisons are against the checked-in general de Boor evaluator. An optimized piecewise-cubic/Horner deployment baseline is still needed before a general speed-superiority claim. The KAN model is one fixed-grid scalar edge plus SiLU.",
               "- Physical execution time is distinct from physical sensor accuracy: all ADC/temperature test pairs are synthetic. These measurements do not establish a new NTC accuracy specification.",
               "- The UART protocol does not embed an ELF/source hash. Matching fixture metadata and numerical checks do not cryptographically identify the flashed firmware. Retain source_hashes.json and packages.txt alongside the device runs.",
-              "- Next: complete at least two separately identified ESP32-C3 command sessions with the same fixture; do not repeat Mega runs solely to obtain different numbers. Optimized deployment baselines and physical NTC measurements remain separate stages.", ""]
+              next_step, ""]
     (args.out / "analysis.json").write_text(json.dumps(analysis, indent=2) + "\n", encoding="utf8")
     (args.out / "RESULTS.md").write_text("\n".join(lines), encoding="utf8")
     print(json.dumps(dict(submitted_pairs=len(submissions), unique_capture_contents=len(unique),
