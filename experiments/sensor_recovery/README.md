@@ -2,7 +2,9 @@
 
 This isolated experiment revisits the sensor paper with equal labelled-data
 budgets, strong classical/KAN-edge comparators and real coefficient encoding.
-All pilot data are **synthetic**. No MCU timing or physical accuracy is claimed.
+All calibration data are **synthetic**. A user-supplied Mega2560 UART capture
+now provides measured execution times on that numerical fixture; physical
+sensor accuracy remains unmeasured.
 
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)
@@ -13,6 +15,7 @@ All pilot data are **synthetic**. No MCU timing or physical accuracy is claimed.
 - [New-unit follow-up results](results/robust_20261108/RESULTS.md)
 - [MCU benchmark and Windows instructions (Russian)](mcu/README_RU.md)
 - [Compiled MCU sizes and validation](results/mcu_build_20261107/RESULTS.md)
+- [First Mega2560 execution and duplicate-capture audit](results/mega_capture_20261107/RESULTS.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
 ## Run
