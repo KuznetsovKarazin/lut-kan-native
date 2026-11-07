@@ -16,6 +16,7 @@ sensor accuracy remains unmeasured.
 - [MCU benchmark and Windows instructions (Russian)](mcu/README_RU.md)
 - [Compiled MCU sizes and validation](results/mcu_build_20261107/RESULTS.md)
 - [First Mega2560 execution and duplicate-capture audit](results/mega_capture_20261107/RESULTS.md)
+- [ESP32-C3 command-driven USB capture and build validation](results/usb_v2_build_20261107/RESULTS.md)
 - [Supplied Mega repeat and session-identity clarification](results/mega_repeat_review_20261107/RESULTS.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 

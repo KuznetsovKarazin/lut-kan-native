@@ -1,6 +1,16 @@
 // No sensors connected: reproducible numerical firmware benchmark.
 #include <Arduino.h>
 #ifndef FOOTPRINT_ONLY
+#if !defined(__AVR__)
+#include "usb_bench_serial.h"
+#include "command_protocol.h"
+static UsbBenchSerial bench_usb;
+// Existing printing code uses the native driver on C3; numeric kernels are unchanged.
+#ifdef Serial
+#undef Serial
+#endif
+#define Serial bench_usb
+#endif
 #if defined(__AVR__)
 #include <avr/pgmspace.h>
 #define FIXTURE_FLASH PROGMEM
@@ -54,12 +64,14 @@ static void update_timing(){
     Serial.print(elapsed);Serial.print(',');Serial.println(mono?"MONOTONE":"FAIL");delay(1);
   }
 }
-void setup(){
-  Serial.begin(115200);uint32_t start=millis();while(!Serial&&millis()-start<5000){}delay(500);
+static void run_benchmark(const char *session=nullptr){
   Serial.println("SENSOR_BENCH_V1,synthetic_ntc_frontend,seed20261108,unit0,B75");
 #if defined(__AVR__)
+  (void)session;
   Serial.println("BOARD,mega2560");
 #else
+  Serial.print("SESSION,");Serial.println(session);
+  Serial.println("TRANSPORT,esp-idf-usb-jtag-command-v2");
   Serial.println("BOARD,esp32c3");
 #endif
   Serial.print("CPU_HZ,");Serial.println(F_CPU);Serial.print("FREE_MEMORY_ESTIMATE,");Serial.println(free_estimate());
@@ -73,7 +85,29 @@ void setup(){
 #endif
   Serial.println("END_SENSOR_BENCH");
 }
+#if defined(__AVR__)
+void setup(){
+  Serial.begin(115200);uint32_t start=millis();while(!Serial&&millis()-start<5000){}delay(500);
+  run_benchmark();
+}
 void loop(){delay(1000);}
+#else
+void setup(){bench_usb.begin();}
+void loop(){
+  static BenchCommand command;
+  static char last_session[33]={0};
+  int c;
+  while((c=bench_usb.read())>=0){
+    if(!command.push((char)c))continue;
+    if(command.hello())Serial.println("READY,SENSOR_USB_V2,esp32c3");
+    else if(const char *session=command.session()){
+      if(strcmp(last_session,session)==0){Serial.print("ALREADY_RAN,");Serial.println(session);}
+      else {strcpy(last_session,session);run_benchmark(last_session);}
+    }
+  }
+  delay(1);
+}
+#endif
 #else
 // Footprint-only deployment: no Serial, fixture data or expected outputs.
 #include "models.h"
