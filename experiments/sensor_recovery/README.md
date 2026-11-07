@@ -9,22 +9,31 @@ All pilot data are **synthetic**. No MCU timing or physical accuracy is claimed.
 - [Complete sweep](results/pilot_20261107/summary.csv)
 - [Paired unit-level comparisons](results/pilot_20261107/paired_comparisons.json)
 - [Run metadata](results/pilot_20261107/run_info.json)
+- [Monotonicity follow-up protocol](FOLLOWUP_PROTOCOL.md)
+- [New-unit follow-up results](results/robust_20261108/RESULTS.md)
+- [MCU benchmark and Windows instructions (Russian)](mcu/README_RU.md)
+- [Compiled MCU sizes and validation](results/mcu_build_20261107/RESULTS.md)
+- [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
 ## Run
 
-From the repository root, Python >=3.10 with NumPy/SciPy/Matplotlib:
+From the repository root, Python >=3.10 with NumPy/SciPy/Matplotlib/pytest:
 
 ```bash
-python -m unittest discover -s experiments/sensor_recovery -p 'test_*.py' -v
+python -m pytest experiments/sensor_recovery/test_*.py -q
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_pilot.py --out /tmp/sensor-recovery-new --units 8 --repeats 3
 python experiments/sensor_recovery/make_report.py /tmp/sensor-recovery-new
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_robust.py --out /tmp/sensor-recovery-robust --units 8 --repeats 3
+python experiments/sensor_recovery/report_followup.py /tmp/sensor-recovery-robust
 PYTHONPATH=src pytest tests/ -q --tb=short
 ```
 
 The new pilot does not need PyTorch; the original repository tests do.
 Completed run directories are not silently overwritten. On Windows set the
 thread environment variables in PowerShell before running the same Python
-commands. `cc` is needed for the native C parity test; this is a host test.
+commands. `cc` and `g++` are needed for the native kernel parity tests;
+these are host tests. MCU build/capture dependencies have a separate
+`mcu/requirements.txt`; no numerical Python packages are needed to flash a board.
 
 ## Contents and scope
 

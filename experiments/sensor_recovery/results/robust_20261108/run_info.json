@@ -1,0 +1,22 @@
+{
+  "seed": 20261108,
+  "cases": 144,
+  "evaluations": 4896,
+  "units": 8,
+  "repeats": 3,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "elapsed_seconds": 9.145832777023315,
+  "source_sha256": {
+    "make_report.py": "290a091154f6cf5b4aa4334eae4cfe0b7669f8250b5f044048cc6f8cf6bf7a90",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9",
+    "run_robust.py": "4e085c7da20020c789a08936b56eae754e4386a78d1ebe0fafcece8baee3d6d7",
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "test_robust.py": "7ac4b18811f8e7760be2c13100ab805e561c45f828b73c47872cccc9ce889422",
+    "FOLLOWUP_PROTOCOL.md": "d03a86c0e371427fafd46dadf9dad3ea78f049d09a89e1e6fb0bf5390cd7f8df",
+    "run_pilot.py": "9d7fdcd5b2f20464dcd6497b2e9f018606810379d59ee29e64e03dce49e8cc25",
+    "test_calibration.py": "b12072f187896d4683c746eecd29fa60ccbc9732a0afde36ae56a201b3bc9a6c"
+  },
+  "physical_measurements": false
+}

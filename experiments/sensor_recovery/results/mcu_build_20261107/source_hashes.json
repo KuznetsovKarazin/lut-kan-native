@@ -1,0 +1,9 @@
+{
+  "platformio.ini": "16a6ce8d089dfaba2f88803fd4c02cbb6ad85da712db21bebf660790f3655058",
+  "requirements.txt": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+  "build_audit.py": "946220290cb6e1b5277a3201490705020fa3ccac1e11ed8d5f3a04df3c42e908",
+  "include/fixture.h": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+  "include/kernels.h": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+  "include/models.h": "e063261d898e48dc3095b042125532fd98727ed04c2211456740de77b33dc245",
+  "src/main.cpp": "7ca5a24989f2d366bf67c2d646d674c864adf0094f478fa8a7e6605517a2383c"
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "board": "mega2560",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 17,
+    "flash_bytes": 730,
+    "elf_sha256": "e306d8dbd41e1c4572a4154600d95f0fb100e495b729738ec2571f14eed17852"
+  },
+  {
+    "board": "mega2560",
+    "model": 1,
+    "mode": "footprint_only",
+    "ram_bytes": 17,
+    "flash_bytes": 2378,
+    "elf_sha256": "59213da202de69776334d10ff4abcddc2d6e18e146bcdd77de65b2ae29bd54c0"
+  },
+  {
+    "board": "mega2560",
+    "model": 2,
+    "mode": "footprint_only",
+    "ram_bytes": 57,
+    "flash_bytes": 1878,
+    "elf_sha256": "2f57c62a401ccf7b206a121bdcdbd32fd77e3c508505e51a980ef938744b3ad4"
+  },
+  {
+    "board": "mega2560",
+    "model": 3,
+    "mode": "footprint_only",
+    "ram_bytes": 81,
+    "flash_bytes": 2684,
+    "elf_sha256": "6255a6a73269ad420db7ecc9aa0bd5257b72ca196ca88f306249eced420f9dd8"
+  },
+  {
+    "board": "mega2560",
+    "model": 4,
+    "mode": "footprint_only",
+    "ram_bytes": 85,
+    "flash_bytes": 3252,
+    "elf_sha256": "782ae5c2fcfa2f291b274c89a89cebbc60bbdad17253e25be9300a019a976eac"
+  },
+  {
+    "board": "mega2560",
+    "model": 5,
+    "mode": "footprint_only",
+    "ram_bytes": 145,
+    "flash_bytes": 2354,
+    "elf_sha256": "3a3de7a31ea98c64b345b0f930f26294e0816bb55f7f1762d46f473b7fe3ee5b"
+  },
+  {
+    "board": "mega2560",
+    "model": 6,
+    "mode": "footprint_only",
+    "ram_bytes": 81,
+    "flash_bytes": 2330,
+    "elf_sha256": "3d8101767dd0e96054e7725d8ee2ac42f47f894dfb6d1ab7812897d03693bc4c"
+  },
+  {
+    "board": "mega2560",
+    "model": 7,
+    "mode": "footprint_only",
+    "ram_bytes": 49,
+    "flash_bytes": 2276,
+    "elf_sha256": "ee10ba6df1f1fe194c0f69c1fe66fa444c54a6a71aedbae6edd0fd0b038682f9"
+  },
+  {
+    "board": "mega2560",
+    "model": 8,
+    "mode": "footprint_only",
+    "ram_bytes": 113,
+    "flash_bytes": 2340,
+    "elf_sha256": "30b57e41d4737192d31a365a82bd1d9f2e16ec71db367be042c474f0cdc5b9d6"
+  },
+  {
+    "board": "mega2560",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 1280,
+    "flash_bytes": 28990,
+    "elf_sha256": "b7a61e9489fca136807e4ef58b57a9772721b70bef8c740b188c9c42ff543acf"
+  },
+  {
+    "board": "esp32c3",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 218848,
+    "elf_sha256": "9641ef886eee0d6f2ddbbb404fb21454260aed124aa405e3d519c515ef5472ec"
+  },
+  {
+    "board": "esp32c3",
+    "model": 1,
+    "mode": "footprint_only",
+    "ram_bytes": 13492,
+    "flash_bytes": 220382,
+    "elf_sha256": "ba982c8a4f4d8b83a05d6a0555a83a9ecfa4e5c3f1d03b7142d29937a8066012"
+  },
+  {
+    "board": "esp32c3",
+    "model": 2,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219114,
+    "elf_sha256": "7a7466fda830c867c12401d05004830f0cdd608e69ed2b2a9971e52844c4909e"
+  },
+  {
+    "board": "esp32c3",
+    "model": 3,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219514,
+    "elf_sha256": "7d6809bdd939bd001a06dff7972412f023a0af8733645bd2aec992a564f2c86f"
+  },
+  {
+    "board": "esp32c3",
+    "model": 4,
+    "mode": "footprint_only",
+    "ram_bytes": 13492,
+    "flash_bytes": 220530,
+    "elf_sha256": "36d7907f7f62e5e8ff086955cae5f36b4b1bdf76feeed283c817c78c02d6825e"
+  },
+  {
+    "board": "esp32c3",
+    "model": 5,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219286,
+    "elf_sha256": "a7a569d8eab8a41cbe7975cdcf956fde9090fb6d298da97e70b4f25a1193d489"
+  },
+  {
+    "board": "esp32c3",
+    "model": 6,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219290,
+    "elf_sha256": "d1a80360a4f7ec64c042b50fc874f2e9e596505dace80b4bce4f7a94ca554bb3"
+  },
+  {
+    "board": "esp32c3",
+    "model": 7,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219254,
+    "elf_sha256": "c90c60cba542f5aaa2f96e14e2dfc9efd84c00f6d64bf2968fd4b4e04fdde936"
+  },
+  {
+    "board": "esp32c3",
+    "model": 8,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219378,
+    "elf_sha256": "cdbd015d0c474c0bd311d804fb0bc862789a9014581d546e51d47fe238cd50cb"
+  },
+  {
+    "board": "esp32c3",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 14004,
+    "flash_bytes": 288640,
+    "elf_sha256": "6ad747cd5f435607338846a5501e88457a115ba8010cba5d8b6a9267a1b5c6c4"
+  }
+]

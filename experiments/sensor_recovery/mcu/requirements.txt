@@ -1,0 +1,3 @@
+platformio==6.2.0
+# Install esptool Python dependencies explicitly, including intelhex.
+esptool==4.9.0

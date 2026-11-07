@@ -39,6 +39,7 @@ Thumbs.db
 # Hardware build artifacts
 hardware/.pio/
 hardware/libdeps/
+experiments/sensor_recovery/mcu/.pio/
 
 # Results (keep JSON, ignore large binaries if added later)
 # results/**/*.pkl
