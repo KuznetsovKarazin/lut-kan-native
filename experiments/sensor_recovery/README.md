@@ -2,9 +2,9 @@
 
 This isolated experiment revisits the sensor paper with equal labelled-data
 budgets, strong classical/KAN-edge comparators and real coefficient encoding.
-All calibration data are **synthetic**. A user-supplied Mega2560 UART capture
-now provides measured execution times on that numerical fixture; physical
-sensor accuracy remains unmeasured.
+All calibration data are **synthetic**. User-supplied Mega2560 and ESP32-C3
+captures now provide measured execution times on the same numerical fixture;
+physical sensor accuracy remains unmeasured.
 
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)
@@ -19,7 +19,30 @@ sensor accuracy remains unmeasured.
 - [Current ESP32-C3 USB v3, failed v2 capture and build validation](results/usb_v3_build_20261108/RESULTS.md)
 - [Previous USB v2 build audit](results/usb_v2_build_20261107/RESULTS.md)
 - [Supplied Mega repeat and session-identity clarification](results/mega_repeat_review_20261107/RESULTS.md)
+- [First complete ESP32-C3 session and comparison with Mega](results/c3_capture_20261108/RESULTS.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
+
+The first complete C3 USB v3 session validates all eight model checks, all ten
+timing batches per method and all ten monotone-update batches. The raw log,
+parsed result, acquisition sidecar, hashes and startup acknowledgements agree.
+Uniform LUT32/float32 takes 10.9517 µs/call versus 25.7686 for the selected
+degree-nine polynomial (2.353×), with MAE 0.0524224 versus 0.0476196 °C and
+payload 144 versus 56 bytes. Mega gave a 2.098× ratio for the same comparison.
+These are gross within-capture medians on a synthetic fixture. One separately
+identified C3 session is available; a repeat session is the next hardware
+step. The scalar-KAN/general-cubic evaluator still needs an optimized
+deployment comparator. This result does not establish physical sensor accuracy
+or training convergence.
+
+The C3 firmware and capture script remain at the successfully tested v3
+revision. A repeat uses a new output name with `--start-command`; no reflash
+or reset is needed between command sessions.
+
+Reproduce the stored capture audit into a fresh directory:
+
+```bash
+python experiments/sensor_recovery/review_device_runs.py experiments/sensor_recovery/results/c3_capture_20261108/captures/esp32c3_capture01.log --reference-log experiments/sensor_recovery/results/mega_repeat_review_20261107/captures/mega2560_capture01.log --out runs/c3_review
+```
 
 ## Run
 
