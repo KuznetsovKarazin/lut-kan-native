@@ -18,12 +18,15 @@ class MockDevice:
     def __exit__(self,*args):return False
     def write(self,data):
         self.commands.append(data)
-        if data==b"H\n":self.pending.extend([b"READ",b"Y,SENSOR_USB_V2,esp32c3\r",b"\n"])
+        if data==b"H\n":self.pending.extend([b"READ",b"Y,SENSOR_USB_V3,esp32c3\r",b"\n"])
+        elif data.startswith(b"Q,"):
+            self.pending.append(b"ECHO,"+data[2:].strip()+b"\r\n")
         elif data.startswith(b"R,"):
             token=data.decode().strip().split(",")[1]
             lines=protocol_fixture()
             lines[1:3]=["BOARD,esp32c3","CPU_HZ,160000000"]
-            lines[1:1]=["SESSION,"+token,"TRANSPORT,esp-idf-usb-jtag-command-v2"]
+            lines[1:1]=["SESSION,"+token,"TRANSPORT,usb-jtag-poll-command-v3"]
+            lines.insert(0,"ACCEPTED,"+token)
             if not self.terminate:lines.pop()
             raw=("\r\n".join(lines)+"\r\n").encode()
             self.pending.extend(raw[i:i+7] for i in range(0,len(raw),7))
@@ -38,7 +41,7 @@ def test_split_lines_and_single_start_command():
     stream=MockDevice();raw=io.BytesIO();token="a"*32;session={"tx_commands":[]}
     lines=capture.capture_stream(stream,raw,True,token,3,session,emit=lambda s:None,clock=lambda:stream.t)
     result=capture.parse_lines(lines)
-    assert stream.commands==[b"H\n",b"R,"+token.encode()+b"\n"]
+    assert stream.commands==[b"H\n",b"Q,"+token.encode()+b"\n",b"R,"+token.encode()+b"\n"]
     assert result["metadata"]["SESSION"]==token
     assert b"END_SENSOR_BENCH\r\n" in raw.getvalue()
 
@@ -69,6 +72,7 @@ def test_two_command_sessions_have_distinct_ids_and_hashes(tmp_path,monkeypatch)
         session=json.loads(out.with_suffix(".session.json").read_text())
         result=json.loads(out.read_text())
         assert session["status"]=="validated"
+        assert session["usb_phase"]=="complete" and session["run_accepted_utc"]
         assert session["raw_sha256"]==hashlib.sha256(out.with_suffix(".log").read_bytes()).hexdigest()
         assert result["metadata"]["SESSION"]==session["session_id"]
         ids.append(session["session_id"])
@@ -97,12 +101,15 @@ def test_bounded_firmware_command_parser(tmp_path):
 #include <string>
 int main(){
  BenchCommand p;
- const std::string token(32,'a');
+ const std::string token("d2d81a1695da4b559ea86a493bd379ae");
  for(char c:std::string("H\r\n"))if(p.push(c))assert(p.hello());
  int starts=0;
  for(char c:std::string("R,")+token+"\nH\nR,"+token+"\n")
    if(p.push(c) && p.session())++starts;
  assert(starts==2);
+ for(char c:std::string("Q,")+token+"\n")if(p.push(c)){
+   assert(p.probe() && token==p.probe());assert(!p.session());
+ }
  for(char c:std::string(100,'x')+"\n")assert(!p.push(c));
  for(char c:std::string("R,not-a-token\n"))if(p.push(c))assert(!p.session());
  for(char c:std::string("H\n"))if(p.push(c))assert(p.hello());
@@ -111,3 +118,50 @@ int main(){
     exe=tmp_path/"commands"
     subprocess.run(["g++","-std=c++11","-I",str(include),str(cpp),"-o",str(exe)],check=True)
     subprocess.run([str(exe)],check=True)
+
+
+@pytest.mark.parametrize("stop,phase,message",[
+    ("H","echo","no full-length command echo"),
+    ("Q","accept","no ACCEPTED response"),
+    ("R","header","no benchmark header")])
+def test_startup_failure_identifies_phase_without_retry(stop,phase,message):
+    class StoppedDevice(MockDevice):
+        def write(self,data):
+            if data[:1].decode() in {"H":"H","Q":"HQ","R":"HQR"}[stop]:
+                if data.startswith(b"R,"):
+                    self.commands.append(data)
+                    self.pending.append(b"ACCEPTED,"+data[2:].strip()+b"\n")
+                    return len(data)
+                return super().write(data)
+            self.commands.append(data);return len(data)
+    stream=StoppedDevice();session={"tx_commands":[]}
+    with pytest.raises(TimeoutError,match=message):
+        capture.capture_stream(stream,io.BytesIO(),True,"a"*32,40,session,
+                               emit=lambda s:None,clock=lambda:stream.t)
+    assert session["usb_phase"]==phase
+    runs=[x for x in stream.commands if x.startswith(b"R,")]
+    assert len(runs)==(0 if stop=="H" else 1)
+
+
+def test_wrong_echo_does_not_start_benchmark():
+    class WrongEcho(MockDevice):
+        def write(self,data):
+            if data.startswith(b"Q,"):
+                self.commands.append(data);self.pending.append(b"ECHO,"+b"b"*32+b"\n");return len(data)
+            return super().write(data)
+    stream=WrongEcho()
+    with pytest.raises(ValueError,match="mismatched USB command echo"):
+        capture.capture_stream(stream,io.BytesIO(),True,"a"*32,40,{"tx_commands":[]},
+                               emit=lambda s:None,clock=lambda:stream.t)
+    assert not any(x.startswith(b"R,") for x in stream.commands)
+
+
+def test_old_firmware_rejected_before_run():
+    class OldFirmware(MockDevice):
+        def write(self,data):
+            self.commands.append(data);self.pending.append(b"READY,SENSOR_USB_V2,esp32c3\r\n");return len(data)
+    stream=OldFirmware()
+    with pytest.raises(ValueError,match="current C3 v3 build"):
+        capture.capture_stream(stream,io.BytesIO(),True,"a"*32,40,{"tx_commands":[]},
+                               emit=lambda s:None,clock=lambda:stream.t)
+    assert stream.commands==[b"H\n"]

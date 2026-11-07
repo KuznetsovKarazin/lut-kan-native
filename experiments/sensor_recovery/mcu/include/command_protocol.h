@@ -20,9 +20,11 @@ struct BenchCommand {
     return false;
   }
   bool hello() const {return strcmp(text,"H")==0;}
-  const char *session() const {
-    if(strlen(text)!=34 || text[0]!='R' || text[1]!=',')return nullptr;
+  const char *token(char verb) const {
+    if(strlen(text)!=34 || text[0]!=verb || text[1]!=',')return nullptr;
     for(int i=2;i<34;++i)if(!((text[i]>='0'&&text[i]<='9')||(text[i]>='a'&&text[i]<='f')))return nullptr;
     return text+2;
   }
+  const char *session() const {return token('R');}
+  const char *probe() const {return token('Q');}
 };

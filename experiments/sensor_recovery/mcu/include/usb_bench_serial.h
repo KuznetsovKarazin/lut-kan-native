@@ -1,39 +1,58 @@
 #pragma once
 #include <Arduino.h>
-#include <driver/usb_serial_jtag.h>
+#include <hal/usb_serial_jtag_ll.h>
+#include <hal/usb_phy_ll.h>
 
-// Native ESP-IDF USB Serial/JTAG driver, with complete-line writes.
-// No Arduino HWCDC begin/end, USB re-enumeration or DTR-dependent startup.
+// Single-owner polling transport for this command/response benchmark only.
+// Avoid the IDF 4.4 interrupt-driven TX queue: an empty queue can leave the
+// next response waiting for an interrupt. Never install HWCDC or that driver.
+// Short (<64-byte) packets also terminate each USB transfer on Windows.
 class UsbBenchSerial : public Print {
   uint8_t line[256];
   size_t used=0;
   bool ready=false;
+  bool waitWritable(uint32_t start) {
+    while(!usb_serial_jtag_ll_txfifo_writable()) {
+      if((uint32_t)(millis()-start)>=2000){ready=false;return false;}
+      delay(1); // Outside all measured inference/update loops.
+    }
+    return true;
+  }
  public:
   bool begin() {
-    usb_serial_jtag_driver_config_t config;
-    config.rx_buffer_size=2048;config.tx_buffer_size=2048;
-    ready=usb_serial_jtag_driver_install(&config)==ESP_OK;
-    return ready;
+    usb_serial_jtag_ll_enable_bus_clock(true);
+    usb_phy_ll_int_jtag_enable(&USB_SERIAL_JTAG);
+    usb_serial_jtag_ll_disable_intr_mask(USB_SERIAL_JTAG_INTR_SERIAL_IN_EMPTY |
+                                        USB_SERIAL_JTAG_INTR_SERIAL_OUT_RECV_PKT);
+    // Flush any earlier boot text; do not reset, disconnect or purge RX.
+    usb_serial_jtag_ll_txfifo_flush();
+    used=0;ready=true;
+    return true;
   }
   int read() {
     uint8_t c;
-    return ready && usb_serial_jtag_read_bytes(&c,1,0)==1 ? c : -1;
+    return ready && usb_serial_jtag_ll_read_rxfifo(&c,1)==1 ? c : -1;
   }
   void flushLine() {
     if(!ready || !used)return;
-    size_t sent=0;
+    size_t sent=0;const uint32_t start=millis();
     while(sent<used) {
-      int n=usb_serial_jtag_write_bytes(line+sent,used-sent,pdMS_TO_TICKS(2000));
-      if(n<=0)break;
+      if(!waitWritable(start))break;
+      const size_t remaining=used-sent;
+      const size_t packet=remaining<63?remaining:63;
+      int n=usb_serial_jtag_ll_write_txfifo(line+sent,packet);
+      if(n<=0){ready=false;break;}
       sent+=(size_t)n;
+      usb_serial_jtag_ll_txfifo_flush();
+      if(!waitWritable(start))break; // Host has consumed this packet.
     }
-    used=0; // A broken transfer fails host validation; never fabricate output.
+    used=0; // Failure is sticky; host validation must reject an incomplete run.
   }
   size_t write(uint8_t c) override {
     if(!ready)return 0;
     line[used++]=c;
     if(c=='\n' || used==sizeof(line))flushLine();
-    return 1;
+    return ready?1:0;
   }
   size_t write(const uint8_t *data,size_t n) override {
     size_t i=0;for(;i<n;++i)if(!write(data[i]))break;

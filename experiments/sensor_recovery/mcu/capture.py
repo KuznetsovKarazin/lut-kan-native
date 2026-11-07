@@ -73,22 +73,26 @@ def open_serial(port, command_mode, serial_factory=None):
 def capture_stream(stream,raw,command_mode,session_id,timeout,session,
                    emit=print,clock=time.monotonic):
     """Retain partial reads until newline; never clear unread device output."""
-    lines=[];pending=b"";started=False;requested=False
-    deadline=clock()+timeout;hello_deadline=min(deadline,clock()+15)
-    last_hello=clock()-1;ack_deadline=deadline
+    lines=[];pending=b"";started=False;requested=False;accepted=False
+    deadline=clock()+timeout;phase_deadline=min(deadline,clock()+15)
+    last_hello=clock()-1;phase="hello" if command_mode else "legacy"
+    session["usb_phase"]=phase
 
     def send(data):
         if stream.write(data)!=len(data):raise IOError("Partial command write")
         session["tx_commands"].append(dict(utc=utc_now(),text=data.decode().strip()))
 
     while clock()<deadline:
-        if command_mode and not requested:
-            if clock()>=hello_deadline:
-                raise TimeoutError("No SENSOR_USB_V2 handshake. Flash the updated C3 firmware; do not press RESET while capture is open.")
+        if command_mode and not started and clock()>=phase_deadline:
+            errors={
+                "hello":"No SENSOR_USB_V3 handshake. Flash the updated C3 firmware; do not press RESET while capture is open.",
+                "echo":"USB READY received, but no full-length command echo returned; benchmark was not requested.",
+                "accept":"Run command sent, but no ACCEPTED response returned; device execution is unconfirmed.",
+                "header":"Device acknowledged the run, but no benchmark header arrived."}
+            raise TimeoutError(errors[phase])
+        if command_mode and phase=="hello":
             if clock()-last_hello>=1:
                 send(b"H\n");last_hello=clock()
-        if requested and not started and clock()>=ack_deadline:
-            raise TimeoutError("C3 accepted the handshake but no benchmark header arrived")
         chunk=stream.read(256)
         if not chunk:continue
         raw.write(chunk);raw.flush();pending+=chunk
@@ -98,16 +102,34 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
             line=frame.decode("utf8",errors="replace").strip()
             if not line:continue
             emit(line);lines.append(line)
-            if command_mode and line=="READY,SENSOR_USB_V2,esp32c3" and not requested:
-                send(("R,"+session_id+"\n").encode());requested=True;ack_deadline=clock()+15
+            if command_mode and line.startswith("READY,"):
+                if line!="READY,SENSOR_USB_V3,esp32c3":
+                    raise ValueError("Older/incompatible USB firmware. Upload the current C3 v3 build before capturing.")
+                if phase=="hello":
+                    send(("Q,"+session_id+"\n").encode());phase="echo";phase_deadline=clock()+15
+                    session["usb_phase"]=phase
+            if command_mode and line.startswith("ECHO,"):
+                if phase!="echo" or line!="ECHO,"+session_id:
+                    raise ValueError("Unexpected or mismatched USB command echo")
+                send(("R,"+session_id+"\n").encode());requested=True
+                phase="accept";phase_deadline=clock()+15;session["usb_phase"]=phase
+            if command_mode and line.startswith("ACCEPTED,"):
+                if phase!="accept" or line!="ACCEPTED,"+session_id:
+                    raise ValueError("Unexpected or mismatched run acknowledgement")
+                accepted=True;phase="header";phase_deadline=clock()+15
+                session["usb_phase"]=phase;session["run_accepted_utc"]=utc_now()
             if line.startswith("SENSOR_BENCH_V1"):
                 if command_mode and not requested:
                     raise ValueError("Unexpected auto-starting firmware. Reflash the command-driven C3 build.")
                 if started:raise ValueError("Board restarted during measurement")
-                started=True
+                if command_mode and not accepted:raise ValueError("Benchmark header arrived without ACCEPTED acknowledgement")
+                started=True;session["usb_phase"]="running"
             if line.startswith("ALREADY_RAN,"):
                 raise ValueError("Device rejected a repeated session ID")
+            if command_mode and line.startswith("ERROR,"):
+                raise ValueError("Device rejected command: "+line)
             if line=="END_SENSOR_BENCH":
+                session["usb_phase"]="complete"
                 return lines
         if len(pending)>4096:raise ValueError("Unterminated serial frame exceeds 4096 bytes")
     raise TimeoutError(f"Capture incomplete after {timeout:g} seconds; pending {len(pending)} bytes. Raw bytes have been retained.")
@@ -130,7 +152,7 @@ def main():
     if not args.port:p.error("Supply --port or --parse")
     session_id=uuid.uuid4().hex
     session=dict(session_id=session_id,start_utc=utc_now(),port=args.port,
-                 mode="command_v2" if args.start_command else "legacy_auto_start",
+                 mode="command_v3" if args.start_command else "legacy_auto_start",
                  capture_script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                  status="capturing",tx_commands=[])
     with session_path.open("x",encoding="utf8") as f:f.write(json.dumps(session,indent=2)+"\n")
@@ -138,14 +160,14 @@ def main():
     try:
         with raw_path.open("xb") as raw, open_serial(args.port,args.start_command) as stream:
             if args.start_command:
-                print("Serial open. C3 command mode: establishing connection. Do NOT press RESET or BOOT.",flush=True)
+                print("Serial open. C3 USB v3: checking READY, ECHO and ACCEPTED. Do NOT press RESET or BOOT.",flush=True)
             else:
                 print("Serial open. Legacy Mega capture: if no header appears in 5 s, press RESET once. For updated C3 use --start-command.",flush=True)
             lines=capture_stream(stream,raw,args.start_command,session_id,args.timeout,session,
                                  emit=lambda s:print(s,flush=True))
         result=parse_lines(lines)
         if args.start_command:
-            if result["metadata"].get("SESSION")!=session_id or result["metadata"].get("TRANSPORT")!="esp-idf-usb-jtag-command-v2":
+            if result["metadata"].get("SESSION")!=session_id or result["metadata"].get("TRANSPORT")!="usb-jtag-poll-command-v3":
                 raise ValueError("Device session/transport differs from requested run")
             if result["metadata"]["BOARD"]!="esp32c3":raise ValueError("Unexpected board")
         with args.out.open("x",encoding="utf8") as f:f.write(json.dumps(result,indent=2)+"\n")

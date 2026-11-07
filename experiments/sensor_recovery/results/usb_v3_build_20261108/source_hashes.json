@@ -1,0 +1,11 @@
+{
+  "platformio.ini": "bcce3887ebc98badcdd495d08b0c0d264e348a6e11da68044789d41c50fb2d3c",
+  "requirements.txt": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+  "build_audit.py": "946220290cb6e1b5277a3201490705020fa3ccac1e11ed8d5f3a04df3c42e908",
+  "include/command_protocol.h": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+  "include/fixture.h": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+  "include/kernels.h": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+  "include/models.h": "e063261d898e48dc3095b042125532fd98727ed04c2211456740de77b33dc245",
+  "include/usb_bench_serial.h": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c",
+  "src/main.cpp": "e9379d81a148ea783f3f604a95e32d59f99e18cc489b2a203c0f620a277d217a"
+}

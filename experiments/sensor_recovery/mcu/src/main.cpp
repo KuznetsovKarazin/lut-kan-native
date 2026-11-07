@@ -71,7 +71,7 @@ static void run_benchmark(const char *session=nullptr){
   Serial.println("BOARD,mega2560");
 #else
   Serial.print("SESSION,");Serial.println(session);
-  Serial.println("TRANSPORT,esp-idf-usb-jtag-command-v2");
+  Serial.println("TRANSPORT,usb-jtag-poll-command-v3");
   Serial.println("BOARD,esp32c3");
 #endif
   Serial.print("CPU_HZ,");Serial.println(F_CPU);Serial.print("FREE_MEMORY_ESTIMATE,");Serial.println(free_estimate());
@@ -99,11 +99,17 @@ void loop(){
   int c;
   while((c=bench_usb.read())>=0){
     if(!command.push((char)c))continue;
-    if(command.hello())Serial.println("READY,SENSOR_USB_V2,esp32c3");
+    if(command.hello())Serial.println("READY,SENSOR_USB_V3,esp32c3");
+    else if(const char *token=command.probe()){
+      Serial.print("ECHO,");Serial.println(token);
+    }
     else if(const char *session=command.session()){
       if(strcmp(last_session,session)==0){Serial.print("ALREADY_RAN,");Serial.println(session);}
-      else {strcpy(last_session,session);run_benchmark(last_session);}
+      else {strcpy(last_session,session);
+        Serial.print("ACCEPTED,");Serial.println(last_session);
+        run_benchmark(last_session);}
     }
+    else Serial.println("ERROR,INVALID_COMMAND");
   }
   delay(1);
 }

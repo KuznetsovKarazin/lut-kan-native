@@ -1,0 +1,23 @@
+{
+  "session_id": "d2d81a1695da4b559ea86a493bd379ae",
+  "start_utc": "2026-11-07T23:01:31.993684+00:00",
+  "port": "COM11",
+  "mode": "command_v2",
+  "capture_script_sha256": "690b019fc6e58e212c014c147fe15240dc4023570a3c6098fe65a14db63ac9a4",
+  "status": "failed",
+  "tx_commands": [
+    {
+      "utc": "2026-11-07T23:01:32.030537+00:00",
+      "text": "H"
+    },
+    {
+      "utc": "2026-11-07T23:01:32.245933+00:00",
+      "text": "R,d2d81a1695da4b559ea86a493bd379ae"
+    }
+  ],
+  "error_type": "TimeoutError",
+  "error": "C3 accepted the handshake but no benchmark header arrived",
+  "end_utc": "2026-11-07T23:01:47.322483+00:00",
+  "raw_sha256": "f584d763d5d8aaff43ebd04b45709aa6f74b244ce296cb0c0aa1a594e3c98133",
+  "raw_bytes": 29
+}
