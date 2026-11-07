@@ -3,6 +3,14 @@
 Direct training of lookup-table (LUT) activations for KAN deployment on
 memory-constrained microcontrollers.
 
+> **Sensor-calibration audit, November 2026:** the reproducible replacement
+> pilot is in [experiments/sensor_recovery](experiments/sensor_recovery/PROTOCOL.md).
+> It uses explicitly synthetic data, equal labelled-reference budgets, actual
+> coefficient quantization, strong spline/physics comparators and retained raw
+> results. Historical sensor tables/figures are archival and are not validated
+> by the new pilot. The older sensor runner still uses its historical split;
+> use the recovery runner for the revised comparison.
+
 **Three proven claims, each independently validated:**
 
 1. **Gradient stability** — LUT trains stably where gradient-trained poly-KAN
@@ -25,7 +33,8 @@ memory-constrained microcontrollers.
 - Single-edge [1→1] vs closed-form least-squares poly: poly LS is more
   accurate at the same parameter count (no gradient instability in 1-layer).
 - Smooth targets with small K×L: polynomial is a more efficient representation.
-- K×L ≥ n_train: gradient signal collapses (see coverage density rule below).
+- Sparse knot coverage can hurt unregularized fits; inspect occupancy and
+  conditioning rather than assuming a universal K×L / n_train threshold.
 
 ---
 
@@ -47,17 +56,18 @@ python scripts\run_quick.py
 
 ## Coverage density rule
 
-The single most useful result from this project. When training LUT-KAN:
+Historical experimental heuristic for some LUT-KAN configurations:
 
 ```
-K × L  <  n_train          # necessary condition for gradient coverage
-L_opt  ≈  n_train / (2K)   # practical recommendation (density ≥ 2 pts/cell)
+K × L  <  n_train          # heuristic only, not a necessary condition
+L_opt  ≈  n_train / (2K)   # historical rule of thumb, not a general optimum
 ```
 
-If K×L ≥ n_train, fewer than 1 training point per LUT cell on average.
-Cells without gradient signal drift toward λ₂-regularised default (flat),
-and the model degrades to a polynomial-like approximation — no advantage
-over post-training quantization.
+Parameter count alone neither guarantees nor rules out sufficient coverage.
+Each linear interpolation sample touches two nodes; regularization couples
+nodes and can produce useful solutions even when L exceeds n_train. Inspect
+the design matrix and compare errors on held-out data. No general loss of
+advantage over post-training quantization follows from this inequality.
 
 Example (n_train=500):
 - K=4: L_max=124 → use **L=64** (density 1.95 pts/cell)

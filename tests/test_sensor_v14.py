@@ -6,7 +6,7 @@ test_sensor_v14.py — Тесты для новых моделей датчик�
 2. TypeKThermocoupleUnit: корректная нормализация данных
 3. LDRSensorUnit: логарифмическая характеристика, диапазон данных
 4. fit_shh_baseline: ideal vs noisy — ordering MAE_ideal < MAE_noisy
-5. fit_onepoint_offset_baseline: корректная работа, MAE < factory
+5. fit_onepoint_offset_baseline: exactly one reference and a fixed factory model
 6. Все 6 датчиков: x_cal, y_cal в диапазоне [-1.1, 1.1]
 """
 
@@ -187,34 +187,33 @@ def test_shh_noisy_beats_poly():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def test_offset_baseline_sane():
-    """Однонаправленный offset: MAE разумная (< factory MAE)."""
+    """One-point prediction is a constant shift of an independent factory."""
     unit, data = _get_ntc_data()
-    factory = sensors.ntc_factory_baseline(unit, data)
+    factory = lambda x: data["norm_y"](unit.T_from_adc_nominal(data["denorm_x"](x)))
     offset = sensors.fit_onepoint_offset_baseline(
-        data["x_cal"], data["y_cal"], data["x_test"], data["y_test"], data["denorm_y"]
+        data["x_cal"], data["y_cal"], data["x_test"], data["y_test"], data["denorm_y"],
+        factory_predict=factory, point_index=0
     )
-    # Для единиц с большим B-отклонением offset значительно лучше factory
-    # Для близких к номинальным — близок к factory
-    assert offset["mae_phys"] < factory["mae_phys"] * 2, (
-        f"Offset MAE {offset['mae_phys']:.4f} должна быть < 2× factory "
-        f"{factory['mae_phys']:.4f}"
-    )
-    assert "delta" in offset, "Результат должен содержать 'delta'"
+    np.testing.assert_allclose(offset["y_pred"], factory(data["x_test"])+offset["delta"], atol=1e-7)
+    assert offset["n_reference_used"] == 1
+    assert np.isfinite(offset["mae_phys"])
 
 
-def test_offset_baseline_not_worse_than_poly():
-    """Offset baseline сопоставим с poly (или хуже не более чем на 2×)."""
+def test_offset_baseline_ignores_unused_labels():
+    """Changing every unused reference cannot alter a one-point model."""
     unit, data = _get_ntc_data()
+    factory = lambda x: data["norm_y"](unit.T_from_adc_nominal(data["denorm_x"](x)))
     offset = sensors.fit_onepoint_offset_baseline(
-        data["x_cal"], data["y_cal"], data["x_test"], data["y_test"], data["denorm_y"]
+        data["x_cal"], data["y_cal"], data["x_test"], data["y_test"], data["denorm_y"],
+        factory_predict=factory, point_index=0
     )
-    poly = sensors.fit_poly_baseline(
-        data["x_cal"], data["y_cal"], 5, data["x_test"], data["y_test"], data["denorm_y"]
+    changed = data["y_cal"].copy()
+    changed[1:] = 1000
+    other = sensors.fit_onepoint_offset_baseline(
+        data["x_cal"], changed, data["x_test"], data["y_test"], data["denorm_y"],
+        factory_predict=factory, point_index=0
     )
-    assert offset["mae_phys"] < poly["mae_phys"] * 3, (
-        f"Offset ({offset['mae_phys']:.4f}) не должен быть сильно хуже poly "
-        f"({poly['mae_phys']:.4f})"
-    )
+    np.testing.assert_array_equal(offset["y_pred"], other["y_pred"])
 
 
 # ─────────────────────────────────────────────────────────────────────────────

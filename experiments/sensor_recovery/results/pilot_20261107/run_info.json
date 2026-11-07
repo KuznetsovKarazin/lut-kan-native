@@ -1,0 +1,48 @@
+{
+  "provenance": "synthetic_parametric_simulation_not_physical_measurements",
+  "config": {
+    "out": "../sensor_pilot_final_run",
+    "units": 8,
+    "repeats": 3,
+    "budgets": [
+      30,
+      75
+    ],
+    "lengths": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "scenarios": [
+      "ntc",
+      "ntc_frontend",
+      "ldr"
+    ],
+    "root_seed": 20261107,
+    "skip_optimizer": false
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "base_git_head": "1a33e7c299937c5ad0a11b022da70805aa657420",
+  "working_tree_dirty": true,
+  "source_content_hashes": {
+    "experiments/sensor_recovery/PROTOCOL.md": "03b59ffe81704f4a2b5bb6fad9bfbf259dbf1b16dafae316c5a2090045d889c3",
+    "experiments/sensor_recovery/calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "experiments/sensor_recovery/lut_kernel.c": "92153ab129f27d7d86d9c4c7917852a04b0a713651bed87e47f87bb09878f576",
+    "experiments/sensor_recovery/make_report.py": "290a091154f6cf5b4aa4334eae4cfe0b7669f8250b5f044048cc6f8cf6bf7a90",
+    "experiments/sensor_recovery/run_pilot.py": "9d7fdcd5b2f20464dcd6497b2e9f018606810379d59ee29e64e03dce49e8cc25",
+    "experiments/sensor_recovery/test_calibration.py": "b12072f187896d4683c746eecd29fa60ccbc9732a0afde36ae56a201b3bc9a6c"
+  },
+  "cases": 144,
+  "result_rows": 7488,
+  "elapsed_seconds": 10.588741779327393,
+  "hardware_measurements": false,
+  "primary_metric": "noisy_mae",
+  "bootstrap": "paired unit means over repeats; 2000 resamples; exploratory",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  }
+}
