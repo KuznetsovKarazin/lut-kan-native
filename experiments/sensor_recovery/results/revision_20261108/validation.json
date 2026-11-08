@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "all_run_source_and_result_hashes_verified": true,
+  "original_compact_cubic_beats_float32_lut_cells": 15,
+  "counts": {
+    "static": {
+      "cases": 608,
+      "models_or_trajectories": 3488
+    },
+    "development": {
+      "cases": 144,
+      "models_or_trajectories": 2304
+    },
+    "confirmation": {
+      "cases": 288,
+      "models_or_trajectories": 5472
+    }
+  },
+  "failures": {
+    "development": 0,
+    "confirmation": 0
+  },
+  "focused_tests": {
+    "passed": 126,
+    "subtests_passed": 8,
+    "log_sha256": "a893992b917aa8e31824ec71a833c4a67cc2d589dccc17dcb224b8c7223d5b18"
+  },
+  "no_new_physical_acquisition": true
+}

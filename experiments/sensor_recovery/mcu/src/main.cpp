@@ -1,5 +1,5 @@
 // No sensors connected: reproducible numerical firmware benchmark.
-#ifndef SENSOR_MATCHED_SUITE
+#if !defined(SENSOR_MATCHED_SUITE) && !defined(SENSOR_REVISION_SUITE)
 #include <Arduino.h>
 #ifndef FOOTPRINT_ONLY
 #if !defined(__AVR__)

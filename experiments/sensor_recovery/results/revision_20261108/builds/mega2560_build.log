@@ -1,0 +1,86 @@
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing mega2560_references (platform: atmelavr@5.1.0; board: megaatmega2560; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing atmelavr @ 5.1.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: atmelavr@5.1.0 has been installed!
+Tool Manager: Installing platformio/toolchain-atmelavr @ ~1.70300.0
+Downloading 0% 10%
+Tool Manager: Warning! Package Mirror: The checksum '5b131ca14aa96311d3432b0062c7443d3b0e6346ec279bd376a75f0a76bcd5d7' of the downloaded file 'toolchain-atmelavr-linux_x86_64-1.70300.191015.tar.gz' does not match to the remote '664f0b7b08a15e8d6362b87e2fdb5a4dcfd5959ebc5b19d938e7dff6f12f0524'
+Tool Manager: Looking for another mirror...
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-atmelavr@1.70300.191015 has been installed!
+Tool Manager: Installing platformio/framework-arduino-avr @ ~5.2.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduino-avr@5.2.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.41101.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.41101.0 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/megaatmega2560.html
+PLATFORM: Atmel AVR (5.1.0) > Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)
+HARDWARE: ATMEGA2560 16MHz, 8KB RAM, 248KB Flash
+DEBUG: Current (avr-stub) External (avr-stub, simavr)
+PACKAGES: 
+ - framework-arduino-avr @ 5.2.0 
+ - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 5 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/mega2560_references/src/main.cpp.o
+Compiling .pio/build/mega2560_references/src/matched_main.cpp.o
+Compiling .pio/build/mega2560_references/src/revision_main.cpp.o
+Archiving .pio/build/mega2560_references/libFrameworkArduinoVariant.a
+Compiling .pio/build/mega2560_references/FrameworkArduino/CDC.cpp.o
+Indexing .pio/build/mega2560_references/libFrameworkArduinoVariant.a
+Compiling .pio/build/mega2560_references/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/HardwareSerial0.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/HardwareSerial1.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/HardwareSerial2.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/HardwareSerial3.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/PluggableUSB.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/USBCore.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/WInterrupts.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/abi.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/hooks.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/main.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/new.cpp.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring_analog.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring_digital.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring_pulse.S.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/mega2560_references/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/mega2560_references/libFrameworkArduino.a
+Indexing .pio/build/mega2560_references/libFrameworkArduino.a
+Linking .pio/build/mega2560_references/firmware.elf
+Checking size .pio/build/mega2560_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  16.8% (used 1379 bytes from 8192 bytes)
+Flash: [=         ]   8.8% (used 22316 bytes from 253952 bytes)
+Building .pio/build/mega2560_references/firmware.hex
+======================== [SUCCESS] Took 316.86 seconds ========================
+
+Environment          Status    Duration
+-------------------  --------  ------------
+mega2560_references  SUCCESS   00:05:16.863
+========================= 1 succeeded in 00:05:16.863 =========================

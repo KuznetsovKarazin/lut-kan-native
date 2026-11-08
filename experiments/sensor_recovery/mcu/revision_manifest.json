@@ -1,0 +1,16 @@
+{
+  "fixture_sha256": "442bd7a583794271aab02c9a38f8c28cc7a91d48d61d92a36aec3d94e11d57c7",
+  "source_seed": 2026110801,
+  "scenario": "ntc_frontend",
+  "unit": 0,
+  "repeat": 0,
+  "budget": 75,
+  "payload_bytes": {
+    "lut32_float32": 144,
+    "lut60_int16": 144,
+    "cubic32_unrolled": 144,
+    "horner8": 144,
+    "polynomial": 56,
+    "physics": 32
+  }
+}

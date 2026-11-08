@@ -43,3 +43,6 @@ experiments/sensor_recovery/mcu/.pio/
 
 # Results (keep JSON, ignore large binaries if added later)
 # results/**/*.pkl
+
+# Raw review-analysis records are preserved in the separate evidence archive.
+experiments/sensor_recovery/results/revision_20261108/**/records.jsonl.gz

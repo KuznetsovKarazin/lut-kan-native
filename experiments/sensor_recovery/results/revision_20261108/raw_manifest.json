@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-08",
+  "status": "completed_host_simulation_not_sensor_acquisition",
+  "raw_files": {
+    "confirmation/records.jsonl.gz": {
+      "bytes": 31574158,
+      "sha256": "4b1ded48dd53b691700d654e3c6264d03297d0db31758c5480fb519443a035b7"
+    },
+    "development/records.jsonl.gz": {
+      "bytes": 15259468,
+      "sha256": "df5548f888f3fd42bc8287ddcdf6202d39fd67d8fde591181796e43748c9e38f"
+    },
+    "static/records.jsonl.gz": {
+      "bytes": 30886691,
+      "sha256": "2a27ce462cae7685a244fc5c8f454e3692c850736c48cd337c49018f6ba2bbd7"
+    }
+  },
+  "container_bytes": 77720317,
+  "comparison_note": "Gzip timestamps may differ; decoded records are the reproduction target. No public DOI has been assigned."
+}
