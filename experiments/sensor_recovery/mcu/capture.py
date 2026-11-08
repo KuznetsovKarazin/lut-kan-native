@@ -74,7 +74,7 @@ def open_serial(port, command_mode, serial_factory=None):
 
 
 def capture_stream(stream,raw,command_mode,session_id,timeout,session,
-                   emit=print,clock=time.monotonic):
+                   emit=print,clock=time.monotonic,ready_line=None):
     """Retain partial reads until newline; never clear unread device output."""
     lines=[];pending=b"";started=False;requested=False;accepted=False
     deadline=clock()+timeout;phase_deadline=min(deadline,clock()+15)
@@ -92,6 +92,7 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
                 "echo":"USB READY received, but no full-length command echo returned; benchmark was not requested.",
                 "accept":"Run command sent, but no ACCEPTED response returned; device execution is unconfirmed.",
                 "header":"Device acknowledged the run, but no benchmark header arrived."}
+            if ready_line:errors["hello"]="No "+ready_line+" handshake. Flash the requested matched suite and check the port."
             raise TimeoutError(errors[phase])
         if command_mode and phase=="hello":
             if clock()-last_hello>=1:
@@ -106,7 +107,8 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
             if not line:continue
             emit(line);lines.append(line)
             if command_mode and line.startswith("READY,"):
-                if line!="READY,SENSOR_USB_V3,esp32c3":
+                if line!=(ready_line or "READY,SENSOR_USB_V3,esp32c3"):
+                    if ready_line:raise ValueError("Unexpected firmware handshake; expected "+ready_line)
                     raise ValueError("Older/incompatible USB firmware. Upload the current C3 v3 build before capturing.")
                 if phase=="hello":
                     send(("Q,"+session_id+"\n").encode());phase="echo";phase_deadline=clock()+15
@@ -123,6 +125,7 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
                 session["usb_phase"]=phase;session["run_accepted_utc"]=utc_now()
             if line.startswith("SENSOR_BENCH_V1"):
                 if command_mode and not requested:
+                    if ready_line:raise ValueError("Unexpected auto-starting firmware. Flash the command-driven matched suite.")
                     raise ValueError("Unexpected auto-starting firmware. Reflash the command-driven C3 build.")
                 if started:raise ValueError("Board restarted during measurement")
                 if command_mode and not accepted:raise ValueError("Benchmark header arrived without ACCEPTED acknowledgement")

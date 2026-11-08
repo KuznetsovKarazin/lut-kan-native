@@ -31,6 +31,17 @@ physical sensor accuracy remains unmeasured.
 - [Matched-storage and sequential-adaptation protocol](MATCHED_ADAPTATION_PROTOCOL.md)
 - [Matched-storage and adaptation results](results/matched_adaptation_20261108/RESULTS.md)
 - [Interpretation and continuation plan (Russian)](results/matched_adaptation_20261108/REPORT_RU.md)
+- [Matched MCU measurement protocol](MATCHED_MCU_PROTOCOL.md)
+- [Matched MCU host validation and cross-compiled sizes](results/matched_mcu_20261108/RESULTS.md)
+- [Run the new matched suite on C3 and Mega (Russian)](mcu/MATCHED_RUN_RU.md)
+
+The next MCU checkpoint is prepared: four 144-byte inference representations
+and complete float32 LUT/cubic NLMS trajectories, with and without full PAVA.
+All 20 cross-compilations pass; host prediction/state gaps stay below 0.000016 °C
+against the frozen reference. The new suites use device-acknowledged sessions
+on both boards and package firmware images with captures. Real matched-suite
+execution times remain pending user acquisition. The current focused suite
+passes 91 tests and eight model subtests.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning
@@ -82,10 +93,10 @@ The default eight-model environments remain available. The batch runner
 uploads once, captures twice and packages source/image hashes, upload logs and
 all raw/parsed/session files; no USB reconnection is needed between captures.
 The one-upload/two-capture path is now supported by the supplied Windows/C3
-and Mega batches. The matched-storage and sequential-adaptation follow-up adds
-no firmware changes. The current focused check set passes 68 tests and eight
-model subtests. Target timing of the new matched-storage/adaptation algorithms
-and physical NTC accuracy remain separate, unmeasured stages.
+and Mega batches. The numerical matched-storage and adaptation follow-up
+originally added no firmware changes. The subsequent matched MCU environments
+are now prepared for acquisition. Target timing of these new algorithms and
+physical NTC accuracy remain separate, unmeasured stages.
 
 Reproduce the stored capture audit into a fresh directory:
 

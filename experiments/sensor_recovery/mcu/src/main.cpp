@@ -1,4 +1,5 @@
 // No sensors connected: reproducible numerical firmware benchmark.
+#ifndef SENSOR_MATCHED_SUITE
 #include <Arduino.h>
 #ifndef FOOTPRINT_ONLY
 #if !defined(__AVR__)
@@ -124,3 +125,4 @@ static volatile float input_adc=.5f,output_quantity=0;
 void setup(){}
 void loop(){output_quantity=entries[entry_count-1].predict(input_adc);}
 #endif
+#endif // previous benchmark suites
