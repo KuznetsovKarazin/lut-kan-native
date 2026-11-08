@@ -1,0 +1,43 @@
+{
+  "stage": "static",
+  "units": 8,
+  "repeats": 3,
+  "seed": 2026110801,
+  "start_utc": "2026-11-08T07:23:26.767544+00:00",
+  "base_git_head": "2f9b9ce507fb653753d11558da169814f639d98e",
+  "working_tree_dirty": true,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "experiments/sensor_recovery/run_matched_adaptation.py",
+    "static",
+    "--out",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/static"
+  ],
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "source_sha256": {
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6",
+    "run_matched_adaptation.py": "a1bc2a543971ee8c1c0bee2a7ff44f8bc70447ddfb01d942f518b230195ad59d",
+    "MATCHED_ADAPTATION_PROTOCOL.md": "0c3d59891cbf4517da7cfa124b761191f6cf514768a4adfd51dce9c71084b744"
+  },
+  "provenance": "new reconstruction run; synthetic parametric measurements",
+  "physical_sensor_measurements": false,
+  "new_mcu_measurements": false,
+  "cases": 144,
+  "result_rows": 3312,
+  "elapsed_seconds": 12.293391466140747,
+  "complete": true,
+  "end_utc": "2026-11-08T07:23:39.065817+00:00",
+  "result_sha256": {
+    "cases.jsonl.gz": "ad2ff3daa3afa3dfdfd975c27c198b461525cd7eebf36885e7d9a46ad5f890ce",
+    "raw_results.jsonl.gz": "7e45aca58341db68c01c926856aa945a686ba37d4cf6fa63e5614e60c6309e35",
+    "started.json": "8885108428a909c1a5d2d27a2f1447cc1debb50682a15a741d09c83379f55787"
+  }
+}

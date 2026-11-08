@@ -28,6 +28,20 @@ physical sensor accuracy remains unmeasured.
 - [Two Mega acquisitions and completed Mega/C3 comparison (Russian)](results/mega_optimized_20261108/REPORT_RU.md)
 - [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN_RU.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
+- [Matched-storage and sequential-adaptation protocol](MATCHED_ADAPTATION_PROTOCOL.md)
+- [Matched-storage and adaptation results](results/matched_adaptation_20261108/RESULTS.md)
+- [Interpretation and continuation plan (Russian)](results/matched_adaptation_20261108/REPORT_RU.md)
+
+The matched-storage and sequential-adaptation stages are now complete in a new,
+explicit reconstruction run: 3312 static evaluations, development-only tuning
+on 3168 candidate trajectories, then 3888 confirmation trajectories with no
+numerical failures. At 144 bytes, the eight-piece Horner spline has lower mean
+MAE than both float32 LUT32 and int16 LUT60 in all six scenario/budget groups.
+Projected LUT NLMS corrects the injected drift, but projected cubic NLMS is
+more accurate at the same 148-byte persistent-state count. Both can slightly
+degrade already good calibration when no drift is present. These are synthetic
+recalibration results with labelled references, not physical sensor validation.
+The old 224-byte Horner MCU timings do not measure the new 144-byte comparator.
 
 Two complete C3 USB v3 command sessions validate all eight model checks, all
 ten timing batches per method and all ten monotone-update batches. The raw
@@ -68,9 +82,10 @@ The default eight-model environments remain available. The batch runner
 uploads once, captures twice and packages source/image hashes, upload logs and
 all raw/parsed/session files; no USB reconnection is needed between captures.
 The one-upload/two-capture path is now supported by the supplied Windows/C3
-and Mega batches. Continue with matched-storage comparison, complete sequential
-adaptation and physical NTCs. The current check set passes 57 tests and eight
-model subtests; no firmware or model coefficients changed in the Mega review.
+and Mega batches. The matched-storage and sequential-adaptation follow-up adds
+no firmware changes. The current focused check set passes 68 tests and eight
+model subtests. Target timing of the new matched-storage/adaptation algorithms
+and physical NTC accuracy remain separate, unmeasured stages.
 
 Reproduce the stored capture audit into a fresh directory:
 
@@ -89,6 +104,17 @@ python experiments/sensor_recovery/make_report.py /tmp/sensor-recovery-new
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_robust.py --out /tmp/sensor-recovery-robust --units 8 --repeats 3
 python experiments/sensor_recovery/report_followup.py /tmp/sensor-recovery-robust
 PYTHONPATH=src pytest tests/ -q --tb=short
+```
+
+Reproduce the new campaign into fresh directories (the last two commands can
+also verify/regenerate the committed results without rerunning the campaign):
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_matched_adaptation.py static --out runs/matched/static
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_matched_adaptation.py development --out runs/matched/development
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/run_matched_adaptation.py confirmation --out runs/matched/confirmation --selection runs/matched/development/selected_parameters.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/sensor_recovery/verify_matched_adaptation.py runs/matched
+python experiments/sensor_recovery/report_matched_adaptation.py runs/matched
 ```
 
 The new pilot does not need PyTorch; the original repository tests do.

@@ -1,0 +1,184 @@
+{
+  "development_seed": 2026110800,
+  "development_units": 4,
+  "development_repeats": 2,
+  "development_streams": 144,
+  "objective": "mean integrated normalized heldout MSE over development streams",
+  "parameters": {
+    "lut_nlms": 0.5,
+    "lut_projected_nlms": 0.5,
+    "cubic_nlms": 0.5,
+    "cubic_projected_nlms": 0.5,
+    "cubic_rls": 0.98,
+    "poly_rls": 0.98
+  },
+  "candidates": {
+    "lut_nlms": [
+      {
+        "parameter": 0.05,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 3.1923847789010095e-05
+      },
+      {
+        "parameter": 0.2,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.1946904049591748e-05
+      },
+      {
+        "parameter": 0.5,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 8.59993508714272e-06
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.2915393968001034e-05
+      }
+    ],
+    "lut_projected_nlms": [
+      {
+        "parameter": 0.05,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 3.1923847789010095e-05
+      },
+      {
+        "parameter": 0.2,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.1946904049591748e-05
+      },
+      {
+        "parameter": 0.5,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 8.59993508714272e-06
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.2915393968001034e-05
+      }
+    ],
+    "cubic_nlms": [
+      {
+        "parameter": 0.05,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 2.317110918353023e-05
+      },
+      {
+        "parameter": 0.2,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 7.32692643169976e-06
+      },
+      {
+        "parameter": 0.5,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 5.081870815735024e-06
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 7.813078589081211e-06
+      }
+    ],
+    "cubic_projected_nlms": [
+      {
+        "parameter": 0.05,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 2.7386312397849185e-05
+      },
+      {
+        "parameter": 0.2,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 9.394283582649246e-06
+      },
+      {
+        "parameter": 0.5,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 6.4718136913777e-06
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 8.914259092416497e-06
+      }
+    ],
+    "cubic_rls": [
+      {
+        "parameter": 0.98,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 9.971894218454895e-06
+      },
+      {
+        "parameter": 0.995,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.9838105492310036e-05
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 2.8503770211038948e-05
+      }
+    ],
+    "poly_rls": [
+      {
+        "parameter": 0.98,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 9.18078293826719e-06
+      },
+      {
+        "parameter": 0.995,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 1.9523784114284085e-05
+      },
+      {
+        "parameter": 1.0,
+        "n_complete": 144,
+        "failures": 0,
+        "eligible": true,
+        "objective": 2.8248139351986216e-05
+      }
+    ]
+  },
+  "confirmation_data_used": false
+}

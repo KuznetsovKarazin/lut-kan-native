@@ -1,0 +1,40 @@
+{
+  "archive_name": "IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip",
+  "format": "ZIP_STORED containing deterministic gzip JSONL",
+  "restore_from_repository_root": "python -m zipfile -e IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip .",
+  "contains_source_code": false,
+  "files": [
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/confirmation/raw_trajectories.jsonl.gz",
+      "size_bytes": 92753372,
+      "sha256": "92c20a4d011c5f1c62b19527cad1b7cd24dfe6eaaacd8241d9cafc4edce20fcb"
+    },
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/confirmation/streams.jsonl.gz",
+      "size_bytes": 32072426,
+      "sha256": "7e118a8bf0cdfa8a0ed150efc38805f9a7a47815b3f06f12723ab82b88b47090"
+    },
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/development/candidate_results.jsonl.gz",
+      "size_bytes": 2651768,
+      "sha256": "c3c2d8df0f5ae0672983784166e8f04998d602028b900f42208e152cd95ddb9c"
+    },
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/development/streams.jsonl.gz",
+      "size_bytes": 10677521,
+      "sha256": "6f789eeb867f2ba00e6da287beba796d00d5d9f8338601f80d4de7b574304f76"
+    },
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/static/cases.jsonl.gz",
+      "size_bytes": 1221560,
+      "sha256": "ad2ff3daa3afa3dfdfd975c27c198b461525cd7eebf36885e7d9a46ad5f890ce"
+    },
+    {
+      "path": "experiments/sensor_recovery/results/matched_adaptation_20261108/static/raw_results.jsonl.gz",
+      "size_bytes": 1189728,
+      "sha256": "7e45aca58341db68c01c926856aa945a686ba37d4cf6fa63e5614e60c6309e35"
+    }
+  ],
+  "archive_size_bytes": 140570539,
+  "archive_sha256": "c1594e1668d1c0c0f1bcd4e1c27ac91bfec2393a182fd468e37483e02ac6e1f3"
+}

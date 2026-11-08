@@ -1,0 +1,10 @@
+{
+  "publication_mode": "GitHub Git Data API; local git push has no credentials",
+  "local_pre_run_protocol_commit": "2f9b9ce507fb653753d11558da169814f639d98e",
+  "published_protocol_commit": "cdd8da642174dd8b405ad7fcb0e7f07a4cb50568",
+  "protocol_tree_sha": "4a9d6e6e748d6dc83379369898a2a7c4b10f503a",
+  "local_pre_confirmation_commit": "d84d07f2033ae111beccbac437c69db2b669a801",
+  "published_pre_confirmation_source_commit": "52cf622fda02165bd673e32441b96acc59aacd78",
+  "source_tree_sha": "cf05c3344ed03ef4fd860a1db01f3ccd03992547",
+  "note": "The local commits were made before their corresponding runs. Their identical trees were published afterwards. The remote commit timestamps are publication times, not preregistration times."
+}
