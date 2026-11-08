@@ -1,0 +1,11 @@
+PUBLIC DATA DEPOSIT — PREPARED, NOT PUBLISHED
+
+The metadata file is a proposal for author review, not a live Zenodo record.
+No DOI, release tag or publication date has been assigned. Do not cite a placeholder.
+
+Deposit materials:
+1. Original IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip (140,570,539 bytes; SHA-256 in README).
+2. New IEEE_Sensors_Revision_Evidence_2026-11-08.zip (raw streams, source snapshots, manifests and summaries).
+3. Final article source and software release identifier; preserve the separate software license.
+
+Before a public deposit, verify attribution, proposed data license, complete files and checksums. After publication, record the actual DOI and repository release/tag in the paper, README and continuation notes and test anonymous access. A prepared metadata JSON or Git commit is not a DOI. A working manuscript revision is not a submitted journal article.

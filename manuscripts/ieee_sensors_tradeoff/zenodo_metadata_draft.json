@@ -1,0 +1,39 @@
+{
+  "status": "DRAFT_NOT_PUBLISHED",
+  "proposed_metadata": {
+    "title": "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data",
+    "upload_type": "dataset",
+    "creators": [
+      {
+        "name": "Kuznetsov, Oleksandr",
+        "orcid": "0000-0003-2331-6326",
+        "affiliation": "eCampus University, Italy; V.N. Karazin Kharkiv National University, Ukraine"
+      }
+    ],
+    "description": "Synthetic calibration and reference-assisted recalibration records, figure inputs, source hashes, and physical Mega2560/ESP32-C3 execution logs. Sensor accuracy and drift are simulated; no physical NTC/LDR metrology or new ESP32-S3 timing is claimed. Includes original and post-review analyses with distinct seeds and identified fixtures.",
+    "keywords": [
+      "sensor calibration",
+      "lookup table",
+      "cubic spline",
+      "microcontroller",
+      "reference-assisted recalibration",
+      "reproducibility"
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5",
+        "relation": "isSupplementTo",
+        "scheme": "url"
+      }
+    ],
+    "access_right": "open",
+    "license": "cc-by-4.0"
+  },
+  "pending_before_publication": [
+    "Author review of title, attribution and proposed data license; software retains its repository license.",
+    "Upload original 140 MB archive, additional raw-record archive, source and final manifests.",
+    "Associate the final repository release/tag and final article version.",
+    "Assign a DOI through the repository service and verify public access before citing it."
+  ],
+  "note": "This is a metadata draft, not a deposit response. No DOI has been reserved or minted."
+}

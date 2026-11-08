@@ -117,7 +117,7 @@ def crossover():
     ax.set_xticks(range(3),["80 B","144 B","224 B"])
     ax.set_yticks(range(6),[f"{ {'ntc':'NTC','ntc_frontend':'Dist. NTC','ldr':'LDR'}[s]}, B={b}" for s,b in rows])
     for i in range(6):
-        for j in range(3):ax.text(j,i,f"{ratios[i,j]:.2f}",ha="center",va="center",fontsize=8,color="white" if abs(ratios[i,j]-1)>.3 else "#16212B")
+        for j in range(3):ax.text(j,i,f"{ratios[i,j]:.3g}",ha="center",va="center",fontsize=8,color="white" if abs(ratios[i,j]-1)>.3 else "#16212B")
     ax.set_title("MAE(LUT float32) / MAE(Horner)",pad=10,fontsize=9)
     ax.tick_params(length=0);ax.set_xlabel("< 1: LUT lower error     > 1: Horner lower error",fontsize=7)
     save(fig,"memory_crossover")
@@ -171,7 +171,7 @@ def hardware_updates():
         vals=[hw["boards"][board]["online"]["step"][m]["median_of_session_medians_us"] for m in keys]
         ax.barh(range(4),vals,color=["#0072B2","#56B4E9","#D55E00","#E69F00"],height=.62)
         ax.set_yticks(range(4),labels);ax.invert_yaxis();ax.set_xlim(0,max(vals)*1.25)
-        for i,v in enumerate(vals):ax.text(v+max(vals)*.02,i,f"{v:.2f}",va="center",fontsize=7)
+        for i,v in enumerate(vals):ax.text(v+max(vals)*.02,i,f"{v:.3g}",va="center",fontsize=7)
         ax.set_xlabel("Gross time (µs/labelled update)");ax.set_title(title,loc="left");ax.grid(axis="x",alpha=.18);ax.set_axisbelow(True)
     fig.subplots_adjust(left=.13,right=.99,bottom=.22,top=.85,wspace=.58);save(fig,"hardware_updates")
 
@@ -202,71 +202,59 @@ def decision_regions():
     fig.subplots_adjust(left=.08,right=.99,bottom=.22,top=.84,wspace=.17);save(fig,"decision_regions")
 
 
-def graphical_abstract():
-    fig=plt.figure(figsize=(7.05,1.75));ax=fig.add_axes([0,0,1,1]);ax.axis("off")
-    cards=[(.012,"MEMORY CHANGES THE RANKING","LUT vs Horner at 80 B: lower mean error\nAt 144 / 224 B: the ranking reverses", "#EAF3F9"),
-           (.348,"LUT SAVES COMPUTATION","Inference vs Horner: 13.2–13.8% less time\nProjected updates vs cubic: 30.7–39.1% less", "#EEF5ED"),
-           (.684,"ACCURACY STILL COSTS","144 B: Horner improves MAE\n0.05571 → 0.04552 °C", "#FFF1E4")]
-    for x,title,body,color in cards:
-        box(ax,x,.24,.302,.59,title,body,color)
-    ax.text(.015,.96,"Choose the representation for the device budget",fontsize=11,fontweight="bold",color="#17334A",va="top")
-    ax.text(.015,.07,"Synthetic calibration study  •  Physical Mega2560 / ESP32-C3 execution  •  Reference-based adaptation",fontsize=8,color="#445463")
-    save(fig,"graphical_abstract")
-
-
 def tex_tables():
     names={"ntc":"NTC", "ntc_frontend":"Dist. NTC", "ldr":"LDR"}
     static_rows=[]
     for sc in names:
         for B in (30,75):
             vals=[mean(sc,B,144,m) for m in ("lut_float32","lut_int16","cubic_compact","cubic_horner")]
-            static_rows.append(f"{names[sc]} & {B} & "+" & ".join(f"{v:.5f}" for v in vals)+r" \\")
+            static_rows.append(f"{names[sc]} & {B} & "+" & ".join(f"{v:.3g}" for v in vals)+r" \\")
     (TABLES/"static144.tex").write_text("\n".join(static_rows)+"\n")
     rows=[]
     for m,label in zip(STATIC_M,STATIC_L):
         a=hw["boards"]["mega2560"]["static"][m];b=hw["boards"]["esp32c3"]["static"][m]
-        rows.append(f"{label} & {a['median_of_session_medians_us']:.2f} & {b['median_of_session_medians_us']:.2f} & {b['metrics'][0]['mae_C']:.5f} & {b['metrics'][0]['max_C']:.5f}"+r" \\")
+        rows.append(f"{label} & {a['median_of_session_medians_us']:.3g} & {b['median_of_session_medians_us']:.3g} & {b['metrics'][0]['mae_C']:.3g} & {b['metrics'][0]['max_C']:.3g}"+r" \\")
     (TABLES/"hardware.tex").write_text("\n".join(rows)+"\n")
     methods=["lut_float32","lut_int16","monotone_lut_float32","monotone_lut_int16","cubic_compact","cubic_horner","kan_compact"]
     rows=[]
     for sc in names:
         for B in (30,75):
             for c in (80,144,224):
-                rows.append(f"{names[sc]} & {B} & {c} & "+" & ".join(f"{mean(sc,B,c,m):.5f}" for m in methods)+r" \\")
+                rows.append(f"{names[sc]} & {B} & {c} & "+" & ".join(f"{mean(sc,B,c,m):.3g}" for m in methods)+r" \\")
     (TABLES/"all_static.tex").write_text("\n".join(rows)+"\n")
     rows=[]
     for sc in names:
         for B in (30,75):
             for d in ("none","step","ramp"):
                 vals=[next(x for x in online if (x['scenario'],x['budget'],x['drift'],x['method'])==(sc,B,d,m))['final_mae']['mean'] for m in ("frozen_lut","frozen_cubic","lut_projected_nlms","cubic_projected_nlms","cubic_rls","poly_rls")]
-                rows.append(f"{names[sc]} & {B} & {d} & "+" & ".join(f"{v:.5f}" for v in vals)+r" \\")
+                rows.append(f"{names[sc]} & {B} & {d} & "+" & ".join(f"{v:.3g}" for v in vals)+r" \\")
     (TABLES/"all_online.tex").write_text("\n".join(rows)+"\n")
     rows=[]
     for sc in names:
         for B in (30,75):
             vals=[mean(sc,B,0,m) for m in ("physics","polynomial")]
-            rows.append(f"{names[sc]} & {B} & "+" & ".join(f"{v:.6f}" for v in vals)+r" \\")
+            rows.append(f"{names[sc]} & {B} & "+" & ".join(f"{v:.3g}" for v in vals)+r" \\")
     (TABLES/"small_references.tex").write_text("\n".join(rows)+"\n")
     rows=[]
     for sc in names:
         for B in (30,75):
             for d in ("none","step","ramp"):
                 vals=[next(x for x in online if (x['scenario'],x['budget'],x['drift'],x['method'])==(sc,B,d,m))['final_mae']['mean'] for m in ("frozen_poly","lut_nlms","cubic_nlms")]
-                rows.append(f"{names[sc]} & {B} & {d} & "+" & ".join(f"{v:.5f}" for v in vals)+r" \\")
+                rows.append(f"{names[sc]} & {B} & {d} & "+" & ".join(f"{v:.3g}" for v in vals)+r" \\")
     (TABLES/"other_online.tex").write_text("\n".join(rows)+"\n")
     rows=[]
     for d in ("none","step","ramp"):
         for m,label in zip(("lut_nlms","lut_projected_nlms","cubic_nlms","cubic_projected_nlms"),("LUT NLMS","LUT + PAVA","Cubic NLMS","Cubic + PAVA")):
             a=hw['boards']['mega2560']['online'][d][m]
             b=hw['boards']['esp32c3']['online'][d][m]
-            rows.append(f"{d} & {label} & {a['median_of_session_medians_us']:.2f} & {b['median_of_session_medians_us']:.2f} & {b['metrics'][0]['mae_C']:.5f}"+r" \\")
+            rows.append(f"{d} & {label} & {a['median_of_session_medians_us']:.3g} & {b['median_of_session_medians_us']:.3g} & {b['metrics'][0]['mae_C']:.3g}"+r" \\")
     (TABLES/"all_hardware_updates.tex").write_text("\n".join(rows)+"\n")
     rows=[]
     for sc in names:
         for B in (30,75):
             for cap in (80,144,224):
                 r=next(x for x in paired if (x['scenario'],x['budget'],x['cap_bytes'],x['method_a'],x['method_b'])==(sc,B,cap,'lut_float32','cubic_horner'))
-                rows.append(f"{names[sc]} & {B} & {cap} & {r['mean_a_minus_b']:.6f} & [{r['ci95_lo']:.6f}, {r['ci95_hi']:.6f}]"+r" \\")
+                rows.append(f"{names[sc]} & {B} & {cap} & {r['mean_a_minus_b']:.3g} & [{r['ci95_lo']:.3g}, {r['ci95_hi']:.3g}]"+r" \\")
     (TABLES/"paired.tex").write_text("\n".join(rows)+"\n")
 
 
@@ -282,5 +270,7 @@ if __name__ == "__main__":
     for name, content in inputs.items():
         (DATA/name).write_bytes(content)
     (DATA/"source_hashes.json").write_text(json.dumps({"evidence_commit":SNAPSHOT,"sha256":hashes},indent=2)+"\n")
-    for fn in (protocol,payload,crossover,adaptation,hardware_static,hardware_updates,decision_regions,graphical_abstract,tex_tables):fn()
-    print("Generated 7 numbered scientific figures, graphical abstract and 8 tables from saved results.")
+    for fn in (protocol,payload,crossover,adaptation,hardware_static,hardware_updates,decision_regions,tex_tables):fn()
+    import make_revision_assets
+    make_revision_assets.generate()
+    print("Generated revision and historical scientific figures, separate graphical abstract and tables from hashed saved results.")

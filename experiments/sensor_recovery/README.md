@@ -6,11 +6,21 @@ All calibration data are **synthetic**. User-supplied Mega2560 and ESP32-C3
 captures now provide measured execution times on the same numerical fixture;
 physical sensor accuracy remains unmeasured.
 
-The [first IEEE Sensors Journal manuscript draft](../../manuscripts/ieee_sensors_tradeoff/README.md)
-now presents the measured accuracy–memory–latency trade-off, with seven scientific
-figures, a graphical abstract, complete supplementary tables and reproducible
-figure inputs. It uses the immutable evidence snapshot `db39238` and requires
-author review before submission.
+The [revised IEEE Sensors Journal manuscript](../../manuscripts/ieee_sensors_tradeoff/README.md)
+presents conditional accuracy, storage and update-cost trade-offs: seven main
+pages, five scientific figures, a separate graphical abstract, a ten-page
+supplement and 22 references. It includes the previously omitted physical timings
+of polynomial/physical references on the earlier fixture. The two hardware
+fixtures remain separate. Post-review analyses and immutable evidence are indexed
+in [revision results](results/revision_20261108/README.md); they add model-selection
+sensitivity and causal recalibration baselines. The restricted LUT/Horner
+ranking reversal is no longer the headline. Physical sensor uncertainty remains
+unmeasured; the article requires scientific author review before submission.
+
+- [Locally frozen revision protocol](REVIEW_REVISION_PROTOCOL.md)
+- [Recovered hardware evidence and protocol addendum](REVIEW_REVISION_ADDENDUM.md)
+- [New analyses, validation, hashes and optional hardware builds](results/revision_20261108/README.md)
+- [Optional unified-reference/FPU run instructions (Russian)](mcu/RUN_REFERENCES_RU.txt)
 
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)
@@ -70,11 +80,11 @@ delay and bounded pre-READY recovery now preserve startup evidence without
 retrying Q/R or a benchmark. Both successful Mega sessions required one such
 retry; the delay alone did not eliminate the initial rejection. Recovery is
 now physically verified, while the cause of that rejection remains unknown.
-C3 behavior and numerical/timing code are unchanged. The current focused suite
-passes 120 tests and eight model subtests. No additional board acquisition is
-needed for this checkpoint. The first manuscript now synthesizes the joint
-equal-memory comparison and its explicit limitations; scientific author review
-is the next step.
+C3 behavior and numerical/timing code are unchanged. The original checkpoint passed 120 tests and eight model subtests; the revision
+suite passes 126 tests and eight subtests. No additional board acquisition is
+needed for that completed checkpoint. The revised manuscript also uses plain
+NLMS update timings and the recovered smaller-reference pilot; scientific
+author review and physical sensor validation remain open.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning

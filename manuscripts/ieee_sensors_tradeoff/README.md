@@ -1,35 +1,67 @@
-# IEEE Sensors Journal: first manuscript draft
+# IEEE Sensors Journal: review-driven revision
 
-**Accuracy–Memory–Latency Trade-Offs in Embedded Sensor Calibration and Adaptation**
+**Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration**
 
-Author: Oleksandr Kuznetsov. Draft dated 8 November 2026. This is an unpublished
-manuscript for author review, not an accepted article or a submitted version.
+Oleksandr Kuznetsov, 8 November 2026. Working revision for scientific author review;
+not a submitted or accepted article. Main paper: seven pages, five numbered
+scientific figures, three tables and 22 references. Supplement: ten pages.
 
-The contribution is a controlled engineering comparison: exact serialized
-storage, identical labelled references, development-only adaptation settings,
-and validated execution on Mega2560 and ESP32-C3. Sensor accuracy and drift
-are synthetic. Physical boards supply execution times, not physical sensor
-calibration results.
+## Scientific claim and evidence boundaries
 
-## Read and reproduce
+The result is a conditional accuracy–storage–computation trade-off. In the
+original static study, compact cubics outperform float32 LUTs in 15/18 cells,
+including all six 80-byte cells; no LUT is the most accurate equal-payload
+candidate in any cell. The three compact-cubic exceptions occur at 224 bytes
+with 30 references and reflect fitting/selection limitations. The restricted
+C²-to-Horner expansion is no longer used to claim general LUT accuracy superiority.
 
-- `main.tex`: seven-page IEEE journal-style draft, seven numbered scientific
-  figures, a graphical abstract, two tables, and twelve references.
-- `supplement.tex`: full seven-model static and nine-method sequential tables,
-  paired unit bootstrap intervals, complete update measurements, build sizes,
-  and reproduction commands.
-- `references.tex`: manually checked IEEE-style reference entries with DOI or
-  primary-source links; it is intentionally editable without a BibTeX dependency.
-- `figures/`: PDF vector figures and editable SVG / 300 dpi PNG exports.
-  `graphical_abstract.*` is also available as a separate submission asset.
-- `make_assets.py`: regenerates every figure and numerical table from the saved
-  inputs. This does not rerun simulations or fabricate hardware timings.
-- `data/source_hashes.json`: immutable evidence commit and SHA-256 of every
-  figure input. A mismatch aborts generation.
+The earlier physical MCU logs already include a selected 56-byte polynomial and
+32-byte physical model. The polynomial has lower error and smaller payload but
+longer inference time than LUT144 on that pilot fixture. Those four logs have
+been reparsed and hashed. Their seed and errors differ from the later matched
+fixture, so the two series occupy separate figure panels. Ordinary LUT NLMS
+updates take 48.7–53.3% less time than compact-cubic updates in the matched
+fixture, with higher residual error. A slow AVR acquisition-cycle example reduces
+the end-to-end inference benefit to about 1.37%; this is an analytical budget.
 
-The standalone source archive can be uploaded to Overleaf; select `main.tex`
-as the main document, or `supplement.tex` to build the supplement. All numerical
-figure inputs are included, so the archive also works outside the full repo.
+New analyses add ideal/noisy/max error separation, an exact-generator noisy-input
+inverse benchmark, fivefold model selection, generator sensitivity, decaying
+NLMS, two-point correction, causal all-history/recent-window refits, and extended
+RLS forgetting-factor selection. Every negative result is retained. There are
+3,488 additional static model evaluations, 2,304 development trajectories,
+5,472 independent-confirmation trajectories and an audit of 331,776 original
+projected updates. Development and confirmation seeds are separate. The protocol
+was frozen locally before calculation, not publicly preregistered.
+
+Accuracy and drift remain synthetic. Physical boards establish execution cost,
+not sensor uncertainty. Physical sensor validation, measured energy, WCET, peak
+stack and between-board variation remain open. The supplement gives a concrete
+prospective physical campaign and uncertainty components without invented values.
+
+## Files and standalone build
+
+- `main.tex`, `supplement.tex`, `references.tex`: editable article sources.
+- `make_assets.py`, `make_revision_assets.py`: regenerate numerical assets from
+  included hash-checked inputs; they do not synthesize hardware measurements.
+- `data/source_hashes.json`: original immutable input identities;
+  `data/revision_source_hashes.json`: five additional input hashes.
+- `figures/`: vector PDF/SVG and PNG exports. The five main figures are
+  `protocol`, `cv_capacity`, `revision_adaptation`, `sensitivity`, and
+  `hardware_complete`. Historical plots remain for traceability and are not all
+  used in the revised paper. The obsolete ranking-reversal graphical abstract
+  was removed.
+- `figures/gagraphic.png`: separate graphical abstract, 660 × 295 pixels,
+  300 dpi metadata, less than 45 KB; PDF/SVG exports also included. It is not
+  embedded after the article title.
+- `REVIEW_RESPONSE_RU.txt`: point-by-point analysis of the colleague's review,
+  changes made, disagreements supported by data, and remaining work.
+- `BUILD_CHECKS.json`: completed package checks and their limits.
+- `zenodo_metadata_draft.json`, `DEPOSIT_NOTES.txt`: proposed deposit metadata;
+  no publication, release tag, or DOI has been created.
+
+In Overleaf select `main.tex` as the main document; build `supplement.tex`
+separately. Figures and table inputs are included, so no repository checkout is
+needed to compile either PDF.
 
 ```sh
 python -m pip install -r requirements.txt
@@ -38,70 +70,63 @@ latexmk -pdf main.tex
 latexmk -pdf supplement.tex
 ```
 
-Python 3.12.14, NumPy 2.3.5, Matplotlib 3.10.8, pdfTeX / TeX Live 2023 and
-latexmk 4.83 were used for this draft. Numerical experiment reproduction also
-requires SciPy 1.17.0; see Section S7 of the supplement.
+Asset regeneration was performed with Python 3.12.14, NumPy 2.3.5,
+Matplotlib 3.10.8 and Pillow; numerical experiments also use SciPy 1.17.0.
+The document build uses pdfTeX/TeX Live 2023, IEEEtran v1.8b and latexmk 4.83.
+The original and revision run manifests record exact calculation dependencies.
 
-## Exact evidence
+## Immutable experiment links
 
-The experimental snapshot is
-[`db39238c1467169b65ff1f3581945e57ee7ffd7a`](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a).
-The manuscript commit adds presentation assets and leaves experiment results,
-firmware, and acquisition protocols unchanged.
+- [Revision source, protocol and tests](https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5/experiments/sensor_recovery)
+- [New summaries, per-unit results, hashes and reproduction commands](https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5/experiments/sensor_recovery/results/revision_20261108)
+- [Recovered physical timings, including small references](https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5/experiments/sensor_recovery/results/revision_20261108/recovered_hardware.json)
+- [Original immutable evidence](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery)
+- [Original matched hardware results](https://github.com/KuznetsovKarazin/lut-kan-native/blob/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery/results/matched_boards_20261108/RESULTS.md)
 
-- [Experiment source and index](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery)
-- [Static/adaptation summaries and per-unit statistics](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery/results/matched_adaptation_20261108)
-- [Combined matched-board results](https://github.com/KuznetsovKarazin/lut-kan-native/blob/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery/results/matched_boards_20261108/RESULTS.md)
-- [C3 raw captures](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery/results/c3_matched_20261108)
-- [Mega raw captures](https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a/experiments/sensor_recovery/results/mega_matched_20261108)
+The original large raw archive is 140,570,539 bytes, SHA-256
+`c1594e1668d1c0c0f1bcd4e1c27ac91bfec2393a182fd468e37483e02ac6e1f3`.
+The three additional compressed record streams total 77,720,317 bytes; individual
+hashes are in `results/revision_20261108/raw_manifest.json`. Both are preserved
+separately from Git. Public source, summaries, per-unit results and raw MCU logs
+are linked above; the large raw synthetic archives are not claimed to have a
+public DOI. Gzip timestamps may change upon reproduction; compare decoded records.
 
-Large raw synthetic streams and complete trajectory states are preserved in a
-separate 140,570,539-byte archive. Its file hashes and regeneration commands are
-public; the archive itself is **not** in the Git tree. The manuscript does not
-claim an existing public data DOI. Before submission, a public archive/release
-deposit would make this part of the evidence more convenient to access.
+## Prospective hardware extension
 
-## Journal format and author review
+The separate reference-run pack provides six static models on the later matched
+fixture, with strict capture validation and image/source hashes. Mega2560,
+ESP32-C3 and optional ESP32-S3 builds passed. The new kernels passed portable C++
+parity and parser rejection tests; all focused sensor tests pass (126 tests and
+8 subtests). This is not additional board execution. The ESP32-S3 environment
+targets ESP32-S3-DevKitC-1 at 240 MHz through its UART bridge; another board needs
+its own verified configuration. Instructions are in `mcu/RUN_REFERENCES_RU.txt`.
+There is no need to rerun Mega/C3 merely to establish polynomial/physical timings,
+since the earlier measured series already supplies them.
 
-The draft uses the unmodified IEEEtran v1.8b journal class supplied with the
-author's earlier manuscript: 10 pt, two columns, US letter. It includes a
-150–250-word single-paragraph abstract, alphabetical index terms, numbered
-figures/tables/equations, an integrated graphical abstract, and linked evidence.
-There are no invented received/accepted dates, journal volume, or article DOI.
+## Journal format and remaining checks
 
-Official requirements checked on 8 November 2026:
+The draft uses the standard IEEE journal two-column class, a single-paragraph
+150–250-word abstract, numbered figures/tables/equations, and a separate graphical
+abstract. It contains no invented publication dates, journal volume, or DOI.
+The official interactive selector did not provide a downloadable current Sensors
+package in this environment; exact conformity to the current journal-specific
+class still needs checking before submission. The editable source and vector
+assets are portable. Official pages checked on 8 November 2026:
 
-- [IEEE Sensors Journal author instructions](https://ieee-sensors.org/ieee-sensors-journal/for-authors/): double-column manuscript, normal eight-page length, required graphical abstract.
-- [IEEE article templates](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/authoring-tools-and-templates/tools-for-ieee-authors/ieee-article-templates/).
-- [IEEE submission and peer-review policies, including AI-generated content](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/).
+- [Sensors Journal author instructions](https://ieee-sensors.org/ieee-sensors-journal/for-authors/)
+- [IEEE templates](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/authoring-tools-and-templates/tools-for-ieee-authors/ieee-article-templates/)
+- [Supplementary/graphical abstract guidance](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/prepare-supplementary-materials/)
 
-The interactive IEEE template selector did not provide a downloadable journal
-package in this environment. This draft uses standard IEEEtran, not a claimed
-latest journal-specific `ieeecolor` package. Check the live submission template
-when preparing the final version; the source and vector assets are portable.
+The AI-assistance statement includes experiment-design refinement, simulation,
+analysis, firmware, acquisition, validation, visualization and drafting. Authorship,
+affiliation/contact details, funding and final scientific claims need author review.
+No unconfirmed coauthor or funding acknowledgment is added. A public DOI deposit
+and release tag remain pending; metadata preparation is not publication.
 
-The acknowledgment identifies ChatGPT assistance in drafting and visualization
-code, as required for substantive AI-generated content. It does not claim that
-the author has already completed scientific review of this first draft.
+## Для автора
 
-Author review should confirm authorship/contact details and any funding statement,
-assess the framing and scientific claims, and decide on a public raw-data deposit.
-No coauthors or grant acknowledgments were inferred. Physical sensor accuracy,
-reference uncertainty, energy, peak stack, multiple-board variation, and active
-PAVA worst-case timing remain outside the evidence. The initial calibration fit
-is offline; small online state does not establish a low-memory initialization
-method. No further capture is needed to reproduce the completed hardware stage.
-
-## Кратко для автора
-
-Главный результат — зависимость выбора представления от ресурсов. При 80 байтах
-LUT float32 точнее развернутого Horner во всех шести группах; при 144 и 224 байтах
-порядок меняется. Это сравнение именно этих двух представлений, а не превосходство
-LUT над всеми сплайнами. На реальных платах выигрыш LUT по времени относительно
-Horner составляет 13.2–13.8%, при более высокой ошибке. Для обновления с PAVA
-выигрыш составляет 30.7–39.1% относительно компактного кубического сплайна.
-
-В тексте сохранены сильные физические и полиномиальные baselines, случаи
-ухудшения без дрейфа и ограничения по физическим измерениям. Все рисунки построены
-из числовых данных. Для подачи сначала нужна авторская научная редактура; данный
-пакет — первый полноценный драфт, а не автоматически подготовленная submission.
+Главные методические замечания приняты; рецензия разобрана в отдельном файле.
+Работа теперь показывает измеренный компромисс, а не общую победу LUT. Сильный
+дополнительный результат — конфликт скорости отслеживания дрейфа, остаточной
+ошибки и памяти для хранения эталонов. Для Sensors Journal полезнее небольшой
+физический опыт с калиброванным эталоном, чем очередное увеличение числа симуляций.
