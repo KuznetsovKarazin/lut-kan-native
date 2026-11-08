@@ -1,5 +1,9 @@
 # Сравнение LUT с оптимизированным кубическим сплайном
 
+Два C3-прогона проверены: [результаты](../results/c3_optimized_20261108/REPORT_RU.md).
+Следующий аппаратный шаг — Mega 2560 по команде ниже. C3-процедура сохранена
+для воспроизведения; ещё один повтор той же серии сейчас не требуется.
+
 В прошивке десять методов: прежние восемь и два варианта вычисления того же
 кубического сплайна. `cubic16_unrolled` сохраняет 80 байт данных модели;
 `cubic16_horner` использует 224 байта. Данные, обученные модели и число
@@ -42,12 +46,14 @@ USB должен возвращаться после автоматическо�
 
 ## Mega 2560
 
-После результатов C3 аналогичный контроль можно выполнить на Mega. Подставить
-её фактический порт вместо COM5:
+Следующий контроль — два прогона на Mega. Подключить плату, закрыть её
+Serial Monitor и ввести фактический порт из списка:
 
 ```powershell
+py -m platformio device list
+$megaPort = Read-Host "COM-порт Mega"
 $batch = "runs/mega_opt_$(Get-Date -Format 'yyyyMMdd_HHmmss_fff')"
-py experiments/sensor_recovery/mcu/run_suite.py --board mega2560 --port COM5 --out "$batch" --runs 2
+py experiments/sensor_recovery/mcu/run_suite.py --board mega2560 --port "$megaPort" --out "$batch" --runs 2
 ```
 
 На Mega открытие Serial обычно автоматически перезапускает прошивку. Если

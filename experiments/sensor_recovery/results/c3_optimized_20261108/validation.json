@@ -1,0 +1,39 @@
+{
+  "original_archive_audit_reproduced": true,
+  "capture_analysis_byte_reproduced_with_original_input_basenames": true,
+  "capture_report_byte_reproduced": true,
+  "negative_controls": [
+    {
+      "case": "missing_console",
+      "rejected": true,
+      "reason": "Unexpected or missing ZIP entries"
+    },
+    {
+      "case": "changed_sources",
+      "rejected": true,
+      "reason": "Sources changed during batch"
+    },
+    {
+      "case": "wrong_normalized_source_hash",
+      "rejected": true,
+      "reason": "Normalized source hash mismatch: experiments/sensor_recovery/mcu/capture.py"
+    },
+    {
+      "case": "wrong_capture_id",
+      "rejected": true,
+      "reason": "Batch capture record mismatch"
+    },
+    {
+      "case": "out_of_batch_time",
+      "rejected": true,
+      "reason": "Overlapping or out-of-batch sessions"
+    },
+    {
+      "case": "altered_result_json",
+      "rejected": true,
+      "reason": "Log/JSON mismatch"
+    }
+  ],
+  "firmware_or_capture_code_changed": false,
+  "new_MCU_run_performed_by_assistant": false
+}

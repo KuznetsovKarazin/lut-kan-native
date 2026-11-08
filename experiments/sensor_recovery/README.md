@@ -24,6 +24,7 @@ physical sensor accuracy remains unmeasured.
 - [Optimized cubic comparison protocol](OPTIMIZED_SPLINE_PROTOCOL.md)
 - [Optimized cubic host results and interpretation (Russian)](results/optimized_spline_20261108/REPORT_RU.md)
 - [Optimized cubic MCU build sizes](results/optimized_spline_build_20261108/RESULTS.md)
+- [Two physical C3 optimized-suite runs (Russian)](results/c3_optimized_20261108/REPORT_RU.md)
 - [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN_RU.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
@@ -42,8 +43,14 @@ execution/capture checkpoint is complete. The optimized cubic follow-up now
 has two numerically validated implementations, three host-process repetitions
 at each of -O2/-Os, and sixteen MCU cross-compilations. The unrolled version
 keeps the 80-byte payload; compiled Horner uses 224 bytes. Horner and LUT are
-close in host time, with ordering dependent on compiler settings. New MCU
-timings are still pending and cannot be inferred from the host timings.
+close in host time, with ordering dependent on compiler settings. Two new
+physical C3 sessions now give Horner 12.138184 µs/call versus LUT32/float32
+10.981934: LUT time is 9.526% lower, with 144 versus 224 bytes of model data
+and MAE 0.0524224 versus 0.0465563 °C. Both new cubic methods pass the same
+numerical gate. All accuracy fields match across the two sessions, and the
+largest range of method timing medians is 0.0007844%. The batch/upload/source
+chain is audited against the measured commit, accounting for Windows CRLF.
+Optimized Mega timings remain pending; host timings do not substitute for them.
 Two optimized KAN rearrangements failed the existing float32 parity gate and
 remain host-only diagnostics. Physical NTC validation remains a separate stage.
 
@@ -52,6 +59,8 @@ environments add two cubic methods and identify the ten-model suite explicitly.
 The default eight-model environments remain available. The batch runner
 uploads once, captures twice and packages source/image hashes, upload logs and
 all raw/parsed/session files; no USB reconnection is needed between captures.
+The one-upload/two-capture path is now confirmed by the supplied Windows/C3
+batch. Continue with Mega, matched-storage comparison and physical NTCs.
 
 Reproduce the stored capture audit into a fresh directory:
 
