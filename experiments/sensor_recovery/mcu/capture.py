@@ -14,7 +14,7 @@ def parse_lines(lines):
         elif row[0]=="END_SENSOR_BENCH":
             if not started or complete:raise ValueError("Unexpected benchmark end")
             complete=True
-        elif row[0] in ("BOARD","CPU_HZ","FREE_MEMORY_ESTIMATE","SESSION","TRANSPORT"):
+        elif row[0] in ("BOARD","CPU_HZ","FREE_MEMORY_ESTIMATE","SESSION","TRANSPORT","SUITE"):
             if row[0] in metadata:raise ValueError("Duplicate metadata: possible board reset")
             metadata[row[0]]=row[1]
         elif row[0]=="PAYLOAD":
@@ -35,6 +35,9 @@ def parse_lines(lines):
             if item["calls"]!=2048 or item["total_us"]<=0:raise ValueError("Invalid update timing")
             updates.append(item)
     expected={"physics","polynomial","cubic16","kan16","uniform32_float32","uniform32_int16","uniform32_uint8","nonuniform16_int16"}
+    suite=metadata.get("SUITE")
+    if suite=="spline_optimized_v1":expected|={"cubic16_unrolled","cubic16_horner"}
+    elif suite is not None:raise ValueError("Unsupported benchmark suite: "+suite)
     if not(started and complete) or set(accuracy)!=expected or set(timings)!=expected|{"overhead"}:raise ValueError("Incomplete benchmark: use all-model firmware and capture from its header to END")
     if set(payloads)!=expected|{"overhead"} or any(v<0 for v in payloads.values()):raise ValueError("Missing/invalid payload metadata")
     board=metadata.get("BOARD");expected_hz={"mega2560":16000000,"esp32c3":160000000}

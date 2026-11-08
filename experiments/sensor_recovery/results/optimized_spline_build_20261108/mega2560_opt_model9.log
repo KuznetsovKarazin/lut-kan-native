@@ -1,0 +1,58 @@
+Processing mega2560_opt (platform: atmelavr@5.1.0; board: megaatmega2560; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/megaatmega2560.html
+PLATFORM: Atmel AVR (5.1.0) > Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)
+HARDWARE: ATMEGA2560 16MHz, 8KB RAM, 248KB Flash
+DEBUG: Current (avr-stub) External (avr-stub, simavr)
+PACKAGES: 
+ - framework-arduino-avr @ 5.2.0 
+ - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 5 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/mega2560_opt/src/main.cpp.o
+Archiving .pio/build/mega2560_opt/libFrameworkArduinoVariant.a
+Indexing .pio/build/mega2560_opt/libFrameworkArduinoVariant.a
+Compiling .pio/build/mega2560_opt/FrameworkArduino/CDC.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/HardwareSerial0.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/HardwareSerial1.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/HardwareSerial2.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/HardwareSerial3.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/PluggableUSB.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/USBCore.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/WInterrupts.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/abi.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/hooks.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/main.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/new.cpp.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring_analog.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring_digital.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring_pulse.S.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/mega2560_opt/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/mega2560_opt/libFrameworkArduino.a
+Indexing .pio/build/mega2560_opt/libFrameworkArduino.a
+Linking .pio/build/mega2560_opt/firmware.elf
+Checking size .pio/build/mega2560_opt/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [          ]   1.0% (used 81 bytes from 8192 bytes)
+Flash: [          ]   1.1% (used 2780 bytes from 253952 bytes)
+Building .pio/build/mega2560_opt/firmware.hex
+========================= [SUCCESS] Took 0.49 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+mega2560_opt   SUCCESS   00:00:00.490
+========================= 1 succeeded in 00:00:00.490 =========================

@@ -66,6 +66,9 @@ static void update_timing(){
 }
 static void run_benchmark(const char *session=nullptr){
   Serial.println("SENSOR_BENCH_V1,synthetic_ntc_frontend,seed20261108,unit0,B75");
+#ifdef SENSOR_OPTIMIZED_SUITE
+  Serial.println("SUITE,spline_optimized_v1");
+#endif
 #if defined(__AVR__)
   (void)session;
   Serial.println("BOARD,mega2560");

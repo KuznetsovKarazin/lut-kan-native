@@ -35,6 +35,24 @@ static NOINLINE float predict_7(float adc){return physical(uniform_eval(norm(adc
 #if BENCH_MODEL == -1 || BENCH_MODEL == 8
 static NOINLINE float predict_8(float adc){return physical(irregular_eval(norm(adc),irregular_knots,irregular_values,16,irregular_scale,irregular_offset));}
 #endif
+#ifdef SENSOR_OPTIMIZED_SUITE
+#include "optimized_spline.h"
+#include "optimized_coefficients.h"
+#if BENCH_MODEL == -1 || BENCH_MODEL == 9
+static NOINLINE float predict_9(float adc){return physical(cubic16_unrolled_eval(norm(adc),cubic_c));}
+#endif
+#if BENCH_MODEL == -1 || BENCH_MODEL == 10
+static NOINLINE float predict_10(float adc){return physical(cubic16_horner_eval(norm(adc),cubic_horner_c));}
+#endif
+#ifdef SENSOR_OPTIMIZED_DIAGNOSTICS
+#if BENCH_MODEL == -1 || BENCH_MODEL == 11
+static NOINLINE float predict_11(float adc){float x=bounded_x(norm(adc));return physical(cubic16_unrolled_eval(x,kan_c)+kan_c[16]*x/(1+expf(-x)));}
+#endif
+#if BENCH_MODEL == -1 || BENCH_MODEL == 12
+static NOINLINE float predict_12(float adc){float x=bounded_x(norm(adc));return physical(cubic16_horner_eval(x,kan_horner_c)+kan_c[16]*x/(1+expf(-x)));}
+#endif
+#endif
+#endif
 struct Entry{uint8_t id;const char *name;float (*predict)(float);const float *expected;uint16_t payload;};
 #ifdef FOOTPRINT_ONLY
 #define EXPECTED(n) nullptr
@@ -66,6 +84,22 @@ static const Entry entries[]={
 #endif
 #if BENCH_MODEL == -1 || BENCH_MODEL == 8
   {8,"nonuniform16_int16",predict_8,EXPECTED(8),120},
+#endif
+#ifdef SENSOR_OPTIMIZED_SUITE
+#if BENCH_MODEL == -1 || BENCH_MODEL == 9
+  {9,"cubic16_unrolled",predict_9,EXPECTED(3),80},
+#endif
+#if BENCH_MODEL == -1 || BENCH_MODEL == 10
+  {10,"cubic16_horner",predict_10,EXPECTED(3),224},
+#endif
+#ifdef SENSOR_OPTIMIZED_DIAGNOSTICS
+#if BENCH_MODEL == -1 || BENCH_MODEL == 11
+  {11,"kan16_unrolled",predict_11,EXPECTED(4),84},
+#endif
+#if BENCH_MODEL == -1 || BENCH_MODEL == 12
+  {12,"kan16_horner",predict_12,EXPECTED(4),228},
+#endif
+#endif
 #endif
 };
 static const int entry_count=sizeof(entries)/sizeof(entries[0]);

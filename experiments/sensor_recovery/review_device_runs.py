@@ -77,8 +77,10 @@ def main():
     expected_fixture = ["synthetic_" + fixture["scenario"],
                         "seed" + str(fixture["seed"]),
                         "unit" + str(fixture["unit"]), "B" + str(fixture["budget"])]
-    expected_payloads = {m["name"]: m["payload_bytes"] for m in fixture["models"]}
-    expected_payloads["overhead"] = 0
+    manifests={None:fixture,"spline_optimized_v1":json.loads((HERE/"mcu/optimized_manifest.json").read_text())}
+    def expected_payloads(parsed):
+        manifest=manifests[parsed["metadata"].get("SUITE")]
+        return {"overhead":0,**{m["name"]:m["payload_bytes"] for m in manifest["models"]}}
     unique, submissions, sessions = {}, [], {}
     for log in args.logs:
         raw = log.read_bytes()
@@ -89,7 +91,7 @@ def main():
             raise ValueError(f"Parsed log differs from supplied JSON: {log.name}")
         if parsed["metadata"]["fixture"] != expected_fixture:
             raise ValueError(f"Unexpected numerical fixture: {log.name}")
-        if parsed["payload_bytes"] != expected_payloads:
+        if parsed["payload_bytes"] != expected_payloads(parsed):
             raise ValueError(f"Unexpected payload manifest: {log.name}")
         sidecar_path=log.with_suffix(".session.json")
         sidecar=sidecar_path.read_bytes() if sidecar_path.exists() else None
@@ -109,7 +111,7 @@ def main():
     reference=None
     if args.reference_log:
         reference=parse_lines(args.reference_log.read_text(encoding="utf-8-sig").splitlines())
-        if reference!=json.loads(args.reference_log.with_suffix(".json").read_text(encoding="utf-8-sig")) or reference["metadata"]["fixture"]!=expected_fixture or reference["payload_bytes"]!=expected_payloads:
+        if reference!=json.loads(args.reference_log.with_suffix(".json").read_text(encoding="utf-8-sig")) or reference["metadata"]["fixture"]!=expected_fixture or reference["payload_bytes"]!=expected_payloads(reference):
             raise ValueError("Reference capture/JSON/fixture mismatch")
 
     args.out.mkdir(parents=True)
@@ -148,14 +150,14 @@ def main():
                                batch_range_percent=100 * (max(times) - min(times)) / median))
         speeds = {lut: {other: d["summary"][other]["gross_us_per_call"] /
                        d["summary"][lut]["gross_us_per_call"]
-                       for other in ("polynomial", "cubic16", "kan16")}
+                       for other in ("polynomial", "cubic16", "kan16","cubic16_unrolled","cubic16_horner") if other in d["summary"]}
                   for lut in ("uniform32_float32", "uniform32_int16")}
         update_us = statistics.median(r["total_us"] / r["calls"] for r in d["update_cost_only"])
         analysis["captures"].append(dict(id=stem, parsed_content_sha256=fingerprint,
                                           metadata=d["metadata"], models=models,
                                           gross_speedups=speeds, update_cost_gross_us=update_us,session=item["session"]))
         lines += [f"## {stem}", "",
-                  "All eight prediction checks PASS at the predeclared 0.002 °C maximum host-gap tolerance. "
+                  f"All {len(models)} prediction checks PASS at the predeclared 0.002 °C maximum host-gap tolerance. "
                   f"The largest observed gap is {max(m['max_host_gap_C'] for m in models):.7f} °C.", "",
                   "Times are medians of ten batches of 2048 calls. Gross times include fixture reads, "
                   "loop/call/checksum overhead, normalization and output conversion; they exclude ADC acquisition and Serial printing. "
@@ -175,7 +177,7 @@ def main():
             comparison=[dict(method=name,reference_us_per_call=reference["summary"][name]["gross_us_per_call"],
                              current_us_per_call=d["summary"][name]["gross_us_per_call"],
                              reference_over_current=reference["summary"][name]["gross_us_per_call"]/d["summary"][name]["gross_us_per_call"])
-                        for name in d["summary"]]
+                        for name in d["summary"] if name in reference["summary"]]
             analysis["captures"][-1]["board_comparison"]=dict(reference_metadata=reference["metadata"],
                 reference_log_sha256=sha(args.reference_log.read_bytes()),rows=comparison)
             lines += [f"### Comparison with {reference['metadata']['BOARD']}","",
@@ -187,8 +189,8 @@ def main():
                 lines.append(f"| {row['method']} | {row['reference_us_per_call']:.6f} | {row['current_us_per_call']:.6f} | {row['reference_over_current']:.3f}× |")
             lines.append("")
     analysis["repeatability"]={}
-    for board in sorted({c["metadata"]["BOARD"] for c in analysis["captures"]}):
-        captures=[c for c in analysis["captures"] if c["metadata"]["BOARD"]==board]
+    for board,suite in sorted({(c["metadata"]["BOARD"],c["metadata"].get("SUITE","legacy8")) for c in analysis["captures"]}):
+        captures=[c for c in analysis["captures"] if c["metadata"]["BOARD"]==board and c["metadata"].get("SUITE","legacy8")==suite]
         if len(captures)<2:continue
         rows=[];accuracy_fields=("mae_C","rmse_C","max_C","max_host_gap_C")
         accuracy_sets=[{m["method"]:tuple(m[k] for k in accuracy_fields) for m in c["models"]} for c in captures]
@@ -201,8 +203,9 @@ def main():
                      range_definition="100 * (max(session medians) - min(session medians)) / min(session medians)",
                      max_relative_range_percent=max(r["relative_range_percent"] for r in rows),
                      update_cost_session_medians_us=[c["update_cost_gross_us"] for c in captures],models=rows)
-        analysis["repeatability"][board]=summary
-        lines += [f"## Between-capture repeatability: {board}","",
+        group=board if suite=="legacy8" else board+"/"+suite
+        analysis["repeatability"][group]=summary
+        lines += [f"## Between-capture repeatability: {group}","",
                   f"Reviewed {len(captures)} captures; {summary['identified_sessions']} acquisition IDs have verified sidecars. "
                   "This checks repeatability of the supplied captures; it does not estimate between-board or cold-boot variation. "
                   "Timing batches are kept within their sessions rather than pooled as independent acquisitions.","",
@@ -215,14 +218,20 @@ def main():
             lines.append(f"| {row['method']} | {row['min_us']:.6f} | {row['max_us']:.6f} | {row['relative_range_percent']:.6f} |")
         lines.append("")
     c3_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="esp32c3" and c["session"]}
+    optimized_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="esp32c3" and c["metadata"].get("SUITE")=="spline_optimized_v1" and c["session"]}
     next_step=("- The preliminary two-session C3 capture checkpoint is complete. Next: optimized cubic/Horner deployment comparators, followed by physical NTC measurements. No further repeat of unchanged firmware is required for this checkpoint."
                if len(c3_sessions)>=2 else
                "- Next: complete at least two separately identified ESP32-C3 command sessions with the same fixture; do not repeat Mega runs solely to obtain different numbers. Optimized deployment baselines and physical NTC measurements remain separate stages.")
+    if len(optimized_sessions)>=2:
+        next_step="- Two optimized-suite C3 command sessions are available. Interpret the unrolled/Horner timing together with payload and accuracy; physical NTC validation remains a separate stage."
+    spline_note=("- This suite includes general de Boor, unrolled and precompiled Horner cubic evaluation. The original scalar KAN edge remains; optimized float32 KAN candidates failed the existing host gate and were excluded from hardware timing."
+                 if any(c["metadata"].get("SUITE")=="spline_optimized_v1" for c in analysis["captures"]) else
+                 "- Cubic/KAN comparisons are against the checked-in general de Boor evaluator. An optimized piecewise-cubic/Horner deployment baseline is still needed before a general speed-superiority claim. The KAN model is one fixed-grid scalar edge plus SiLU.")
     lines += ["## Interpretation and remaining work", "",
               "- Compare the reported speed ratios together with accuracy and payload: float32 LUT32 stores 144 bytes versus 56 for the selected degree-nine Chebyshev model. A speed gain does not establish an accuracy or memory gain.",
               "- Int16 LUT32 reduces the payload to 88 bytes, but inference reconstructs floating-point values. It is not fixed-point integer inference; quantization need not reduce latency.",
               "- Uint8 and nonuniform results must be judged using both their timing and their error. This fixed fixture does not determine the best method over all sensors and budgets.",
-              "- Cubic/KAN comparisons are against the checked-in general de Boor evaluator. An optimized piecewise-cubic/Horner deployment baseline is still needed before a general speed-superiority claim. The KAN model is one fixed-grid scalar edge plus SiLU.",
+              spline_note,
               "- Physical execution time is distinct from physical sensor accuracy: all ADC/temperature test pairs are synthetic. These measurements do not establish a new NTC accuracy specification.",
               "- The UART protocol does not embed an ELF/source hash. Matching fixture metadata and numerical checks do not cryptographically identify the flashed firmware. Retain source_hashes.json and packages.txt alongside the device runs.",
               next_step, ""]

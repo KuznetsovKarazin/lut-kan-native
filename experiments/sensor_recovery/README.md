@@ -21,6 +21,10 @@ physical sensor accuracy remains unmeasured.
 - [Supplied Mega repeat and session-identity clarification](results/mega_repeat_review_20261107/RESULTS.md)
 - [First complete ESP32-C3 session and comparison with Mega](results/c3_capture_20261108/RESULTS.md)
 - [Two complete ESP32-C3 sessions and repeatability](results/c3_repeat_20261108/RESULTS.md)
+- [Optimized cubic comparison protocol](OPTIMIZED_SPLINE_PROTOCOL.md)
+- [Optimized cubic host results and interpretation (Russian)](results/optimized_spline_20261108/REPORT_RU.md)
+- [Optimized cubic MCU build sizes](results/optimized_spline_build_20261108/RESULTS.md)
+- [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN_RU.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
 Two complete C3 USB v3 command sessions validate all eight model checks, all
@@ -34,14 +38,20 @@ degree-nine polynomial (2.353×), with MAE 0.0524224 versus 0.0476196 °C and
 payload 144 versus 56 bytes. Mega gave a 2.098× ratio for the same comparison.
 Both sessions give these gross within-capture medians on a synthetic fixture,
 and the projected-update step costs 18.2422 µs in both. The preliminary MCU
-execution/capture checkpoint is complete. The next software stage is an
-optimized cubic/Horner deployment comparator; physical NTC validation remains
-a separate stage. This result does not establish physical sensor accuracy
-or training convergence.
+execution/capture checkpoint is complete. The optimized cubic follow-up now
+has two numerically validated implementations, three host-process repetitions
+at each of -O2/-Os, and sixteen MCU cross-compilations. The unrolled version
+keeps the 80-byte payload; compiled Horner uses 224 bytes. Horner and LUT are
+close in host time, with ordering dependent on compiler settings. New MCU
+timings are still pending and cannot be inferred from the host timings.
+Two optimized KAN rearrangements failed the existing float32 parity gate and
+remain host-only diagnostics. Physical NTC validation remains a separate stage.
 
-The C3 firmware and capture script remain at the successfully tested v3
-revision. No further repeat of unchanged firmware is required for this
-checkpoint; the board can be disconnected until the next hardware stage.
+The USB v3 transport is retained. Optional `esp32c3_opt`/`mega2560_opt`
+environments add two cubic methods and identify the ten-model suite explicitly.
+The default eight-model environments remain available. The batch runner
+uploads once, captures twice and packages source/image hashes, upload logs and
+all raw/parsed/session files; no USB reconnection is needed between captures.
 
 Reproduce the stored capture audit into a fresh directory:
 
