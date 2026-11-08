@@ -36,6 +36,7 @@ physical sensor accuracy remains unmeasured.
 - [Run the new matched suite on C3 and Mega (Russian)](mcu/MATCHED_RUN_RU.md)
 - [First matched C3 attempt: successful upload, Windows inventory failure](results/c3_matched_failed_20261108/RESULTS.md)
 - [Two complete matched C3 sessions: equal memory and full adaptation](results/c3_matched_20261108/RESULTS.md)
+- [First matched Mega attempt and bounded startup recovery](results/mega_matched_failed_20261108/RESULTS.md)
 
 The matched C3 checkpoint is measured: four 144-byte inference representations
 and complete float32 LUT/cubic NLMS trajectories, with and without full PAVA.
@@ -51,7 +52,12 @@ pending. The first Windows C3 attempt
 uploaded successfully but stopped at the PlatformIO package inventory with a
 CP1251 Unicode encoding error, before any capture. The runner now configures
 UTF-8 for Python subprocesses and tolerates legacy console output; the firmware
-is unchanged. The current focused suite passes 101 tests and eight model subtests.
+is unchanged. The first Mega upload also passed, but its initial H greeting
+was rejected before any run was requested. A Mega-only two-second greeting
+delay and bounded pre-READY recovery now preserve startup evidence without
+retrying Q/R or a benchmark. C3 behavior and numerical/timing code are unchanged;
+the actual Mega recovery still needs acquisition. The current focused suite
+passes 117 tests and eight model subtests.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning

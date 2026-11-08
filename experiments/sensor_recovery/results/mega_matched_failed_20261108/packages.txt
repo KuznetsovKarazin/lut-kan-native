@@ -1,0 +1,6 @@
+Resolving mega2560_matched dependencies...
+Platform atmelavr @ 5.1.0 (required: atmelavr @ 5.1.0)
+├── framework-arduino-avr @ 5.2.0 (required: platformio/framework-arduino-avr @ ~5.2.0)
+├── tool-avrdude @ 1.60300.200527 (required: platformio/tool-avrdude @ ~1.60300.0)
+└── toolchain-atmelavr @ 1.70300.191015 (required: platformio/toolchain-atmelavr @ ~1.70300.0)
+

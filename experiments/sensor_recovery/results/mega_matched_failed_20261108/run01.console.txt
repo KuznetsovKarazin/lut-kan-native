@@ -1,0 +1,3 @@
+Checking device handshake and session ID. Do not press RESET or BOOT.
+ERROR,INVALID_COMMAND
+Capture stopped; raw log and sidecar retained: Device rejected command: ERROR,INVALID_COMMAND

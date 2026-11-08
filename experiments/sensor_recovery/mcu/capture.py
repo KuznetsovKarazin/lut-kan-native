@@ -74,12 +74,17 @@ def open_serial(port, command_mode, serial_factory=None):
 
 
 def capture_stream(stream,raw,command_mode,session_id,timeout,session,
-                   emit=print,clock=time.monotonic,ready_line=None):
+                   emit=print,clock=time.monotonic,ready_line=None,
+                   hello_delay_s=0.0,hello_error_budget=0):
     """Retain partial reads until newline; never clear unread device output."""
+    if not math.isfinite(hello_delay_s) or hello_delay_s<0 or not 0<=hello_error_budget<=3:
+        raise ValueError("Invalid pre-READY recovery policy")
     lines=[];pending=b"";started=False;requested=False;accepted=False
     deadline=clock()+timeout;phase_deadline=min(deadline,clock()+15)
-    last_hello=clock()-1;phase="hello" if command_mode else "legacy"
+    hello_not_before=clock()+hello_delay_s;last_hello=hello_not_before-1
+    phase="hello" if command_mode else "legacy"
     session["usb_phase"]=phase
+    session.update(hello_delay_s=hello_delay_s,hello_error_budget=hello_error_budget,pre_ready_rejections=[])
 
     def send(data):
         if stream.write(data)!=len(data):raise IOError("Partial command write")
@@ -95,7 +100,7 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
             if ready_line:errors["hello"]="No "+ready_line+" handshake. Flash the requested matched suite and check the port."
             raise TimeoutError(errors[phase])
         if command_mode and phase=="hello":
-            if clock()-last_hello>=1:
+            if clock()>=hello_not_before and clock()-last_hello>=1:
                 send(b"H\n");last_hello=clock()
         chunk=stream.read(256)
         if not chunk:continue
@@ -133,6 +138,13 @@ def capture_stream(stream,raw,command_mode,session_id,timeout,session,
             if line.startswith("ALREADY_RAN,"):
                 raise ValueError("Device rejected a repeated session ID")
             if command_mode and line.startswith("ERROR,"):
+                # Mega can lose the first greeting while its UART is settling.
+                # Recover only before READY; never retry Q/R or a benchmark.
+                if phase=="hello" and line=="ERROR,INVALID_COMMAND" and hello_error_budget:
+                    if len(session["pre_ready_rejections"])>=hello_error_budget:
+                        raise ValueError("Pre-READY command rejection budget exceeded")
+                    session["pre_ready_rejections"].append(dict(utc=utc_now(),line=line))
+                    continue
                 raise ValueError("Device rejected command: "+line)
             if line=="END_SENSOR_BENCH":
                 session["usb_phase"]="complete"

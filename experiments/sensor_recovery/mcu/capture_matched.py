@@ -11,6 +11,8 @@ STATIC=("lut32_float32","lut60_int16","cubic32_unrolled","horner8")
 ONLINE=("lut_nlms","lut_projected_nlms","cubic_nlms","cubic_projected_nlms")
 MODES=("none","step","ramp")
 CHECKS=(0,127,128,160,192,256,320,384)
+MEGA_HELLO_DELAY_S=2.0
+MEGA_HELLO_ERROR_BUDGET=3
 
 
 def parse_lines(lines):
@@ -81,6 +83,11 @@ def parse_lines(lines):
     for tag,value in [("READY","SENSOR_MATCHED_V1,"+board),("ECHO",meta["SESSION"]),("ACCEPTED",meta["SESSION"])]:
         found=[r for r in prefix if r[0]==tag]
         if not found or any(",".join(r[1:])!=value for r in found) or (tag!="READY" and len(found)!=1):raise ValueError("Missing/mismatched "+tag)
+    first_ready=next(i for i,r in enumerate(prefix) if r[0]=="READY")
+    rejections=[(i,r) for i,r in enumerate(prefix) if r[0]=="ERROR"]
+    if rejections and (board!="mega2560" or len(rejections)>MEGA_HELLO_ERROR_BUDGET or
+                       any(i>=first_ready or r!=["ERROR","INVALID_COMMAND"] for i,r in rejections)):
+        raise ValueError("Invalid pre-READY rejection sequence")
     if payload!={n:144 for n in STATIC}:raise ValueError("Wrong static payloads")
     if storage!={n:dict(persistent_bytes=148,workspace_bytes=160 if "projected" in n else 0) for n in ONLINE}:raise ValueError("Wrong update storage")
     requirements=[(accuracy,set(STATIC)),(timing,{(m,r) for m in ("overhead",*STATIC) for r in range(10)}),
@@ -120,7 +127,9 @@ def main():
         with raw.open("xb") as output,open_serial(a.port,True) as serial:
             print("Checking device handshake and session ID. Do not press RESET or BOOT.",flush=True)
             lines=capture_stream(serial,output,True,token,a.timeout,session,emit=lambda s:print(s,flush=True),
-                                 ready_line="READY,SENSOR_MATCHED_V1,"+a.board)
+                                 ready_line="READY,SENSOR_MATCHED_V1,"+a.board,
+                                 hello_delay_s=MEGA_HELLO_DELAY_S if a.board=="mega2560" else 0.0,
+                                 hello_error_budget=MEGA_HELLO_ERROR_BUDGET if a.board=="mega2560" else 0)
         result=parse_lines(lines)
         if result["metadata"]["BOARD"]!=a.board or result["metadata"]["SESSION"]!=token:raise ValueError("Board/session mismatch")
         a.out.write_text(json.dumps(result,indent=2)+"\n")

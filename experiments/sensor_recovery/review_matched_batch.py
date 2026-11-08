@@ -11,7 +11,7 @@ import statistics
 import subprocess
 import zipfile
 
-from mcu.capture_matched import parse_lines, STATIC, ONLINE, MODES
+from mcu.capture_matched import parse_lines, STATIC, ONLINE, MODES, MEGA_HELLO_ERROR_BUDGET
 from mcu.run_matched import source_hashes
 
 HERE = Path(__file__).resolve().parent
@@ -50,7 +50,17 @@ def check_capture(files, entry, board, capture_script_sha256):
     require(side["raw_bytes"] == len(raw), "Raw length mismatch")
     for key, content in (("raw_sha256", raw), ("result_sha256", files[name])):
         require(entry[key] == side[key] == digest(content), "Capture hash mismatch: " + key)
-    require([r["text"] for r in side["tx_commands"]] == ["H", "Q," + token, "R," + token], "Wrong commands")
+    commands = [r["text"] for r in side["tx_commands"]]
+    require(1 <= len(commands)-2 <= 15 and commands[-2:] == ["Q," + token, "R," + token]
+            and all(c == "H" for c in commands[:-2]), "Wrong commands")
+    rejected = [line for line in raw.decode("utf-8-sig").splitlines() if line.startswith("ERROR,")]
+    saved_rejections = side.get("pre_ready_rejections", [])
+    require(rejected == [r["line"] for r in saved_rejections], "Startup rejection record mismatch")
+    if rejected:
+        require(board == "mega2560" and side.get("hello_error_budget") == MEGA_HELLO_ERROR_BUDGET,
+                "Unexpected startup recovery policy")
+        require(all(instant(side["start_utc"]) <= instant(r["utc"]) <= instant(side["tx_commands"][-2]["utc"])
+                    for r in saved_rejections), "Startup rejection time outside hello phase")
     times = [instant(x) for x in [side["start_utc"], *[r["utc"] for r in side["tx_commands"]],
                                  side["run_accepted_utc"], side["end_utc"]]]
     require(times == sorted(times) and times[0] < times[-1], "Session time order mismatch")
@@ -140,6 +150,7 @@ def audit_archive(path):
                   source_checks=sources, image_checks=images, source_before_equals_after=True,
                   files={n: dict(bytes=len(b), sha256=digest(b)) for n, b in files.items()},
                   sessions=[dict(session_id=s["session_id"], start_utc=s["start_utc"], end_utc=s["end_utc"],
+                                 pre_ready_rejection_count=len(s.get("pre_ready_rejections", [])),
                                  max_prediction_gap_C=max(v["max_host_gap_C"] for v in r["accuracy"].values()),
                                  max_checkpoint_gap_C=max(v["max_gap_C"] for v in r["state_checks"]),
                                  max_timed_state_gap_C=max(v["final_state_gap_C"] for v in r["update_timings"]),

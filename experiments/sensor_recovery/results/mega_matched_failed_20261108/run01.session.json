@@ -1,0 +1,21 @@
+{
+  "session_id": "f945c8c04f8b4d8e989101732c452779",
+  "board_requested": "mega2560",
+  "start_utc": "2026-11-08T09:31:30.743279+00:00",
+  "port": "COM12",
+  "mode": "command_matched_v1",
+  "status": "failed",
+  "tx_commands": [
+    {
+      "utc": "2026-11-08T09:31:30.781443+00:00",
+      "text": "H"
+    }
+  ],
+  "capture_script_sha256": "a7ba4ef9ae7e9c3d4537403e5d4be1c35469aaf17aba019c9a75bb25d9494e60",
+  "usb_phase": "hello",
+  "error": "Device rejected command: ERROR,INVALID_COMMAND",
+  "error_type": "ValueError",
+  "end_utc": "2026-11-08T09:31:30.997277+00:00",
+  "raw_sha256": "a7ad33138ac1a54475907fd40eed6e03980813fd99fd3fcf5f8aa4fb1a0046bf",
+  "raw_bytes": 23
+}

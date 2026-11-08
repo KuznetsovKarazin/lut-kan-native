@@ -26,6 +26,21 @@ def test_saved_device_capture_is_reparsed_and_matches_host_reference():
     assert session["session_id"] == "646fff2706d34a228f77cc5fc0b4348d"
 
 
+@pytest.mark.parametrize("verb", ["H", "Q", "R"])
+def test_audit_allows_repeated_hello_but_not_probe_or_run_commands(verb):
+    files, entry, script = saved_capture()
+    side = json.loads(files["run01.session.json"])
+    repeated = copy.deepcopy(side["tx_commands"][0])
+    repeated["text"] = verb if verb == "H" else verb + "," + side["session_id"]
+    side["tx_commands"].insert(1, repeated)
+    files["run01.session.json"] = json.dumps(side).encode("utf8")
+    if verb == "H":
+        check_capture(files, entry, "esp32c3", script)
+    else:
+        with pytest.raises(ValueError, match="Wrong commands"):
+            check_capture(files, entry, "esp32c3", script)
+
+
 @pytest.mark.parametrize("fault", ["side_id", "script_hash", "time_order", "console", "result_hash", "false_metric"])
 def test_reject_changed_evidence(fault):
     files, entry, script = saved_capture()
