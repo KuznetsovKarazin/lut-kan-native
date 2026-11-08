@@ -11,19 +11,23 @@ from review_matched_batch import check_capture, digest
 SAVED = Path(__file__).resolve().parent / "results/c3_matched_20261108"
 
 
-def saved_capture():
-    batch = json.loads((SAVED / "batch.redacted.json").read_bytes())
-    files = {p.name: p.read_bytes() for p in SAVED.glob("run01.*")}
+def saved_capture(board="esp32c3", run=1):
+    directory = SAVED if board == "esp32c3" else SAVED.parent / "mega_matched_20261108"
+    batch = json.loads((directory / "batch.redacted.json").read_bytes())
+    files = {p.name: p.read_bytes() for p in directory.glob(f"run{run:02d}.*")}
     sources = {p.replace("\\", "/"): v for p, v in batch["source_before"].items()}
     script = sources["experiments/sensor_recovery/mcu/capture_matched.py"]["raw_sha256"]
-    return files, copy.deepcopy(batch["captures"][0]), script
+    return files, copy.deepcopy(batch["captures"][run-1]), script
 
 
-def test_saved_device_capture_is_reparsed_and_matches_host_reference():
-    files, entry, script = saved_capture()
-    result, session = check_capture(files, entry, "esp32c3", script)
+@pytest.mark.parametrize("board", ["esp32c3", "mega2560"])
+@pytest.mark.parametrize("run", [1, 2])
+def test_saved_device_capture_is_reparsed_and_matches_host_reference(board, run):
+    files, entry, script = saved_capture(board, run)
+    result, session = check_capture(files, entry, board, script)
     assert len(result["update_timings"]) == 120
-    assert session["session_id"] == "646fff2706d34a228f77cc5fc0b4348d"
+    assert session["session_id"] == entry["session_id"]
+    assert len(session.get("pre_ready_rejections", [])) == (1 if board == "mega2560" else 0)
 
 
 @pytest.mark.parametrize("verb", ["H", "Q", "R"])

@@ -1,0 +1,12 @@
+\begin{tabular}{lrrr}
+\hline
+Model (144 B) & Mega ($\mu$s) & C3 ($\mu$s) & MAE ($^\circ$C) \\
+\hline
+LUT32 float32 & 167.279 & 12.051 & 0.05571 \\
+LUT60 int16 & 204.830 & 15.715 & 0.04786 \\
+Cubic32 & 369.023 & 28.543 & 0.04440 \\
+Horner8 & 192.788 & 13.984 & 0.04552 \\
+\hline
+\end{tabular}
+% MAE shown at five decimals; platform differences are at most about 1e-7 deg C.
+% Times: median of two acquisition medians, not a pooled sample or a confidence interval.

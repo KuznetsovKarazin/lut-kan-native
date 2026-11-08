@@ -33,12 +33,14 @@ physical sensor accuracy remains unmeasured.
 - [Interpretation and continuation plan (Russian)](results/matched_adaptation_20261108/REPORT_RU.md)
 - [Matched MCU measurement protocol](MATCHED_MCU_PROTOCOL.md)
 - [Matched MCU host validation and cross-compiled sizes](results/matched_mcu_20261108/RESULTS.md)
-- [Run the new matched suite on C3 and Mega (Russian)](mcu/MATCHED_RUN_RU.md)
+- [Reproduce the completed matched C3 and Mega suite (Russian)](mcu/MATCHED_RUN_RU.md)
 - [First matched C3 attempt: successful upload, Windows inventory failure](results/c3_matched_failed_20261108/RESULTS.md)
 - [Two complete matched C3 sessions: equal memory and full adaptation](results/c3_matched_20261108/RESULTS.md)
 - [First matched Mega attempt and bounded startup recovery](results/mega_matched_failed_20261108/RESULTS.md)
+- [Two complete matched Mega sessions and verified startup recovery](results/mega_matched_20261108/RESULTS.md)
+- [Completed matched Mega/C3 comparison, figures and manuscript limits](results/matched_boards_20261108/RESULTS.md)
 
-The matched C3 checkpoint is measured: four 144-byte inference representations
+The matched C3 and Mega checkpoint is complete: four 144-byte inference representations
 and complete float32 LUT/cubic NLMS trajectories, with and without full PAVA.
 All 20 cross-compilations pass; host prediction/state gaps stay below 0.000016 °C
 against the frozen reference. The new suites use device-acknowledged sessions
@@ -47,17 +49,25 @@ captures give LUT32 12.051025 µs/call versus Horner8 13.984131 at equal payload
 13.824% less time, with MAE 0.0557110 versus 0.0455196 °C. Full projected LUT
 NLMS takes 43.781250 µs/update versus cubic's 71.861979 on the step trajectory;
 cubic is more accurate. PAVA runs without needing block merges on this fixture,
-so these are not worst-case projection times. Mega matched timings remain
-pending. The first Windows C3 attempt
+so these are not worst-case projection times. Two complete Mega sessions give
+LUT32 167.279297 µs/call versus Horner8 192.788086: 13.232% less time with the
+same accuracy trade-off. Full projected updates take 797.156250 µs for LUT
+and 1149.541667 for cubic on the step trajectory. Source/image/raw/session
+checks pass on both boards; the comparison retains separate session medians
+and does not infer independent-device replication. The first Windows C3 attempt
 uploaded successfully but stopped at the PlatformIO package inventory with a
 CP1251 Unicode encoding error, before any capture. The runner now configures
 UTF-8 for Python subprocesses and tolerates legacy console output; the firmware
 is unchanged. The first Mega upload also passed, but its initial H greeting
 was rejected before any run was requested. A Mega-only two-second greeting
 delay and bounded pre-READY recovery now preserve startup evidence without
-retrying Q/R or a benchmark. C3 behavior and numerical/timing code are unchanged;
-the actual Mega recovery still needs acquisition. The current focused suite
-passes 117 tests and eight model subtests.
+retrying Q/R or a benchmark. Both successful Mega sessions required one such
+retry; the delay alone did not eliminate the initial rejection. Recovery is
+now physically verified, while the cause of that rejection remains unknown.
+C3 behavior and numerical/timing code are unchanged. The current focused suite
+passes 120 tests and eight model subtests. No additional board acquisition is
+needed for this checkpoint; the next step is manuscript synthesis using the
+joint equal-memory comparison and its explicit limitations.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning
@@ -111,7 +121,7 @@ all raw/parsed/session files; no USB reconnection is needed between captures.
 The one-upload/two-capture path is now supported by the supplied Windows/C3
 and Mega batches. The numerical matched-storage and adaptation follow-up
 originally added no firmware changes. The subsequent matched MCU environments
-are prepared for acquisition, with C3 now measured and Mega still pending.
+have now been measured on both C3 and Mega.
 Physical NTC accuracy remains a separate, unmeasured stage.
 
 Reproduce the stored capture audit into a fresh directory:

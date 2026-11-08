@@ -1,0 +1,1054 @@
+{
+  "boards": {
+    "mega2560": {
+      "source_commit": "a86116f87e8c04b9cee54eb7766ecf62b9484075",
+      "archive_sha256": "90245afc27176c7c7b66049b6d83d1bc21ef120e9f33c72e8281825873a8b2ae",
+      "sessions": [
+        {
+          "session_id": "4b8c535d310f4115a71678cedf6c28d1",
+          "start_utc": "2026-11-08T09:44:53.701475+00:00",
+          "end_utc": "2026-11-08T09:45:58.788536+00:00",
+          "pre_ready_rejection_count": 1,
+          "max_prediction_gap_C": 1.526e-05,
+          "max_checkpoint_gap_C": 1.49e-05,
+          "max_timed_state_gap_C": 1.192e-05,
+          "counts": {
+            "accuracy": 4,
+            "timings": 50,
+            "state_checks": 96,
+            "update_accuracy": 12,
+            "update_timings": 120,
+            "update_overhead": 30
+          }
+        },
+        {
+          "session_id": "ad691e200e3540d09de10b2d6117c356",
+          "start_utc": "2026-11-08T09:45:58.878840+00:00",
+          "end_utc": "2026-11-08T09:47:03.998544+00:00",
+          "pre_ready_rejection_count": 1,
+          "max_prediction_gap_C": 1.526e-05,
+          "max_checkpoint_gap_C": 1.49e-05,
+          "max_timed_state_gap_C": 1.192e-05,
+          "counts": {
+            "accuracy": 4,
+            "timings": 50,
+            "state_checks": 96,
+            "update_accuracy": 12,
+            "update_timings": 120,
+            "update_overhead": 30
+          }
+        }
+      ],
+      "static": {
+        "lut32_float32": {
+          "session_medians_us": [
+            167.279296875,
+            167.279296875
+          ],
+          "median_of_session_medians_us": 167.279296875,
+          "min_session_median_us": 167.279296875,
+          "max_session_median_us": 167.279296875,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.055711,
+              "rmse_C": 0.0837515,
+              "max_C": 0.4702148,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.055711,
+              "rmse_C": 0.0837515,
+              "max_C": 0.4702148,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "lut60_int16": {
+          "session_medians_us": [
+            204.830078125,
+            204.830078125
+          ],
+          "median_of_session_medians_us": 204.830078125,
+          "min_session_median_us": 204.830078125,
+          "max_session_median_us": 204.830078125,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.0478595,
+              "rmse_C": 0.0687363,
+              "max_C": 0.3202744,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0478595,
+              "rmse_C": 0.0687363,
+              "max_C": 0.3202744,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "cubic32_unrolled": {
+          "session_medians_us": [
+            369.0234375,
+            369.0224609375
+          ],
+          "median_of_session_medians_us": 369.02294921875,
+          "min_session_median_us": 369.0224609375,
+          "max_session_median_us": 369.0234375,
+          "relative_session_range_percent": 0.0002646346255883159,
+          "metrics": [
+            {
+              "mae_C": 0.0444038,
+              "rmse_C": 0.0639407,
+              "max_C": 0.2678528,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0444038,
+              "rmse_C": 0.0639407,
+              "max_C": 0.2678528,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "horner8": {
+          "session_medians_us": [
+            192.787109375,
+            192.7890625
+          ],
+          "median_of_session_medians_us": 192.7880859375,
+          "min_session_median_us": 192.787109375,
+          "max_session_median_us": 192.7890625,
+          "relative_session_range_percent": 0.0010130942430919636,
+          "metrics": [
+            {
+              "mae_C": 0.0455196,
+              "rmse_C": 0.0658783,
+              "max_C": 0.2676544,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0455196,
+              "rmse_C": 0.0658783,
+              "max_C": 0.2676544,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        }
+      },
+      "online": {
+        "none": {
+          "lut_nlms": {
+            "session_medians_us": [
+              371.4270833333333,
+              371.4270833333333
+            ],
+            "median_of_session_medians_us": 371.4270833333333,
+            "min_session_median_us": 371.4270833333333,
+            "max_session_median_us": 371.4270833333333,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "lut_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              },
+              {
+                "drift": "none",
+                "method": "lut_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              797.3958333333334,
+              797.40625
+            ],
+            "median_of_session_medians_us": 797.4010416666667,
+            "min_session_median_us": 797.3958333333334,
+            "max_session_median_us": 797.40625,
+            "relative_session_range_percent": 0.0013063271957679727,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              },
+              {
+                "drift": "none",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              724.0,
+              723.9947916666667
+            ],
+            "median_of_session_medians_us": 723.9973958333334,
+            "min_session_median_us": 723.9947916666667,
+            "max_session_median_us": 724.0,
+            "relative_session_range_percent": 0.0007193856446489923,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "cubic_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.2972259,
+                "max_host_metric_gap_C": 1.37e-06
+              },
+              {
+                "drift": "none",
+                "method": "cubic_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.2972259,
+                "max_host_metric_gap_C": 1.37e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              1149.9583333333333,
+              1149.9479166666667
+            ],
+            "median_of_session_medians_us": 1149.953125,
+            "min_session_median_us": 1149.9479166666667,
+            "max_session_median_us": 1149.9583333333333,
+            "relative_session_range_percent": 0.0009058340240185951,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.2972259,
+                "max_host_metric_gap_C": 1.37e-06
+              },
+              {
+                "drift": "none",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.2972259,
+                "max_host_metric_gap_C": 1.37e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        },
+        "step": {
+          "lut_nlms": {
+            "session_medians_us": [
+              371.1770833333333,
+              371.1770833333333
+            ],
+            "median_of_session_medians_us": 371.1770833333333,
+            "min_session_median_us": 371.1770833333333,
+            "max_session_median_us": 371.1770833333333,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "lut_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              },
+              {
+                "drift": "step",
+                "method": "lut_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              797.15625,
+              797.15625
+            ],
+            "median_of_session_medians_us": 797.15625,
+            "min_session_median_us": 797.15625,
+            "max_session_median_us": 797.15625,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              },
+              {
+                "drift": "step",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              723.5833333333334,
+              723.5833333333334
+            ],
+            "median_of_session_medians_us": 723.5833333333334,
+            "min_session_median_us": 723.5833333333334,
+            "max_session_median_us": 723.5833333333334,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "cubic_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              },
+              {
+                "drift": "step",
+                "method": "cubic_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              1149.5416666666667,
+              1149.5416666666667
+            ],
+            "median_of_session_medians_us": 1149.5416666666667,
+            "min_session_median_us": 1149.5416666666667,
+            "max_session_median_us": 1149.5416666666667,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              },
+              {
+                "drift": "step",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        },
+        "ramp": {
+          "lut_nlms": {
+            "session_medians_us": [
+              371.0729166666667,
+              371.0729166666667
+            ],
+            "median_of_session_medians_us": 371.0729166666667,
+            "min_session_median_us": 371.0729166666667,
+            "max_session_median_us": 371.0729166666667,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "lut_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "lut_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              797.0625,
+              797.0572916666667
+            ],
+            "median_of_session_medians_us": 797.0598958333334,
+            "min_session_median_us": 797.0572916666667,
+            "max_session_median_us": 797.0625,
+            "relative_session_range_percent": 0.0006534431553367997,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              723.6354166666666,
+              723.6354166666666
+            ],
+            "median_of_session_medians_us": 723.6354166666666,
+            "min_session_median_us": 723.6354166666666,
+            "max_session_median_us": 723.6354166666666,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "cubic_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "cubic_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              1149.59375,
+              1149.59375
+            ],
+            "median_of_session_medians_us": 1149.59375,
+            "min_session_median_us": 1149.59375,
+            "max_session_median_us": 1149.59375,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        }
+      },
+      "ratios": {
+        "horner_over_lut": 1.1524922063820098,
+        "lut_inference_time_reduction_percent": 13.23151736190259,
+        "step_plain_cubic_over_lut": 1.9494289001768026,
+        "step_projected_cubic_over_lut": 1.4420531315744771,
+        "step_projected_lut_time_reduction_percent": 30.65442748921672
+      }
+    },
+    "esp32c3": {
+      "source_commit": "12c6415467b3138c0af7e5b49828a01c0f1066ec",
+      "archive_sha256": "53ceb2ffa59b2a626647d7880c3453fa72168bb9b043b2369f777ef746657b54",
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "start_utc": "2026-11-08T09:15:47.106806+00:00",
+          "end_utc": "2026-11-08T09:15:52.346202+00:00",
+          "max_prediction_gap_C": 1.526e-05,
+          "max_checkpoint_gap_C": 1.49e-05,
+          "max_timed_state_gap_C": 1.192e-05,
+          "counts": {
+            "accuracy": 4,
+            "timings": 50,
+            "state_checks": 96,
+            "update_accuracy": 12,
+            "update_timings": 120,
+            "update_overhead": 30
+          }
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "start_utc": "2026-11-08T09:15:52.461845+00:00",
+          "end_utc": "2026-11-08T09:15:57.712062+00:00",
+          "max_prediction_gap_C": 1.526e-05,
+          "max_checkpoint_gap_C": 1.49e-05,
+          "max_timed_state_gap_C": 1.192e-05,
+          "counts": {
+            "accuracy": 4,
+            "timings": 50,
+            "state_checks": 96,
+            "update_accuracy": 12,
+            "update_timings": 120,
+            "update_overhead": 30
+          }
+        }
+      ],
+      "static": {
+        "lut32_float32": {
+          "session_medians_us": [
+            12.051025390625,
+            12.051025390625
+          ],
+          "median_of_session_medians_us": 12.051025390625,
+          "min_session_median_us": 12.051025390625,
+          "max_session_median_us": 12.051025390625,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.055711,
+              "rmse_C": 0.0837515,
+              "max_C": 0.4702148,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.055711,
+              "rmse_C": 0.0837515,
+              "max_C": 0.4702148,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "lut60_int16": {
+          "session_medians_us": [
+            15.71484375,
+            15.71484375
+          ],
+          "median_of_session_medians_us": 15.71484375,
+          "min_session_median_us": 15.71484375,
+          "max_session_median_us": 15.71484375,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.0478595,
+              "rmse_C": 0.0687363,
+              "max_C": 0.3202744,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0478595,
+              "rmse_C": 0.0687363,
+              "max_C": 0.3202744,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "cubic32_unrolled": {
+          "session_medians_us": [
+            28.54345703125,
+            28.54345703125
+          ],
+          "median_of_session_medians_us": 28.54345703125,
+          "min_session_median_us": 28.54345703125,
+          "max_session_median_us": 28.54345703125,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.0444039,
+              "rmse_C": 0.0639407,
+              "max_C": 0.2678528,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0444039,
+              "rmse_C": 0.0639407,
+              "max_C": 0.2678528,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        },
+        "horner8": {
+          "session_medians_us": [
+            13.984130859375,
+            13.984130859375
+          ],
+          "median_of_session_medians_us": 13.984130859375,
+          "min_session_median_us": 13.984130859375,
+          "max_session_median_us": 13.984130859375,
+          "relative_session_range_percent": 0.0,
+          "metrics": [
+            {
+              "mae_C": 0.0455196,
+              "rmse_C": 0.0658783,
+              "max_C": 0.2676544,
+              "max_host_gap_C": 1.526e-05
+            },
+            {
+              "mae_C": 0.0455196,
+              "rmse_C": 0.0658783,
+              "max_C": 0.2676544,
+              "max_host_gap_C": 1.526e-05
+            }
+          ],
+          "payload_bytes": 144
+        }
+      },
+      "online": {
+        "none": {
+          "lut_nlms": {
+            "session_medians_us": [
+              24.611979166666668,
+              24.611979166666668
+            ],
+            "median_of_session_medians_us": 24.611979166666668,
+            "min_session_median_us": 24.611979166666668,
+            "max_session_median_us": 24.611979166666668,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "lut_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              },
+              {
+                "drift": "none",
+                "method": "lut_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              43.776041666666664,
+              43.776041666666664
+            ],
+            "median_of_session_medians_us": 43.776041666666664,
+            "min_session_median_us": 43.776041666666664,
+            "max_session_median_us": 43.776041666666664,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              },
+              {
+                "drift": "none",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0566184,
+                "rmse_C": 0.0952108,
+                "max_C": 0.5463257,
+                "max_host_metric_gap_C": 1.19e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              52.65625,
+              52.65625
+            ],
+            "median_of_session_medians_us": 52.65625,
+            "min_session_median_us": 52.65625,
+            "max_session_median_us": 52.65625,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "cubic_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.297226,
+                "max_host_metric_gap_C": 1.37e-06
+              },
+              {
+                "drift": "none",
+                "method": "cubic_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.297226,
+                "max_host_metric_gap_C": 1.37e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              71.8203125,
+              71.8203125
+            ],
+            "median_of_session_medians_us": 71.8203125,
+            "min_session_median_us": 71.8203125,
+            "max_session_median_us": 71.8203125,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "none",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.297226,
+                "max_host_metric_gap_C": 1.37e-06
+              },
+              {
+                "drift": "none",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0436144,
+                "rmse_C": 0.0635431,
+                "max_C": 0.297226,
+                "max_host_metric_gap_C": 1.37e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        },
+        "step": {
+          "lut_nlms": {
+            "session_medians_us": [
+              24.614583333333332,
+              24.614583333333332
+            ],
+            "median_of_session_medians_us": 24.614583333333332,
+            "min_session_median_us": 24.614583333333332,
+            "max_session_median_us": 24.614583333333332,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "lut_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              },
+              {
+                "drift": "step",
+                "method": "lut_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              43.78125,
+              43.78125
+            ],
+            "median_of_session_medians_us": 43.78125,
+            "min_session_median_us": 43.78125,
+            "max_session_median_us": 43.78125,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              },
+              {
+                "drift": "step",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.0589095,
+                "rmse_C": 0.0989754,
+                "max_C": 0.5484619,
+                "max_host_metric_gap_C": 2.8e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              52.6640625,
+              52.6640625
+            ],
+            "median_of_session_medians_us": 52.6640625,
+            "min_session_median_us": 52.6640625,
+            "max_session_median_us": 52.6640625,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "cubic_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              },
+              {
+                "drift": "step",
+                "method": "cubic_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              71.86197916666667,
+              71.86197916666667
+            ],
+            "median_of_session_medians_us": 71.86197916666667,
+            "min_session_median_us": 71.86197916666667,
+            "max_session_median_us": 71.86197916666667,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "step",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              },
+              {
+                "drift": "step",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0446434,
+                "rmse_C": 0.0658679,
+                "max_C": 0.4407349,
+                "max_host_metric_gap_C": 1.106e-05
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        },
+        "ramp": {
+          "lut_nlms": {
+            "session_medians_us": [
+              24.6171875,
+              24.6171875
+            ],
+            "median_of_session_medians_us": 24.6171875,
+            "min_session_median_us": 24.6171875,
+            "max_session_median_us": 24.6171875,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "lut_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "lut_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "lut_projected_nlms": {
+            "session_medians_us": [
+              43.78125,
+              43.78125
+            ],
+            "median_of_session_medians_us": 43.78125,
+            "min_session_median_us": 43.78125,
+            "max_session_median_us": 43.78125,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "lut_projected_nlms",
+                "mae_C": 0.058707,
+                "rmse_C": 0.0987618,
+                "max_C": 0.546402,
+                "max_host_metric_gap_C": 8.17e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          },
+          "cubic_nlms": {
+            "session_medians_us": [
+              52.666666666666664,
+              52.666666666666664
+            ],
+            "median_of_session_medians_us": 52.666666666666664,
+            "min_session_median_us": 52.666666666666664,
+            "max_session_median_us": 52.666666666666664,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "cubic_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "cubic_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 0
+          },
+          "cubic_projected_nlms": {
+            "session_medians_us": [
+              71.85677083333333,
+              71.85677083333333
+            ],
+            "median_of_session_medians_us": 71.85677083333333,
+            "min_session_median_us": 71.85677083333333,
+            "max_session_median_us": 71.85677083333333,
+            "relative_session_range_percent": 0.0,
+            "metrics": [
+              {
+                "drift": "ramp",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              },
+              {
+                "drift": "ramp",
+                "method": "cubic_projected_nlms",
+                "mae_C": 0.0443521,
+                "rmse_C": 0.0657204,
+                "max_C": 0.4482956,
+                "max_host_metric_gap_C": 7.09e-06
+              }
+            ],
+            "persistent_bytes": 148,
+            "workspace_bytes": 160
+          }
+        }
+      },
+      "ratios": {
+        "horner_over_lut": 1.1604100403152287,
+        "lut_inference_time_reduction_percent": 13.823565355540424,
+        "step_plain_cubic_over_lut": 2.139547185780787,
+        "step_projected_cubic_over_lut": 1.641387104449203,
+        "step_projected_lut_time_reduction_percent": 39.075919550643235
+      }
+    }
+  },
+  "maximum_reported_metric_difference_between_boards_C": 1.0000000000287557e-07,
+  "matched_firmware_source_hashes": {
+    "experiments/sensor_recovery/mcu/platformio.ini": "86b3ea3d5dc8db4d22d06ed311032560166765a9403eb80c9847dd33c8cb3db2",
+    "experiments/sensor_recovery/mcu/include/command_protocol.h": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+    "experiments/sensor_recovery/mcu/include/fixture.h": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+    "experiments/sensor_recovery/mcu/include/kernels.h": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+    "experiments/sensor_recovery/mcu/include/matched_fixture.h": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+    "experiments/sensor_recovery/mcu/include/matched_identity.h": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+    "experiments/sensor_recovery/mcu/include/matched_kernels.h": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+    "experiments/sensor_recovery/mcu/include/models.h": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+    "experiments/sensor_recovery/mcu/include/optimized_coefficients.h": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+    "experiments/sensor_recovery/mcu/include/optimized_spline.h": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+    "experiments/sensor_recovery/mcu/include/usb_bench_serial.h": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c",
+    "experiments/sensor_recovery/mcu/src/main.cpp": "dd5fd22ce50081ceb9e3d4d4725883a0ff28caf75384cad63f8dfc18d48c4722",
+    "experiments/sensor_recovery/mcu/src/matched_main.cpp": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956"
+  },
+  "aggregation": "Median of the two within-session medians; raw repeats are not pooled. Descriptive statistic, not independent-board inference.",
+  "scope": "Synthetic labelled NTC fixture; one physical board per architecture, two sequential sessions each; gross timings with reads/checksums included. PAVA needs no block merges in this fixture."
+}

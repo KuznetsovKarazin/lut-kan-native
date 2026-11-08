@@ -1,5 +1,9 @@
 # Equal-memory inference and complete adaptation measured on ESP32-C3
 
+Update, 8 November 2026: the matched Mega checkpoint is also complete.
+See the [joint comparison and figures](../matched_boards_20261108/RESULTS.md).
+The C3 measurement record below is preserved as a checkpoint-specific report.
+
 Two device-acknowledged C3 sessions pass the frozen matched-MCU protocol.
 At the same 144-byte payload, LUT32 takes 12.051025 µs/call and Horner8 takes
 13.984131: LUT time is 13.824% lower, while Horner is more accurate. Full
@@ -123,5 +127,6 @@ python experiments/sensor_recovery/analyze_matched_projection.py --out runs/c3_m
 ```
 
 The review uses the standard library; projection replay needs NumPy and g++.
-`comparison.json` records ratios and frozen/adapted comparisons. Next, run
-the same frozen suite twice on Mega2560 using [the instructions](../../mcu/MATCHED_RUN_RU.md).
+`comparison.json` records ratios and frozen/adapted comparisons. See
+the [completed Mega/C3 comparison](../matched_boards_20261108/RESULTS.md)
+for the subsequent Mega acquisitions and manuscript interpretation.
