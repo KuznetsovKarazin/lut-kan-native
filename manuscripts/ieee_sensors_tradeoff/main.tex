@@ -1,0 +1,227 @@
+\documentclass[journal,10pt]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array,cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url,balance}
+\hypersetup{pdftitle={Accuracy-Memory-Latency Trade-Offs in Embedded Sensor Calibration and Adaptation},pdfauthor={Oleksandr Kuznetsov},pdfsubject={IEEE Sensors Journal first draft, 8 November 2026},pdfkeywords={calibration, lookup tables, microcontrollers, sensor drift, splines}}
+\makeatletter\let\tableinput\@@input\makeatother
+\interdisplaylinepenalty=2500
+\newcommand{\degC}{\ensuremath{^{\circ}\mathrm{C}}}
+\newcommand{\us}{\ensuremath{\mu\mathrm{s}}}
+\newcommand{\repo}{https://github.com/KuznetsovKarazin/lut-kan-native}
+\newcommand{\snapshot}{db39238c1467169b65ff1f3581945e57ee7ffd7a}
+\hyphenation{micro-controller micro-controllers mono-tonic}
+\begin{document}
+\title{Accuracy--Memory--Latency Trade-Offs in Embedded Sensor Calibration and Adaptation}
+\author{Oleksandr Kuznetsov,~\IEEEmembership{Member,~IEEE}%
+\thanks{O. Kuznetsov is with the Department of Theoretical and Applied Sciences, eCampus University, Italy, and with the Department of Intelligent Software Systems and Technologies, School of Computer Science and Artificial Intelligence, V.N. Karazin Kharkiv National University, Ukraine (e-mail: oleksandr.kuznetsov@uniecampus.it; ORCID: 0000-0003-2331-6326).}}
+\markboth{IEEE Sensors Journal --- First manuscript draft, 8 November 2026}{Kuznetsov: Embedded Sensor Calibration and Adaptation}
+\IEEEaftertitletext{\centering\includegraphics[width=.98\textwidth]{figures/graphical_abstract.pdf}\par\vspace{0.6em}}
+\maketitle
+\begin{abstract}
+Embedded sensor calibration requires a choice between approximation accuracy, model storage, and execution time. This paper compares lookup tables, compact cubic splines, and piecewise cubic polynomials under identical serialized model budgets, with fitted physical models and global polynomials as additional references. A controlled synthetic study covers thermistor and light-dependent-resistor responses, front-end distortion, two initial reference budgets, and three memory limits. It comprises 3312 static fits and 3888 sequential adaptation trajectories. The accuracy ranking depends on storage: float32 lookup tables have 34.0--42.8\% lower mean absolute error than compiled cubic Horner representations at 80 bytes, whereas Horner representations have lower error in every scenario at 144 and 224 bytes. A predetermined synthetic case is then executed on physical Mega2560 and ESP32-C3 boards. At 144 bytes, lookup-table inference takes 13.2--13.8\% less time than Horner evaluation, while its mean absolute error is 0.05571 rather than 0.04552 degrees Celsius. Projected normalized least-mean-square updates take 30.7--39.1\% less time for lookup tables than for compact cubics, at a higher residual error. These results support budget-dependent representation selection. They establish computational trade-offs and recovery from prescribed synthetic drift; physical sensor accuracy and industrial operating reliability remain untested.
+\end{abstract}
+\begin{IEEEkeywords}
+Calibration, embedded systems, lookup tables, microcontrollers, sensor drift, splines.
+\end{IEEEkeywords}
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/protocol.pdf}
+\caption{Evidence structure. Calibration quantities and drift are generated synthetically. Physical boards execute a predetermined fixture to measure inference and update time. The numerical gate compares target arithmetic with the reference implementation; it is not a sensor accuracy specification.}
+\label{fig:protocol}
+\end{figure*}
+
+\section{Introduction}
+\IEEEPARstart{S}{ensor} calibration converts an electrical measurement into an estimate of a physical quantity. In a small embedded device, this conversion must satisfy several constraints simultaneously. A representation with more coefficients may reduce approximation error but increase memory traffic or update cost. A compact physical equation may be preferable when it describes the complete measurement chain. When the front end introduces additional distortion, a fitted numerical representation may be more useful.
+
+Software linearization is an established problem. Erdem compared sensor linearization algorithms in terms of accuracy, memory, and execution time on low-cost microcontrollers \cite{erdem}. Petkov\v{s}ek \emph{et al.} examined lookup tables (LUTs), thermistor equations, and polynomial evaluation in a time-critical application \cite{petkovsek}. These studies make a strong polynomial implementation an essential comparator. The Steinhart--Hart model remains a relevant thermistor reference \cite{steinhart}. Local B-spline evaluation and penalized spline fitting are likewise well established \cite{deboor,eilers}; adaptive splines, normalized least mean squares (NLMS), recursive least squares (RLS), and isotonic projection are not new algorithms \cite{scarpiniti,haykin,pava}.
+
+There is also a connection to Kolmogorov--Arnold networks (KANs), which use learnable scalar edge functions \cite{kan}. LUT compilation can reduce the cost of evaluating such functions \cite{lutkan}. However, scalar sensor calibration does not by itself require a multilayer KAN. Here, a spline-plus-SiLU scalar edge is one comparator; the conclusions concern stored scalar representations, not a general advantage of KAN architectures.
+
+The question studied is more specific: \emph{which representation is preferable when the serialized storage, calibration references, update stream, and deployed arithmetic are controlled?} Equal numbers of coefficients do not imply equal storage. In particular, a compact spline shares coefficients between adjacent pieces, whereas an expanded Horner representation stores four coefficients per piece. At the same byte limit, these alternatives have different approximation capacities. Similarly, inference payload alone does not describe an adaptive implementation with projection workspace or an RLS covariance matrix.
+
+This paper contributes a reproducible comparison at three exact payload limits; a separate development and confirmation experiment for sequential, reference-based adaptation; and validated full-precision-path measurements on two physical microcontroller architectures. The resulting design maps expose both favorable and unfavorable cases for LUTs. Figure~\ref{fig:protocol} separates the synthetic accuracy experiment from physical execution measurements. No physical sensor observations enter the study.
+
+
+
+\section{Representations and Memory Accounting}
+\subsection{Common calibration model}
+Let $a$ denote the normalized analog-to-digital converter (ADC) observation and $q$ the reference quantity. Input and output transforms give $x=(a-a_m)/a_h$ and $y=(q-q_m)/q_h$. Every representation stores these four transform values as float32, consuming 16 bytes. The input center and half-range use only the initial references, with a 5\% expansion of their observed half-range. The output transform uses the declared operating range. Neither transform changes during sequential adaptation.
+
+For a basis vector $\boldsymbol b(x)$, the normalized estimate is $\hat y=\boldsymbol b(x)^T\boldsymbol c$. A uniform LUT uses two nonzero linear hat functions. A compact cubic B-spline uses at most four local basis functions. A compiled cubic uses a local coordinate $u\in[0,1]$ and
+\begin{equation}
+ p_j(u)=((a_{j,3}u+a_{j,2})u+a_{j,1})u+a_{j,0}.
+ \label{eq:horner}
+\end{equation}
+The source spline is twice continuously differentiable before coefficient rounding. Conversion and rounding are checked at interior points, knots, neighboring floating-point values, and clipped endpoints. The compact cubic implementation also uses specialized local evaluation; it is not penalized by a generic knot-search routine.
+
+The float32 LUT and compact cubic require $16+4N$ bytes for $N$ coefficients. The affine int16 LUT requires $24+2N$ bytes, including its scale and offset. A Horner representation with $P$ pieces requires $16+16P$ bytes. Table~\ref{tab:payload} gives the exact configurations. Grid sizes are compile-time constants; uniform knots are generated implicitly. These counts exclude executable code, stack, training workspace, and the benchmark fixture.
+
+\begin{table}[t]
+\caption{Configurations at Each Inference Payload Limit}
+\label{tab:payload}\centering\footnotesize
+\begin{tabular}{lrrr}\toprule
+Representation & 80 B & 144 B & 224 B\\\midrule
+Float32 LUT: nodes &16&32&52\\
+Affine int16 LUT: nodes &28&60&100\\
+Compact cubic: coefficients &16&32&52\\
+Horner: pieces / source coefficients &4/7&8/11&13/16\\
+Scalar KAN: spline coefficients + SiLU &15+1&31+1&51+1\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Fitting and reference methods}
+The fitting objective combines the mean squared reference residual with a second-difference penalty:
+\begin{equation}
+ \mathcal L(\boldsymbol c)=\frac{\|A\boldsymbol c-\boldsymbol y\|_2^2}{B_{\rm fit}}
+ +\frac{\lambda}{N_s-2}\|D_2\boldsymbol c_s\|_2^2 .
+ \label{eq:fit}
+\end{equation}
+Here, $\boldsymbol c_s$ contains the $N_s$ spline or LUT coefficients; the scalar KAN's additional SiLU weight is not penalized. The candidate values of $\lambda$ are $0,10^{-6},10^{-4},10^{-2},1,100$. Regularization is selected using held-out initial references after the declared storage encoding or Horner conversion. The selected model is refitted using all $B$ initial references. Both unconstrained and decreasing-constrained LUTs are included. Initial monotone fitting solves the constrained objective, rather than merely projecting an unconstrained fit.
+
+Two smaller-payload references are fitted to the same data: a Chebyshev polynomial with validation-selected degree in $\{1,2,3,4,5,7,9\}$, and a physical equation. The latter is Steinhart--Hart for the two thermistor cases and a log-linear resistance model for the light-dependent resistor (LDR). Their parameters are estimated from the references; hidden generator parameters are not supplied. Polynomial payloads occupy 24--56 bytes, and the physical references occupy 28 or 32 bytes. They are reported separately from equal-capacity comparisons.
+
+\section{Experimental Protocol}
+\subsection{Synthetic calibration cases}
+The negative-temperature-coefficient thermistor (NTC) response is generated over $q\in[0,100]\,\degC$ by
+\begin{equation}
+ \begin{aligned}
+ R(q)&=R_0\exp\!\left[\beta\left(\frac{1}{q+273.15}-\frac{1}{298.15}\right)\right],\\
+ a&=\frac{R(q)}{10\,000+R(q)}.
+ \end{aligned}
+ \label{eq:ntc}
+\end{equation}
+Virtual units draw $R_0$ uniformly within $\pm5\%$ of $10\,\mathrm{k}\Omega$ and $\beta$ within $\pm3\%$ of 3950 K. A paired front-end stress case adds $(4/1023)\sin(6\pi a+\phi)$, with uniform $\phi\in[-\pi,\pi]$. Its thermistor parameters match the corresponding undistorted unit.
+
+For the LDR, the quantity is $q=\log_{10}(\mathrm{lux})\in[0,3]$, with $R=R_0(10/10^q)^\gamma$. The ranges are $R_0=10\,\mathrm{k}\Omega\pm30\%$ and $\gamma=0.7\pm10\%$. The same divider is used. These distributions and distortions are declared stress assumptions, not fitted manufacturer specifications.
+
+Each observation averages 16 independently noisy, rounded, clipped 10-bit conversions, with Gaussian noise of one ADC least significant bit per conversion. Initial reference labels have Gaussian standard deviations of $0.02\,\degC$ or $0.005\log_{10}(\mathrm{lux})$. Budgets $B=30$ and 75 span the quantity range with bounded interior jitter. Every third interior reference is reserved for validation before refitting; these labels count toward $B$. Evaluation uses an independently noisy 401-point interior quantity grid.
+
+Eight virtual units and three calibration/noise repetitions per unit yield 144 cases across three scenarios and two reference budgets. Seven equal-capacity methods at three payloads, plus two smaller references, give $144(7\times3+2)=3312$ static evaluations. The primary endpoint is noisy-grid mean absolute error (MAE). Repetitions are averaged within each unit before aggregation and paired bootstrap resampling. The 2000-draw intervals are exploratory and unadjusted for multiple comparisons. Virtual units and repeated simulated noise realizations are not physical devices.
+
+\subsection{Sequential adaptation}
+Every stream supplies 384 new labelled references, one per bin in shuffled blocks of 32 uniformly spaced quantity bins. This assumes access to references across the operating range. It does not describe autonomous or label-free recalibration. The three drift schedules are none, a step at sample 128, and a ramp from samples 128 to 256. For multiplier $d_t$, the injected ADC disturbance is
+\begin{equation}
+ \Delta a_t=\frac{d_t}{1023}\,[2+2\sin(2\pi a)].
+ \label{eq:drift}
+\end{equation}
+Conversion noise and averaging follow this disturbance. Equation~\eqref{eq:drift} is a controlled perturbation, not an observed aging law.
+
+LUT32 and compact cubic32 start from the offline 144-byte fits. Their causal NLMS update is
+\begin{equation}
+ \boldsymbol c_{t+1}=\boldsymbol c_t+
+ \eta\frac{(y_t-\boldsymbol b_t^T\boldsymbol c_t)\boldsymbol b_t}
+ {\boldsymbol b_t^T\boldsymbol b_t+10^{-6}}.
+ \label{eq:nlms}
+\end{equation}
+Projected variants apply Euclidean projection onto decreasing coefficients using the pool-adjacent-violators algorithm (PAVA) \cite{pava}, including at initialization. Decreasing cubic coefficients are sufficient for a monotone spline; this condition is not necessary for every monotone cubic function. State is stored as float32 after every update.
+
+The nine comparators are frozen LUT, cubic, and selected polynomial; ordinary and projected NLMS for LUT and cubic; and full-covariance RLS for cubic and polynomial. RLS uses $P_0=100I$, with covariance symmetrization and float32 storage. Four separate development units and two repetitions select one global learning rate per NLMS method and one global forgetting factor per RLS method. Selection minimizes checkpoint-integrated normalized held-out mean squared error over all scenarios, budgets, and drift schedules, including no drift. The selected values are $\eta=0.5$ and forgetting factor 0.98 for all respective methods.
+
+Independent confirmation comprises $3\times2\times3\times8\times3=432$ streams, or 3888 method trajectories. All methods receive identical observations and no future labels. Fifteen fixed checkpoints include both sides of drift onset; the independent grid is evaluated before and after the current update where applicable. No numerical failure is discarded. Protocol files were frozen locally before the corresponding runs and published with their provenance; this is not a claim of prospective public preregistration.
+
+\section{Synthetic Accuracy Results}
+\subsection{Memory changes the ordering}
+Figure~\ref{fig:payload} shows that increasing coefficient capacity does not invariably improve generalization with limited, noisy calibration references. The effect depends on the representation and selected smoothing. At 80 bytes, float32 LUT MAE is 34.0--42.8\% lower than Horner MAE across all six scenario--budget groups. At 144 bytes, the ordering reverses: LUT MAE is 24.9--47.1\% higher. Horner remains more accurate at 224 bytes (Fig.~\ref{fig:crossover}). All 18 paired unit-bootstrap intervals for this comparison have the corresponding sign; they do not constitute a multiplicity-adjusted significance claim.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/payload_accuracy.pdf}
+\caption{Mean noisy-grid error versus exact serialized payload. Each point averages three repetitions within each of eight virtual units. Temperature and logarithmic illuminance use different units and must not be pooled. The full seven-method results and paired intervals are provided in the supplement.}
+\label{fig:payload}
+\end{figure*}
+
+\begin{figure}[t]
+\centering\includegraphics[width=\columnwidth]{figures/memory_crossover.pdf}
+\caption{Ratio of mean LUT float32 error to mean Horner error. The crossing between 80 and 144 bytes occurs in all six groups. It concerns these two stored representations; it is not a claim that LUTs beat every cubic implementation at 80 bytes.}
+\label{fig:crossover}
+\end{figure}
+
+This result has a storage interpretation. At 80 bytes, a Horner model has only four pieces derived from seven source spline coefficients, whereas the LUT has 16 independently fitted nodes. At 144 bytes, eight cubic pieces provide a more favorable approximation. The comparison therefore includes the cost of expanding a spline into its deployment representation. It does not compare two evaluation procedures for an identical function at identical storage.
+
+For distorted NTC with $B=75$ and 144 bytes, mean MAE is $0.05836\,\degC$ for float32 LUT, $0.05199\,\degC$ for int16 LUT, $0.04740\,\degC$ for compact cubic, and $0.04551\,\degC$ for Horner. Quantization permits more LUT nodes, but its benefit depends on whether additional capacity offsets encoding error and finite-reference variance. The complete results also retain monotone LUT and scalar KAN comparators; no general KAN advantage is inferred.
+
+\subsection{Physical and polynomial references remain competitive}
+The correctly specified physical models are strong baselines. With $B=75$, fitted thermistor physics gives $0.04071\,\degC$ mean MAE for undistorted NTC, compared with $0.05753\,\degC$ for the 144-byte float32 LUT. The LDR physical reference gives $0.001261\log_{10}(\mathrm{lux})$, compared with 0.003213 for that LUT. Additional numerical flexibility is unnecessary when the simpler equation adequately models the full chain.
+
+Front-end distortion changes this conclusion. The thermistor-only physical fit then gives $0.30435\,\degC$ at $B=75$, while the selected polynomial gives $0.04730\,\degC$. Thus, the evidence supports flexible calibration when the physical transfer model is incomplete, but does not justify replacing a well-specified physical model by a LUT.
+
+\subsection{Adaptation trades residual error for state and cost}
+Figure~\ref{fig:adaptation} presents distorted NTC at $B=75$ under all three drift schedules. After step drift, frozen LUT mean MAE is $0.57222\,\degC$; projected LUT and cubic NLMS reach $0.06411\,\degC$ and $0.05158\,\degC$, respectively. The projected cubic has lower final mean MAE in all 18 scenario--budget--drift groups. Under no drift, updating is not necessarily beneficial: in the illustrated group, projected LUT MAE is $0.06160\,\degC$, against $0.05932\,\degC$ for the frozen LUT.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/adaptation.pdf}
+\caption{Sequential adaptation for distorted NTC with 75 initial references. Curves show mean post-update grid MAE at the fixed checkpoints; lines join sampled checkpoints and do not resolve intermediate transients. The vertical line marks drift onset. The RLS reference uses substantially more persistent state.}
+\label{fig:adaptation}
+\end{figure*}
+
+Cubic RLS reaches $0.04688\,\degC$ and polynomial RLS $0.04724\,\degC$ in the step case. However, cubic RLS requires 4244 bytes of persistent state, including its $32\times32$ covariance matrix. Polynomial RLS uses up to 460 bytes. NLMS stores 148 bytes including its learning rate; projection requires additional workspace. RLS is consequently a larger-state accuracy reference, not an equal-memory competitor. Its adaptation transient also differs from NLMS, as the ramp panel shows. All 3888 confirmation trajectories completed without recorded numerical failures; final accuracy alone does not summarize recovery behavior.
+
+\section{Measurements on Physical Microcontrollers}
+\subsection{Fixture, arithmetic, and measurement scope}
+One Mega2560 at 16 MHz and one ESP32-C3 at 160 MHz execute a predetermined confirmation case: distorted NTC, unit 0, repetition 0, $B=75$. Selection precedes hardware timing. The four static models each occupy 144 bytes. Both ordinary and projected NLMS variants execute the complete 384-reference streams for all three schedules. RLS is not timed on the boards.
+
+Host accuracy evaluation uses float64 accumulation of stored float32 parameters; target kernels use float32 throughout. Fast-math and contraction are disabled. Independent basis, boundary, projection, and full-trajectory checks precede acquisition. A fixed $0.002\,\degC$ gate covers prediction discrepancies and coefficient differences scaled into temperature units. The largest reported static prediction gap is $1.526\times10^{-5}\,\degC$; the checkpoint and timed final-state gaps are at most $1.490\times10^{-5}$ and $1.192\times10^{-5}\,\degC$, respectively.
+
+Each board supplies two sequential command-driven sessions after one upload. Each inference session includes ten batches of 2048 calls per method. Each update session includes ten complete trajectories per method and drift schedule. Primary times are the median of the two session medians. Sessions on the same board are repeated measurements, not independent devices or cold starts.
+
+The timed update includes normalization, basis evaluation, prediction, residual update, coefficient writes, full PAVA where selected, fixture reads, and checksum accumulation. Reset, initial projection, validation, serial output, physical ADC acquisition, and reference generation are excluded. Matched overhead loops are retained separately; reported primary times are gross, without subtraction. Session identifiers, complete record counts, raw-log consistency, numerical gates, and source hashes are validated before accepting a capture.
+
+\subsection{Inference: a modest advantage against a strong baseline}
+Figure~\ref{fig:hardware} and Table~\ref{tab:hardware} show the resulting frontier. LUT32 takes 167.28 versus 192.79~\us{} for Horner8 on Mega2560 and 12.05 versus 13.98~\us{} on ESP32-C3. Its gross inference time is 13.2\% and 13.8\% lower, respectively. The corresponding fixed-case MAE is $0.05571\,\degC$ for LUT32 and $0.04552\,\degC$ for Horner8: the LUT is faster but has 22.4\% higher MAE.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/hardware_static.pdf}
+\caption{Measured inference time and fixed-case synthetic error at 144 bytes. Horizontal axes differ between boards. Compact cubic32 achieves the lowest error but takes more time. The int16 LUT is dominated by Horner8 in both error and latency for this fixture.}
+\label{fig:hardware}
+\end{figure*}
+
+\begin{table}[t]
+\caption{Static Fixture: Gross Time and Synthetic Temperature Error}
+\label{tab:hardware}\centering\footnotesize
+\begin{tabular}{lrrrr}\toprule
+&\multicolumn{2}{c}{Time (\us{})}&\multicolumn{2}{c}{Error (\degC)}\\
+Model & Mega & C3 & MAE & Maximum\\\midrule
+\tableinput tables/hardware.tex
+\bottomrule\end{tabular}
+\end{table}
+
+Compact cubic32 reduces MAE further to $0.04440\,\degC$, with times of 369.02 and 28.54~\us. A comparison only against this implementation would overstate the practical speed advantage available over an efficient polynomial representation. The 60-node int16 LUT is slower and less accurate than Horner8 in this fixture. Moreover, maximum error is appreciably larger than MAE (Table~\ref{tab:hardware}); an application must select the appropriate acceptance metric.
+
+\subsection{Complete updates and implementation memory}
+In the step schedule, projected LUT updates take 797.16~\us{} on Mega2560 and 43.78~\us{} on ESP32-C3, compared with 1149.54 and 71.86~\us{} for projected cubic updates (Fig.~\ref{fig:updates}). This is 30.7\% and 39.1\% less time. The target fixture's final MAE is $0.05891\,\degC$ for projected LUT and $0.04464\,\degC$ for projected cubic. These single-case values are distinct from the multi-unit averages in Section IV.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/hardware_updates.pdf}
+\caption{Gross full-update cost for the step fixture. Every bar includes the complete declared update path; the projected variants additionally execute PAVA. The measured trajectories trigger no PAVA block merges, so these times do not characterize a worst-case projection workload.}
+\label{fig:updates}
+\end{figure*}
+
+Projection merits a qualification. Full float32 replay shows that all unprojected fixture states already satisfy the coefficient ordering, and projected and unprojected trajectories coincide. PAVA executes, but performs no block merges. This experiment therefore measures the cost of checking and enforcing the constraint on these trajectories; it demonstrates neither an accuracy benefit from active projection nor its worst-case latency. A merge-intensive workload is a separate required test for a hard deadline.
+
+Both NLMS families require 148 bytes of persistent model state. PAVA adds 160 bytes of caller-owned reusable workspace; local scratch and call stack are additional and unmeasured. Individual deployment builds also show why payload and firmware size must be separated. On Mega2560, LUT32 and Horner8 images occupy 2340 and 2324 bytes of Flash; on ESP32-C3 they occupy 219276 and 219296 bytes including framework support. LUT inference does not imply the smallest firmware image. Full build sizes and toolchains are reported in the supplement.
+
+\section{Engineering Interpretation and Limitations}
+Figure~\ref{fig:decision} converts the four measured alternatives into an illustrative selection rule: choose the fastest candidate satisfying both an MAE limit and a time allowance. At 144 bytes on ESP32-C3, an allowance of 15~\us{} and $0.06\,\degC$ selects LUT32. Tightening MAE to $0.05\,\degC$ selects Horner8; a $0.045\,\degC$ limit with 30~\us{} selects compact cubic32. These choices are derived from one synthetic fixture and median execution times, not qualified real-time or metrological guarantees.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/decision_regions.pdf}
+\caption{Fastest feasible measured candidate for each pair of allowed gross median inference time and synthetic MAE, at 144-byte payload. Colors identify LUT32 (blue), Horner8 (orange), compact cubic32 (green), or no feasible measured candidate (gray). This is a case-specific engineering aid, not a safety boundary or worst-case timing guarantee.}
+\label{fig:decision}
+\end{figure*}
+
+For an instrument designer, the practical sequence is to test a justified physical model, specify the required error metric, and then compare deployable alternatives under the actual storage and execution constraints. If references can be supplied during maintenance or operation, the adaptation state and the cost of obtaining those references must also be included. The update savings measured here may matter when calibration shares a processor with other tasks, but energy savings cannot be inferred without power measurements.
+
+The study has four main limits. First, accuracy and drift recovery are synthetic; there are no acquired NTC or LDR measurements, thermal cycles, aging tests, or environmental qualification. A physical campaign must include the reference instrument's uncertainty and the complete measurement chain, rather than treating regression MAE as an uncertainty budget \cite{gum}. Second, only one board per architecture and one selected fixture were timed. Two sessions cannot estimate variation across devices, toolchains, interrupts, or operating conditions. Third, the reference stream covers the operating range deliberately; sparse or biased field references may change convergence. Fourth, finite memory limits, uniform knots, fixed candidate grids, and the chosen distortion family constrain the scope of the observed ranking reversal. Nonuniform tables, fixed-point arithmetic, other sensors, and active projection workloads may shift the frontier.
+
+\section{Conclusion}
+Equal-storage comparisons reveal a budget-dependent calibration trade-off. Float32 LUTs outperform expanded cubic Horner representations in mean error at 80 bytes in the tested synthetic cases, while the ordering reverses at 144 and 224 bytes. For the predetermined 144-byte hardware fixture, LUT inference takes 13.2--13.8\% less time than Horner evaluation at a higher MAE. Projected LUT updates take 30.7--39.1\% less time than projected compact cubic updates, again with a higher residual error. Physical models and RLS remain competitive within their respective assumptions and resource budgets. The evidence supports selecting a representation from an explicit accuracy, memory, and latency requirement, followed by validation on the intended physical sensing system.
+
+\section*{Data and Code Availability}
+Source code, protocols, aggregate and per-unit statistics, curve data, raw MCU captures, and audit records are available in the public repository \cite{code}. The experimental snapshot is commit \texttt{db39238}; links in the accompanying source package point to the complete immutable commit. The large raw synthetic trajectory archive is identified by a hash manifest and can be regenerated with the documented seeded commands; it is not hosted in the Git tree. All numerical inputs used by the manuscript figures are included in the portable source package. Supplementary material provides complete tables and reproduction instructions.
+
+\balance
+\section*{Acknowledgment}
+OpenAI ChatGPT assisted in drafting the abstract, Sections I--VII and supplementary text, and in developing analysis and visualization code. Numerical plots were generated from archived experiment records; no image-generation model was used for data figures.
+
+\input{references.tex}
+\end{document}

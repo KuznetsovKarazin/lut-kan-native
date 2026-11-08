@@ -1,0 +1,20 @@
+{
+  "draft_date": "2026-11-08",
+  "evidence_commit": "db39238c1467169b65ff1f3581945e57ee7ffd7a",
+  "main_pages": 7,
+  "supplement_pages": 5,
+  "abstract_whitespace_delimited_words": 189,
+  "main_numbered_figures": 7,
+  "graphical_abstract": true,
+  "main_tables": 2,
+  "supplement_tables": 7,
+  "references": 12,
+  "input_sha256_verified": true,
+  "standalone_asset_regeneration_byte_identical": true,
+  "standalone_main_and_supplement_pdf_text_identical": true,
+  "latex_overfull_boxes": 0,
+  "latex_undefined_references_or_citations": 0,
+  "rendered_pages_visually_inspected": 12,
+  "experiment_or_firmware_changed": false,
+  "note": "Document checks validate this draft package, not scientific author approval or physical sensor accuracy. The unchanged experiment snapshot has its own tests and acquisition audits."
+}

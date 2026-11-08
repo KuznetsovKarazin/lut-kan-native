@@ -6,6 +6,12 @@ All calibration data are **synthetic**. User-supplied Mega2560 and ESP32-C3
 captures now provide measured execution times on the same numerical fixture;
 physical sensor accuracy remains unmeasured.
 
+The [first IEEE Sensors Journal manuscript draft](../../manuscripts/ieee_sensors_tradeoff/README.md)
+now presents the measured accuracy–memory–latency trade-off, with seven scientific
+figures, a graphical abstract, complete supplementary tables and reproducible
+figure inputs. It uses the immutable evidence snapshot `db39238` and requires
+author review before submission.
+
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)
 - [Complete sweep](results/pilot_20261107/summary.csv)
@@ -66,8 +72,9 @@ retry; the delay alone did not eliminate the initial rejection. Recovery is
 now physically verified, while the cause of that rejection remains unknown.
 C3 behavior and numerical/timing code are unchanged. The current focused suite
 passes 120 tests and eight model subtests. No additional board acquisition is
-needed for this checkpoint; the next step is manuscript synthesis using the
-joint equal-memory comparison and its explicit limitations.
+needed for this checkpoint. The first manuscript now synthesizes the joint
+equal-memory comparison and its explicit limitations; scientific author review
+is the next step.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning

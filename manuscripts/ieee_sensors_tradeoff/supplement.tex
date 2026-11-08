@@ -1,0 +1,170 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,longtable,fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\makeatletter\let\tableinput\@@input\makeatother
+\newcommand{\degC}{\ensuremath{^{\circ}\mathrm{C}}}
+\newcommand{\us}{\ensuremath{\mu\mathrm{s}}}
+\newcommand{\snap}{https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a}
+\hypersetup{pdftitle={Supplement: Accuracy-Memory-Latency Trade-Offs in Embedded Sensor Calibration and Adaptation},pdfauthor={Oleksandr Kuznetsov}}
+\renewcommand{\thetable}{S\arabic{table}}
+\pagestyle{fancy}\fancyhf{}\lhead{Embedded sensor calibration: supplementary material}\rhead{8 November 2026}\cfoot{\thepage}
+\setlength{\headheight}{13pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,frame=single,rulecolor=\color{black},showstringspaces=false}
+\usepackage{xcolor}
+\begin{document}
+\begin{center}
+{\Large\bfseries Supplementary Material}\par
+\vspace{4pt}{\large Accuracy--Memory--Latency Trade-Offs in Embedded Sensor Calibration and Adaptation}\par
+\vspace{5pt}Oleksandr Kuznetsov\par
+First manuscript draft; evidence snapshot \texttt{db39238}, 8 November 2026
+\end{center}
+
+\section*{S1. Scope and interpretation}
+This supplement provides all static and sequential mean-error comparisons, paired intervals, measured update times, memory accounting, and reproduction instructions. Accuracy and drift are synthetic; physical boards establish execution time and numerical agreement.
+
+For each scenario and budget, eight virtual units have three repetitions each. Repetitions are averaged within units before aggregation or resampling. Tables S1--S5 use degrees Celsius for both NTC cases and $\log_{10}(\mathrm{lux})$ for LDR; these units must not be pooled. Source JSON retains full precision, per-unit statistics, RMSE, and additional diagnostics.
+
+\section*{S2. Complete static comparison}
+Table S1 includes all seven equal-capacity methods. ``mLUT'' uses decreasing-constrained initial fitting. ``KAN'' denotes a scalar spline-plus-SiLU edge. Table S2 reports smaller-payload fitted Steinhart--Hart/log-linear physical models and selected polynomials separately.
+
+\begin{table}[h!]
+\centering\caption{Mean noisy-grid MAE for all equal-capacity static models.}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrrr}\toprule
+Scenario & $B$ & Bytes & LUT f32 & LUT i16 & mLUT f32 & mLUT i16 & Cubic & Horner & KAN\\\midrule
+\tableinput tables/all_static.tex
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering\caption{Smaller-payload physical and polynomial references.}
+\small\begin{tabular}{lrrr}\toprule
+Scenario & $B$ & Physical model & Selected polynomial\\\midrule
+\tableinput tables/small_references.tex
+\bottomrule\end{tabular}
+\end{table}
+
+\clearpage
+\section*{S3. Complete sequential comparison}
+Tables S3 and S4 jointly cover all nine sequential methods. Each cell averages the final 401-point grid MAE after 384 new labelled references over eight units and three repetitions. The two budgets count the initial references; the additional 384 references are not free calibration data. Projected variants use decreasing coefficient projection after each update, including initialization. The frozen methods receive the same stream but do not update from its labels.
+
+\begin{table}[h!]
+\centering\caption{Final MAE: frozen, projected NLMS, and RLS comparisons.}
+\footnotesize\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{lrlrrrrrr}\toprule
+&&&\multicolumn{2}{c}{Frozen}&\multicolumn{2}{c}{Projected NLMS}&\multicolumn{2}{c}{RLS}\\
+Scenario & $B$ & Drift & LUT & Cubic & LUT & Cubic & Cubic & Polynomial\\\midrule
+\tableinput tables/all_online.tex
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering\caption{Final MAE of the remaining three methods.}
+\footnotesize\begin{tabular}{lrlrrr}\toprule
+Scenario & $B$ & Drift & Frozen polynomial & LUT NLMS & Cubic NLMS\\\midrule
+\tableinput tables/other_online.tex
+\bottomrule\end{tabular}
+\end{table}
+
+The development seed is 2026110800 and the confirmation seed is 2026110801. Development uses four virtual units, two repetitions, all three scenarios, both initial reference budgets, and all drift modes. Global NLMS rates are selected from $\{0.05,0.2,0.5,1\}$ and RLS forgetting factors from $\{0.98,0.995,1\}$. The selected values are 0.5 and 0.98, respectively. Development comprises 3168 candidate trajectories; independent confirmation comprises 3888 trajectories. No confirmation trajectories failed numerically, and no projected coefficient-order violations were recorded.
+
+\clearpage
+\section*{S4. Paired comparison and numerical diagnostics}
+The static endpoint below is the paired difference between float32 LUT MAE and compiled Horner MAE. Negative values favor the LUT. Each bootstrap draw samples eight units with replacement, retaining the within-unit pairing and averaging the three repetitions first. Intervals are 95\% percentile intervals from 2000 draws. They are exploratory and have no multiplicity adjustment. They describe variation in the stated synthetic experiment, not uncertainty across physical manufactured sensors.
+
+\begin{table}[h!]
+\centering\caption{Paired mean MAE difference: LUT float32 minus Horner.}
+\small\begin{tabular}{lrrrr}\toprule
+Scenario & $B$ & Bytes & Mean difference & 95\% interval\\\midrule
+\tableinput tables/paired.tex
+\bottomrule\end{tabular}
+\end{table}
+
+The source spline underlying each Horner model is $C^2$ before coefficient rounding. The maximum recorded normalized value jump after float32 conversion is $1.7881393\times10^{-7}$, and the maximum normalized first-derivative jump is $8.7171793\times10^{-7}$. These are representation-conversion diagnostics, not sensor error estimates. Dense-grid, exact-knot, adjacent-float, and clipped-endpoint tests compare the compiled polynomial with independent spline evaluation.
+
+The fixed MCU numerical gate is $0.002\,\degC$. Maximum prediction, scaled checkpoint-state, and timed final-state discrepancies are $0.00001526$, $0.00001490$, and $0.00001192\,\degC$, respectively. Each capture retains four static accuracy records, 50 inference/overhead timings, 96 state checks, 12 online accuracy records, 120 update timings, and 30 update-overhead records. Raw and parsed evidence is retained for all four sessions.
+
+Full target-precision trajectory replay confirms that the unprojected MCU fixture remains decreasing for all 384 updates in each schedule. Projected and ordinary trajectories coincide, and PAVA performs no block merges. No inference about active-projection accuracy benefits or worst-case PAVA timing is made. The broader synthetic comparison still retains both algorithm variants; the target fixture is not a comprehensive projection workload.
+
+\section*{S5. Protocol details needed for reproduction}
+The initial quantity grid covers the declared operating range; interior references receive a uniform jitter bounded by one quarter of the nominal spacing. Validation uses interior indices 2, 5, 8, and so on, with all validation labels counted in $B$. All models are refitted on the complete initial reference set after selecting their settings. Regularization is selected after the actual coefficient encoding or Horner conversion.
+
+The independent test quantities are the 401 interior points of a 403-point uniform grid. Test ADC noise uses an independent random generator. Online reference blocks cover 32 equal quantity bins, in independently shuffled order. Checkpoints are $0,32,64,96,127,128,129,132,144,160,192,224,256,320,384$. Updates cannot access evaluator truth or future labels; transforms remain fixed.
+
+\clearpage
+\section*{S6. All measured update times and implementation sizes}
+Times in Table S6 are gross microseconds per labelled update, aggregated as the median of two session medians. Each session times ten complete 384-reference trajectories. States are reset outside the timed region. MAE is evaluated using the target fixture's final independent noisy grid; it is not the aggregate error in Table S3. Board-to-board reported errors agree to approximately $10^{-7}\,\degC$; the C3 values are tabulated.
+
+\begin{table}[h!]
+\centering\caption{Full update time and final synthetic error for every drift schedule.}
+\small\begin{tabular}{llrrr}\toprule
+Drift & Method & Mega (\us{}) & C3 (\us{}) & MAE (\degC)\\\midrule
+\tableinput tables/all_hardware_updates.tex
+\bottomrule\end{tabular}
+\end{table}
+
+The gross static overhead medians are 12.32764~\us{} on Mega2560 and 0.69971~\us{} on ESP32-C3. They are recorded separately and not subtracted from the primary results. Both boards use two warm, command-driven sessions after a single upload. There is one board per architecture. Repeating the same fixture provides timing repeatability information; it does not supply independent sensor samples or a worst-case execution-time bound.
+
+\begin{table}[h!]
+\centering\caption{Separate deployment builds: absolute Flash and static RAM, in bytes.}
+\small\begin{tabular}{lrrrr}\toprule
+&\multicolumn{2}{c}{Mega2560}&\multicolumn{2}{c}{ESP32-C3}\\
+Implementation & Flash & Static RAM & Flash & Static RAM\\\midrule
+Empty harness&734&21&218848&13484\\
+LUT32 float32&2340&165&219276&13484\\
+LUT60 int16&2404&165&219382&13484\\
+Compact cubic32&2842&165&219718&13484\\
+Horner8&2324&165&219296&13484\\
+LUT NLMS&2834&169&219586&13636\\
+LUT projected NLMS&3376&329&219964&13796\\
+Cubic NLMS&3424&169&220074&13636\\
+Cubic projected NLMS&3962&329&220460&13796\\\bottomrule
+\end{tabular}
+\end{table}
+
+These absolute build sizes include framework/startup code and compiler alignment. They are distinct from model payload and from the larger acquisition firmware containing reference data, all models, and serial validation. Inference payload is 144 bytes for all four models. NLMS persistent state is 148 bytes; PAVA adds 160 bytes of reusable caller workspace. Local basis scratch and call stack are extra. AVR initialization snapshots are placed in Flash and copied before timing. Neither static RAM nor a compiler stack estimate is a measured peak-stack value.
+
+The build environment uses PlatformIO atmelavr 5.1.0 with AVR GCC 7.3.0 and Arduino AVR 5.2.0, and espressif32 6.12.0 with GCC 8.4.0 and Arduino ESP32 3.20017.241212. Target builds disable fast-math and floating-point contraction. Twenty build configurations completed; AVR program-memory fixture addresses were checked against the near-Flash access limit. The committed build reports and configuration files are authoritative for exact flags and package versions.
+
+\clearpage
+\section*{S7. Code, evidence, and reproduction}
+The public repository is \url{https://github.com/KuznetsovKarazin/lut-kan-native}. This manuscript uses experimental snapshot
+\begin{center}\texttt{db39238c1467169b65ff1f3581945e57ee7ffd7a}.\end{center}
+The research branch may advance; use the immutable snapshot for the reported evidence. Relevant links are:
+\begin{itemize}
+\item \href{\snap/experiments/sensor_recovery}{Experiment source, protocols, and result directories}.
+\item \href{\snap/experiments/sensor_recovery/results/matched_adaptation_20261108}{Static and sequential summaries, per-unit values, paired intervals, and checkpoint curves}.
+\item \href{\snap/experiments/sensor_recovery/results/matched_boards_20261108}{Matched-board comparison and measurement scope}.
+\item \href{\snap/experiments/sensor_recovery/results/c3_matched_20261108}{ESP32-C3 raw captures and audit}, and \href{\snap/experiments/sensor_recovery/results/mega_matched_20261108}{Mega2560 raw captures and audit}.
+\item \href{\snap/experiments/sensor_recovery/results/matched_mcu_20261108}{Numerical preparation and separate-build records}. Historical reports in this directory describe the preparation checkpoint; the subsequent board captures supply the real timings used here.
+\end{itemize}
+
+\textbf{Rebuilding the paper.} The portable manuscript archive contains \texttt{main.tex}, \texttt{supplement.tex}, \texttt{references.tex}, \texttt{IEEEtran.cls}, all vector figures, editable SVG/PNG exports, table fragments, exact JSON figure inputs, and the generation script. No hardware or raw-trajectory download is required to rebuild its figures and tables. The code first reads the repository results when available; otherwise it reads the included input snapshot. From the manuscript directory:
+\begin{lstlisting}
+python make_assets.py
+latexmk -pdf main.tex
+latexmk -pdf supplement.tex
+\end{lstlisting}
+Figure generation uses Python with NumPy and Matplotlib. The verified environment uses Python 3.12.14, NumPy 2.3.5, and Matplotlib 3.10.8. The experiment additionally uses SciPy 1.17.0. Input SHA-256 values are in \texttt{data/source\_hashes.json}. Figure regeneration does not rerun or alter the experiments.
+
+\textbf{Regenerating the synthetic campaign.} Use a fresh output directory. From the repository root, the following commands reproduce the declared stages with the script's frozen defaults:
+\begin{lstlisting}
+git checkout db39238c1467169b65ff1f3581945e57ee7ffd7a
+export OPENBLAS_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+python experiments/sensor_recovery/run_matched_adaptation.py static --out reproduced/static
+python experiments/sensor_recovery/run_matched_adaptation.py development --out reproduced/development
+python experiments/sensor_recovery/run_matched_adaptation.py confirmation --out reproduced/confirmation --selection reproduced/development/selected_parameters.json
+python experiments/sensor_recovery/report_matched_adaptation.py reproduced
+\end{lstlisting}
+The \texttt{run\_info.json} files retain exact commands, seeds, source hashes, software versions, and output hashes from the original runs. The local protocol-freeze and later public-commit mapping are documented in \path{publication_provenance.json}; public commit dates must not be interpreted as preregistration dates.
+
+\textbf{Raw-data availability boundary.} The public Git tree contains the source, numerical summaries and per-unit aggregates, manuscript inputs, and raw MCU logs. The complete synthetic reference streams and trajectory states reside in the separately preserved archive \path{IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip} (140570539 bytes). That large archive is not hosted in the Git tree. Its manifest lists six deterministic compressed JSONL files and SHA-256 values. The archive SHA-256 is:
+\begin{center}\scriptsize\texttt{c1594e1668d1c0c0f1bcd4e1c27ac91bfec2393a182fd468e37483e02ac6e1f3}.\end{center}
+The commands above regenerate the synthetic observations and predictions. A separate public data deposit and DOI have not been claimed. The physical-board recordings cannot be recreated by a host simulation; new timings require new hardware captures under the documented acquisition protocol.
+
+\end{document}

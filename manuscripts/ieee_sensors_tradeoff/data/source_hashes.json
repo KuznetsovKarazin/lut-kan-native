@@ -1,0 +1,10 @@
+{
+  "evidence_commit": "db39238c1467169b65ff1f3581945e57ee7ffd7a",
+  "sha256": {
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/static_summary.json": "62819b12c1ccc6d5464b248cf293deefde0d6f5893a20ad7aad8a67018b34115",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/adaptation_summary.json": "0198bf8897807ffd409bbc023330c92085702e6109f676fd91a4ba556e353b7f",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/adaptation_curves.json": "6c0adeeaf40c775d68c8d33104ec1753403c3f6aac13810c184015a7f204d972",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/static_paired.json": "1ca152a86628308e7835be5e8cc3a61e8c74986d3b7242f3138ccaaaf27b0be2",
+    "experiments/sensor_recovery/results/matched_boards_20261108/comparison.json": "c43a073dbffec5ff683a9d8a54d21988c5123dd42d5a568452b84093bd5b12ba"
+  }
+}
