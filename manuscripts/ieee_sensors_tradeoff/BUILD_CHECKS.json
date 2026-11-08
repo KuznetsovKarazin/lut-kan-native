@@ -2,9 +2,9 @@
   "revision_date": "2026-11-08",
   "original_evidence_commit": "db39238c1467169b65ff1f3581945e57ee7ffd7a",
   "revision_experiment_commit": "0b828da03ce2132b672a869c37e0e1b0c86a75d5",
-  "main_pages": 7,
-  "supplement_pages": 10,
-  "abstract_whitespace_delimited_words": 189,
+  "main_pages": 8,
+  "supplement_pages": 11,
+  "abstract_whitespace_delimited_words": 191,
   "main_numbered_figures": 5,
   "main_tables": 3,
   "supplement_tables": 11,
@@ -26,9 +26,9 @@
   "no_type3_fonts_in_either_pdf": true,
   "latex_overfull_boxes": 0,
   "latex_undefined_references_or_citations": 0,
-  "rendered_pages_visually_inspected": 17,
+  "rendered_pages_visually_inspected": 19,
   "sensor_tests": {
-    "passed": 126,
+    "passed": 129,
     "subtests_passed": 8
   },
   "prospective_mcu_builds": [
@@ -38,7 +38,13 @@
   ],
   "new_physical_mcu_acquisitions": 0,
   "physical_sensor_campaign_completed": false,
-  "current_journal_specific_template_verified": false,
+  "current_journal_specific_template_verified": true,
   "public_data_doi": null,
-  "note": "Document and code validation do not establish physical sensor accuracy, energy, WCET or measured peak stack. Exact current journal-specific template and public DOI/release remain pending."
+  "note": "Official downloaded JSEN class/style bytes are verified. A reserved Zenodo DOI is not a published deposit. Document/code validation does not establish physical sensor accuracy, energy, WCET or measured peak stack. New seven-kernel device captures and a formal Git release tag remain open.",
+  "standalone_assets_count": 66,
+  "refinement_experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
+  "experiment_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42529673527",
+  "template_archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
+  "zenodo_reserved_doi": "10.5281/zenodo.24062383",
+  "zenodo_status": "draft_saved_files_and_publication_pending"
 }

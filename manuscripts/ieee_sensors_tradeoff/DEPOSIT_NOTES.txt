@@ -1,11 +1,26 @@
-PUBLIC DATA DEPOSIT — PREPARED, NOT PUBLISHED
+ZENODO — SAVED DRAFT, DOI RESERVED, NOT PUBLISHED
+Draft: https://zenodo.org/uploads/24062383
+Reserved DOI: 10.5281/zenodo.24062383
+The DOI is registered only after publication. No public access has been verified.
 
-The metadata file is a proposal for author review, not a live Zenodo record.
-No DOI, release tag or publication date has been assigned. Do not cite a placeholder.
+Upload this single complete file:
+IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip
+Bytes: 234018558
+SHA-256: f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774
+MD5: 3f6986c166c4911948fc6f4e3c657f35
 
-Deposit materials:
-1. Original IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip (140,570,539 bytes; SHA-256 in README).
-2. New IEEE_Sensors_Revision_Evidence_2026-11-08.zip (raw streams, source snapshots, manifests and summaries).
-3. Final article source and software release identifier; preserve the separate software license.
+It contains the original 140 MB archive, the first-review 78 MB archive,
+the second-review 10 MB archive, and the research code pinned to 45edb31b3e67821a06e4131d0b82785248de5a5f.
+Each original ZIP is preserved byte for byte. Component sizes and SHA-256
+checksums appear in zenodo_metadata_draft.json and inside the deposit ZIP.
 
-Before a public deposit, verify attribution, proposed data license, complete files and checksums. After publication, record the actual DOI and repository release/tag in the paper, README and continuation notes and test anonymous access. A prepared metadata JSON or Git commit is not a DOI. A working manuscript revision is not a submitted journal article.
+Saved metadata: one verified author with ORCID and both university affiliations;
+Dataset, version 1.0.0, 2026-11-08; author-created data/documentation CC BY 4.0;
+software retains its included MIT license. Third-party dependencies retain their terms.
+This is research evidence, not a journal publication. No new physical NTC/LDR,
+seven-kernel MCU, ESP32-S3 timing, energy, WCET or peak-stack result is asserted.
+
+After upload, compare the displayed checksum and inspect Preview. After publication,
+verify anonymous public access and then replace the reserved-status sentence in the
+article, supplement, README and continuation notes by the actual public citation.
+A formal repository release tag remains separate from the immutable commit.

@@ -3,8 +3,23 @@
 **Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration**
 
 Oleksandr Kuznetsov, 8 November 2026. Working revision for scientific author review;
-not a submitted or accepted article. Main paper: seven pages, five numbered
-scientific figures, three tables and 22 references. Supplement: ten pages.
+not a submitted or accepted article. Main paper: eight pages, five numbered
+scientific figures, three tables and 22 references. Supplement: see BUILD_CHECKS.json for the current page count.
+
+## Second-review refinement
+
+All 32 references per completed block now contribute to an affine OLS correction.
+The four float32 sums use 16 B; gain/offset add 8 B, plus a counter and the frozen
+model. Distorted NTC, B=75: final MAE 0.0484 C without drift and 0.0730 C after
+step/ramp; integrated MAE 0.0966 C for step and 0.0692 C for ramp. The stronger
+baseline substantially narrows the NLMS advantage.
+
+The decay grid now includes 1024 and 2048. Both families select 2048, again at the
+boundary. 1440 development and 1728 paired-confirmation trajectories reuse the
+previous seeds: this is post-review reanalysis, not an untouched new holdout.
+Exact input snapshots are hash-checked under data/refinement_*.json. Historical
+512/two-point results are retained in their original files. New plot labels and
+explicit intermediate logarithmic ticks improve readability.
 
 ## Scientific claim and evidence boundaries
 
@@ -26,10 +41,10 @@ the end-to-end inference benefit to about 1.37%; this is an analytical budget.
 
 New analyses add ideal/noisy/max error separation, an exact-generator noisy-input
 inverse benchmark, fivefold model selection, generator sensitivity, decaying
-NLMS, two-point correction, causal all-history/recent-window refits, and extended
+NLMS, blockwise least-squares affine correction, causal all-history/recent-window refits, and extended
 RLS forgetting-factor selection. Every negative result is retained. There are
 3,488 additional static model evaluations, 2,304 development trajectories,
-5,472 independent-confirmation trajectories and an audit of 331,776 original
+5,472 first-revision confirmation trajectories and an audit of 331,776 original
 projected updates. Development and confirmation seeds are separate. The protocol
 was frozen locally before calculation, not publicly preregistered.
 
@@ -51,13 +66,12 @@ prospective physical campaign and uncertainty components without invented values
   used in the revised paper. The obsolete ranking-reversal graphical abstract
   was removed.
 - `figures/gagraphic.png`: separate graphical abstract, 660 × 295 pixels,
-  300 dpi metadata, less than 45 KB; PDF/SVG exports also included. It is not
-  embedded after the article title.
+  300 dpi metadata, less than 45 KB; PDF/SVG exports also included. A separate vector variant with readable labels is embedded in the JSEN colored abstract panel.
 - `REVIEW_RESPONSE_RU.txt`: point-by-point analysis of the colleague's review,
   changes made, disagreements supported by data, and remaining work.
 - `BUILD_CHECKS.json`: completed package checks and their limits.
-- `zenodo_metadata_draft.json`, `DEPOSIT_NOTES.txt`: proposed deposit metadata;
-  no publication, release tag, or DOI has been created.
+- `zenodo_metadata_draft.json`, `DEPOSIT_NOTES.txt`: saved Zenodo draft metadata,
+  reserved DOI and archive checksums. The record is not yet published.
 
 In Overleaf select `main.tex` as the main document; build `supplement.tex`
 separately. Figures and table inputs are included, so no repository checkout is
@@ -72,10 +86,15 @@ latexmk -pdf supplement.tex
 
 Asset regeneration was performed with Python 3.12.14, NumPy 2.3.5,
 Matplotlib 3.10.8 and Pillow; numerical experiments also use SciPy 1.17.0.
-The document build uses pdfTeX/TeX Live 2023, IEEEtran v1.8b and latexmk 4.83.
+The main document uses the publisher ieeecolor class and JSEN style parameters;
+see TEMPLATE_PROVENANCE.txt for sources, working-copy differences and the
+verified identity of the official May 2024 ZIP. The supplement retains its previous format.
 The original and revision run manifests record exact calculation dependencies.
 
 ## Immutable experiment links
+
+- [Second-review OLS, extended decay grid, audits and seven-kernel fixture](https://github.com/KuznetsovKarazin/lut-kan-native/tree/45edb31b3e67821a06e4131d0b82785248de5a5f/experiments/sensor_recovery)
+- [Second-review results and reproduction commands](https://github.com/KuznetsovKarazin/lut-kan-native/tree/45edb31b3e67821a06e4131d0b82785248de5a5f/experiments/sensor_recovery/results/refinement_20261108)
 
 - [Revision source, protocol and tests](https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5/experiments/sensor_recovery)
 - [New summaries, per-unit results, hashes and reproduction commands](https://github.com/KuznetsovKarazin/lut-kan-native/tree/0b828da03ce2132b672a869c37e0e1b0c86a75d5/experiments/sensor_recovery/results/revision_20261108)
@@ -93,35 +112,29 @@ public DOI. Gzip timestamps may change upon reproduction; compare decoded record
 
 ## Prospective hardware extension
 
-The separate reference-run pack provides six static models on the later matched
+The separate reference-run pack provides seven static implementations on the later matched
 fixture, with strict capture validation and image/source hashes. Mega2560,
 ESP32-C3 and optional ESP32-S3 builds passed. The new kernels passed portable C++
-parity and parser rejection tests; all focused sensor tests pass (126 tests and
+parity and parser rejection tests; all focused sensor tests pass (129 tests and
 8 subtests). This is not additional board execution. The ESP32-S3 environment
 targets ESP32-S3-DevKitC-1 at 240 MHz through its UART bridge; another board needs
 its own verified configuration. Instructions are in `mcu/RUN_REFERENCES_RU.txt`.
-There is no need to rerun Mega/C3 merely to establish polynomial/physical timings,
-since the earlier measured series already supplies them.
+New Mega/C3 acquisitions ARE required for one common-fixture frontier. The
+earlier statement that they need not be rerun does not satisfy that comparison.
+V2 adds power-basis Horner evaluation of the same degree-9 polynomial (56 B),
+requires 80 timing records and seven parity records, and rejects V1 captures.
 
 ## Journal format and remaining checks
 
-The draft uses the standard IEEE journal two-column class, a single-paragraph
-150–250-word abstract, numbered figures/tables/equations, and a separate graphical
-abstract. It contains no invented publication dates, journal volume, or DOI.
-The official interactive selector did not provide a downloadable current Sensors
-package in this environment; exact conformity to the current journal-specific
-class still needs checking before submission. The editable source and vector
-assets are portable. Official pages checked on 8 November 2026:
-
-- [Sensors Journal author instructions](https://ieee-sensors.org/ieee-sensors-journal/for-authors/)
-- [IEEE templates](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/authoring-tools-and-templates/tools-for-ieee-authors/ieee-article-templates/)
-- [Supplementary/graphical abstract guidance](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/prepare-supplementary-materials/)
-
-The AI-assistance statement includes experiment-design refinement, simulation,
-analysis, firmware, acquisition, validation, visualization and drafting. Authorship,
-affiliation/contact details, funding and final scientific claims need author review.
-No unconfirmed coauthor or funding acknowledgment is added. A public DOI deposit
-and release tag remain pending; metadata preparation is not publication.
+The working draft uses JSEN colored layout, a single-paragraph abstract, and
+numbered figures/tables/equations. The official May 2024
+JSEN ZIP has been inspected. The supplied ieeecolor.cls, jsen.sty and IEEEtran.bst
+match its bytes exactly; provenance and working-copy adjustments are documented.
+Zenodo draft https://zenodo.org/uploads/24062383 is saved with reserved DOI
+`10.5281/zenodo.24062383`. The complete deposit ZIP is 234,018,558 bytes; its
+SHA-256 is `f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774`.
+File upload and publication remain pending. The draft is not a public dataset,
+and no formal release tag is claimed. Real NTC measurements remain absent.
 
 ## Для автора
 

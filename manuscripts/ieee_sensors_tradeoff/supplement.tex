@@ -21,7 +21,7 @@
 {\Large\bfseries Supplementary Material}\par
 \vspace{4pt}{\large Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration}\par
 \vspace{5pt}Oleksandr Kuznetsov\par
-Working revision, 8 November 2026; evidence: \texttt{db39238} and \texttt{0b828da}
+Working revision, 8 November 2026; evidence: \texttt{db39238}, \texttt{0b828da}, and \texttt{45edb31}
 \end{center}
 
 \section*{S1. Scope and interpretation}
@@ -133,7 +133,7 @@ The build environment uses PlatformIO atmelavr 5.1.0 with AVR GCC 7.3.0 and Ardu
 
 \clearpage
 \section*{S7. Code, evidence, and reproduction}
-The original tables above remain unchanged in scope. New revision analyses follow in S8--S12. The public repository is \url{https://github.com/KuznetsovKarazin/lut-kan-native}. This manuscript uses experimental snapshot
+The original tables above remain unchanged in scope. New revision analyses follow in S8--S13. The public repository is \url{https://github.com/KuznetsovKarazin/lut-kan-native}. The original results use experimental snapshot
 \begin{center}\texttt{db39238c1467169b65ff1f3581945e57ee7ffd7a}.\end{center}
 The research branch may advance; use the immutable snapshot for the reported evidence. Relevant links are:
 \begin{itemize}
@@ -144,7 +144,7 @@ The research branch may advance; use the immutable snapshot for the reported evi
 \item \href{\snap/experiments/sensor_recovery/results/matched_mcu_20261108}{Numerical preparation and separate-build records}. Historical reports in this directory describe the preparation checkpoint; the subsequent board captures supply the real timings used here.
 \end{itemize}
 
-\textbf{Rebuilding the paper.} The portable manuscript archive contains \texttt{main.tex}, \texttt{supplement.tex}, \texttt{references.tex}, \texttt{IEEEtran.cls}, all vector figures, editable SVG/PNG exports, table fragments, exact JSON figure inputs, and the generation script. No hardware or raw-trajectory download is required to rebuild its figures and tables. The code first reads the repository results when available; otherwise it reads the included input snapshot. From the manuscript directory:
+\textbf{Rebuilding the paper.} The portable manuscript archive contains \texttt{main.tex}, \texttt{supplement.tex}, \texttt{references.tex}, the official \texttt{ieeecolor.cls}/\texttt{jsen.sty} files, all vector figures, editable SVG/PNG exports, table fragments, exact JSON figure inputs, and the generation script. No hardware or raw-trajectory download is required to rebuild its figures and tables. The code first reads the repository results when available; otherwise it reads the included input snapshot. From the manuscript directory:
 \begin{lstlisting}
 python make_assets.py
 latexmk -pdf main.tex
@@ -166,7 +166,7 @@ The \texttt{run\_info.json} files retain exact commands, seeds, source hashes, s
 
 \textbf{Raw-data availability boundary.} The public Git tree contains the source, numerical summaries and per-unit aggregates, manuscript inputs, and raw MCU logs. The complete synthetic reference streams and trajectory states reside in the separately preserved archive \path{IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip} (140570539 bytes). That large archive is not hosted in the Git tree. Its manifest lists six deterministic compressed JSONL files and SHA-256 values. The archive SHA-256 is:
 \begin{center}\scriptsize\texttt{c1594e1668d1c0c0f1bcd4e1c27ac91bfec2393a182fd468e37483e02ac6e1f3}.\end{center}
-The commands above regenerate the synthetic observations and predictions. A separate public data deposit and DOI have not been claimed. The physical-board recordings cannot be recreated by a host simulation; new timings require new hardware captures under the documented acquisition protocol.
+The commands above regenerate the synthetic observations and predictions. The reserved Zenodo record and combined deposit package are described in S13; public registration is still pending. The physical-board recordings cannot be recreated by a host simulation; new timings require new hardware captures under the documented acquisition protocol.
 
 
 
@@ -212,11 +212,16 @@ Store v as float32. Return the pre-update prediction if required.
 \end{lstlisting}
 Projection is Euclidean on coefficient values, not on sampled function errors. Decreasing coefficients are sufficient for monotone output in these bases. Initial constrained LUT fitting in the original static study solves the constrained objective; this differs from projecting a completed unconstrained fit.
 
-\textbf{Causal reference baselines.} Two-point correction retains the lowest and highest \emph{frozen-model predictions} and their noisy labels within each completed block of 32. It estimates gain and offset from those pairs, then applies that correction until the next block completes. It does not use true quantities to choose endpoints. All-history and recent-64 batch models include initial references and only the consumed stream prefix; refits occur at the 15 declared checkpoints. Smoothing remains that of the initial model. These schedules and estimator choices are explicit limitations, not optimized representatives of every affine or batch method.
+\textbf{Causal reference baselines.} The main comparison now uses ordinary least squares on all 32 frozen predictions and labels in each completed block. With $S_p=\sum p_i$, $S_y=\sum y_i$, $S_{pp}=\sum p_i^2$, and $S_{py}=\sum p_i y_i$,
+\[
+g=\frac{32S_{py}-S_pS_y}{32S_{pp}-S_p^2},\qquad o=\frac{S_y-gS_p}{32}.
+\]
+Predictions and labels are normalized. Accumulators and stored gain/offset are float32. A float64-accumulation audit still rounds gain/offset to float32. At block completion, update the correction only if the denominator exceeds $10^{-8}$; otherwise hold it. Reset the sums and counter. The previous completed correction is used between block completions. No degenerate block occurred in the tested streams. Independent least-squares comparisons and future-label perturbation tests verify the estimator and causal ordering. The earlier two-endpoint estimator remains in historical raw records, but is not the principal affine baseline.
 
-\textbf{Memory.} A two-point implementation needs the frozen model, gain/offset, two candidate input-output pairs and a counter; alignment and arithmetic can change the final size. Decaying NLMS additionally needs its schedule parameter and sample counter. Batch buffers alone require $8(B+t)$ bytes or $8\times64=512$ bytes when pairs are float32. Factorization/design-matrix workspace is additional. These new algorithms were evaluated on the host; no MCU state size or latency is inferred from host execution.
+All-history and recent-64 batch models include initial references and only the consumed stream prefix; refits occur at the 15 declared checkpoints. Smoothing remains that of the initial model. These schedules do not exhaust affine or batch estimators.
 
-\clearpage
+\textbf{Memory.} Block OLS retains four sums (16 bytes), gain/offset (8 bytes), a block counter, and the frozen model. Arithmetic temporaries and alignment are additional; 16 bytes is not total adaptation state. Decaying NLMS needs its schedule parameter and sample counter. Batch buffers alone require $8(B+t)$ bytes or $8\times64=512$ bytes for float32 pairs. Solver workspace is additional. Host evaluation does not establish MCU latency or measured peak stack for these algorithms.
+
 \section*{S9. Cross-validation and sensitivity results}
 Table S8 reports all nominal equal-capacity selection comparisons. There are eight units and two repetitions per cell, from the new confirmation seed. Both selectors refit on the same full set of initial references. The full JSON also supplies ideal MAE, noisy MAE, maximum observed errors, per-unit values, and the exact-generator inverse benchmark. Large errors from held-out selection are retained rather than clipped out of summaries.
 \begin{table}[!ht]
@@ -233,26 +238,48 @@ The one-factor-at-a-time study keeps initial label noise and averaging unchanged
 These controls improve interpretation but do not make the generator a physical population model. The revised main text treats the original bootstrap intervals as descriptive. Repetitions and virtual units do not become independent physical instruments merely because their random seeds differ. No multiplicity-adjusted superiority claim is made.
 
 \section*{S10. New sequential baselines and parameter selection}
-The original nine methods are rerun on the new confirmation streams. Ten additional method configurations yield 19 trajectories per stream: two decaying NLMS, two extended-grid RLS, two two-point corrections and four batch refits. Development selects $\tau=512$ for both decaying methods, cubic RLS forgetting 0.98 and polynomial RLS forgetting 0.95. Every candidate and every run is retained. There were zero numerical failures in 2304 development and 5472 confirmation trajectories.
+The original nine methods are rerun on the new confirmation streams. Ten additional method configurations yield 19 trajectories per stream: two decaying NLMS, two extended-grid RLS, two two-point corrections and four batch refits. The first revision selected $\tau=512$ for both decaying methods, cubic RLS forgetting 0.98 and polynomial RLS forgetting 0.95. Every candidate and every run is retained. There were zero numerical failures in 2304 development and 5472 confirmation trajectories.
 
 For the development integrated normalized-MSE objective, cubic RLS scores at forgetting factors 0.90, 0.95, 0.98, 0.995, and 1 are $2.67\times10^{-4}$, $1.38\times10^{-5}$, $9.37\times10^{-6}$, $1.87\times10^{-5}$, and $2.70\times10^{-5}$. Polynomial scores are $5.80\times10^{-6}$, $5.60\times10^{-6}$, $8.50\times10^{-6}$, $1.84\times10^{-5}$, and $2.67\times10^{-5}$. The expanded grid therefore has interior selected values. No claim of a continuous optimum follows from that grid.
 
-\clearpage
 \begin{table}[!ht]
-\centering\caption{Revision final MAE: cubic baselines and extended-grid RLS.}
+\centering\caption{Paired refinement final MAE: block OLS and $\tau=2048$ replace the earlier endpoint and decay choices.}
 \scriptsize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrlrrrrrrrr}\toprule
 &&&\multicolumn{6}{c}{Cubic family}&\multicolumn{2}{c}{RLS, extended grid}\\
-Scenario & $B$ & Drift & Frozen & NLMS & Decay & 2-point & Batch all & Batch 64 & Cubic & Poly.\\\midrule
+Scenario & $B$ & Drift & Frozen & NLMS & Decay & OLS32 & Batch all & Batch 64 & Cubic & Poly.\\\midrule
 \tableinput tables/revision_online.tex
 \bottomrule\end{tabular}
 \end{table}
 
 The machine-readable \path{data/revision_summary.json} contains the complete 19-method table, including LUT variants and both RLS configurations, with final and checkpoint-integrated MAE. \path{data/revision_curves.json} contains every mean checkpoint. All error units follow the scenario, and cannot be averaged across temperature and logarithmic illuminance. The paired input streams and method states are in the separately preserved revision raw-data archive; commands below regenerate them.
 
+
+\textbf{Second-review paired refinement.} The expanded grid is $\tau\in\{32,128,512,1024,2048\}$. Both families select 2048, again at the boundary. Their development objective values follow; the finite grid does not establish an interior optimum. At $t=384$, the selected schedule still has $\eta_t\simeq0.421$, compared with 0.5 for the constant-step baseline. Its behavior is therefore close to constant-step NLMS over this short horizon. A 384-reference comparison cannot establish long-term convergence or a useful decay time for a physical sensor.
+\begin{center}\small
+\begin{tabular}{rrr}\toprule
+$\tau$ & LUT objective & Cubic objective\\\midrule
+32 & $2.33\times10^{-5}$ & $1.66\times10^{-5}$\\
+128 & $1.04\times10^{-5}$ & $6.86\times10^{-6}$\\
+512 & $7.75\times10^{-6}$ & $5.09\times10^{-6}$\\
+1024 & $7.52\times10^{-6}$ & $4.97\times10^{-6}$\\
+2048 & $7.47\times10^{-6}$ & $4.95\times10^{-6}$\\\bottomrule
+\end{tabular}
+\end{center}
+The reanalysis contains 1440 development and 1728 confirmation trajectories (288 streams, six configurations). No new unit seeds are introduced: this is a paired refinement after review, not fresh untouched confirmation. Float32 and float64 OLS accumulation change group-mean final MAE by less than $4.51\times10^{-7}$ in each scenario's reported unit. This is a numerical audit, not a sensor-uncertainty statement. Exact values, per-unit results and checkpoints are in \path{data/refinement_summary.json}, \path{data/refinement_curves.json}, and \path{data/refinement_selection.json}; earlier records remain unchanged.
+
+Reproduction from \path{experiments/sensor_recovery}, using new output directories:
+\begin{lstlisting}
+python refinement_analysis.py development --out results/refinement_new/development
+python refinement_analysis.py confirmation --out results/refinement_new/confirmation --selection results/refinement_new/development/selection.json
+python -m unittest test_refinement_analysis test_revision_mcu
+\end{lstlisting}
+
 \textbf{Projection audit.} Both projected families were replayed on all 432 original streams. This checks 331776 actual update events, not just equality of rounded endpoint means. LUT: zero changed initial states and zero changed updates. Cubic: 42 changed initial states and 557 changed updates across 42 streams. Thus PAVA is inactive for LUT under this generator but not inactive for every cubic trajectory. The audit does not establish a benefit from those cubic corrections. The optional order guard is verified to preserve already-decreasing vectors exactly and to invoke PAVA on an intentionally violated vector; its timing is not substituted for the original measurements.
 
 \section*{S11. Recovered reference timings and restricted decision map}
+A single frontier across all selected representations requires a common fixture. The V2 acquisition measures seven implementations on seed 2026110801: the four matched models, fitted physics, and one degree-9 polynomial in Clenshaw and power-basis Horner form. Each polynomial stores 40 coefficient bytes plus 16 transform bytes. Conversion uses the same fitted coefficients; it is not a separately tuned polynomial. On 10001 host points over normalized $[-1,1]$, maximum float32 discrepancies from the stored Chebyshev model are $2.70\times10^{-5}\,\degC$ (Clenshaw) and $2.08\times10^{-5}\,\degC$ (Horner). These are host parity checks, not hardware timings. Three target builds succeed. V2 requires 80 timing records and seven parity records, rejects old six-model captures, and preserves raw logs, session IDs and firmware images. New Mega/C3 captures are required before replacing the historical panels by a common frontier.
+
 The earlier optimized-suite pilot has seed 20261108, distinct from the matched suite's 2026110801. Each board has two sessions, each with ten 2048-call batches. Table S10 reparses all four raw logs and aggregates session medians. The stored JSON is reproduced exactly, with raw/result hashes checked against sidecars. The original acquisition archives recorded firmware hashes but did not include firmware images; these are source/serial audits, not device firmware attestation. The existing matched archives have their own stronger image preservation and identity records.
 
 \begin{table}[!ht]
@@ -271,7 +298,7 @@ The pilot includes a fitted degree-9 Chebyshev polynomial and Steinhart--Hart mo
 \caption{Restricted illustrative decision map from the original matched fixture. It selects only among the four timed 144-byte candidates, at median time and finite-grid MAE. It omits smaller polynomial/physical references and is not a universal deployment rule, accuracy guarantee, or deadline guarantee.}
 \end{figure}
 
-\textbf{Prospective matched-reference suite.} A separate prepared suite evaluates the same six static families on the matched fixture, including a 56-byte polynomial and 32-byte physical model. It supports Mega2560 and ESP32-C3, with an optional ESP32-S3-DevKitC-1 UART environment at 240 MHz. It preserves all historical captures. Portable float32 checks give maximum gaps below $5.22\times10^{-5}\,\degC$ for the two new kernels. Compilation and host validation are not additional board measurements. Its purpose is consolidation and optional FPU comparison; the recovered pilot already establishes real execution of the small references.
+\textbf{Prospective matched-reference suite.} V2 implements the seven kernels described above on one matched fixture, including both evaluation forms of the same 56-byte polynomial and the 32-byte physical model. It supports Mega2560 and ESP32-C3, with an optional ESP32-S3-DevKitC-1 UART environment at 240 MHz. Historical captures remain intact. The three target builds and host parity checks pass, but new Mega/C3 acquisitions are necessary for a common-fixture frontier. The recovered pilot alone does not supply that comparison. Compilation and host validation are not additional board measurements.
 
 \section*{S12. Prospective physical validation and reproducibility}
 \textbf{A small physical campaign, not executed.} A useful next study would use at least three individual NTC units, the intended divider/ADC/reference-voltage chain, and a traceably calibrated reference thermometer in a stirred bath or stable chamber. Select a safe common temperature range supported by the sensor encapsulation and reference. Fix calibration and held-out setpoints before fitting; acquire both heating and cooling traversals in at least two separate cycles. Record time-resolved ADC values, reference readings, settling criteria, averaging, excitation current, supply/reference voltage and unit identifiers. Repeated samples at one stabilized setpoint are not independent calibration temperatures.
@@ -302,5 +329,5 @@ python experiments/sensor_recovery/recover_reference_timings.py
 \end{lstlisting}
 The last command reparses existing hardware logs and writes \path{results/revision_20261108/recovered_hardware.json}; it does not operate a board. Revision raw records contain all static models/predictions, reference data, causal stream inputs and checkpoint results; original-method full covariance histories remain reproducible from the saved inputs and code. Run manifests record source hashes, seeds, versions, record counts and output hashes. Gzip-container timestamps may differ on regeneration; compare decoded records rather than assuming container-byte equality.
 
-\textbf{Submission materials.} The graphical abstract is provided separately as \path{figures/gagraphic.png} (660 by 295 pixels, 300 dpi), with vector exports. Main and supplement PDFs are separate. The working article uses the IEEE journal double-column class; the publisher's specific current template selection should be checked before submission. A formal release tag and public DOI deposit remain open tasks. Prepared metadata must not be cited as a published DOI. The AI-assistance statement in the main paper covers experiment, firmware, acquisition, validation and visualization code as well as writing.
+\textbf{Submission materials.} The graphical abstract is provided separately as \path{figures/gagraphic.png} (660 by 295 pixels, 300 dpi), with vector exports. Main and supplement PDFs are separate. The working article uses the publisher\textquotesingle s \texttt{ieeecolor} class, JSEN style parameters and the colored abstract/graphic layout. Its first-page running head omits the publisher logo and unassigned publication metadata. The official selector currently supplies \path{IEEE-JSEN-LaTeX-template-202405.zip}; the class source and working-copy differences are recorded in \path{TEMPLATE_PROVENANCE.txt}. The included class, style and bibliography-style files match the downloaded official ZIP byte for byte. A Zenodo draft has reserved DOI \nolinkurl{10.5281/zenodo.24062383}; files and public registration remain pending. The prepared 234 MB deposit package contains all three evidence archives and the code snapshot at \texttt{45edb31}, with SHA-256 manifests. A formal release tag remains open; the reserved identifier must not be described as a published deposit. The AI-assistance statement in the main paper covers experiment, firmware, acquisition, validation and visualization code as well as writing.
 \end{document}
