@@ -1,4 +1,4 @@
-"""Upload once and acquire identified matched-storage/adaptation runs."""
+"""Upload once and acquire seven implementations on one matched input fixture."""
 import argparse,hashlib,json,shutil,subprocess,sys,zipfile
 from pathlib import Path
 try:

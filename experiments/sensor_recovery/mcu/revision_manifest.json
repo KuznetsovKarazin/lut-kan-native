@@ -1,16 +1,20 @@
 {
-  "fixture_sha256": "442bd7a583794271aab02c9a38f8c28cc7a91d48d61d92a36aec3d94e11d57c7",
+  "fixture_sha256": "3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb",
   "source_seed": 2026110801,
   "scenario": "ntc_frontend",
   "unit": 0,
   "repeat": 0,
   "budget": 75,
+  "suite": "matched_references_v2",
+  "parity_gate_C": 0.002,
+  "polynomial_horner_payload_bytes": 56,
   "payload_bytes": {
     "lut32_float32": 144,
     "lut60_int16": 144,
     "cubic32_unrolled": 144,
     "horner8": 144,
     "polynomial": 56,
-    "physics": 32
+    "physics": 32,
+    "polynomial_horner": 56
   }
 }

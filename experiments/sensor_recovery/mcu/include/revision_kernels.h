@@ -8,6 +8,13 @@ static inline float polynomial(float adc) {
  for(int j=REVISION_POLY_N-1;j>=1;--j){float b=2*x*b1-b2+revision_poly_c[j];b2=b1;b1=b;}
  return (x*b1-b2+revision_poly_c[0])*tr.y_half+tr.y_mid;
 }
+static inline float polynomial_horner(float adc) {
+ const Matched::Transform &tr=matched_lut_float32.tr;
+ float x=(adc-tr.x_mid)/tr.x_half;
+ float y=revision_poly_horner_c[REVISION_POLY_N-1];
+ for(int j=REVISION_POLY_N-2;j>=0;--j)y=y*x+revision_poly_horner_c[j];
+ return y*tr.y_half+tr.y_mid;
+}
 static inline float physics(float adc) {
  adc=fminf(fmaxf(adc,1e-7f),1.f-1e-7f);
  float z=logf(10000.f*adc/(1.f-adc));

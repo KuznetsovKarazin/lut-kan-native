@@ -1,0 +1,19 @@
+{
+  "kind": "host_float32_parity_not_mcu_timing",
+  "fixture_sha256": "3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb",
+  "dense_grid_count": 10001,
+  "normalized_range": [
+    -1,
+    1
+  ],
+  "max_gap_C": {
+    "clenshaw": 2.6965284888547103e-05,
+    "horner": 2.0712678320933264e-05
+  },
+  "max_between_kernels_C": 2.288818359375e-05,
+  "test_observation_gaps_C": {
+    "clenshaw": 1.8660876946796634e-05,
+    "physics": 5.21334133622986e-05,
+    "horner": 1.4844755668264042e-05
+  }
+}

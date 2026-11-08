@@ -46,3 +46,4 @@ experiments/sensor_recovery/mcu/.pio/
 
 # Raw review-analysis records are preserved in the separate evidence archive.
 experiments/sensor_recovery/results/revision_20261108/**/records.jsonl.gz
+experiments/sensor_recovery/results/refinement_20261108/**/records.jsonl.gz

@@ -6,7 +6,7 @@ try:
 except ImportError:
  from capture import capture_stream,open_serial,utc_now
 HERE=Path(__file__).resolve().parent
-METHODS=('lut32_float32','lut60_int16','cubic32_unrolled','horner8','polynomial','physics')
+METHODS=('lut32_float32','lut60_int16','cubic32_unrolled','horner8','polynomial','physics','polynomial_horner')
 MEGA_HELLO_DELAY_S=2.;MEGA_HELLO_ERROR_BUDGET=3
 
 def parse_lines(lines):
@@ -46,9 +46,9 @@ def parse_lines(lines):
  manifest=json.loads((HERE/'revision_manifest.json').read_text());board=meta.get('BOARD')
  hz=dict(mega2560='16000000',esp32c3='160000000',esp32s3='240000000')
  if not started or not complete or set(meta)!={'SUITE','SESSION','BOARD','CPU_HZ','FIXTURE_SHA256','PRECISION'}:raise ValueError('Incomplete capture')
- if board not in hz or meta['CPU_HZ']!=hz[board] or meta['SUITE']!='matched_references_v1' or meta['PRECISION']!='float32' or meta['FIXTURE_SHA256']!=manifest['fixture_sha256']:raise ValueError('Identity mismatch')
+ if board not in hz or meta['CPU_HZ']!=hz[board] or meta['SUITE']!='matched_references_v2' or meta['PRECISION']!='float32' or meta['FIXTURE_SHA256']!=manifest['fixture_sha256']:raise ValueError('Identity mismatch')
  if not re.fullmatch('[0-9a-f]{32}',meta['SESSION']):raise ValueError('Invalid session')
- for tag,value in [('READY','SENSOR_REFERENCES_V1,'+board),('ECHO',meta['SESSION']),('ACCEPTED',meta['SESSION'])]:
+ for tag,value in [('READY','SENSOR_REFERENCES_V2,'+board),('ECHO',meta['SESSION']),('ACCEPTED',meta['SESSION'])]:
   found=[r for r in prefix if r[0]==tag]
   if not found or any(','.join(r[1:])!=value for r in found) or (tag!='READY' and len(found)!=1):raise ValueError('Handshake mismatch '+tag)
  positions=[next(i for i,r in enumerate(prefix) if r[0]==tag) for tag in ('READY','ECHO','ACCEPTED')]
@@ -73,13 +73,13 @@ def main():
     if not a.port or a.timeout<=0:p.error("Supply a port and a positive timeout")
     token=uuid.uuid4().hex
     session=dict(session_id=token,board_requested=a.board,start_utc=utc_now(),port=a.port,
-                 mode="command_references_v1",status="capturing",tx_commands=[],capture_script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+                 mode="command_references_v2",status="capturing",tx_commands=[],capture_script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     side.write_text(json.dumps(session,indent=2)+"\n");error=None
     try:
         with raw.open("xb") as output,open_serial(a.port,True) as serial:
             print("Checking device handshake and session ID. Do not press RESET or BOOT.",flush=True)
             lines=capture_stream(serial,output,True,token,a.timeout,session,emit=lambda s:print(s,flush=True),
-                                 ready_line="READY,SENSOR_REFERENCES_V1,"+a.board,
+                                 ready_line="READY,SENSOR_REFERENCES_V2,"+a.board,
                                  hello_delay_s=MEGA_HELLO_DELAY_S if a.board=="mega2560" else 0.0,
                                  hello_error_budget=MEGA_HELLO_ERROR_BUDGET if a.board=="mega2560" else 0)
         result=parse_lines(lines)

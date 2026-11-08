@@ -1,3 +1,12 @@
+## Current second-review refinement
+
+The stronger 32-pair block OLS baseline and extended tau grid are complete.
+[Results and reproduction](results/refinement_20261108/README.md).
+New common-fixture Mega/C3 captures ARE needed for a unified frontier; follow
+[mcu/RUN_REFERENCES_RU.txt](mcu/RUN_REFERENCES_RU.txt). Seven implementations include
+Clenshaw and power-basis Horner for the same polynomial. Historical measurements
+remain separate. No physical sensor campaign or DOI has yet been completed.
+
 # Sensor calibration recovery
 
 This isolated experiment revisits the sensor paper with equal labelled-data

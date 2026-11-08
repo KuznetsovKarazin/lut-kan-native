@@ -1,0 +1,98 @@
+Processing mega2560_references (platform: atmelavr@5.1.0; board: megaatmega2560; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/megaatmega2560.html
+PLATFORM: Atmel AVR (5.1.0) > Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)
+HARDWARE: ATMEGA2560 16MHz, 8KB RAM, 248KB Flash
+DEBUG: Current (avr-stub) External (avr-stub, simavr)
+PACKAGES: 
+ - framework-arduino-avr @ 5.2.0 
+ - toolchain-atmelavr @ 1.70300.191015 (7.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 5 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/mega2560_references/src/revision_main.cpp.o
+Linking .pio/build/mega2560_references/firmware.elf
+Checking size .pio/build/mega2560_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  17.6% (used 1441 bytes from 8192 bytes)
+Flash: [=         ]   8.9% (used 22514 bytes from 253952 bytes)
+Building .pio/build/mega2560_references/firmware.hex
+========================= [SUCCESS] Took 1.12 seconds =========================
+
+Processing esp32c3_references (platform: espressif32@6.12.0; board: esp32-c3-devkitm-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 33 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/esp32c3_references/src/revision_main.cpp.o
+Linking .pio/build/esp32c3_references/firmware.elf
+Retrieving maximum program size .pio/build/esp32c3_references/firmware.elf
+Checking size .pio/build/esp32c3_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [          ]   4.3% (used 13948 bytes from 327680 bytes)
+Flash: [==        ]  19.6% (used 257070 bytes from 1310720 bytes)
+Building .pio/build/esp32c3_references/firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32c3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio/build/esp32c3_references/firmware.bin
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 2 ELF sections
+Successfully created esp32c3 image.
+========================= [SUCCESS] Took 4.41 seconds =========================
+
+Processing esp32s3_references (platform: espressif32@6.12.0; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 33 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/esp32s3_references/src/revision_main.cpp.o
+Linking .pio/build/esp32s3_references/firmware.elf
+Retrieving maximum program size .pio/build/esp32s3_references/firmware.elf
+Checking size .pio/build/esp32s3_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   5.7% (used 18564 bytes from 327680 bytes)
+Flash: [=         ]   8.4% (used 282377 bytes from 3342336 bytes)
+Building .pio/build/esp32s3_references/firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32s3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 8MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio/build/esp32s3_references/firmware.bin
+esptool.py v4.9.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 4.36 seconds =========================
+
+Environment          Status    Duration
+-------------------  --------  ------------
+mega2560_references  SUCCESS   00:00:01.125
+esp32c3_references   SUCCESS   00:00:04.406
+esp32s3_references   SUCCESS   00:00:04.358
+========================= 3 succeeded in 00:00:09.888 =========================
