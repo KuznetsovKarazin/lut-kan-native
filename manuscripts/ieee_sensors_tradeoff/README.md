@@ -4,7 +4,7 @@
 
 Oleksandr Kuznetsov, 8 November 2026. Working revision for scientific author review;
 not a submitted or accepted article. Main paper: eight pages, five numbered
-scientific figures, three tables and 22 references. Supplement: see BUILD_CHECKS.json for the current page count.
+scientific figures, three tables and 23 references. Supplement: see BUILD_CHECKS.json for the current page count.
 
 ## Second-review refinement
 
@@ -70,8 +70,8 @@ prospective physical campaign and uncertainty components without invented values
 - `REVIEW_RESPONSE_RU.txt`: point-by-point analysis of the colleague's review,
   changes made, disagreements supported by data, and remaining work.
 - `BUILD_CHECKS.json`: completed package checks and their limits.
-- `zenodo_metadata_draft.json`, `DEPOSIT_NOTES.txt`: saved Zenodo draft metadata,
-  reserved DOI and archive checksums. The record is not yet published.
+- `zenodo_record.json`, `DEPOSIT_NOTES.txt`: published Zenodo record,
+  version-specific DOI, archive checksums and anonymous-access verification.
 
 In Overleaf select `main.tex` as the main document; build `supplement.tex`
 separately. Figures and table inputs are included, so no repository checkout is
@@ -107,8 +107,8 @@ The original large raw archive is 140,570,539 bytes, SHA-256
 The three additional compressed record streams total 77,720,317 bytes; individual
 hashes are in `results/revision_20261108/raw_manifest.json`. Both are preserved
 separately from Git. Public source, summaries, per-unit results and raw MCU logs
-are linked above; the large raw synthetic archives are not claimed to have a
-public DOI. Gzip timestamps may change upon reproduction; compare decoded records.
+are linked above. All three raw evidence archives and the pinned research code
+are publicly deposited in [Zenodo, version 1.0.0](https://doi.org/10.5281/zenodo.24062383). Gzip timestamps may change upon reproduction; compare decoded records.
 
 ## Prospective hardware extension
 
@@ -130,11 +130,16 @@ The working draft uses JSEN colored layout, a single-paragraph abstract, and
 numbered figures/tables/equations. The official May 2024
 JSEN ZIP has been inspected. The supplied ieeecolor.cls, jsen.sty and IEEEtran.bst
 match its bytes exactly; provenance and working-copy adjustments are documented.
-Zenodo draft https://zenodo.org/uploads/24062383 is saved with reserved DOI
-`10.5281/zenodo.24062383`. The complete deposit ZIP is 234,018,558 bytes; its
-SHA-256 is `f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774`.
-File upload and publication remain pending. The draft is not a public dataset,
-and no formal release tag is claimed. Real NTC measurements remain absent.
+The evidence dataset is published in [Zenodo, version 1.0.0](https://doi.org/10.5281/zenodo.24062383).
+Use this version-specific DOI for the paper. The concept DOI
+`10.5281/zenodo.24062382` refers to all versions. The complete deposit ZIP is
+234,018,558 bytes; SHA-256:
+`f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774`;
+MD5: `3f6986c166c4911948fc6f4e3c657f35`. The server checksum matches, and
+the DOI, public record and archive download return HTTP 200 without account authentication.
+The evidence archive remains unchanged; historical draft-status wording inside
+its original components records their preparation date. No formal Git release
+tag is claimed. Real NTC measurements remain absent.
 
 ## Для автора
 

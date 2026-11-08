@@ -1,26 +1,25 @@
-ZENODO — SAVED DRAFT, DOI RESERVED, NOT PUBLISHED
-Draft: https://zenodo.org/uploads/24062383
-Reserved DOI: 10.5281/zenodo.24062383
-The DOI is registered only after publication. No public access has been verified.
+ZENODO — PUBLISHED OPEN DATASET
+Version: 1.0.0, published 8 November 2026.
+Version-specific DOI (cite this in the article): https://doi.org/10.5281/zenodo.24062383
+Public record: https://zenodo.org/records/24062383
+Concept DOI (all versions): https://doi.org/10.5281/zenodo.24062382
 
-Upload this single complete file:
-IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip
+Published file: IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip
 Bytes: 234018558
 SHA-256: f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774
 MD5: 3f6986c166c4911948fc6f4e3c657f35
+The uploaded MD5 matches the prepared archive. Preview lists all four component
+ZIPs, MANIFEST_SHA256.json and README.txt. The DOI resolves to the published
+record. Record GET and archive HEAD return HTTP 200 without authentication;
+the public download reports the exact expected byte count.
 
-It contains the original 140 MB archive, the first-review 78 MB archive,
-the second-review 10 MB archive, and the research code pinned to 45edb31b3e67821a06e4131d0b82785248de5a5f.
-Each original ZIP is preserved byte for byte. Component sizes and SHA-256
-checksums appear in zenodo_metadata_draft.json and inside the deposit ZIP.
+Contents: original 140 MB evidence, first-review 78 MB evidence, second-review
+10 MB evidence and research code at 45edb31b3e67821a06e4131d0b82785248de5a5f.
+Each original ZIP retains its exact bytes. Component checksums and public-access
+verification appear in zenodo_record.json. Historical preparation/status wording
+inside the immutable archives is not a claim about the current publication state.
 
-Saved metadata: one verified author with ORCID and both university affiliations;
-Dataset, version 1.0.0, 2026-11-08; author-created data/documentation CC BY 4.0;
-software retains its included MIT license. Third-party dependencies retain their terms.
-This is research evidence, not a journal publication. No new physical NTC/LDR,
-seven-kernel MCU, ESP32-S3 timing, energy, WCET or peak-stack result is asserted.
-
-After upload, compare the displayed checksum and inspect Preview. After publication,
-verify anonymous public access and then replace the reserved-status sentence in the
-article, supplement, README and continuation notes by the actual public citation.
-A formal repository release tag remains separate from the immutable commit.
+Author-created data/documentation: CC BY 4.0. Software retains its included MIT
+license; third-party dependencies retain their terms. This is a dataset release,
+not a journal publication. No physical NTC/LDR or new seven-kernel MCU, S3 timing,
+energy, WCET or peak-stack result is asserted. A Git release tag is separate.

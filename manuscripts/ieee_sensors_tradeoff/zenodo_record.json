@@ -1,9 +1,7 @@
 {
-  "status": "SAVED_ZENODO_DRAFT_RESERVED_DOI_NOT_PUBLISHED",
+  "status": "PUBLISHED_OPEN",
   "record_id": "24062383",
-  "draft_url": "https://zenodo.org/uploads/24062383",
-  "reserved_doi": "10.5281/zenodo.24062383",
-  "public_registration_verified": false,
+  "public_registration_verified": true,
   "saved_metadata": {
     "title": "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data",
     "resource_type": "dataset",
@@ -24,7 +22,47 @@
     "software_license": "MIT",
     "description_scope": "Original and both review-stage synthetic records, preserved physical MCU logs, exact code snapshot; no new physical sensor or seven-kernel MCU measurements."
   },
-  "prepared_archive": {
+  "remaining": [],
+  "note": "The original and first-review archives retain their historical wording and checksums. Their archived status statements describe the time of creation.",
+  "record_url": "https://zenodo.org/records/24062383",
+  "doi": "10.5281/zenodo.24062383",
+  "doi_url": "https://doi.org/10.5281/zenodo.24062383",
+  "concept_doi": "10.5281/zenodo.24062382",
+  "server_md5_matches": true,
+  "public_access_checks": [
+    {
+      "requested_url": "https://doi.org/10.5281/zenodo.24062383",
+      "resolved_url": "https://zenodo.org/records/24062383",
+      "http_status": 200,
+      "content_length": "80934",
+      "authenticated_session": false,
+      "title": [
+        "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data | Zenodo"
+      ],
+      "contains_file_name": true,
+      "contains_expected_md5": true
+    },
+    {
+      "requested_url": "https://zenodo.org/records/24062383",
+      "resolved_url": "https://zenodo.org/records/24062383",
+      "http_status": 200,
+      "content_length": "80934",
+      "authenticated_session": false,
+      "title": [
+        "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data | Zenodo"
+      ],
+      "contains_file_name": true,
+      "contains_expected_md5": true
+    },
+    {
+      "requested_url": "https://zenodo.org/records/24062383/files/IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip?download=1",
+      "resolved_url": "https://zenodo.org/records/24062383/files/IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip?download=1",
+      "http_status": 200,
+      "content_length": "234018558",
+      "authenticated_session": false
+    }
+  ],
+  "published_archive": {
     "file_name": "IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip",
     "bytes": 234018558,
     "sha256": "f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774",
@@ -47,11 +85,5 @@
         "sha256": "47862ef9956f6b8fc36d364163ef936e92197d125332f8b1f259556d763a05de"
       }
     }
-  },
-  "remaining": [
-    "Upload the prepared ZIP to the saved record.",
-    "Verify the server checksum and preview.",
-    "Publish the record and verify public access before changing the article to a public data citation."
-  ],
-  "note": "The original and first-review archives retain their historical wording and checksums. Their archived status statements describe the time of creation."
+  }
 }

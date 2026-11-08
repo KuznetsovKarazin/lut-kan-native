@@ -8,7 +8,7 @@
   "main_numbered_figures": 5,
   "main_tables": 3,
   "supplement_tables": 11,
-  "references": 22,
+  "references": 23,
   "graphical_abstract_separate": {
     "pixels": [
       660,
@@ -39,12 +39,52 @@
   "new_physical_mcu_acquisitions": 0,
   "physical_sensor_campaign_completed": false,
   "current_journal_specific_template_verified": true,
-  "public_data_doi": null,
-  "note": "Official downloaded JSEN class/style bytes are verified. A reserved Zenodo DOI is not a published deposit. Document/code validation does not establish physical sensor accuracy, energy, WCET or measured peak stack. New seven-kernel device captures and a formal Git release tag remain open.",
+  "public_data_doi": "10.5281/zenodo.24062383",
+  "note": "Official JSEN class/style bytes and public Zenodo version 1.0.0 are verified. Document/code validation does not establish physical sensor accuracy, energy, WCET or measured peak stack. New seven-kernel device captures and a formal Git release tag remain open.",
   "standalone_assets_count": 66,
   "refinement_experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
   "experiment_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42529673527",
   "template_archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
-  "zenodo_reserved_doi": "10.5281/zenodo.24062383",
-  "zenodo_status": "draft_saved_files_and_publication_pending"
+  "zenodo_status": "published_open",
+  "zenodo_version": "1.0.0",
+  "anonymous_record_access_verified": true,
+  "anonymous_archive_access_verified": true,
+  "server_archive_checksum_matches": true,
+  "publication_pdf_checks": {
+    "main": {
+      "pages": 8,
+      "changed_pages": [
+        7,
+        8
+      ],
+      "doi_hyperlinks": 3,
+      "overfull_boxes": 0,
+      "undefined_references": 0,
+      "no_type3_fonts": true,
+      "standalone_pdf_text_identical": true
+    },
+    "supplement": {
+      "pages": 11,
+      "changed_pages": [
+        5,
+        11
+      ],
+      "doi_hyperlinks": 3,
+      "overfull_boxes": 0,
+      "undefined_references": 0,
+      "no_type3_fonts": true,
+      "standalone_pdf_text_identical": true
+    }
+  },
+  "publication_changed_pages_visually_inspected": {
+    "main": [
+      7,
+      8
+    ],
+    "supplement": [
+      5,
+      11
+    ]
+  },
+  "manuscript_template_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42531616115"
 }
