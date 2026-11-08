@@ -25,8 +25,8 @@ def capture_runs(board,port,out,runs,metadata,runner=run_logged):
         target=out/f"run{i:02d}.json"
         runner([sys.executable,str(HERE/"capture_matched.py"),"--board",board,"--port",port,"--out",str(target)],
                out/f"run{i:02d}.console.txt")
-        result=json.loads(target.read_text())
-        session=json.loads(target.with_suffix(".session.json").read_text())
+        result=json.loads(target.read_text(encoding="utf8"))
+        session=json.loads(target.with_suffix(".session.json").read_text(encoding="utf8"))
         raw=target.with_suffix(".log")
         reparsed=parse_lines(raw.read_text(encoding="utf-8-sig").splitlines())
         if result!=reparsed:raise ValueError("Raw log does not reproduce result")
@@ -60,6 +60,7 @@ def main():
                 metadata["built_artifacts"][name]=dict(bytes=target.stat().st_size,sha256=sha(target),archive_path="firmware/"+name)
         needed={"firmware.elf","firmware.hex" if a.board=="mega2560" else "firmware.bin"}
         if not needed<=set(metadata["built_artifacts"]):raise ValueError("Missing required firmware images")
+        metadata["stage"]="package_inventory"
         run_logged([sys.executable,"-m","platformio","pkg","list","-d",str(HERE),"-e",metadata["environment"]],out/"packages.txt")
         metadata["stage"]="port_wait";metadata["usb_device"]=wait_for_port(a.port)
         if source_hashes()!=before:raise ValueError("Sources changed during upload")
@@ -70,7 +71,7 @@ def main():
         error=exc;metadata.update(status="failed",error=str(exc),error_type=type(exc).__name__)
     finally:
         metadata["end_utc"]=utc();metadata["source_after"]=source_hashes()
-        (out/"batch.json").write_text(json.dumps(metadata,indent=2)+"\n")
+        (out/"batch.json").write_text(json.dumps(metadata,indent=2)+"\n",encoding="utf8")
         with zipfile.ZipFile(archive,"x",compression=zipfile.ZIP_DEFLATED) as z:
             for path in sorted(out.rglob("*")):
                 if path.is_file():z.write(path,path.relative_to(out).as_posix())

@@ -1,0 +1,80 @@
+Resolving esp32c3_matched dependencies...
+Platform espressif32 @ 6.12.0 (required: espressif32 @ 6.12.0)
+UnicodeEncodeError: Traceback (most recent call last):
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+    ~~~^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 1442, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 1363, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\cli.py", line 85, in invoke
+    return super().invoke(ctx)
+           ~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 1830, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 1830, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 1226, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\package\commands\list.py", line 56, in package_list_cmd
+    list_project_packages(options)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\package\commands\list.py", line 179, in list_project_packages
+    _found = print_project_env_platform_packages(env, options)
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\package\commands\list.py", line 205, in print_project_env_platform_packages
+    print_dependency_tree(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        p.pm,
+        ^^^^^
+        specs=[p.get_package_spec(name) for name in p.packages],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        filter_specs=options.get("tools"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\package\commands\list.py", line 99, in print_dependency_tree
+    click.echo(
+    ~~~~~~~~~~^
+        "%s%s %s"
+        ^^^^^^^^^
+    ...<8 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\__main__.py", line 89, in <lambda>
+    click.echo = lambda *args, **kwargs: _safe_echo(0, *args, **kwargs)
+                                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\platformio\__main__.py", line 83, in _safe_echo
+    click_echo_origin[origin](*args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\site-packages\click\utils.py", line 321, in echo
+    file.write(out)  # type: ignore
+    ~~~~~~~~~~^^^^^
+  File "C:\Users\[USER]\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1251.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 0-2: character maps to <undefined>
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+

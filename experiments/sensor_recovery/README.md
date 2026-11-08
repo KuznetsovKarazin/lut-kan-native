@@ -34,14 +34,18 @@ physical sensor accuracy remains unmeasured.
 - [Matched MCU measurement protocol](MATCHED_MCU_PROTOCOL.md)
 - [Matched MCU host validation and cross-compiled sizes](results/matched_mcu_20261108/RESULTS.md)
 - [Run the new matched suite on C3 and Mega (Russian)](mcu/MATCHED_RUN_RU.md)
+- [First matched C3 attempt: successful upload, Windows inventory failure](results/c3_matched_failed_20261108/RESULTS.md)
 
 The next MCU checkpoint is prepared: four 144-byte inference representations
 and complete float32 LUT/cubic NLMS trajectories, with and without full PAVA.
 All 20 cross-compilations pass; host prediction/state gaps stay below 0.000016 °C
 against the frozen reference. The new suites use device-acknowledged sessions
 on both boards and package firmware images with captures. Real matched-suite
-execution times remain pending user acquisition. The current focused suite
-passes 91 tests and eight model subtests.
+execution times remain pending user acquisition. The first Windows C3 attempt
+uploaded successfully but stopped at the PlatformIO package inventory with a
+CP1251 Unicode encoding error, before any capture. The runner now configures
+UTF-8 for Python subprocesses and tolerates legacy console output; the firmware
+is unchanged. The current focused suite passes 94 tests and eight model subtests.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning

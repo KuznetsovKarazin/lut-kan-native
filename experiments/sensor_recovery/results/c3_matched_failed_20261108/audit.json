@@ -1,0 +1,244 @@
+{
+  "archive": "c3_matched_20261108_095740_558.zip",
+  "archive_bytes": 2199397,
+  "archive_sha256": "00f3d88b8b812966833e0791ff62ab7ced7b898f8e6bfc50ed1cf5d32d170ca8",
+  "zip_crc_pass": true,
+  "files": [
+    {
+      "name": "batch.json",
+      "bytes": 11229,
+      "sha256": "fcaba94fc8e2efd77e614ec7a43dcc461207bf54cb3b41e621c5f605c971b058"
+    },
+    {
+      "name": "firmware/bootloader.bin",
+      "bytes": 13248,
+      "sha256": "30d47ab1f344cfa69f6b2f718ffa72fc7baea6db047eaabefea162db29e6821c"
+    },
+    {
+      "name": "firmware/firmware.bin",
+      "bytes": 295152,
+      "sha256": "b55e53200e197895f17e1a7801018fb9c032fe6e59f9a6049de5e0b31267e2be"
+    },
+    {
+      "name": "firmware/firmware.elf",
+      "bytes": 5788876,
+      "sha256": "ebfd8b2446d31545f4342302db4bfb75d4f7de6cf66450fb37fa1ea1433685fb"
+    },
+    {
+      "name": "firmware/partitions.bin",
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1"
+    },
+    {
+      "name": "packages.txt",
+      "bytes": 4479,
+      "sha256": "d253e18622739241671ec513b1666ee5c3eb701d53f9e67686c36b05f7d01237"
+    },
+    {
+      "name": "upload.log",
+      "bytes": 8037,
+      "sha256": "78607c11c908a1dd9f1aac6783f3da224ec48ac4367e4c1d8bfa82cd6e2aca5c"
+    }
+  ],
+  "measured_commit": "98452eb173250aaa0f6347fa7235db5e767dcfc4",
+  "board": "esp32c3",
+  "environment": "esp32c3_matched",
+  "start_utc": "2026-11-08T08:57:42.451026+00:00",
+  "end_utc": "2026-11-08T08:58:05.725364+00:00",
+  "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "recorded_status": "failed",
+  "recorded_stage": "upload",
+  "actual_failed_stage": "package_inventory",
+  "error": "Command exited 1; see packages.txt",
+  "requested_runs": 2,
+  "completed_captures": 0,
+  "upload_succeeded": true,
+  "upload_hash_verification_count": 4,
+  "windows_build_flash_bytes": 282832,
+  "windows_build_static_ram_bytes": 14252,
+  "source_before_equals_after": true,
+  "source_checks": [
+    {
+      "path": "experiments/sensor_recovery/mcu/platformio.ini",
+      "raw_sha256": "7980c0b385da9983d0b9b24234c59867dd9a2d6f118abef935364ef553451469",
+      "lf_sha256": "86b3ea3d5dc8db4d22d06ed311032560166765a9403eb80c9847dd33c8cb3db2",
+      "pinned_lf_sha256": "86b3ea3d5dc8db4d22d06ed311032560166765a9403eb80c9847dd33c8cb3db2",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/requirements.txt",
+      "raw_sha256": "0e6db9d395e01600195e27e7e45478049c4e33f0e494f84c276729ded777b248",
+      "lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+      "pinned_lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/capture.py",
+      "raw_sha256": "afc818577f40afa817f42836b88428af6a899b536538270d9f84bf7823a2efee",
+      "lf_sha256": "dde9d8a30045c3f012a5c1290a760587a3e26abfeaf53743ef65c78ff1831db9",
+      "pinned_lf_sha256": "dde9d8a30045c3f012a5c1290a760587a3e26abfeaf53743ef65c78ff1831db9",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/capture_matched.py",
+      "raw_sha256": "a7ba4ef9ae7e9c3d4537403e5d4be1c35469aaf17aba019c9a75bb25d9494e60",
+      "lf_sha256": "7f58bcad8e690a559cc3dd6d09c424622a3b36b36099654b4211628475e2cafc",
+      "pinned_lf_sha256": "7f58bcad8e690a559cc3dd6d09c424622a3b36b36099654b4211628475e2cafc",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/run_matched.py",
+      "raw_sha256": "6cbd4bb6538e6ce0e68bebb254146a828f86eab3c956ea3b407b438a6a056902",
+      "lf_sha256": "40fd203a0bf18ddb10bb354556a4485ed0c0a9d37ccfe0b64d7b17b37685be06",
+      "pinned_lf_sha256": "40fd203a0bf18ddb10bb354556a4485ed0c0a9d37ccfe0b64d7b17b37685be06",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/run_suite.py",
+      "raw_sha256": "7eceaa5797a4cbcca1ec04cbcc533f2e30c3e7de0376179fcfc9e1c35240dcf8",
+      "lf_sha256": "8860111e5944be3e23f75b2831a51d3a1307cf0c7a5f61aea4cdf0f6bfacdb88",
+      "pinned_lf_sha256": "8860111e5944be3e23f75b2831a51d3a1307cf0c7a5f61aea4cdf0f6bfacdb88",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/matched_manifest.json",
+      "raw_sha256": "9b8641b870b8a05b178174b6333c0cc9a82ee71329f9d089113931239d7be248",
+      "lf_sha256": "27ce6ce49d9e68496a2aee5a8c8713ff51c2d64db7dd76025c8dee9d81e093f3",
+      "pinned_lf_sha256": "27ce6ce49d9e68496a2aee5a8c8713ff51c2d64db7dd76025c8dee9d81e093f3",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/command_protocol.h",
+      "raw_sha256": "2ec504d6710e3212af52bec06f9b687b7271c4aa56d20926db9f22991354172d",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+      "pinned_lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/fixture.h",
+      "raw_sha256": "1dd3a7918525e91aafa4eebbdebc244639d52e362d1cf8bbff3c4ee5a2ebf4cf",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+      "pinned_lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/kernels.h",
+      "raw_sha256": "8cf9b1daa56ce66a4c2ad4ef48d6decc7397faf921c7b859efc6c53a03297ee4",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+      "pinned_lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_fixture.h",
+      "raw_sha256": "12ce9d0ce1aed8bd479509d2972311ce139c28c0887e435bff7e8fe342e1168a",
+      "lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+      "pinned_lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_identity.h",
+      "raw_sha256": "4ab2f2a4bd4dfed1ef663cff67dd13d35fe5163b6fc9ae806b6fa1ab60a25852",
+      "lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+      "pinned_lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_kernels.h",
+      "raw_sha256": "af4b051f85925d246610e63733e5f0a4736a8ac921ef15e116a21f18dff55cca",
+      "lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+      "pinned_lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/models.h",
+      "raw_sha256": "bc2306e166c7e3caa35ddc67cad81d7aeabb36b7abb90d12c35402fc1a7476cc",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+      "pinned_lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/optimized_coefficients.h",
+      "raw_sha256": "1fe79bc6dc732eb55dcc74436531da07655dd4f60072f991fd16e1b7939a0393",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+      "pinned_lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/optimized_spline.h",
+      "raw_sha256": "ba75ad627f0d6113ab8195b5c753f998db1c27b9bd154af77f6fc29372a61163",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+      "pinned_lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/usb_bench_serial.h",
+      "raw_sha256": "0f9664094ce9e798f863b09e8938bb0b76d37943ba3820bc53af027e63fcc595",
+      "lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c",
+      "pinned_lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/src/main.cpp",
+      "raw_sha256": "e2562d4dda374e3a7684bbc0d24c1ca71e928ac5b41611f44b8eb1bd6e8dddaf",
+      "lf_sha256": "dd5fd22ce50081ceb9e3d4d4725883a0ff28caf75384cad63f8dfc18d48c4722",
+      "pinned_lf_sha256": "dd5fd22ce50081ceb9e3d4d4725883a0ff28caf75384cad63f8dfc18d48c4722",
+      "match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/src/matched_main.cpp",
+      "raw_sha256": "1242e33dd3e9f608ca1b7b69228a74319ec1788933b5468bc7bd20947873ca32",
+      "lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956",
+      "pinned_lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956",
+      "match": true
+    }
+  ],
+  "image_checks": [
+    {
+      "name": "firmware.elf",
+      "bytes": 5788876,
+      "sha256": "ebfd8b2446d31545f4342302db4bfb75d4f7de6cf66450fb37fa1ea1433685fb",
+      "archive_path": "firmware/firmware.elf",
+      "match": true
+    },
+    {
+      "name": "firmware.bin",
+      "bytes": 295152,
+      "sha256": "b55e53200e197895f17e1a7801018fb9c032fe6e59f9a6049de5e0b31267e2be",
+      "archive_path": "firmware/firmware.bin",
+      "match": true
+    },
+    {
+      "name": "bootloader.bin",
+      "bytes": 13248,
+      "sha256": "30d47ab1f344cfa69f6b2f718ffa72fc7baea6db047eaabefea162db29e6821c",
+      "archive_path": "firmware/bootloader.bin",
+      "match": true
+    },
+    {
+      "name": "partitions.bin",
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1",
+      "archive_path": "firmware/partitions.bin",
+      "match": true
+    }
+  ],
+  "redactions": [
+    {
+      "original_name": "upload.log",
+      "original_sha256": "78607c11c908a1dd9f1aac6783f3da224ec48ac4367e4c1d8bfa82cd6e2aca5c",
+      "saved_name": "upload.redacted.log",
+      "saved_sha256": "93481073c3d444a52575205b6b2e2d2d40ee5a77b185cd9ac9a10c96a1a9a4c3",
+      "mac_replacements": 1,
+      "user_path_replacements": 0
+    },
+    {
+      "original_name": "packages.txt",
+      "original_sha256": "d253e18622739241671ec513b1666ee5c3eb701d53f9e67686c36b05f7d01237",
+      "saved_name": "packages.redacted.txt",
+      "saved_sha256": "355dec89040a43335cb2fa311d6b02c20db65d6a660d0987321e219c67da5d13",
+      "mac_replacements": 0,
+      "user_path_replacements": 16
+    }
+  ],
+  "conclusion": "Firmware upload succeeded. Package inventory raised UnicodeEncodeError under CP1251 before any capture. No new hardware timing or numerical checks are available."
+}

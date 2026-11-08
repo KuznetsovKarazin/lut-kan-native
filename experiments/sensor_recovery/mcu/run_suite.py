@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import time
@@ -23,13 +24,27 @@ def source_hashes():
     return {str(p.relative_to(ROOT)):dict(raw_sha256=sha(p),lf_sha256=hashlib.sha256(p.read_bytes().replace(b"\r\n",b"\n")).hexdigest()) for p in paths}
 
 
+def console_print(text,end="\n"):
+    """Keep a legacy console from aborting an otherwise valid capture."""
+    try:
+        print(text,end=end,flush=True)
+    except UnicodeEncodeError:
+        encoding=getattr(sys.stdout,"encoding",None) or "ascii"
+        print(text.encode(encoding,errors="backslashreplace").decode(encoding),end=end,flush=True)
+
+
 def run_logged(command,path):
-    print("Running:",subprocess.list2cmdline(command),flush=True)
+    console_print("Running: "+subprocess.list2cmdline(command))
+    # Redirected Python stdout otherwise uses the Windows locale (e.g. CP1251).
+    # PlatformIO prints Unicode dependency-tree characters; configure the child,
+    # not just this parent's decoder. Its Python subprocesses inherit the setting.
+    env=os.environ.copy()
+    env.update(PYTHONIOENCODING="utf-8",PYTHONUTF8="1")
     with path.open("x",encoding="utf8") as log:
         with subprocess.Popen(command,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
-                              text=True,encoding="utf8",errors="replace") as process:
+                              text=True,encoding="utf8",errors="replace",env=env) as process:
             for line in process.stdout:
-                print(line,end="",flush=True);log.write(line);log.flush()
+                log.write(line);log.flush();console_print(line,end="")
             code=process.wait()
     if code:raise RuntimeError(f"Command exited {code}; see {path.name}")
 
