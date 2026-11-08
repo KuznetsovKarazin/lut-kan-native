@@ -1,0 +1,80 @@
+{
+  "inference": {
+    "lut32_vs_horner8": {
+      "speed_ratio": 1.1604100403152287,
+      "lut_time_reduction_percent": 13.823565355540424
+    },
+    "all_session_medians_equal": true
+  },
+  "updates": [
+    {
+      "drift": "none",
+      "plain_cubic_over_lut": 2.1394561422071736,
+      "projected_cubic_over_lut": 1.6406305770374778,
+      "projected_lut_time_reduction_percent": 39.04782624460641
+    },
+    {
+      "drift": "step",
+      "plain_cubic_over_lut": 2.139547185780787,
+      "projected_cubic_over_lut": 1.641387104449203,
+      "projected_lut_time_reduction_percent": 39.075919550643235
+    },
+    {
+      "drift": "ramp",
+      "plain_cubic_over_lut": 2.1394266370464403,
+      "projected_cubic_over_lut": 1.6412681418034736,
+      "projected_lut_time_reduction_percent": 39.0715036422281
+    }
+  ],
+  "accuracy_and_state_checks_equal": true,
+  "changed_timing_rows": {
+    "timings": 3,
+    "update_timings": 25,
+    "update_overhead": 1
+  },
+  "frozen_vs_adapted": [
+    {
+      "drift": "none",
+      "family": "lut",
+      "frozen_final_grid_mae_C": 0.05665631666593718,
+      "adapted_final_grid_mae_C": 0.0566184,
+      "mae_reduction_percent": 0.06692398688877832
+    },
+    {
+      "drift": "none",
+      "family": "cubic",
+      "frozen_final_grid_mae_C": 0.04749897542291151,
+      "adapted_final_grid_mae_C": 0.0436144,
+      "mae_reduction_percent": 8.178229926698076
+    },
+    {
+      "drift": "step",
+      "family": "lut",
+      "frozen_final_grid_mae_C": 0.5663978548492874,
+      "adapted_final_grid_mae_C": 0.0589095,
+      "mae_reduction_percent": 89.59927204956043
+    },
+    {
+      "drift": "step",
+      "family": "cubic",
+      "frozen_final_grid_mae_C": 0.5662534850419608,
+      "adapted_final_grid_mae_C": 0.0446434,
+      "mae_reduction_percent": 92.11600437272509
+    },
+    {
+      "drift": "ramp",
+      "family": "lut",
+      "frozen_final_grid_mae_C": 0.5663978548492874,
+      "adapted_final_grid_mae_C": 0.058707,
+      "mae_reduction_percent": 89.63502430361052
+    },
+    {
+      "drift": "ramp",
+      "family": "cubic",
+      "frozen_final_grid_mae_C": 0.5662534850419608,
+      "adapted_final_grid_mae_C": 0.0443521,
+      "mae_reduction_percent": 92.16744776472088
+    }
+  ],
+  "notes": "Frozen baseline is host replay on the final drift grid. Adapted errors and all timing data are from the physical C3 captures. Two sessions of one board; no independence assumption."
+}

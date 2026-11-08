@@ -35,17 +35,23 @@ physical sensor accuracy remains unmeasured.
 - [Matched MCU host validation and cross-compiled sizes](results/matched_mcu_20261108/RESULTS.md)
 - [Run the new matched suite on C3 and Mega (Russian)](mcu/MATCHED_RUN_RU.md)
 - [First matched C3 attempt: successful upload, Windows inventory failure](results/c3_matched_failed_20261108/RESULTS.md)
+- [Two complete matched C3 sessions: equal memory and full adaptation](results/c3_matched_20261108/RESULTS.md)
 
-The next MCU checkpoint is prepared: four 144-byte inference representations
+The matched C3 checkpoint is measured: four 144-byte inference representations
 and complete float32 LUT/cubic NLMS trajectories, with and without full PAVA.
 All 20 cross-compilations pass; host prediction/state gaps stay below 0.000016 °C
 against the frozen reference. The new suites use device-acknowledged sessions
-on both boards and package firmware images with captures. Real matched-suite
-execution times remain pending user acquisition. The first Windows C3 attempt
+on both boards and package firmware images with captures. Two complete C3
+captures give LUT32 12.051025 µs/call versus Horner8 13.984131 at equal payload:
+13.824% less time, with MAE 0.0557110 versus 0.0455196 °C. Full projected LUT
+NLMS takes 43.781250 µs/update versus cubic's 71.861979 on the step trajectory;
+cubic is more accurate. PAVA runs without needing block merges on this fixture,
+so these are not worst-case projection times. Mega matched timings remain
+pending. The first Windows C3 attempt
 uploaded successfully but stopped at the PlatformIO package inventory with a
 CP1251 Unicode encoding error, before any capture. The runner now configures
 UTF-8 for Python subprocesses and tolerates legacy console output; the firmware
-is unchanged. The current focused suite passes 94 tests and eight model subtests.
+is unchanged. The current focused suite passes 101 tests and eight model subtests.
 
 The matched-storage and sequential-adaptation stages are now complete in a new,
 explicit reconstruction run: 3312 static evaluations, development-only tuning
@@ -99,8 +105,8 @@ all raw/parsed/session files; no USB reconnection is needed between captures.
 The one-upload/two-capture path is now supported by the supplied Windows/C3
 and Mega batches. The numerical matched-storage and adaptation follow-up
 originally added no firmware changes. The subsequent matched MCU environments
-are now prepared for acquisition. Target timing of these new algorithms and
-physical NTC accuracy remain separate, unmeasured stages.
+are prepared for acquisition, with C3 now measured and Mega still pending.
+Physical NTC accuracy remains a separate, unmeasured stage.
 
 Reproduce the stored capture audit into a fresh directory:
 

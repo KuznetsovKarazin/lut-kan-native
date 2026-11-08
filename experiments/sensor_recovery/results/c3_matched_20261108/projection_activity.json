@@ -1,0 +1,66 @@
+{
+  "reference_sha256": "7492b83358e80b2470aa82cb4a3643a34b9b7d52db5e70ca9d50905cd81712b1",
+  "kernel_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+  "compiler_flags": [
+    "-O2",
+    "-std=c++11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-fPIC",
+    "-shared"
+  ],
+  "rows": [
+    {
+      "drift": "none",
+      "family": "lut",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.05665631666593718
+    },
+    {
+      "drift": "none",
+      "family": "cubic",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.04749897542291151
+    },
+    {
+      "drift": "step",
+      "family": "lut",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.5663978548492874
+    },
+    {
+      "drift": "step",
+      "family": "cubic",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.5662534850419608
+    },
+    {
+      "drift": "ramp",
+      "family": "lut",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.5663978548492874
+    },
+    {
+      "drift": "ramp",
+      "family": "cubic",
+      "checked_updates": 384,
+      "unprojected_steps_violating_monotonicity": 0,
+      "max_projected_vs_unprojected_state_gap_C": 0.0,
+      "frozen_final_grid_mae_C": 0.5662534850419608
+    }
+  ],
+  "note": "Host replay of actual float32 kernels; not new device timing. Frozen baselines use each drift's final ADC grid, not the static test grid."
+}
