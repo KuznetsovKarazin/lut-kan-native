@@ -1,0 +1,42 @@
+{
+  "original_archive_audit_reproduced": true,
+  "capture_analysis_and_report_byte_reproduced": true,
+  "historical_C3_numeric_results_unchanged": true,
+  "negative_controls": [
+    {
+      "case": "missing_console",
+      "rejected": true,
+      "reason": "Unexpected or missing ZIP entries"
+    },
+    {
+      "case": "changed_sources",
+      "rejected": true,
+      "reason": "Sources changed during batch"
+    },
+    {
+      "case": "wrong_normalized_source_hash",
+      "rejected": true,
+      "reason": "Normalized source hash mismatch: experiments/sensor_recovery/mcu/capture.py"
+    },
+    {
+      "case": "wrong_capture_id",
+      "rejected": true,
+      "reason": "Batch capture record mismatch"
+    },
+    {
+      "case": "out_of_batch_time",
+      "rejected": true,
+      "reason": "Overlapping or out-of-batch sessions"
+    },
+    {
+      "case": "altered_result_json",
+      "rejected": true,
+      "reason": "Log/JSON mismatch"
+    }
+  ],
+  "tests": "57 passed, 8 subtests passed",
+  "firmware_models_and_capture_code_unchanged_since_measured_commit": true,
+  "new_MCU_run_performed_by_assistant": false,
+  "analysis_script_sha256": "e6d53ff1fb78eee2ed9d1e2b45e5ba140b94e2d7e97c40c0ac6742a30b1a555b",
+  "batch_audit_script_sha256": "97bd73d30d242a739f44a3d601ffdfc5718e846b516f9435176b556d22c38636"
+}

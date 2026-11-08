@@ -25,6 +25,7 @@ physical sensor accuracy remains unmeasured.
 - [Optimized cubic host results and interpretation (Russian)](results/optimized_spline_20261108/REPORT_RU.md)
 - [Optimized cubic MCU build sizes](results/optimized_spline_build_20261108/RESULTS.md)
 - [Two physical C3 optimized-suite runs (Russian)](results/c3_optimized_20261108/REPORT_RU.md)
+- [Two Mega acquisitions and completed Mega/C3 comparison (Russian)](results/mega_optimized_20261108/REPORT_RU.md)
 - [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN_RU.md)
 - [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
 
@@ -50,7 +51,14 @@ and MAE 0.0524224 versus 0.0465563 °C. Both new cubic methods pass the same
 numerical gate. All accuracy fields match across the two sessions, and the
 largest range of method timing medians is 0.0007844%. The batch/upload/source
 chain is audited against the measured commit, accounting for Windows CRLF.
-Optimized Mega timings remain pending; host timings do not substitute for them.
+Two subsequent Mega host acquisition records also pass all ten checks:
+LUT32/float32 takes 155.023438 µs/call versus Horner 165.250000 (6.189% lower
+LUT time), with the same payloads and MAEs. The logs/JSON are byte-identical,
+but distinct host sidecars and sequential timestamps are retained separately.
+The reviewer now separates acquisition identity from content identity and
+rejects conflicting metadata for a repeated ID. Mega host IDs are not echoed
+by the device; neither these records nor the C3 sessions establish statistical
+independence or between-board variation. The current MCU checkpoint is complete.
 Two optimized KAN rearrangements failed the existing float32 parity gate and
 remain host-only diagnostics. Physical NTC validation remains a separate stage.
 
@@ -59,8 +67,10 @@ environments add two cubic methods and identify the ten-model suite explicitly.
 The default eight-model environments remain available. The batch runner
 uploads once, captures twice and packages source/image hashes, upload logs and
 all raw/parsed/session files; no USB reconnection is needed between captures.
-The one-upload/two-capture path is now confirmed by the supplied Windows/C3
-batch. Continue with Mega, matched-storage comparison and physical NTCs.
+The one-upload/two-capture path is now supported by the supplied Windows/C3
+and Mega batches. Continue with matched-storage comparison, complete sequential
+adaptation and physical NTCs. The current check set passes 57 tests and eight
+model subtests; no firmware or model coefficients changed in the Mega review.
 
 Reproduce the stored capture audit into a fresh directory:
 

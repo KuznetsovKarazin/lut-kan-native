@@ -81,7 +81,7 @@ def main():
     def expected_payloads(parsed):
         manifest=manifests[parsed["metadata"].get("SUITE")]
         return {"overhead":0,**{m["name"]:m["payload_bytes"] for m in manifest["models"]}}
-    unique, submissions, sessions = {}, [], {}
+    observations, content_fingerprints, submissions, sessions = {}, set(), [], {}
     for log in args.logs:
         raw = log.read_bytes()
         parsed = parse_lines(raw.decode("utf-8-sig").splitlines())
@@ -97,16 +97,22 @@ def main():
         sidecar=sidecar_path.read_bytes() if sidecar_path.exists() else None
         session=verify_session(raw,supplied,parsed,sidecar)
         fingerprint = sha(json.dumps(parsed, sort_keys=True, separators=(",", ":")).encode())
+        content_fingerprints.add(fingerprint)
         if session:
             token=session["session_id"]
-            if token in sessions and sessions[token]!=fingerprint:
-                raise ValueError("One session ID has conflicting measurement contents")
-            sessions[token]=fingerprint
+            identity=(fingerprint,json.loads(sidecar))
+            if token in sessions and sessions[token]!=identity:
+                raise ValueError("One session ID has conflicting measurement contents or acquisition metadata")
+            sessions[token]=identity
         submissions.append(dict(log_name=log.name, json_name=supplied_json.name,
                                 log_sha256=sha(raw), json_sha256=sha(supplied),
                                 parsed_content_sha256=fingerprint,session=session))
-        if fingerprint not in unique:
-            unique[fingerprint] = dict(raw=raw, supplied=supplied, parsed=parsed,sidecar=sidecar,session=session)
+        # Deterministic Mega resets can yield identical data with distinct
+        # host-recorded acquisitions. Deduplicate identical submissions of one
+        # session, not separate identified sessions with identical predictions.
+        key=("session",session["session_id"]) if session else ("content",fingerprint)
+        if key not in observations:
+            observations[key] = dict(fingerprint=fingerprint,raw=raw,supplied=supplied,parsed=parsed,sidecar=sidecar,session=session)
 
     reference=None
     if args.reference_log:
@@ -118,22 +124,25 @@ def main():
     capture_dir = args.out / "captures"
     capture_dir.mkdir()
     analysis = dict(evidence_kind="user_supplied_mcu_uart_capture_on_synthetic_fixture",
-                    submitted_pairs=len(submissions), unique_capture_contents=len(unique),
+                    submitted_pairs=len(submissions), unique_capture_contents=len(content_fingerprints),
+                    retained_capture_observations=len(observations),
                     independent_session_count=None,
                     identified_session_count=len(sessions),
-                    session_identity_status="sidecars_verified" if len(sessions)==len(unique) else "legacy_or_mixed_evidence",
+                    session_identity_status="sidecars_verified" if len(sessions)==len(observations) else "legacy_or_mixed_evidence",
                     submissions=submissions,
                     numerical_fixture_manifest_sha256=sha((HERE / "mcu/fixture_manifest.json").read_bytes()),
                     analysis_script_sha256=sha(Path(__file__).read_bytes()), captures=[])
     lines = ["# User-supplied MCU run review", "",
-             f"Received {len(submissions)} log/JSON pairs with {len(unique)} unique parsed contents.",
+             f"Received {len(submissions)} log/JSON pairs with {len(content_fingerprints)} unique parsed contents; retained {len(observations)} capture observations.",
              "Each raw log parses completely and reproduces its supplied JSON exactly. "
              "Fixture metadata and model payloads match the checked-in manifest.", "",
              f"Verified session IDs with acquisition sidecars: {len(sessions)}. "
+             "C3 command IDs are echoed by the device; legacy auto-start IDs and acquisition times are recorded by the host only. "
              "Recorded session identity distinguishes acquisitions, but does not establish statistical independence, different boards or cold boots. "
              "Legacy files without sidecars have no verified acquisition identity. Equal contents alone do not prove a copied acquisition. "
              "The ten timing batches within a capture measure within-run variation; they are not ten independent boards or reset sessions.", ""]
-    for index, (fingerprint, item) in enumerate(unique.items(), 1):
+    for index, item in enumerate(observations.values(), 1):
+        fingerprint=item["fingerprint"]
         d = item["parsed"]
         stem = f"{d['metadata']['BOARD']}_capture{index:02d}"
         (capture_dir / (stem + ".log")).write_bytes(item["raw"])
@@ -219,11 +228,14 @@ def main():
         lines.append("")
     c3_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="esp32c3" and c["session"]}
     optimized_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="esp32c3" and c["metadata"].get("SUITE")=="spline_optimized_v1" and c["session"]}
+    optimized_mega_sessions={c["session"]["session_id"] for c in analysis["captures"] if c["metadata"]["BOARD"]=="mega2560" and c["metadata"].get("SUITE")=="spline_optimized_v1" and c["session"]}
     next_step=("- The preliminary two-session C3 capture checkpoint is complete. Next: optimized cubic/Horner deployment comparators, followed by physical NTC measurements. No further repeat of unchanged firmware is required for this checkpoint."
                if len(c3_sessions)>=2 else
                "- Next: complete at least two separately identified ESP32-C3 command sessions with the same fixture; do not repeat Mega runs solely to obtain different numbers. Optimized deployment baselines and physical NTC measurements remain separate stages.")
     if len(optimized_sessions)>=2:
         next_step="- Two optimized-suite C3 command sessions are available. Interpret the unrolled/Horner timing together with payload and accuracy; physical NTC validation remains a separate stage."
+    if len(optimized_mega_sessions)>=2:
+        next_step="- Two optimized-suite Mega host acquisition records are available, including any byte-identical deterministic outputs. Compare their timing/payload/error tradeoff with C3; matched-storage evaluation and physical NTC validation remain separate stages."
     spline_note=("- This suite includes general de Boor, unrolled and precompiled Horner cubic evaluation. The original scalar KAN edge remains; optimized float32 KAN candidates failed the existing host gate and were excluded from hardware timing."
                  if any(c["metadata"].get("SUITE")=="spline_optimized_v1" for c in analysis["captures"]) else
                  "- Cubic/KAN comparisons are against the checked-in general de Boor evaluator. An optimized piecewise-cubic/Horner deployment baseline is still needed before a general speed-superiority claim. The KAN model is one fixed-grid scalar edge plus SiLU.")
@@ -237,7 +249,7 @@ def main():
               next_step, ""]
     (args.out / "analysis.json").write_text(json.dumps(analysis, indent=2) + "\n", encoding="utf8")
     (args.out / "RESULTS.md").write_text("\n".join(lines), encoding="utf8")
-    print(json.dumps(dict(submitted_pairs=len(submissions), unique_capture_contents=len(unique),
+    print(json.dumps(dict(submitted_pairs=len(submissions), unique_capture_contents=len(content_fingerprints),retained_capture_observations=len(observations),
                           validated=True, output=str(args.out))))
 
 

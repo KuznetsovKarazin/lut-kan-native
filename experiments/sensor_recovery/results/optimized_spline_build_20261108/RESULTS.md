@@ -1,8 +1,9 @@
 # Optimized cubic MCU compilation audit
 
 Subsequent evidence: [two physical C3 optimized-suite runs](../c3_optimized_20261108/REPORT_RU.md)
+and [two Mega host acquisitions](../mega_optimized_20261108/REPORT_RU.md)
 are now verified. The text below records the compilation checkpoint before
-those captures; optimized Mega execution remains pending.
+those captures.
 
 All sixteen sequential builds succeeded without compiler warnings. These
 are cross-compilation and size results; the optimized suite has not yet

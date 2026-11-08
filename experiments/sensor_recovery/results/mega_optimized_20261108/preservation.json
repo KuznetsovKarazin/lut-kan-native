@@ -1,0 +1,66 @@
+{
+  "original_archive_sha256": "343b9bb4e285f937f3c157ccbaa7032e43ea8c52c3af3738d672a74a3c6b09d1",
+  "all_ten_members_byte_identical": true,
+  "files": [
+    {
+      "archive_member": "batch.json",
+      "saved_path": "acquisition/batch.json",
+      "sha256": "d27817ee357915b7f830a66a306801bf90f41b1687f623f2ce9d3763fb627e83",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run01.console.txt",
+      "saved_path": "acquisition/run01.console.txt",
+      "sha256": "76ce48daa334846da452736338e9cb6b8a1a193b2496125dde034f6f9c1c72db",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run01.json",
+      "saved_path": "captures/mega2560_capture01.json",
+      "sha256": "f6579780d14f23db710e76b07e45439ca2b982d0033ac295185a70e2ac1def2c",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run01.log",
+      "saved_path": "captures/mega2560_capture01.log",
+      "sha256": "55c11861cf6874c6926d789a80805232e0d42e739a3eab739e9cb1841f5491ee",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run01.session.json",
+      "saved_path": "captures/mega2560_capture01.session.json",
+      "sha256": "e34de20d821bb4e2086c6ec9f291ece6fadd332a6201171d609d65042b5ca2b0",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run02.console.txt",
+      "saved_path": "acquisition/run02.console.txt",
+      "sha256": "156f330a97c605aedd1f272778b925c27ec678a589db45d7d224e9bb69a38c45",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run02.json",
+      "saved_path": "captures/mega2560_capture02.json",
+      "sha256": "f6579780d14f23db710e76b07e45439ca2b982d0033ac295185a70e2ac1def2c",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run02.log",
+      "saved_path": "captures/mega2560_capture02.log",
+      "sha256": "55c11861cf6874c6926d789a80805232e0d42e739a3eab739e9cb1841f5491ee",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "run02.session.json",
+      "saved_path": "captures/mega2560_capture02.session.json",
+      "sha256": "9a220b95c1aaf70de2925a685b9b3b6e64b88107d8f977eb13d98374c3dca378",
+      "byte_identical": true
+    },
+    {
+      "archive_member": "upload.log",
+      "saved_path": "acquisition/upload.log",
+      "sha256": "b19409bb52ae1a90f97687e13cb0aa5de39a64906a2fe982777e843846616eec",
+      "byte_identical": true
+    }
+  ]
+}

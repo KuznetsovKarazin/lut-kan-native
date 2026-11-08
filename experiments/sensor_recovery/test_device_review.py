@@ -1,11 +1,13 @@
 """Tamper checks for capture provenance; all fixtures are artificial."""
 import json
+import sys
 
 import pytest
 
 from mcu.capture import parse_lines
 from review_device_runs import sha, verify_session
 from test_capture import protocol_fixture
+import review_device_runs as review
 
 
 def evidence():
@@ -47,3 +49,48 @@ def test_reject_inconsistent_acquisition_evidence(change):
     elif change=="timestamps":s["run_accepted_utc"]="2026-11-08T00:00:00+00:00"
     sidecar=None if change=="missing_sidecar" else json.dumps(s).encode()
     with pytest.raises(ValueError):verify_session(raw,supplied,parsed,sidecar)
+
+
+@pytest.mark.parametrize("identity,retained,identified",[("distinct",2,2),("same",1,1),("same_reformatted",1,1),("absent",1,0)])
+def test_identical_legacy_data_preserves_distinct_host_acquisitions(tmp_path,monkeypatch,identity,retained,identified):
+    """Artificial timing records; separate sidecars must survive deduplication."""
+    manifest=json.loads((review.HERE/"mcu/fixture_manifest.json").read_text())
+    payloads={"overhead":0,**{m["name"]:m["payload_bytes"] for m in manifest["models"]}}
+    lines=protocol_fixture()
+    lines[0]=f"SENSOR_BENCH_V1,synthetic_{manifest['scenario']},seed{manifest['seed']},unit{manifest['unit']},B{manifest['budget']}"
+    lines=[f"PAYLOAD,{x.split(',')[1]},{payloads[x.split(',')[1]]}" if x.startswith("PAYLOAD,") else x for x in lines]
+    raw=("\n".join(lines)+"\n").encode();supplied=json.dumps(parse_lines(lines)).encode()
+    logs=[]
+    for i in (1,2):
+        log=tmp_path/f"artificial_{i}.log";log.write_bytes(raw);log.with_suffix(".json").write_bytes(supplied);logs.append(str(log))
+        if identity!="absent":
+            s=dict(session_id=str(i if identity=="distinct" else 1)*32,mode="legacy_auto_start",status="validated",
+                   start_utc="2026-11-08T00:00:00+00:00",end_utc="2026-11-08T00:00:01+00:00",
+                   raw_sha256=sha(raw),result_sha256=sha(supplied),raw_bytes=len(raw))
+            log.with_suffix(".session.json").write_text(json.dumps(s,indent=2 if identity=="same_reformatted" and i==2 else None))
+    out=tmp_path/"review"
+    monkeypatch.setattr(sys,"argv",["review",*logs,"--out",str(out)])
+    review.main();result=json.loads((out/"analysis.json").read_text())
+    assert result["unique_capture_contents"]==1
+    assert result["retained_capture_observations"]==len(result["captures"])==retained
+    assert result["identified_session_count"]==identified
+    assert len(list((out/"captures").glob("*.session.json")))==identified
+    if identity=="distinct":
+        assert result["repeatability"]["mega2560"]["captures"]==2
+        assert result["repeatability"]["mega2560"]["max_relative_range_percent"]==0
+        assert {c["session"]["session_id"] for c in result["captures"]}=={"1"*32,"2"*32}
+
+
+def test_same_id_with_conflicting_sidecar_is_rejected(tmp_path,monkeypatch):
+    manifest=json.loads((review.HERE/"mcu/fixture_manifest.json").read_text())
+    payloads={"overhead":0,**{m["name"]:m["payload_bytes"] for m in manifest["models"]}}
+    lines=protocol_fixture();lines[0]=f"SENSOR_BENCH_V1,synthetic_{manifest['scenario']},seed{manifest['seed']},unit{manifest['unit']},B{manifest['budget']}"
+    lines=[f"PAYLOAD,{x.split(',')[1]},{payloads[x.split(',')[1]]}" if x.startswith("PAYLOAD,") else x for x in lines]
+    raw=("\n".join(lines)+"\n").encode();supplied=json.dumps(parse_lines(lines)).encode();logs=[]
+    for i in (1,2):
+        log=tmp_path/f"artificial_{i}.log";log.write_bytes(raw);log.with_suffix(".json").write_bytes(supplied);logs.append(str(log))
+        s=dict(session_id="1"*32,mode="legacy_auto_start",status="validated",raw_sha256=sha(raw),result_sha256=sha(supplied),raw_bytes=len(raw),
+               start_utc=f"2026-11-08T00:00:0{i}+00:00",end_utc="2026-11-08T00:00:03+00:00")
+        log.with_suffix(".session.json").write_text(json.dumps(s))
+    monkeypatch.setattr(sys,"argv",["review",*logs,"--out",str(tmp_path/"review")])
+    with pytest.raises(ValueError,match="acquisition metadata"):review.main()
