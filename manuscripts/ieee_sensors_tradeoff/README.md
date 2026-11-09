@@ -43,8 +43,11 @@ cycle or additional simulated trajectories accompanies this revision.
 - [Experiment entry point](../../experiments/sensor_recovery/README.md)
 - [Frozen V2 audit and public raw logs](https://github.com/KuznetsovKarazin/lut-kan-native/tree/df1906500c609bf8eabe41862432f79475548ba9/experiments/sensor_recovery/results/v2_boards_20261109)
 - [Earlier published data, Zenodo 1.0.0](https://doi.org/10.5281/zenodo.24062383)
-- New data version 1.1.0: DOI 10.5281/zenodo.24082229 is reserved; publication pending.
+- [Published data, Zenodo 1.1.0](https://doi.org/10.5281/zenodo.24082229): both the unchanged 234 MB earlier archive and the 19.6 MB V2 addition, including the exact archived code snapshot 5ced774.
 
+The [matching Git release](https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.1.0) fixes archived commit 5ced774; subsequent manuscript-only changes do not modify that snapshot.
+
+Version 1.1.0 was published and its public files/checksums verified on 9 November 2026.
 Zenodo 1.0.0 and tag `sensors-zenodo-v1.0.0` retain the earlier evidence at
 45edb31. Do not imply that this old version contains the six V2 captures.
 The submission package includes the paper, supplement, separate graphical

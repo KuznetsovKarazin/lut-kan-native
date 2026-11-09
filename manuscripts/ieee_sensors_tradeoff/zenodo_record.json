@@ -1,12 +1,31 @@
 {
   "status": "PUBLISHED_OPEN",
-  "record_id": "24062383",
-  "public_registration_verified": true,
+  "record_id": "24082229",
+  "version": "1.1.0",
+  "doi": "10.5281/zenodo.24082229",
+  "doi_url": "https://doi.org/10.5281/zenodo.24082229",
+  "record_url": "https://zenodo.org/records/24082229",
+  "publication_date": "2026-11-09",
+  "public_access_verified_without_authentication": true,
+  "files": [
+    {
+      "filename": "IEEE_Sensors_V1_1_Evidence_2026-11-09.zip",
+      "bytes": 19558339,
+      "checksum": "md5:67114053996fbacc05f5e90fae71eb5a",
+      "sha256": "bc5165648da0ed196626651749c9a6a3dbd3e28b7b796ad291c47f55099f8a15"
+    },
+    {
+      "filename": "IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip",
+      "bytes": 234018558,
+      "checksum": "md5:3f6986c166c4911948fc6f4e3c657f35",
+      "sha256": "f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774"
+    }
+  ],
+  "archived_code_commit": "5ced774e40a94e57220c213499eccd6d2af425b4",
+  "original_archive_preserved_unchanged": true,
   "saved_metadata": {
     "title": "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data",
     "resource_type": "dataset",
-    "version": "1.0.0",
-    "publication_date": "2026-11-08",
     "creators": [
       {
         "name": "Kuznetsov, Oleksandr",
@@ -17,97 +36,23 @@
         ]
       }
     ],
-    "repository_url": "https://github.com/KuznetsovKarazin/lut-kan-native/tree/45edb31b3e67821a06e4131d0b82785248de5a5f",
+    "repository_url": "https://github.com/KuznetsovKarazin/lut-kan-native/tree/5ced774e40a94e57220c213499eccd6d2af425b4",
     "data_license": "CC-BY-4.0",
-    "software_license": "MIT",
-    "description_scope": "Original and both review-stage synthetic records, preserved physical MCU logs, exact code snapshot; no new physical sensor or seven-kernel MCU measurements."
+    "software_license": "MIT"
   },
-  "remaining": [],
-  "note": "The original and first-review archives retain their historical wording and checksums. Their archived status statements describe the time of creation.",
-  "record_url": "https://zenodo.org/records/24062383",
-  "doi": "10.5281/zenodo.24062383",
-  "doi_url": "https://doi.org/10.5281/zenodo.24062383",
+  "previous_version": {
+    "version": "1.0.0",
+    "doi": "10.5281/zenodo.24062383",
+    "record_url": "https://zenodo.org/records/24062383",
+    "code_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
+    "tag": "sensors-zenodo-v1.0.0"
+  },
   "concept_doi": "10.5281/zenodo.24062382",
-  "server_md5_matches": true,
-  "public_access_checks": [
-    {
-      "requested_url": "https://doi.org/10.5281/zenodo.24062383",
-      "resolved_url": "https://zenodo.org/records/24062383",
-      "http_status": 200,
-      "content_length": "80934",
-      "authenticated_session": false,
-      "title": [
-        "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data | Zenodo"
-      ],
-      "contains_file_name": true,
-      "contains_expected_md5": true
-    },
-    {
-      "requested_url": "https://zenodo.org/records/24062383",
-      "resolved_url": "https://zenodo.org/records/24062383",
-      "http_status": 200,
-      "content_length": "80934",
-      "authenticated_session": false,
-      "title": [
-        "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration: Reproducibility Data | Zenodo"
-      ],
-      "contains_file_name": true,
-      "contains_expected_md5": true
-    },
-    {
-      "requested_url": "https://zenodo.org/records/24062383/files/IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip?download=1",
-      "resolved_url": "https://zenodo.org/records/24062383/files/IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip?download=1",
-      "http_status": 200,
-      "content_length": "234018558",
-      "authenticated_session": false
-    }
-  ],
-  "published_archive": {
-    "file_name": "IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip",
-    "bytes": 234018558,
-    "sha256": "f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774",
-    "md5": "3f6986c166c4911948fc6f4e3c657f35",
-    "contents": {
-      "IEEE_Sensors_Matched_Adaptation_Data_2026-11-08.zip": {
-        "bytes": 140570539,
-        "sha256": "c1594e1668d1c0c0f1bcd4e1c27ac91bfec2393a182fd468e37483e02ac6e1f3"
-      },
-      "IEEE_Sensors_Revision_Evidence_2026-11-08.zip": {
-        "bytes": 78136774,
-        "sha256": "2de317a0ff2ea70b50b782814ac5bc1e44a7adcbe306771b027f8273688b4848"
-      },
-      "IEEE_Sensors_Refinement_Evidence_2026-11-08.zip": {
-        "bytes": 10403990,
-        "sha256": "63f439fa51135f8f8083b3b7e78f8d8514649e904a9bdebb7ab83f2f4e594199"
-      },
-      "IEEE_Sensors_Code_45edb31_2026-11-08.zip": {
-        "bytes": 4903195,
-        "sha256": "47862ef9956f6b8fc36d364163ef936e92197d125332f8b1f259556d763a05de"
-      }
-    }
-  },
+  "v2_evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
   "matching_git_release": {
-    "tag": "sensors-zenodo-v1.0.0",
-    "commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
-    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0"
-  },
-  "subsequent_v2_evidence": {
-    "status": "draft_doi_reserved_not_published",
-    "date": "2026-11-09",
-    "evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
-    "sessions": 6,
-    "boards": [
-      "mega2560",
-      "esp32c3",
-      "esp32s3"
-    ],
-    "archive": "IEEE_Sensors_V1_1_Evidence_2026-11-09.zip",
-    "doi": null,
-    "not_in_version_1_0_0": true,
-    "version": "1.1.0",
-    "record_id": "24082229",
-    "reserved_doi": "10.5281/zenodo.24082229",
-    "draft_url": "https://zenodo.org/uploads/24082229",
-    "original_archive_imported_unchanged": true
+    "tag": "sensors-zenodo-v1.1.0",
+    "commit": "5ced774e40a94e57220c213499eccd6d2af425b4",
+    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.1.0",
+    "published": true
   }
 }
