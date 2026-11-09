@@ -11,6 +11,7 @@
 \newcommand{\snap}{https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a}
 \hypersetup{pdftitle={Supplement: Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration},pdfauthor={Oleksandr Kuznetsov}}
 \renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
 \pagestyle{fancy}\fancyhf{}\lhead{Embedded sensor calibration: supplementary material}\rhead{9 November 2026}\cfoot{\thepage}
 \setlength{\headheight}{13pt}
 \setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
@@ -21,7 +22,7 @@
 {\Large\bfseries Supplementary Material}\par
 \vspace{4pt}{\large Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration}\par
 \vspace{5pt}Oleksandr Kuznetsov\par
-Working revision, 9 November 2026; evidence: \texttt{db39238}, \texttt{0b828da}, and \texttt{45edb31}
+Evidence: \texttt{db39238}, \texttt{0b828da}, \texttt{45edb31}, and \texttt{df19065}
 \end{center}
 
 \section*{S1. Scope and interpretation}
@@ -278,6 +279,12 @@ python -m unittest test_refinement_analysis test_revision_mcu
 \textbf{Projection audit.} Both projected families were replayed on all 432 original streams. This checks 331776 actual update events, not just equality of rounded endpoint means. LUT: zero changed initial states and zero changed updates. Cubic: 42 changed initial states and 557 changed updates across 42 streams. Thus PAVA is inactive for LUT under this generator but not inactive for every cubic trajectory. The audit does not establish a benefit from those cubic corrections. The optional order guard is verified to preserve already-decreasing vectors exactly and to invoke PAVA on an intentionally violated vector; its timing is not substituted for the original measurements.
 
 \section*{S11. Common-fixture V2 hardware results and historical comparisons}
+\begin{figure}[!ht]
+\centering\includegraphics[width=2.15in]{figures/mcu_boards.jpg}
+\caption{Author photograph of the USB-connected boards used in the execution study: the Mega2560 below the two ESP32 boards. The one-euro coin provides a size reference. The original photograph is reproduced without retouching. These boards execute stored synthetic inputs; no physical sensor calibration setup is shown.}
+\label{fig:boards}
+\end{figure}
+
 The common-fixture acquisition is complete: two sessions on each of Mega2560 (16 MHz), ESP32-C3 (160 MHz) and ESP32-S3 (240 MHz), using the plan fixed before receipt of the captures. The seven implementations share seed 2026110801, unit/repetition 0, $B=75$, and 401 synthetic distorted-NTC inputs. The polynomial stores 40 coefficient bytes and 16 transform bytes in either form. Conversion to power-basis Horner uses the same fitted polynomial, without tuning. The original 10001-point host checks give maximum discrepancies of $2.70\times10^{-5}\,\degC$ (Clenshaw) and $2.08\times10^{-5}\,\degC$ (Horner) from the stored Chebyshev model.
 
 \begin{table}[!ht]
@@ -301,7 +308,9 @@ Board & Implementation & Session 1 & Session 2 & Batch minimum & Batch maximum\\
 \footnotesize Extra decimals retain the recorded timer/batch arithmetic, not metrological precision. Main results use three significant figures. No overhead subtraction is applied.
 \end{table}
 
-The maximum relative range of model session medians is 0.00144\% on Mega and 0.000942\% on C3; S3 medians coincide at the logged resolution. Raw batches nevertheless vary. Two sessions of one board do not provide between-board confidence intervals. The strict time--MAE frontiers are LUT32, piecewise Horner8 and both polynomial forms on Mega/C3; only the polynomial forms remain on S3. Clenshaw differs from polynomial Horner by just $2\times10^{-7}\,\degC$ MAE, so this last distinction is numerical rounding, not a meaningful accuracy benefit. Horner reduces polynomial evaluation time by 31.4--33.5\% across the boards. Against LUT32, polynomial Horner is 4.2\% faster on S3, but slower on Mega/C3. This comparison changes clock, ISA and memory as well as FPU availability.
+The maximum relative range of model session medians is 0.00144\% on Mega and 0.000942\% on C3; S3 medians coincide at the logged resolution. Raw batches nevertheless vary. Two sessions of one board do not provide between-board confidence intervals. The strict time--MAE frontiers are LUT32, piecewise Horner8 and both polynomial forms on Mega/C3; only the polynomial forms remain on S3. Clenshaw differs from polynomial Horner by just $2\times10^{-7}\,\degC$ MAE, so this last distinction is numerical rounding, not a meaningful accuracy benefit. Horner reduces polynomial evaluation time by 31.4--33.5\% across the boards. Against LUT32, polynomial Horner takes 4.2\% less gross time for the tested S3 binary, but is slower on Mega/C3. This comparison changes clock, ISA and memory as well as FPU availability. The S3 batch ranges for these two kernels do not overlap. Subtracting the common 0.135254~\us{} overhead estimate gives 0.633301 versus 0.666992~\us{}, about 5.05\% less time; this is a derived estimate, not an isolated-kernel measurement, and the main paper retains gross times.
+
+The captured C3 and S3 ELF debug information records GCC 8.4.0, \texttt{-Os}, \texttt{-fno-fast-math} and \texttt{-ffp-contract=off} for \texttt{revision\_main.cpp}; the extracted producer records and image hashes are in \path{data/compiler_from_captured_elf.json}. The last flag disables automatic contraction into fused multiply--add operations. The polynomial result therefore excludes that optimization opportunity, without establishing how much it would help. Neither \texttt{-O2}, code-layout perturbations, fixed-point polynomial evaluation on Mega, nor Cortex-M4F/M33 hardware was measured.
 
 The original ZIPs, \path{mega_v2_20261109.zip}, \path{c3_v2_20261109.zip}, and \path{s3_v2_20261109.zip}, retain all firmware images and upload diagnostics. Public raw serial/JSON/sidecar records, the summary and audit are fixed at \href{https://github.com/KuznetsovKarazin/lut-kan-native/tree/df1906500c609bf8eabe41862432f79475548ba9/experiments/sensor_recovery/results/v2_boards_20261109}{commit df19065}. From the repository root, this command rechecks the three original ZIPs and reproduces the summary without new measurements:
 \begin{lstlisting}
@@ -321,8 +330,7 @@ Model / payload & Mega (\us{}) & C3 (\us{}) & MAE (\degC) & Maximum (\degC)\\\mi
 
 The pilot includes a fitted degree-9 Chebyshev polynomial and Steinhart--Hart model. The LUT is fitted with a decreasing constraint; its float32/int16/uint8 variants use the same 32-node source. The spline uses 16 coefficients, or 13 expanded pieces; expansion changes storage from 80 to 224 bytes while preserving the represented function to target rounding. These details differ from matched-payload capacity selection. Neither times nor error values are moved between fixtures.
 
-\clearpage
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering\includegraphics[width=.96\textwidth]{figures/decision_regions.pdf}
 \caption{Restricted illustrative decision map from the original matched fixture. It selects only among the four timed 144-byte candidates, at median time and finite-grid MAE. It omits smaller polynomial/physical references and is not a universal deployment rule, accuracy guarantee, or deadline guarantee.}
 \end{figure}
@@ -345,7 +353,6 @@ Fitted correction & Held-out residual structure, coefficient sensitivity and cor
 \end{table}
 For a declared measurement model $q=f(\boldsymbol z)$, combine standard uncertainties using $u_c^2=\boldsymbol J\Sigma\boldsymbol J^T$ where linear propagation is adequate; otherwise use a justified numerical propagation. State correlations and the meaning of any expanded-uncertainty coverage factor. Do not sum MAE and uncertainty as if they were equivalent quantities. This outline is not evidence that a physical uncertainty budget has been completed.
 
-\clearpage
 \section*{S13. Reproduction of the revision analyses}
 From the revision checkout, use fresh output directories:
 \begin{lstlisting}

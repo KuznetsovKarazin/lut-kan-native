@@ -37,4 +37,4 @@ Gross timing includes input reads, function dispatch and checksum work. Static a
 
 Parsers reject wrong suite/fixture/precision/board, missing/duplicate/extra records, nonfinite values, failed parity, bad monotonicity, repeated IDs and raw-log/JSON disagreement. ZIP packages retain actual firmware images, source hashes, upload logs, toolchain metadata and both captures, including partial evidence on failure. This is a provenance record, not runtime cryptographic attestation.
 
-Run instructions: [MATCHED_RUN_RU.md](../../mcu/MATCHED_RUN_RU.md). Real timing, independent-board variation, physical NTC accuracy, energy and peak stack remain unmeasured.
+Run instructions: [MATCHED_RUN.md](../../mcu/MATCHED_RUN.md). Real timing, independent-board variation, physical NTC accuracy, energy and peak stack remain unmeasured.

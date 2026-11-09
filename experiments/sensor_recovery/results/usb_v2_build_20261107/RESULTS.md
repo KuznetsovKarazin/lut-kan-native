@@ -19,7 +19,7 @@ a measurement automatically. A failed transfer remains a failed capture.
 Flash this firmware once, reconnect the USB cable before opening capture,
 then use `capture.py --start-command`. Do not press RESET or BOOT while
 capturing. Two command launches are distinct sessions, not cold-boot trials.
-The complete Windows procedure is in [README_RU](../../mcu/README_RU.md).
+The complete Windows procedure is in [README_RU](../../mcu/README.md).
 
 ## Local validation
 

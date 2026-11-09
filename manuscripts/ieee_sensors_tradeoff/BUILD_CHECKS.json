@@ -1,228 +1,31 @@
 {
   "revision_date": "2026-11-09",
-  "original_evidence_commit": "db39238c1467169b65ff1f3581945e57ee7ffd7a",
-  "revision_experiment_commit": "0b828da03ce2132b672a869c37e0e1b0c86a75d5",
+  "revision": "Final implementation-study framing, English repository cleanup and original board photograph",
   "main_pages": 8,
   "supplement_pages": 12,
-  "abstract_whitespace_delimited_words": 204,
   "main_numbered_figures": 5,
   "main_tables": 3,
+  "supplement_figures": 2,
   "supplement_tables": 13,
-  "references": 23,
-  "graphical_abstract_separate": {
-    "pixels": [
-      660,
-      295
-    ],
-    "dpi": [
-      299.9994,
-      299.9994
-    ],
-    "bytes": 41295
-  },
-  "input_sha256_verified": true,
-  "standalone_asset_regeneration_byte_identical": true,
-  "standalone_main_and_supplement_pdf_text_identical": true,
-  "no_type3_fonts_in_either_pdf": true,
-  "latex_overfull_boxes": 0,
-  "latex_undefined_references_or_citations": 0,
-  "rendered_pages_visually_inspected": 20,
-  "prospective_mcu_builds": [
-    "mega2560_references",
-    "esp32c3_references",
-    "esp32s3_references"
-  ],
-  "new_physical_mcu_acquisitions": 6,
-  "physical_sensor_campaign_completed": false,
-  "current_journal_specific_template_verified": true,
-  "public_data_doi": "10.5281/zenodo.24062383",
-  "note": "V2 common-fixture acquisition is complete: two warm sessions on each of Mega2560, ESP32-C3 and ESP32-S3, seven predictors and an overhead control. Accuracy remains synthetic. The six new captures postdate Zenodo 1.0.0 and are prepared for a subsequent deposit. No physical sensor campaign, energy, WCET, measured peak stack or between-board uncertainty is claimed.",
-  "standalone_assets_count": 58,
-  "refinement_experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
-  "experiment_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42529673527",
-  "template_archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
-  "zenodo_status": "published_open",
-  "zenodo_version": "1.0.0",
-  "anonymous_record_access_verified": true,
-  "anonymous_archive_access_verified": true,
-  "server_archive_checksum_matches": true,
-  "publication_pdf_checks": {
+  "references": 24,
+  "abstract_whitespace_delimited_words": 208,
+  "pdf_checks": {
     "main": {
       "pages": 8,
-      "changed_pages": [
-        7,
-        8
-      ],
-      "doi_hyperlinks": 3,
+      "standalone_text_identical": true,
       "overfull_boxes": 0,
-      "undefined_references": 0,
-      "no_type3_fonts": true,
-      "standalone_pdf_text_identical": true
-    },
-    "supplement": {
-      "pages": 11,
-      "changed_pages": [
-        5,
-        11
-      ],
-      "doi_hyperlinks": 3,
-      "overfull_boxes": 0,
-      "undefined_references": 0,
-      "no_type3_fonts": true,
-      "standalone_pdf_text_identical": true
-    }
-  },
-  "publication_changed_pages_visually_inspected": {
-    "main": [
-      7,
-      8
-    ],
-    "supplement": [
-      5,
-      11
-    ]
-  },
-  "manuscript_template_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42531616115",
-  "hyperparameter_selection_closed": true,
-  "new_synthetic_trajectories_in_this_revision": 0,
-  "decay_at_t384": {
-    "eta0": 0.5,
-    "tau": 2048,
-    "eta384": 0.42105263157894735,
-    "relative_decrease": 0.1578947368421053
-  },
-  "author_biography_photo_check": "No unconditional requirement in JSEN guide; official May 2024 template says may include biographies; IEEE style manual permits omission.",
-  "targeted_tests_20261109": {
-    "passed": 13,
-    "files": [
-      "test_revision_mcu.py",
-      "test_capture_transport.py"
-    ]
-  },
-  "fixed_v2_hardware_plan": "../../experiments/sensor_recovery/mcu/V2_ACQUISITION_PROTOCOL.txt",
-  "pending_new_acquisitions": [],
-  "matching_git_release": {
-    "tag": "sensors-zenodo-v1.0.0",
-    "commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
-    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0"
-  },
-  "pre_acquisition_pdf_checks": {
-    "main": {
-      "pages": 8,
-      "changed_pages": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "overfull_boxes": 0,
-      "undefined_references": 0,
-      "no_type3_fonts": true,
-      "doi_hyperlinks": 3
-    },
-    "supplement": {
-      "pages": 11,
-      "changed_pages": [
-        8,
-        9,
-        11
-      ],
-      "overfull_boxes": 0,
-      "undefined_references": 0,
-      "no_type3_fonts": true,
-      "doi_hyperlinks": 3
-    }
-  },
-  "pre_acquisition_changed_pages_visually_inspected": {
-    "main": [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "supplement": [
-      8,
-      9,
-      11
-    ]
-  },
-  "historical_sensor_tests": {
-    "passed": 129,
-    "subtests_passed": 8,
-    "experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f"
-  },
-  "pre_acquisition_builds_20261109": [
-    "mega2560_references",
-    "esp32c3_references",
-    "esp32s3_references"
-  ],
-  "s3_native_float_instructions_verified": true,
-  "pre_acquisition_status_snapshot": {
-    "supplement_pages": 11,
-    "abstract_whitespace_delimited_words": 191,
-    "supplement_tables": 11,
-    "new_physical_mcu_acquisitions": 0,
-    "pending_new_acquisitions": [
-      "mega2560:2",
-      "esp32c3:2",
-      "esp32s3:2"
-    ],
-    "note": "Official JSEN template, public Zenodo version 1.0.0 and its matching code tag are verified. Three-board V2 acquisition is prepared, not measured. Physical sensor accuracy, energy, WCET and measured peak stack remain outside the evidence.",
-    "standalone_assets_count": 66
-  },
-  "standalone_assets_scope": "All files in figures/ and tables/ generated by make_assets.py; byte-identical in an isolated manuscript copy.",
-  "v2_hardware": {
-    "evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
-    "pre_acquisition_commit": "755ffe07d04fe053f8e626a54b1ec8637dbf2ba2",
-    "suite": "matched_references_v2",
-    "boards": [
-      "mega2560",
-      "esp32c3",
-      "esp32s3"
-    ],
-    "sessions_per_board": 2,
-    "timing_records": 480,
-    "accuracy_records": 42,
-    "predictors": 7,
-    "source_files_verified": 24,
-    "source_before_after_equal": true,
-    "raw_log_to_json_exact": true,
-    "archived_firmware_hashes_verified": true,
-    "captured_s3_elf_float_instruction_bytes_verified": true,
-    "max_device_host_prediction_gap_celsius": 5.341e-05,
-    "summary": "../../experiments/sensor_recovery/results/v2_boards_20261109/summary.json",
-    "new_s3_update_timings": false,
-    "new_sensor_measurements": false
-  },
-  "post_acquisition_pdf_checks": {
-    "main": {
-      "pages": 8,
-      "overfull": 0,
-      "undefined": 0,
-      "no_type3": true,
-      "doi_links": 3,
-      "new_evidence_links": 1
+      "undefined_references_or_citations": 0,
+      "no_type3_fonts": true
     },
     "supplement": {
       "pages": 12,
-      "overfull": 0,
-      "undefined": 0,
-      "no_type3": true,
-      "doi_links": 3,
-      "new_evidence_links": 2
+      "standalone_text_identical": true,
+      "overfull_boxes": 0,
+      "undefined_references_or_citations": 0,
+      "no_type3_fonts": true
     }
   },
-  "post_acquisition_standalone_checks": {
-    "assets": 58,
-    "byte_identical": true,
-    "main_pdf_text_identical": true,
-    "supplement_pdf_text_identical": true
-  },
-  "post_acquisition_pages_visually_inspected": {
+  "pages_visually_inspected": {
     "main": [
       1,
       2,
@@ -248,11 +51,81 @@
       12
     ]
   },
-  "subsequent_zenodo_deposit": {
-    "status": "prepared_not_published",
-    "archive": "IEEE_Sensors_V2_Three_Board_Evidence_2026-11-09.zip",
-    "doi": null,
-    "preserve_published_version": "1.0.0",
-    "preserve_published_tag": "sensors-zenodo-v1.0.0"
-  }
+  "cover_letter_pages": 1,
+  "asset_regeneration": {
+    "standalone": true,
+    "files_compared": 56,
+    "byte_identical": true,
+    "static_photo_copied_unchanged": true,
+    "not_generated_by_script": []
+  },
+  "new_tests": {
+    "passed": 129,
+    "subtests_passed": 8,
+    "command": "python -m pytest experiments/sensor_recovery -q",
+    "historical_sensor_v14_test_not_rerun": "Collection requires torch, unavailable in this environment. Its changes only translate strings; AST structure remains unchanged."
+  },
+  "v2_hardware": {
+    "evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
+    "pre_acquisition_commit": "755ffe07d04fe053f8e626a54b1ec8637dbf2ba2",
+    "suite": "matched_references_v2",
+    "boards": [
+      "mega2560",
+      "esp32c3",
+      "esp32s3"
+    ],
+    "sessions_per_board": 2,
+    "timing_records": 480,
+    "accuracy_records": 42,
+    "predictors": 7,
+    "source_files_verified": 24,
+    "source_before_after_equal": true,
+    "raw_log_to_json_exact": true,
+    "archived_firmware_hashes_verified": true,
+    "captured_s3_elf_float_instruction_bytes_verified": true,
+    "max_device_host_prediction_gap_celsius": 5.341e-05,
+    "summary": "../../experiments/sensor_recovery/results/v2_boards_20261109/summary.json",
+    "new_s3_update_timings": false,
+    "new_sensor_measurements": false
+  },
+  "raw_v2_reproduction": "All output files reproduced byte for byte; all 24 source files and firmware/sidecar hashes verified from the original ZIPs.",
+  "raw_result_files_unchanged": true,
+  "remaining_cyrillic_text_files": 0,
+  "changed_markdown_relative_links_valid": true,
+  "compiler_flags_evidence": "data/compiler_from_captured_elf.json",
+  "photograph_provenance": "data/mcu_photo.json",
+  "new_sensor_measurements": false,
+  "new_hardware_acquisitions_in_this_editorial_revision": 0,
+  "new_synthetic_trajectories_in_this_editorial_revision": 0,
+  "hyperparameter_selection_closed": true,
+  "decay_at_t384": {
+    "eta0": 0.5,
+    "tau": 2048,
+    "eta384": 0.42105263157894735,
+    "relative_decrease": 0.1578947368421053
+  },
+  "template_archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
+  "official_template_files_unchanged": true,
+  "author_biography_photo_check": "No unconditional requirement in JSEN guide; official May 2024 template says may include biographies; IEEE style manual permits omission.",
+  "published_zenodo": {
+    "version": "1.0.0",
+    "doi": "10.5281/zenodo.24062383",
+    "tag": "sensors-zenodo-v1.0.0"
+  },
+  "new_zenodo": {
+    "version": "1.1.0",
+    "status": "draft_doi_reserved_not_published",
+    "reserved_doi": "10.5281/zenodo.24082229",
+    "draft_url": "https://zenodo.org/uploads/24082229",
+    "preserve_old_archive": true
+  },
+  "limits": [
+    "Synthetic sensor accuracy and drift",
+    "One board per architecture, two warm sessions",
+    "No physical sensor uncertainty budget",
+    "No O2 or code-layout sensitivity",
+    "No measured FMA-enabled improvement",
+    "No fixed-point polynomial or Cortex-M4F/M33 target",
+    "No S3 adaptation timing, energy, WCET or measured peak stack"
+  ]
 }

@@ -29,9 +29,9 @@ def generate():
                 x, y = r['median_of_session_medians_us'], r['mae_C']
                 if row and y > .057:
                     continue
-                ax.plot(x, y, marker=marker, color=color, ms=6 if marker == '*' else 4.7,
-                        ls='none', label=label, zorder=4,
-                        markeredgewidth=.6, markeredgecolor='white' if marker == '*' else color)
+                ax.plot(x, y, marker=marker, color=color, ms=8.4 if marker == '*' else 4.7,
+                        ls='none', label=label, zorder=7 if marker == '*' else 4,
+                        markeredgewidth=.4, markeredgecolor='white' if marker == '*' else color)
                 ax.hlines(y, min(r['session_medians_us']), max(r['session_medians_us']), color=color, lw=1)
             frontier = sorted((methods[m]['median_of_session_medians_us'], methods[m]['mae_C'])
                               for m in data['boards'][board]['frontier'])

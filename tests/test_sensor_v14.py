@@ -1,13 +1,13 @@
 """
-test_sensor_v14.py — Тесты для новых моделей датчиков и baselines (v14).
+test_sensor_v14.py — Tests for historical sensor models and baselines (v14).
 
-Проверяет:
-1. NIST ITS-90 Type K: совпадение с эталонными значениями NIST
-2. TypeKThermocoupleUnit: корректная нормализация данных
-3. LDRSensorUnit: логарифмическая характеристика, диапазон данных
+Checks:
+1. NIST ITS-90 Type K: agreement with NIST reference values
+2. TypeKThermocoupleUnit: data normalization
+3. LDRSensorUnit: logarithmic response and data range
 4. fit_shh_baseline: ideal vs noisy — ordering MAE_ideal < MAE_noisy
 5. fit_onepoint_offset_baseline: exactly one reference and a fixed factory model
-6. Все 6 датчиков: x_cal, y_cal в диапазоне [-1.1, 1.1]
+6. All six sensors: x_cal and y_cal in [-1.1, 1.1]
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ sensors = SimpleNamespace(**{k: getattr(_sensors_mod, k)
     (1000.0, 41.2760, 0.03),  # relaxed: implementation diff is 0.021 mV at 1000°C
 ])
 def test_nist_k_emf_reference(T_C, emf_ref_mV, tol_mV):
-    """NIST ITS-90 Type K: отклонение от справочных значений < допуска."""
+    """NIST ITS-90 Type K: reference deviation below tolerance."""
     emf = float(sensors.nist_k_emf(np.array([T_C]))[0])
     assert abs(emf - emf_ref_mV) < tol_mV, (
         f"T={T_C}°C: got {emf:.5f} mV, expected {emf_ref_mV:.5f} mV "
@@ -46,10 +46,10 @@ def test_nist_k_emf_reference(T_C, emf_ref_mV, tol_mV):
 
 
 def test_nist_k_emf_monotone():
-    """EMF(T) монотонно возрастает для Type K."""
+    """EMF(T) increases monotonically for Type K."""
     T = np.linspace(-50, 500, 200)
     emf = sensors.nist_k_emf(T)
-    assert np.all(np.diff(emf) > 0), "EMF(T) должна быть строго монотонна"
+    assert np.all(np.diff(emf) > 0), "EMF(T) must be strictly monotone"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -57,15 +57,15 @@ def test_nist_k_emf_monotone():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def test_typek_units_seebeck_variation():
-    """Вариация seebeck_factor ±0.15% соответствует datasheet."""
+    """The generated seebeck_factor stays within the declared spread."""
     units = sensors.make_typek_units(50, seebeck_spread=0.0015, seed=42)
     factors = np.array([u.seebeck_factor for u in units])
-    assert np.all(factors >= 0.998), "seebeck_factor не должен уходить ниже -0.2%"
-    assert np.all(factors <= 1.002), "seebeck_factor не должен уходить выше +0.2%"
+    assert np.all(factors >= 0.998), "seebeck_factor must remain above -0.2%"
+    assert np.all(factors <= 1.002), "seebeck_factor must remain below +0.2%"
 
 
 def test_typek_calibration_data_range():
-    """Нормализованные данные TypeK в [-1.1, 1.1]."""
+    """Normalized Type K data stay in [-1.1, 1.1]."""
     unit = sensors.make_typek_units(1, seed=10)[0]
     data = sensors.typek_calibration_data(unit, n_cal=50, n_val=25, n_test=200)
     for key in ("x_cal", "y_cal", "x_val", "y_val", "x_test", "y_test"):
@@ -76,12 +76,12 @@ def test_typek_calibration_data_range():
 
 
 def test_typek_factory_baseline_large_error():
-    """Линейная фабричная калибровка TypeK даёт MAE > 1°C (нелинейность значительна)."""
+    """The nominal linear Type K approximation has MAE above 1 C in this case."""
     unit = sensors.make_typek_units(1, seed=10)[0]
     data = sensors.typek_calibration_data(unit)
     fac = sensors.typek_factory_baseline(unit, data)
     assert fac["mae_phys"] > 1.0, (
-        f"Фабричная MAE TypeK слишком мала: {fac['mae_phys']:.3f}°C, ожидается > 1°C"
+        f"Nominal Type K MAE too small: {fac['mae_phys']:.3f}°C, expected > 1 C"
     )
 
 
@@ -90,19 +90,19 @@ def test_typek_factory_baseline_large_error():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def test_ldr_units_variation():
-    """LDR: вариация R10 и gamma в пределах datasheet."""
+    """LDR parameters remain within the declared generator spread."""
     units = sensors.make_ldr_units(50, R10_spread=0.30, gamma_spread=0.10, seed=6)
     R10_vals = np.array([u.R_10 for u in units])
     gamma_vals = np.array([u.gamma for u in units])
     # Nominals: R10=12000, gamma=0.85
-    assert R10_vals.min() > 12000 * 0.69, "R10 вышел за нижнюю границу"
-    assert R10_vals.max() < 12000 * 1.31, "R10 вышел за верхнюю границу"
-    assert gamma_vals.min() > 0.85 * 0.89, "gamma вышел за нижнюю границу"
-    assert gamma_vals.max() < 0.85 * 1.11, "gamma вышел за верхнюю границу"
+    assert R10_vals.min() > 12000 * 0.69, "R10 below lower bound"
+    assert R10_vals.max() < 12000 * 1.31, "R10 above upper bound"
+    assert gamma_vals.min() > 0.85 * 0.89, "gamma below lower bound"
+    assert gamma_vals.max() < 0.85 * 1.11, "gamma above upper bound"
 
 
 def test_ldr_calibration_data_range():
-    """Нормализованные данные LDR в [-1.1, 1.1]."""
+    """Normalized LDR data stay in [-1.1, 1.1]."""
     unit = sensors.make_ldr_units(1, seed=6)[0]
     data = sensors.ldr_calibration_data(unit, n_cal=50, n_val=25, n_test=200)
     for key in ("x_cal", "y_cal", "x_test", "y_test"):
@@ -113,16 +113,16 @@ def test_ldr_calibration_data_range():
 
 
 def test_ldr_response_nonlinear():
-    """LDR: нелинейность ADC(E) значительна (не линейная функция)."""
+    """LDR ADC(E) differs substantially from a linear response."""
     unit = sensors.make_ldr_units(1, seed=6)[0]
     E = np.linspace(1, 10000, 100)
     adc = unit.adc_from_E(E)
-    # Для линейной функции R² = 1.0; для нелинейной — значительно меньше
+    # A linear response has R-squared 1.0; this nonlinear case should be lower
     adc_lin = np.linspace(float(adc[0]), float(adc[-1]), 100)
     ss_res = np.sum((adc - adc_lin) ** 2)
     ss_tot = np.sum((adc - adc.mean()) ** 2)
     r2 = 1 - ss_res / ss_tot
-    assert r2 < 0.95, f"LDR должна быть нелинейной, R²={r2:.3f} слишком близко к 1"
+    assert r2 < 0.95, f"LDR should be nonlinear, R-squared={r2:.3f} too close to 1"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -136,19 +136,19 @@ def _get_ntc_data(seed=42):
 
 
 def test_shh_ideal_very_accurate():
-    """SHH по 3 идеальным точкам: MAE < 0.01°C (физическая модель точная)."""
+    """SHH fitted to three ideal points: MAE below 0.01 C for the exact model."""
     unit, data = _get_ntc_data()
     res = sensors.fit_shh_baseline(
         data["x_cal"], data["y_cal"], data["x_test"], data["y_test"],
         data["denorm_y"], data["denorm_x"], unit, use_noisy=False
     )
     assert res["mae_phys"] < 0.01, (
-        f"SHH ideal должна быть < 0.01°C, получено {res['mae_phys']:.5f}°C"
+        f"SHH ideal should be < 0.01 C, obtained {res['mae_phys']:.5f}°C"
     )
 
 
 def test_shh_noisy_less_accurate_than_ideal():
-    """SHH на зашумлённых точках хуже идеального (честное сравнение)."""
+    """Noisy-point SHH is less accurate than ideal-point fitting in this case."""
     unit, data = _get_ntc_data()
     shh_ideal = sensors.fit_shh_baseline(
         data["x_cal"], data["y_cal"], data["x_test"], data["y_test"],
@@ -159,15 +159,15 @@ def test_shh_noisy_less_accurate_than_ideal():
         data["denorm_y"], data["denorm_x"], unit, use_noisy=True
     )
     assert shh_noisy["mae_phys"] > shh_ideal["mae_phys"], (
-        "SHH noisy должна быть хуже SHH ideal"
+        "SHH noisy should have larger error than SHH ideal"
     )
     assert shh_noisy["mae_phys"] < 0.1, (
-        f"SHH noisy всё равно должна быть < 0.1°C, получено {shh_noisy['mae_phys']:.4f}°C"
+        f"SHH noisy should still be < 0.1 C, obtained {shh_noisy['mae_phys']:.4f}°C"
     )
 
 
 def test_shh_noisy_beats_poly():
-    """SHH на 50 зашумлённых точках лучше poly-5 — физический prior помогает."""
+    """SHH on 50 noisy points beats degree-five polynomial in this matched-model case."""
     unit, data = _get_ntc_data()
     shh_noisy = sensors.fit_shh_baseline(
         data["x_cal"], data["y_cal"], data["x_test"], data["y_test"],
@@ -177,7 +177,7 @@ def test_shh_noisy_beats_poly():
         data["x_cal"], data["y_cal"], 5, data["x_test"], data["y_test"], data["denorm_y"]
     )
     assert shh_noisy["mae_phys"] < poly["mae_phys"], (
-        f"SHH noisy ({shh_noisy['mae_phys']:.4f}) должна быть лучше poly-5 "
+        f"SHH noisy ({shh_noisy['mae_phys']:.4f}) should have lower error than degree-five polynomial "
         f"({poly['mae_phys']:.4f})"
     )
 
@@ -217,7 +217,7 @@ def test_offset_baseline_ignores_unused_labels():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 6. Все 6 датчиков: диапазон нормализованных данных
+# 6. All six sensors: normalized data range
 # ─────────────────────────────────────────────────────────────────────────────
 
 @pytest.mark.parametrize("sensor_name,make_fn,calib_fn", [
@@ -235,7 +235,7 @@ def test_offset_baseline_ignores_unused_labels():
                  lambda u: sensors.ph_calibration_data(u)),
 ])
 def test_all_sensors_normalized_range(sensor_name, make_fn, calib_fn):
-    """Все датчики: нормализованные x и y строго в [-1.1, 1.1]."""
+    """All sensors: normalized x and y lie strictly inside [-1.1, 1.1]."""
     unit = make_fn()[0]
     data = calib_fn(unit)
     for key in ("x_cal", "y_cal", "x_test", "y_test"):

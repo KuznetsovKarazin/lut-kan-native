@@ -1,0 +1,10 @@
+{
+  "source": "Author-supplied MCU.jpg, received 2026-11-09",
+  "sha256": "fdf60ef41f69b96c77cb825d06382305bde58e1b004b4b2521777c1de09e7de1",
+  "pixels": [
+    620,
+    585
+  ],
+  "processing": "Original JPEG bytes; no retouching, cropping, generative processing, or raster labels. Layout sizing only.",
+  "scope": "Illustration of USB-connected development boards; not sensor calibration evidence."
+}

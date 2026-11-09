@@ -16,7 +16,7 @@ these captures; new raw evidence needs a subsequent deposit version.
 The stronger 32-pair block OLS baseline and extended tau grid are complete.
 [Results and reproduction](results/refinement_20261108/README.md).
 The common-fixture captures required for the unified frontier are complete.
-[mcu/RUN_REFERENCES_RU.txt](mcu/RUN_REFERENCES_RU.txt) retains the acquisition procedure.
+[mcu/RUN_REFERENCES.txt](mcu/RUN_REFERENCES.txt) retains the acquisition procedure.
 Seven implementations include Clenshaw and power-basis Horner for the same
 polynomial. Historical measurements remain separate. The earlier evidence is
 published at https://doi.org/10.5281/zenodo.24062383; the new captures postdate it.
@@ -48,7 +48,7 @@ unmeasured; the article requires scientific author review before submission.
 - [Locally frozen revision protocol](REVIEW_REVISION_PROTOCOL.md)
 - [Recovered hardware evidence and protocol addendum](REVIEW_REVISION_ADDENDUM.md)
 - [New analyses, validation, hashes and optional hardware builds](results/revision_20261108/README.md)
-- [Completed unified-reference/FPU acquisition procedure (Russian)](mcu/RUN_REFERENCES_RU.txt)
+- [Completed unified-reference/FPU acquisition procedure](mcu/RUN_REFERENCES.txt)
 
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)
@@ -57,7 +57,7 @@ unmeasured; the article requires scientific author review before submission.
 - [Run metadata](results/pilot_20261107/run_info.json)
 - [Monotonicity follow-up protocol](FOLLOWUP_PROTOCOL.md)
 - [New-unit follow-up results](results/robust_20261108/RESULTS.md)
-- [MCU benchmark and Windows instructions (Russian)](mcu/README_RU.md)
+- [MCU benchmark and Windows instructions](mcu/README.md)
 - [Compiled MCU sizes and validation](results/mcu_build_20261107/RESULTS.md)
 - [First Mega2560 execution and duplicate-capture audit](results/mega_capture_20261107/RESULTS.md)
 - [Current ESP32-C3 USB v3, failed v2 capture and build validation](results/usb_v3_build_20261108/RESULTS.md)
@@ -66,18 +66,18 @@ unmeasured; the article requires scientific author review before submission.
 - [First complete ESP32-C3 session and comparison with Mega](results/c3_capture_20261108/RESULTS.md)
 - [Two complete ESP32-C3 sessions and repeatability](results/c3_repeat_20261108/RESULTS.md)
 - [Optimized cubic comparison protocol](OPTIMIZED_SPLINE_PROTOCOL.md)
-- [Optimized cubic host results and interpretation (Russian)](results/optimized_spline_20261108/REPORT_RU.md)
+- [Optimized cubic host results and interpretation](results/optimized_spline_20261108/RESULTS.md)
 - [Optimized cubic MCU build sizes](results/optimized_spline_build_20261108/RESULTS.md)
-- [Two physical C3 optimized-suite runs (Russian)](results/c3_optimized_20261108/REPORT_RU.md)
-- [Two Mega acquisitions and completed Mega/C3 comparison (Russian)](results/mega_optimized_20261108/REPORT_RU.md)
-- [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN_RU.md)
-- [Minimal physical NTC shopping/setup guide (Russian)](PHYSICAL_SETUP_RU.md)
+- [Two physical C3 optimized-suite runs](results/c3_optimized_20261108/RESULTS.md)
+- [Two Mega acquisitions and completed Mega/C3 comparison](results/mega_optimized_20261108/RESULTS.md)
+- [One-upload, two-capture Windows procedure](mcu/OPTIMIZED_RUN.md)
+- [Minimal physical NTC shopping/setup guide](PHYSICAL_VALIDATION.md)
 - [Matched-storage and sequential-adaptation protocol](MATCHED_ADAPTATION_PROTOCOL.md)
 - [Matched-storage and adaptation results](results/matched_adaptation_20261108/RESULTS.md)
-- [Interpretation and continuation plan (Russian)](results/matched_adaptation_20261108/REPORT_RU.md)
+- [Interpretation and continuation plan](results/matched_adaptation_20261108/RESULTS.md)
 - [Matched MCU measurement protocol](MATCHED_MCU_PROTOCOL.md)
 - [Matched MCU host validation and cross-compiled sizes](results/matched_mcu_20261108/RESULTS.md)
-- [Reproduce the completed matched C3 and Mega suite (Russian)](mcu/MATCHED_RUN_RU.md)
+- [Reproduce the completed matched C3 and Mega suite](mcu/MATCHED_RUN.md)
 - [First matched C3 attempt: successful upload, Windows inventory failure](results/c3_matched_failed_20261108/RESULTS.md)
 - [Two complete matched C3 sessions: equal memory and full adaptation](results/c3_matched_20261108/RESULTS.md)
 - [First matched Mega attempt and bounded startup recovery](results/mega_matched_failed_20261108/RESULTS.md)

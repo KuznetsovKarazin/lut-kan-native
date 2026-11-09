@@ -75,7 +75,7 @@ build logs and verification metadata are retained alongside this report.
 These are compiler size reports, not peak runtime memory. Existing per-model
 size measurements are preserved. V3 does not allocate the v2 RX/TX ring
 buffers. The first successful physical v3 capture and a repeat session remain
-pending. Follow [the Windows instructions](../../mcu/README_RU.md); reflash
+pending. Follow [the Windows instructions](../../mcu/README.md); reflash
 once, then capture with `--start-command` without RESET or BOOT.
 
 Primary references:

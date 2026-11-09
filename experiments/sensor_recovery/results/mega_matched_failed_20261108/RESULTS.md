@@ -57,6 +57,6 @@ mock devices and artificial time; they do not supply Mega measurements or
 prove that this recovery resolves the actual board's startup problem.
 
 Update the existing worktree and rerun Mega into a fresh output directory using
-[the instructions](../../mcu/MATCHED_RUN_RU.md). C3 does not need another run.
+[the instructions](../../mcu/MATCHED_RUN.md). C3 does not need another run.
 If startup still fails, retain the complete new archive for diagnosis. The
 cross-board matched comparison remains pending real Mega results.

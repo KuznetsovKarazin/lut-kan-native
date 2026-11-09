@@ -3,38 +3,21 @@
 Direct training of lookup-table (LUT) activations for KAN deployment on
 memory-constrained microcontrollers.
 
-> **Sensor-calibration audit, November 2026:** the reproducible replacement
-> pilot is in [experiments/sensor_recovery](experiments/sensor_recovery/PROTOCOL.md).
-> It uses explicitly synthetic data, equal labelled-reference budgets, actual
-> coefficient quantization, strong spline/physics comparators and retained raw
-> results. Historical sensor tables/figures are archival and are not validated
-> by the new pilot. The older sensor runner still uses its historical split;
-> use the recovery runner for the revised comparison.
+## Research components
 
-**Three proven claims, each independently validated:**
+- **Sensor-calibration implementation study:** [reproduction entry point](experiments/sensor_recovery/README.md)
+  and [IEEE Sensors Journal manuscript](manuscripts/ieee_sensors_tradeoff/README.md).
+  Controlled synthetic accuracy is paired with seven-model execution measurements
+  on Mega2560, ESP32-C3 and ESP32-S3. The recorded builds show conditional
+  accuracy, payload and timing trade-offs; no universal LUT advantage is claimed.
+- **LUT-native KAN training:** `src/lut_native`, `scripts/` and the other result
+  directories contain separate training/deployment experiments. Their conditions
+  and historical claims must not be transferred to the sensor benchmark.
 
-1. **Gradient stability** — LUT trains stably where gradient-trained poly-KAN
-   diverges. At degree ≥ 15 in multi-layer stacks, Chebyshev backward pass
-   chains two high-degree recurrences → exploding/vanishing gradients. LUT
-   backward is a local scatter-add with bounded gradients. Result: 23/23
-   configurations win against matched gradient-trained poly-KAN.
-
-2. **Inference speed on MCU** — LUT forward pass is O(1): one index lookup
-   per edge, ~31 cycles on Cortex-M4 (no FPU). Chebyshev d=31 ≈ 2 124 cycles.
-   B-spline cubic ≈ 256 cycles. Speed advantage kicks in at K×L ≥ 32.
-
-3. **On-device training** — Full SGD loop with fp16 gradient accumulation fits
-   in ~3.75 KB SRAM on Cortex-M4 / ESP32-C3 (RISC-V, no FPU). Validated on
-   hardware: simulation predictions matched on-device results within 1%.
-   First KAN-like architecture trainable on a microcontroller.
-
-**What LUT-KAN does NOT claim to win:**
-
-- Single-edge [1→1] vs closed-form least-squares poly: poly LS is more
-  accurate at the same parameter count (no gradient instability in 1-layer).
-- Smooth targets with small K×L: polynomial is a more efficient representation.
-- Sparse knot coverage can hurt unregularized fits; inspect occupancy and
-  conditioning rather than assuming a universal K×L / n_train threshold.
+The earlier multi-sensor v14 figures are historical development artifacts;
+see [their status](docs/SENSOR_STUDY_HISTORY.md). Use `sensor_recovery` for the
+current calibration paper. Public raw evidence is retained, including unsuccessful
+captures, while internal correspondence is excluded from the publication tree.
 
 ---
 

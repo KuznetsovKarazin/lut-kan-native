@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-generate_all_figures.py — Запуск всех экспериментов с нуля.
+generate_all_figures.py — Run the historical experiment suite from scratch.
 
-Воспроизводит все результаты из results/ одной командой.
+Runs the legacy results/ experiments; the current sensor study has its own runners.
 
-Использование:
-    python scripts/generate_all_figures.py              # полный прогон (~20 мин)
-    python scripts/generate_all_figures.py --quick      # smoke-test для CI (~3 мин)
-    python scripts/generate_all_figures.py --skip H1a H1b  # пропустить эксп.
-    python scripts/generate_all_figures.py --only SENSOR   # только sensor study
+Usage:
+    python scripts/generate_all_figures.py              # full run (historical estimate: about 20 min)
+    python scripts/generate_all_figures.py --quick      # CI smoke test (historical estimate: about 3 min)
+    python scripts/generate_all_figures.py --skip H1a H1b  # skip experiments
+    python scripts/generate_all_figures.py --only SENSOR   # legacy sensor study only
 
-Эксперименты:
+Experiments:
     H1a  — lambda sweep (TNNLS Fig. 2)
     H1b  — memory (L) sweep
     H1c  — target sweep
@@ -33,7 +33,7 @@ ROOT = HERE.parent
 
 
 def run(cmd: list, descr: str):
-    """Запускает команду, выводит прогресс, завершается при ошибке."""
+    """Run a command, report progress, and stop on failure."""
     print("\n" + "=" * 72)
     print(f"# {descr}")
     print(f"$ {' '.join(str(c) for c in cmd)}")
@@ -42,27 +42,27 @@ def run(cmd: list, descr: str):
     r = subprocess.run(cmd, cwd=ROOT)
     elapsed = time.time() - t0
     if r.returncode != 0:
-        print(f"\nОШИБКА: {descr}")
+        print(f"\nERROR: {descr}")
         sys.exit(r.returncode)
-    print(f"  завершено за {elapsed:.1f}s")
+    print(f"  completed in {elapsed:.1f}s")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--quick", action="store_true",
-                    help="Уменьшенные параметры для CI/smoke-test")
+                    help="Reduced parameters for CI/smoke tests")
     ap.add_argument("--skip", type=str, nargs="+", default=[],
                     metavar="EXP",
-                    help="Эксперименты для пропуска: H1a H1b H1c H2 H4 H5 SENSOR")
+                    help="Experiments to skip: H1a H1b H1c H2 H4 H5 SENSOR")
     ap.add_argument("--only", type=str, nargs="+", default=[],
                     metavar="EXP",
-                    help="Запустить только эти эксперименты")
+                    help="Run only these experiments")
     args = ap.parse_args()
 
     py = sys.executable
 
-    # Определяем параметры в зависимости от --quick
+    # Select settings according to --quick
     if args.quick:
         epochs, seeds = 200, ["0", "1"]
     else:
@@ -115,8 +115,8 @@ def main():
             "SENSOR: multi-sensor calibration v14 → results/sensor_calib_v14/")
 
     print("\n" + "=" * 72)
-    print("Все эксперименты завершены.")
-    print("Результаты: results/")
+    print("All selected experiments completed.")
+    print("Results: results/")
     print("=" * 72)
 
 

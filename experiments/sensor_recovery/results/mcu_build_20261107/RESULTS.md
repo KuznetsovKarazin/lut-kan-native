@@ -43,4 +43,4 @@ Polynomial deployment is smaller than LUT32 in these builds. Whether LUT earns a
 
 ## Next observation
 
-Follow ../../mcu/README_RU.md: flash Mega2560 and ESP32-C3, capture two independent reset-to-END runs per board, and retain both .log and .json files. No sensors are needed. Report gross timing and overhead-adjusted estimates separately. Actual SuperMini USB/board compatibility must be confirmed by the user’s device run.
+Follow ../../mcu/README.md: flash Mega2560 and ESP32-C3, capture two independent reset-to-END runs per board, and retain both .log and .json files. No sensors are needed. Report gross timing and overhead-adjusted estimates separately. Actual SuperMini USB/board compatibility must be confirmed by the user’s device run.

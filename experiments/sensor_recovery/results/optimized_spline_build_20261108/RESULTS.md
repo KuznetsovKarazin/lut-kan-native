@@ -1,7 +1,7 @@
 # Optimized cubic MCU compilation audit
 
-Subsequent evidence: [two physical C3 optimized-suite runs](../c3_optimized_20261108/REPORT_RU.md)
-and [two Mega host acquisitions](../mega_optimized_20261108/REPORT_RU.md)
+Subsequent evidence: [two physical C3 optimized-suite runs](../c3_optimized_20261108/RESULTS.md)
+and [two Mega host acquisitions](../mega_optimized_20261108/RESULTS.md)
 are now verified. The text below records the compilation checkpoint before
 those captures.
 
@@ -73,5 +73,5 @@ RISC-V GCC 8.4.0+2021r2-patch5. Platform versions are pinned in
 [source_hashes.json](source_hashes.json) records the build inputs.
 [packages.txt](packages.txt) and all sixteen raw `.log` files are retained.
 Source hashes were checked against the final tested source tree. Physical
-captures should use the [one-upload, two-run procedure](../../mcu/OPTIMIZED_RUN_RU.md)
+captures should use the [one-upload, two-run procedure](../../mcu/OPTIMIZED_RUN.md)
 to retain the Windows build/upload logs, local image hashes and session IDs.

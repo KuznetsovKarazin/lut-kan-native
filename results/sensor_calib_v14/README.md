@@ -1,20 +1,11 @@
-# results/sensor_calib_v14/
+# Historical multi-sensor v14 outputs
 
-Результаты эксперимента v14 (multi-sensor calibration study).
+This directory belongs to the earlier development study. It is not the evidence
+source for the current IEEE Sensors Journal manuscript. See
+[the current study](../../experiments/sensor_recovery/README.md) and
+[history and scope](../../docs/SENSOR_STUDY_HISTORY.md).
 
-## Генерация
-```bash
-python scripts/exp_sensor_calib_v14.py
-```
-
-## Ожидаемые файлы после запуска
-| Файл | Описание |
-|------|----------|
-| summary_v14.json | Все числовые результаты |
-| per_sensor_table.csv | Таблица II статьи (6 типов датчиков) |
-| ntc_extended_table.csv | Таблица I (5 методов для NTC) |
-| sensor_curves.png | Кривые отклика всех датчиков |
-| regime_map.png | Режимная карта LUT vs Poly |
-| ntc_extended.png | Сравнение 5 методов для NTC |
-| ncal_sweep.png | MAE vs число точек калибровки |
-| l_sweep_ntc.png | MAE vs размер таблицы L |
+The historical generator is `python scripts/exp_sensor_calib_v14.py`. It writes
+`summary_v14.json`, per-sensor and NTC CSV tables, and sensor-curve, regime-map,
+NTC-comparison and calibration/capacity-sweep figures. These legacy figures must
+not be combined with the newer matched-fixture results.

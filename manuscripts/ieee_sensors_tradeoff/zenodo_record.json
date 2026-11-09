@@ -92,7 +92,7 @@
     "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0"
   },
   "subsequent_v2_evidence": {
-    "status": "prepared_not_published",
+    "status": "draft_doi_reserved_not_published",
     "date": "2026-11-09",
     "evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
     "sessions": 6,
@@ -101,8 +101,13 @@
       "esp32c3",
       "esp32s3"
     ],
-    "archive": "IEEE_Sensors_V2_Three_Board_Evidence_2026-11-09.zip",
+    "archive": "IEEE_Sensors_V1_1_Evidence_2026-11-09.zip",
     "doi": null,
-    "not_in_version_1_0_0": true
+    "not_in_version_1_0_0": true,
+    "version": "1.1.0",
+    "record_id": "24082229",
+    "reserved_doi": "10.5281/zenodo.24082229",
+    "draft_url": "https://zenodo.org/uploads/24082229",
+    "original_archive_imported_unchanged": true
   }
 }

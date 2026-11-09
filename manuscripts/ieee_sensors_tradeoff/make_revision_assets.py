@@ -134,8 +134,8 @@ def generate():
  (TABLES/'recovered_hardware.tex').write_text('\n'.join(rows)+'\n')
  # Compact vector variant at its actual 3-inch in-article size.
  fig=plt.figure(figsize=(3,1.45));ax=fig.add_axes([0,0,1,1]);ax.axis('off')
- ax.text(.5,.94,'Choices depend on the MCU',ha='center',va='top',fontsize=10,weight='bold',color='#17334A')
- for x,title,body,col in [(.015,'Mega / C3','LUT fastest\n144 B','#E8F4EF'),(.345,'S3 / float32','Poly. Horner\n56 B','#F1EAF6'),(.675,'Updates','LUT NLMS\n49–53% lower*','#EAF3F9')]:
+ ax.text(.5,.94,'Measured implementation trade-offs',ha='center',va='top',fontsize=10,weight='bold',color='#17334A')
+ for x,title,body,col in [(.015,'Mega / C3','LUT fastest\n144 B','#E8F4EF'),(.345,'Tested S3','Poly. Horner\n56 B','#F1EAF6'),(.675,'Updates','LUT NLMS\n49–53% lower*','#EAF3F9')]:
   ax.add_patch(FancyBboxPatch((x,.32),.31,.45,boxstyle='round,pad=.005',fc=col,ec='#CBD5DF'))
   ax.text(x+.155,.64,title,ha='center',fontsize=8.5,weight='bold')
   ax.text(x+.155,.45,body,ha='center',va='center',fontsize=8,linespacing=1.3)
@@ -145,8 +145,8 @@ def generate():
  plt.close(fig)
  # Separate IEEE graphical abstract; exact pixels, >=16px labels, 300dpi metadata.
  fig=plt.figure(figsize=(6.6,2.95),dpi=100);ax=fig.add_axes([0,0,1,1]);ax.axis('off')
- ax.text(.04,.9,'Sensor calibration: architecture matters',fontsize=16,weight='bold',color='#17334A')
- for x,title,body,col in [(.04,'MEGA / C3','LUT fastest\n144 bytes','#E8F4EF'),(.365,'S3 / float32','Poly. Horner\n56 bytes','#F1EAF6'),(.69,'UPDATE TIME','LUT NLMS\n49–53% lower*','#EAF3F9')]:
+ ax.text(.04,.9,'Sensor calibration: measured trade-offs',fontsize=16,weight='bold',color='#17334A')
+ for x,title,body,col in [(.04,'MEGA / C3','LUT fastest\n144 bytes','#E8F4EF'),(.365,'Tested S3','Poly. Horner\n56 bytes','#F1EAF6'),(.69,'UPDATE TIME','LUT NLMS\n49–53% lower*','#EAF3F9')]:
   ax.add_patch(FancyBboxPatch((x,.27),.27,.5,boxstyle='round,pad=.01',fc=col,ec='#CBD5DF'));ax.text(x+.135,.65,title,ha='center',fontsize=12,weight='bold');ax.text(x+.135,.43,body,ha='center',va='center',fontsize=12,linespacing=1.4)
  ax.text(.04,.14,'Synthetic accuracy  |  Measured Mega / C3 / S3 time',fontsize=12)
  ax.text(.04,.04,'*Update saving on Mega/C3 vs cubic; higher error',fontsize=12)

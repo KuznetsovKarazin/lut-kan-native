@@ -56,7 +56,7 @@ directories and are never presented as device evidence.
 
 ## Next acquisition
 
-Update the existing matched worktree using [the run instructions](../../mcu/MATCHED_RUN_RU.md),
+Update the existing matched worktree using [the run instructions](../../mcu/MATCHED_RUN.md),
 then rerun C3 into a new output directory with `--runs 2`. Keep the failed ZIP.
 Audit the new raw logs and device-acknowledged session IDs before interpreting
 any timings. Mega measurements follow after the C3 result. All physical sensor
