@@ -55,7 +55,7 @@ def generate():
    return next(r for r in refinements if (r['scenario'],r['budget'],r['method'],r['drift'])==(sc,B,m,drift))
   return next(r for r in summary if (r['stage'],r['scenario'],r['budget'],r['method'],r['cap_bytes'],r['setting'],r['drift'])==(stage,sc,B,m,cap,setting,drift))
  fig,ax=plt.subplots(figsize=(7.05,1.3));ax.axis('off')
- cards=[('CONTROLLED NUMERICS','NTC / distorted NTC / LDR\nOriginal: 3312 static fits\nRevision: 3488 static fits','#EAF3F9'),('REFERENCE-ASSISTED UPDATES','Original: 3888 trajectories\nReview 1: 5472; review 2: 1728\nSeparate development seeds','#EEF5ED'),('REAL MCU EXECUTION','Mega2560 + ESP32-C3\nTwo numerical fixtures\nTwo sessions / board / fixture','#FFF1E4')]
+ cards=[('CONTROLLED NUMERICS','NTC / distorted NTC / LDR\nOriginal: 3312 static fits\nRevision: 3488 static fits','#EAF3F9'),('REFERENCE-ASSISTED UPDATES','Original: 3888 trajectories\nReview 1: 5472; review 2: 1728\nSeparate development seeds','#EEF5ED'),('REAL MCU EXECUTION','Mega2560 + C3 + S3\nV2: one fixture, seven models\nTwo sessions / board','#FFF1E4')]
  for j,(title,body,color) in enumerate(cards):
   x=.01+j*.335;ax.add_patch(FancyBboxPatch((x,.08),.31,.85,boxstyle='round,pad=.005',fc=color,ec='#CDD5DC',lw=.7));ax.text(x+.155,.77,title,ha='center',fontsize=8,weight='bold');ax.text(x+.155,.41,body,ha='center',va='center',fontsize=8,linespacing=1.5)
  fig.subplots_adjust(0,0,1,1);save(fig,'protocol')
@@ -103,7 +103,9 @@ def generate():
   ax.set_xlim(0,430 if j==0 else 34);ax.set_ylim(.041,.061);ax.set_title(('(c) Mega2560' if j==0 else '(d) ESP32-C3')+' / matched 144 B',loc='left');ax.grid(alpha=.15);ax.set_xlabel('Gross inference time (µs/call)')
  for ax in axes[:,0]:ax.set_ylabel('Fixed-case MAE (°C)')
  fig.legend(*axes[0,0].get_legend_handles_labels(),ncol=4,loc='upper center',bbox_to_anchor=(.5,1.01),frameon=False,fontsize=7)
- fig.subplots_adjust(left=.09,right=.99,bottom=.10,top=.83,hspace=.60,wspace=.24);save(fig,'hardware_complete')
+ fig.subplots_adjust(left=.09,right=.99,bottom=.10,top=.83,hspace=.60,wspace=.24);save(fig,'hardware_historical')
+ from make_v2_assets import generate as generate_v2
+ generate_v2()
  # Exact mean/max metrics; three significant figures, raw precision retained in JSON.
  rows=[]
  for sc in NAMES:
@@ -132,22 +134,22 @@ def generate():
  (TABLES/'recovered_hardware.tex').write_text('\n'.join(rows)+'\n')
  # Compact vector variant at its actual 3-inch in-article size.
  fig=plt.figure(figsize=(3,1.45));ax=fig.add_axes([0,0,1,1]);ax.axis('off')
- ax.text(.5,.94,'Calibration has three costs',ha='center',va='top',fontsize=10,weight='bold',color='#17334A')
- for x,title,body,col in [(.015,'Accuracy','Cubic /\nphysics','#E8F4EF'),(.345,'Storage','Polynomial\n24–56 B','#F1EAF6'),(.675,'Updates','LUT NLMS\n49–53% lower*','#EAF3F9')]:
+ ax.text(.5,.94,'Choices depend on the MCU',ha='center',va='top',fontsize=10,weight='bold',color='#17334A')
+ for x,title,body,col in [(.015,'Mega / C3','LUT fastest\n144 B','#E8F4EF'),(.345,'S3 / float32','Poly. Horner\n56 B','#F1EAF6'),(.675,'Updates','LUT NLMS\n49–53% lower*','#EAF3F9')]:
   ax.add_patch(FancyBboxPatch((x,.32),.31,.45,boxstyle='round,pad=.005',fc=col,ec='#CBD5DF'))
   ax.text(x+.155,.64,title,ha='center',fontsize=8.5,weight='bold')
   ax.text(x+.155,.45,body,ha='center',va='center',fontsize=8,linespacing=1.3)
- ax.text(.5,.20,'Synthetic error · real MCU timing',ha='center',fontsize=8)
- ax.text(.5,.07,'*Versus cubic NLMS; higher residual error',ha='center',fontsize=7.3)
+ ax.text(.5,.20,'Synthetic error · measured MCU time',ha='center',fontsize=8)
+ ax.text(.5,.07,'*Mega/C3 versus cubic; higher error',ha='center',fontsize=7.3)
  for ext in ('pdf','svg'):export_graphic(fig,'gagraphic_inline',ext)
  plt.close(fig)
  # Separate IEEE graphical abstract; exact pixels, >=16px labels, 300dpi metadata.
  fig=plt.figure(figsize=(6.6,2.95),dpi=100);ax=fig.add_axes([0,0,1,1]);ax.axis('off')
- ax.text(.04,.9,'Sensor calibration: three resource budgets',fontsize=16,weight='bold',color='#17334A')
- for x,title,body,col in [(.04,'ACCURACY','Compact cubic\n& fitted physics','#E8F4EF'),(.365,'STORAGE','Polynomial\n24–56 bytes','#F1EAF6'),(.69,'UPDATE TIME','LUT NLMS\n49–53% lower*','#EAF3F9')]:
+ ax.text(.04,.9,'Sensor calibration: architecture matters',fontsize=16,weight='bold',color='#17334A')
+ for x,title,body,col in [(.04,'MEGA / C3','LUT fastest\n144 bytes','#E8F4EF'),(.365,'S3 / float32','Poly. Horner\n56 bytes','#F1EAF6'),(.69,'UPDATE TIME','LUT NLMS\n49–53% lower*','#EAF3F9')]:
   ax.add_patch(FancyBboxPatch((x,.27),.27,.5,boxstyle='round,pad=.01',fc=col,ec='#CBD5DF'));ax.text(x+.135,.65,title,ha='center',fontsize=12,weight='bold');ax.text(x+.135,.43,body,ha='center',va='center',fontsize=12,linespacing=1.4)
- ax.text(.04,.14,'Synthetic accuracy  |  Real Mega2560 / ESP32-C3 timing',fontsize=12)
- ax.text(.04,.04,'*Versus cubic NLMS; higher residual error',fontsize=12)
+ ax.text(.04,.14,'Synthetic accuracy  |  Measured Mega / C3 / S3 time',fontsize=12)
+ ax.text(.04,.04,'*Update saving on Mega/C3 vs cubic; higher error',fontsize=12)
  for ext in ('png','pdf','svg'):export_graphic(fig,'gagraphic',ext)
  plt.close(fig)
  print('Revision assets regenerated; numerical figures use saved results only.')

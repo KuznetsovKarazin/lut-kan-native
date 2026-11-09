@@ -28,8 +28,8 @@ Clenshaw form on Mega, C3 and S3. Clenshaw's MAE is only 0.0000002 C lower after
 float32 evaluation/accumulation: this is numerical rounding, not a meaningful
 accuracy advantage. The strict two-axis frontiers retain both forms.
 
-The polynomial and piecewise Horner dominate LUT60 int16 and compact cubic in
-this fixed case. This does not undo the multi-unit accuracy and sensitivity
+Piecewise Horner dominates LUT60 int16; polynomial Horner dominates the compact
+cubic on every board in this fixed case. This does not undo the multi-unit accuracy and sensitivity
 results: different response shapes, budgets and fits can change the ranking.
 The physical equation is misspecified because it omits front-end distortion.
 

@@ -2,7 +2,7 @@
 
 **Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration**
 
-Oleksandr Kuznetsov, 8 November 2026. Working revision for scientific author review;
+Oleksandr Kuznetsov, 9 November 2026. Working revision for scientific author review;
 not a submitted or accepted article. Main paper: eight pages, five numbered
 scientific figures, three tables and 23 references. Supplement: see BUILD_CHECKS.json for the current page count.
 
@@ -33,14 +33,14 @@ candidate in any cell. The three compact-cubic exceptions occur at 224 bytes
 with 30 references and reflect fitting/selection limitations. The restricted
 C²-to-Horner expansion is no longer used to claim general LUT accuracy superiority.
 
-The earlier physical MCU logs already include a selected 56-byte polynomial and
-32-byte physical model. The polynomial has lower error and smaller payload but
-longer inference time than LUT144 on that pilot fixture. Those four logs have
-been reparsed and hashed. Their seed and errors differ from the later matched
-fixture, so the two series occupy separate figure panels. Ordinary LUT NLMS
-updates take 48.7–53.3% less time than compact-cubic updates in the matched
-fixture, with higher residual error. A slow AVR acquisition-cycle example reduces
-the end-to-end inference benefit to about 1.37%; this is an analytical budget.
+The V2 common fixture now measures all seven models on Mega2560, C3 and S3.
+LUT32 is fastest on Mega/C3, while polynomial Horner is faster, smaller and more
+accurate than LUT32 on S3. The earlier pilot has a different seed and remains
+in the supplement, outside the common frontier. Ordinary LUT NLMS updates take
+48.7–53.3% less time than cubic updates on the original matched Mega/C3 fixture,
+with higher residual error; S3 update time was not measured. The analytical AVR
+acquisition-cycle example gives about 1.50% total reduction for LUT32 versus
+piecewise Horner8, using the new V2 inference times.
 
 New analyses add ideal/noisy/max error separation, an exact-generator noisy-input
 inverse benchmark, fivefold model selection, generator sensitivity, decaying
@@ -69,7 +69,7 @@ prospective physical campaign and uncertainty components without invented values
   used in the revised paper. The obsolete ranking-reversal graphical abstract
   was removed.
 - `figures/gagraphic.png`: separate graphical abstract, 660 × 295 pixels,
-  300 dpi metadata, less than 45 KB; PDF/SVG exports also included. A separate vector variant with readable labels is embedded in the JSEN colored abstract panel.
+  300 dpi metadata; PDF/SVG exports also included. A separate vector variant with readable labels is embedded in the JSEN colored abstract panel.
 - `REVIEW_RESPONSE_RU.txt`: point-by-point analysis of the colleague's review,
   changes made, disagreements supported by data, and remaining work.
 - `BUILD_CHECKS.json`: completed package checks and their limits.
@@ -113,20 +113,21 @@ separately from Git. Public source, summaries, per-unit results and raw MCU logs
 are linked above. All three raw evidence archives and the pinned research code
 are publicly deposited in [Zenodo, version 1.0.0](https://doi.org/10.5281/zenodo.24062383). Gzip timestamps may change upon reproduction; compare decoded records.
 
-## Prospective hardware extension
+## Completed V2 hardware extension
 
-The separate reference-run pack provides seven static implementations on the later matched
-fixture, with strict capture validation and image/source hashes. Mega2560,
-ESP32-C3 and optional ESP32-S3 builds passed. The new kernels passed portable C++
-parity and parser rejection tests; all focused sensor tests pass (129 tests and
-8 subtests). This is not additional board execution. The ESP32-S3 environment
-targets the observed S3-A at 240 MHz through native USB Serial/JTAG, with
-4 MB DIO flash at 80 MHz and no PSRAM; another board needs
-its own verified configuration. Instructions are in `mcu/RUN_REFERENCES_RU.txt`.
-New Mega/C3 acquisitions ARE required for one common-fixture frontier. The
-earlier statement that they need not be rerun does not satisfy that comparison.
-V2 adds power-basis Horner evaluation of the same degree-9 polynomial (56 B),
-requires 80 timing records and seven parity records, and rejects V1 captures.
+Six sessions are now audited: two each on Mega2560, ESP32-C3 and ESP32-S3.
+All seven implementations use one frozen fixture. LUT32 is fastest on Mega/C3;
+polynomial Horner is fastest on S3, where it uses 4.2% less time, 61.1% less
+payload and has 20.8% lower synthetic MAE than LUT32. S3 uses native USB
+Serial/JTAG at 240 MHz, 4 MB DIO flash at 80 MHz, and no PSRAM. The actual captured
+ELF verifies native float32 instructions in all seven predictors. No fitted
+coefficients, parameters or seeds changed. No new simulation was performed.
+
+The evidence and reproducible audit are fixed at [df19065](https://github.com/KuznetsovKarazin/lut-kan-native/tree/df1906500c609bf8eabe41862432f79475548ba9/experiments/sensor_recovery/results/v2_boards_20261109).
+data/v2_hardware.json supplies the new plot/table inputs, with a SHA-256 file.
+make_v2_assets.py generates the three-board frontier and both supplemental tables.
+The supplement retains the historical fixtures separately. No S3 update timings,
+physical sensor measurements, energy, WCET or measured peak stack are claimed.
 
 ## Journal format and remaining checks
 
@@ -135,7 +136,7 @@ numbered figures/tables/equations. The official May 2024
 JSEN ZIP has been inspected. The supplied ieeecolor.cls, jsen.sty and IEEEtran.bst
 match its bytes exactly; provenance and working-copy adjustments are documented.
 The evidence dataset is published in [Zenodo, version 1.0.0](https://doi.org/10.5281/zenodo.24062383).
-Use this version-specific DOI for the paper. The concept DOI
+This version-specific DOI identifies the earlier evidence only. The concept DOI
 `10.5281/zenodo.24062382` refers to all versions. The complete deposit ZIP is
 234,018,558 bytes; SHA-256:
 `f0877b61eef306614e181e3d631a799d647d8fd7d0c332c31a1f6fff00755774`;
@@ -153,10 +154,16 @@ pointing to the archived commit 45edb31. Real NTC measurements remain absent.
 ошибки и памяти для хранения эталонов. Для Sensors Journal полезнее небольшой
 физический опыт с калиброванным эталоном, чем очередное увеличение числа симуляций.
 
-## Acquisition plan fixed on 9 November
+## Acquisition plan and author checks
 
-Two sessions each on Mega, C3 and S3-A are planned without refitting or further
-selection on the previous seeds. S3-A now uses its observed native USB Serial/JTAG
-connection with 4 MB DIO flash and no PSRAM. See the MCU `V2_ACQUISITION_PROTOCOL.txt`.
-No new captures are claimed. `AUTHOR_REQUIREMENTS_20261109.txt` documents why
-biography/photo omission is not established as an initial-submission defect.
+The two-session-per-board plan fixed on 9 November has been completed and audited.
+See the unchanged MCU V2_ACQUISITION_PROTOCOL.txt for the plan and the V2 results
+for the observations. Maximum host/device discrepancy is 0.00005341 C. All
+480 timing and 42 accuracy records pass; raw batches and both session medians
+are retained. Thirteen targeted parser/transport/numerical tests pass.
+AUTHOR_REQUIREMENTS_20261109.txt documents the biography/photo requirement check.
+
+The new V2 captures are NOT in the already published Zenodo 1.0.0. The matching
+sensors-zenodo-v1.0.0 tag remains pinned to 45edb31. Add the separate V2 evidence
+archive in a subsequent deposit version, preserving the earlier files. No new
+version-specific DOI is claimed until publication.

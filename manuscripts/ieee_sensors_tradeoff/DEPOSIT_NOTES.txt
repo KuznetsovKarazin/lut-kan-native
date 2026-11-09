@@ -28,3 +28,9 @@ energy, WCET or peak-stack result is asserted. A Git release tag is separate.
 https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0
 Tag points to archived code commit 45edb31b3e67821a06e4131d0b82785248de5a5f.
 The later S3 transport correction and V2 acquisitions are outside Zenodo 1.0.0.
+
+9 November: six V2 hardware sessions now validated (evidence commit df19065).
+They postdate Zenodo 1.0.0 and are not covered by its version DOI.
+Add IEEE_Sensors_V2_Three_Board_Evidence_2026-11-09.zip to a subsequent version,
+retaining the existing deposit file. Update the manuscript only after that
+version is published and its actual DOI is available. Do not move the old tag.

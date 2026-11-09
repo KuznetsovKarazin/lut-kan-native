@@ -1,31 +1,45 @@
-## Current second-review refinement
+# Sensor calibration recovery
+
+## Current V2 result: 9 November 2026
+
+The seven-model common-fixture acquisition is complete: two validated sessions
+each on Mega2560, ESP32-C3 and ESP32-S3. [Results and audit](results/v2_boards_20261109/RESULTS.md)
+include 480 timing records, 42 accuracy checks, source/image/sidecar hashes and
+captured-S3 native float32 opcode verification. LUT32 is fastest on Mega/C3;
+polynomial Horner is fastest on S3 and improves payload and fixed-case error
+over LUT32. This is a physical execution result with synthetic accuracy inputs.
+No new hyperparameter search or simulation was performed. Zenodo 1.0.0 predates
+these captures; new raw evidence needs a subsequent deposit version.
+
+## Completed second-review refinement
 
 The stronger 32-pair block OLS baseline and extended tau grid are complete.
 [Results and reproduction](results/refinement_20261108/README.md).
-New common-fixture Mega/C3 captures ARE needed for a unified frontier; follow
-[mcu/RUN_REFERENCES_RU.txt](mcu/RUN_REFERENCES_RU.txt). Seven implementations include
-Clenshaw and power-basis Horner for the same polynomial. Historical measurements
-remain separate. The evidence is published at https://doi.org/10.5281/zenodo.24062383.
-No physical sensor campaign has been completed. The 9 November V2 plan also
-includes the available S3-A through native USB Serial/JTAG; see
+The common-fixture captures required for the unified frontier are complete.
+[mcu/RUN_REFERENCES_RU.txt](mcu/RUN_REFERENCES_RU.txt) retains the acquisition procedure.
+Seven implementations include Clenshaw and power-basis Horner for the same
+polynomial. Historical measurements remain separate. The earlier evidence is
+published at https://doi.org/10.5281/zenodo.24062383; the new captures postdate it.
+No physical sensor campaign has been completed. The completed 9 November V2 plan
+includes S3-A through native USB Serial/JTAG; see
 [mcu/V2_ACQUISITION_PROTOCOL.txt](mcu/V2_ACQUISITION_PROTOCOL.txt).
 The decay grid is fixed: tau=2048 reduces eta only from 0.5 to 0.421 over 384
 references. No third tuning cycle on the prior seeds is planned.
 
-# Sensor calibration recovery
+## Study and evidence index
 
 This isolated experiment revisits the sensor paper with equal labelled-data
 budgets, strong classical/KAN-edge comparators and real coefficient encoding.
-All calibration data are **synthetic**. User-supplied Mega2560 and ESP32-C3
+All calibration data are **synthetic**. User-supplied Mega2560, ESP32-C3 and ESP32-S3
 captures now provide measured execution times on the same numerical fixture;
 physical sensor accuracy remains unmeasured.
 
 The [revised IEEE Sensors Journal manuscript](../../manuscripts/ieee_sensors_tradeoff/README.md)
 presents conditional accuracy, storage and update-cost trade-offs: eight main
-pages, five scientific figures, a separate graphical abstract, an eleven-page
-supplement and 23 references. It includes the previously omitted physical timings
-of polynomial/physical references on the earlier fixture. The two hardware
-fixtures remain separate. Post-review analyses and immutable evidence are indexed
+pages, five scientific figures, a separate graphical abstract, a twelve-page
+supplement and 23 references. It includes all seven implementations on one
+common fixture, with a separate frontier per board. Earlier hardware fixtures
+remain in the supplement. Post-review analyses and immutable evidence are indexed
 in [revision results](results/revision_20261108/README.md); they add model-selection
 sensitivity and causal recalibration baselines. The restricted LUT/Horner
 ranking reversal is no longer the headline. Physical sensor uncertainty remains
@@ -34,7 +48,7 @@ unmeasured; the article requires scientific author review before submission.
 - [Locally frozen revision protocol](REVIEW_REVISION_PROTOCOL.md)
 - [Recovered hardware evidence and protocol addendum](REVIEW_REVISION_ADDENDUM.md)
 - [New analyses, validation, hashes and optional hardware builds](results/revision_20261108/README.md)
-- [Optional unified-reference/FPU run instructions (Russian)](mcu/RUN_REFERENCES_RU.txt)
+- [Completed unified-reference/FPU acquisition procedure (Russian)](mcu/RUN_REFERENCES_RU.txt)
 
 - [Protocol and next stages](PROTOCOL.md)
 - [Numerical findings and limitations](results/pilot_20261107/RESULTS.md)

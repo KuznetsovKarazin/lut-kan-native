@@ -11,7 +11,7 @@
 \newcommand{\snap}{https://github.com/KuznetsovKarazin/lut-kan-native/tree/db39238c1467169b65ff1f3581945e57ee7ffd7a}
 \hypersetup{pdftitle={Supplement: Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration},pdfauthor={Oleksandr Kuznetsov}}
 \renewcommand{\thetable}{S\arabic{table}}
-\pagestyle{fancy}\fancyhf{}\lhead{Embedded sensor calibration: supplementary material}\rhead{8 November 2026}\cfoot{\thepage}
+\pagestyle{fancy}\fancyhf{}\lhead{Embedded sensor calibration: supplementary material}\rhead{9 November 2026}\cfoot{\thepage}
 \setlength{\headheight}{13pt}
 \setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,frame=single,rulecolor=\color{black},showstringspaces=false}
@@ -21,7 +21,7 @@
 {\Large\bfseries Supplementary Material}\par
 \vspace{4pt}{\large Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration}\par
 \vspace{5pt}Oleksandr Kuznetsov\par
-Working revision, 8 November 2026; evidence: \texttt{db39238}, \texttt{0b828da}, and \texttt{45edb31}
+Working revision, 9 November 2026; evidence: \texttt{db39238}, \texttt{0b828da}, and \texttt{45edb31}
 \end{center}
 
 \section*{S1. Scope and interpretation}
@@ -277,13 +277,42 @@ python -m unittest test_refinement_analysis test_revision_mcu
 
 \textbf{Projection audit.} Both projected families were replayed on all 432 original streams. This checks 331776 actual update events, not just equality of rounded endpoint means. LUT: zero changed initial states and zero changed updates. Cubic: 42 changed initial states and 557 changed updates across 42 streams. Thus PAVA is inactive for LUT under this generator but not inactive for every cubic trajectory. The audit does not establish a benefit from those cubic corrections. The optional order guard is verified to preserve already-decreasing vectors exactly and to invoke PAVA on an intentionally violated vector; its timing is not substituted for the original measurements.
 
-\section*{S11. Recovered reference timings and restricted decision map}
-A single frontier across all selected representations requires a common fixture. The V2 acquisition measures seven implementations on seed 2026110801: the four matched models, fitted physics, and one degree-9 polynomial in Clenshaw and power-basis Horner form. Each polynomial stores 40 coefficient bytes plus 16 transform bytes. Conversion uses the same fitted coefficients; it is not a separately tuned polynomial. On 10001 host points over normalized $[-1,1]$, maximum float32 discrepancies from the stored Chebyshev model are $2.70\times10^{-5}\,\degC$ (Clenshaw) and $2.08\times10^{-5}\,\degC$ (Horner). These are host parity checks, not hardware timings. Three target builds succeed. V2 requires 80 timing records and seven parity records, rejects old six-model captures, and preserves raw logs, session IDs and firmware images. New Mega/C3 captures are required before replacing the historical panels by a common frontier.
-
-The earlier optimized-suite pilot has seed 20261108, distinct from the matched suite's 2026110801. Each board has two sessions, each with ten 2048-call batches. Table S10 reparses all four raw logs and aggregates session medians. The stored JSON is reproduced exactly, with raw/result hashes checked against sidecars. The original acquisition archives recorded firmware hashes but did not include firmware images; these are source/serial audits, not device firmware attestation. The existing matched archives have their own stronger image preservation and identity records.
+\section*{S11. Common-fixture V2 hardware results and historical comparisons}
+The common-fixture acquisition is complete: two sessions on each of Mega2560 (16 MHz), ESP32-C3 (160 MHz) and ESP32-S3 (240 MHz), using the plan fixed before receipt of the captures. The seven implementations share seed 2026110801, unit/repetition 0, $B=75$, and 401 synthetic distorted-NTC inputs. The polynomial stores 40 coefficient bytes and 16 transform bytes in either form. Conversion to power-basis Horner uses the same fitted polynomial, without tuning. The original 10001-point host checks give maximum discrepancies of $2.70\times10^{-5}\,\degC$ (Clenshaw) and $2.08\times10^{-5}\,\degC$ (Horner) from the stored Chebyshev model.
 
 \begin{table}[!ht]
-\centering\caption{Earlier pilot: measured references at their actual payloads.}
+\centering\caption{V2 common fixture: measured gross time and simulated error.}
+\small\begin{tabular}{lrrrrr}\toprule
+Model / payload & Mega (\us{}) & C3 (\us{}) & S3 (\us{}) & MAE (\degC) & Maximum (\degC)\\\midrule
+\tableinput tables/v2_hardware.tex
+\bottomrule\end{tabular}
+\end{table}
+
+Each session has ten 2048-call batches for each model and the overhead control. All 480 timing and 42 accuracy records were independently reparsed; stored JSON was reproduced exactly. All 24 source-file hashes match the fixed preparation, source-before equals source-after, and every archived firmware image matches its recorded size/hash. The six session IDs are unique; sidecar and batch raw/result hashes agree. The largest host/device prediction gap is $5.34\times10^{-5}\,\degC$. Two Mega sessions each contain one startup command rejection before READY, within the previously tested allowance; no rejection occurs after handshake. Both complete sessions are retained.
+
+S3 uses native USB Serial/JTAG, 4 MB DIO flash at 80 MHz, no PSRAM and no started radios. The captured ELF contains the native float32 opcode bytes identified in the pre-acquisition disassembly for all seven predictors. Framework interrupts remain enabled. Kernels run in the fixed order given by the acquisition firmware; order was not randomized. Recorded upload images and serial validation do not constitute cryptographic device attestation.
+
+\begin{table}[!ht]
+\centering\caption{V2 audit precision: both session medians and the range of all 20 batches (\us{} per call).}
+\scriptsize\begin{tabular}{llrrrr}\toprule
+Board & Implementation & Session 1 & Session 2 & Batch minimum & Batch maximum\\\midrule
+\tableinput tables/v2_sessions.tex
+\bottomrule\end{tabular}\par\smallskip
+\footnotesize Extra decimals retain the recorded timer/batch arithmetic, not metrological precision. Main results use three significant figures. No overhead subtraction is applied.
+\end{table}
+
+The maximum relative range of model session medians is 0.00144\% on Mega and 0.000942\% on C3; S3 medians coincide at the logged resolution. Raw batches nevertheless vary. Two sessions of one board do not provide between-board confidence intervals. The strict time--MAE frontiers are LUT32, piecewise Horner8 and both polynomial forms on Mega/C3; only the polynomial forms remain on S3. Clenshaw differs from polynomial Horner by just $2\times10^{-7}\,\degC$ MAE, so this last distinction is numerical rounding, not a meaningful accuracy benefit. Horner reduces polynomial evaluation time by 31.4--33.5\% across the boards. Against LUT32, polynomial Horner is 4.2\% faster on S3, but slower on Mega/C3. This comparison changes clock, ISA and memory as well as FPU availability.
+
+The original ZIPs, \path{mega_v2_20261109.zip}, \path{c3_v2_20261109.zip}, and \path{s3_v2_20261109.zip}, retain all firmware images and upload diagnostics. Public raw serial/JSON/sidecar records, the summary and audit are fixed at \href{https://github.com/KuznetsovKarazin/lut-kan-native/tree/df1906500c609bf8eabe41862432f79475548ba9/experiments/sensor_recovery/results/v2_boards_20261109}{commit df19065}. From the repository root, this command rechecks the three original ZIPs and reproduces the summary without new measurements:
+\begin{lstlisting}
+python experiments/sensor_recovery/analyze_v2_captures.py --archives raw_archives --out reproduced_v2
+\end{lstlisting}
+
+\textbf{Historical pilot, separate fixture.}
+The earlier optimized-suite pilot has seed 20261108, distinct from the matched suite's 2026110801. Each board has two sessions, each with ten 2048-call batches. Table~\ref{tab:historical-pilot} reparses all four raw logs and aggregates session medians. The stored JSON is reproduced exactly, with raw/result hashes checked against sidecars. The original acquisition archives recorded firmware hashes but did not include firmware images; these are source/serial audits, not device firmware attestation. The existing matched archives have their own stronger image preservation and identity records.
+
+\begin{table}[!ht]
+\centering\caption{Earlier pilot: measured references at their actual payloads.}\label{tab:historical-pilot}
 \small\begin{tabular}{lrrrr}\toprule
 Model / payload & Mega (\us{}) & C3 (\us{}) & MAE (\degC) & Maximum (\degC)\\\midrule
 \tableinput tables/recovered_hardware.tex
@@ -298,7 +327,7 @@ The pilot includes a fitted degree-9 Chebyshev polynomial and Steinhart--Hart mo
 \caption{Restricted illustrative decision map from the original matched fixture. It selects only among the four timed 144-byte candidates, at median time and finite-grid MAE. It omits smaller polynomial/physical references and is not a universal deployment rule, accuracy guarantee, or deadline guarantee.}
 \end{figure}
 
-\textbf{Prospective matched-reference suite.} V2 implements the seven kernels described above on one matched fixture, including both evaluation forms of the same 56-byte polynomial and the 32-byte physical model. It supports Mega2560 and ESP32-C3, with an optional ESP32-S3-DevKitC-1 UART environment at 240 MHz. Historical captures remain intact. The three target builds and host parity checks pass, but new Mega/C3 acquisitions are necessary for a common-fixture frontier. The recovered pilot alone does not supply that comparison. Compilation and host validation are not additional board measurements.
+\textbf{Historical decision map.} This restricted map is retained to document the earlier four-candidate comparison. It excludes the now-measured polynomial forms and must not be used in place of the complete V2 frontier in the main paper. The original Mega/C3 update measurements remain unchanged; V2 does not add S3 update timings.
 
 \section*{S12. Prospective physical validation and reproducibility}
 \textbf{A small physical campaign, not executed.} A useful next study would use at least three individual NTC units, the intended divider/ADC/reference-voltage chain, and a traceably calibrated reference thermometer in a stirred bath or stable chamber. Select a safe common temperature range supported by the sensor encapsulation and reference. Fix calibration and held-out setpoints before fitting; acquire both heating and cooling traversals in at least two separate cycles. Record time-resolved ADC values, reference readings, settling criteria, averaging, excitation current, supply/reference voltage and unit identifiers. Repeated samples at one stabilized setpoint are not independent calibration temperatures.
@@ -329,5 +358,5 @@ python experiments/sensor_recovery/recover_reference_timings.py
 \end{lstlisting}
 The last command reparses existing hardware logs and writes \path{results/revision_20261108/recovered_hardware.json}; it does not operate a board. Revision raw records contain all static models/predictions, reference data, causal stream inputs and checkpoint results; original-method full covariance histories remain reproducible from the saved inputs and code. Run manifests record source hashes, seeds, versions, record counts and output hashes. Gzip-container timestamps may differ on regeneration; compare decoded records rather than assuming container-byte equality.
 
-\textbf{Submission materials.} The graphical abstract is provided separately as \path{figures/gagraphic.png} (660 by 295 pixels, 300 dpi), with vector exports. Main and supplement PDFs are separate. The working article uses the publisher\textquotesingle s \texttt{ieeecolor} class, JSEN style parameters and the colored abstract/graphic layout. Its first-page running head omits the publisher logo and unassigned publication metadata. The official selector currently supplies \path{IEEE-JSEN-LaTeX-template-202405.zip}; the class source and working-copy differences are recorded in \path{TEMPLATE_PROVENANCE.txt}. The included class, style and bibliography-style files match the downloaded official ZIP byte for byte. The 234 MB evidence package is published in Zenodo, version 1.0.0, at \url{https://doi.org/10.5281/zenodo.24062383}. It contains all three evidence archives and the code snapshot at \texttt{45edb31}, with SHA-256 manifests. The deposited ZIP is 234018558 bytes; its MD5 is \nolinkurl{3f6986c166c4911948fc6f4e3c657f35}. The matching research code is fixed by Git tag \texttt{sensors-zenodo-v1.0.0} at the archived commit \texttt{45edb31}. The AI-assistance statement in the main paper covers experiment, firmware, acquisition, validation and visualization code as well as writing.
+\textbf{Submission materials.} The graphical abstract is provided separately as \path{figures/gagraphic.png} (660 by 295 pixels, 300 dpi), with vector exports. Main and supplement PDFs are separate. The working article uses the publisher\textquotesingle s \texttt{ieeecolor} class, JSEN style parameters and the colored abstract/graphic layout. Its first-page running head omits the publisher logo and unassigned publication metadata. The official selector currently supplies \path{IEEE-JSEN-LaTeX-template-202405.zip}; the class source and working-copy differences are recorded in \path{TEMPLATE_PROVENANCE.txt}. The included class, style and bibliography-style files match the downloaded official ZIP byte for byte. The 234 MB evidence package is published in Zenodo, version 1.0.0, at \url{https://doi.org/10.5281/zenodo.24062383}. It contains all three evidence archives and the code snapshot at \texttt{45edb31}, with SHA-256 manifests. The deposited ZIP is 234018558 bytes; its MD5 is \nolinkurl{3f6986c166c4911948fc6f4e3c657f35}. The matching research code is fixed by Git tag \texttt{sensors-zenodo-v1.0.0} at the archived commit \texttt{45edb31}. The six V2 sessions acquired on 9 November are not contained in Zenodo 1.0.0. Their complete evidence is prepared for a subsequent deposit; no new DOI is claimed until it is published. The AI-assistance statement in the main paper covers experiment, firmware, acquisition, validation and visualization code as well as writing.
 \end{document}
