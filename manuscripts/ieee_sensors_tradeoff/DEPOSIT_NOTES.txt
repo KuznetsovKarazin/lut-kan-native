@@ -23,3 +23,8 @@ Author-created data/documentation: CC BY 4.0. Software retains its included MIT
 license; third-party dependencies retain their terms. This is a dataset release,
 not a journal publication. No physical NTC/LDR or new seven-kernel MCU, S3 timing,
 energy, WCET or peak-stack result is asserted. A Git release tag is separate.
+
+9 November 2026: published matching Git release
+https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0
+Tag points to archived code commit 45edb31b3e67821a06e4131d0b82785248de5a5f.
+The later S3 transport correction and V2 acquisitions are outside Zenodo 1.0.0.

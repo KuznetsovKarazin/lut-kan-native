@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-09",
+  "status": "preparation_only_no_new_hardware_results",
+  "suite": "matched_references_v2",
+  "fixture_sha256": "3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb",
+  "boards": [
+    "mega2560",
+    "esp32c3",
+    "esp32s3"
+  ],
+  "sessions_per_board": 2,
+  "hyperparameter_and_seed_selection_closed": true,
+  "synthetic_runs_added": 0,
+  "physical_sensor_campaign": false,
+  "s3_transport_correction": {
+    "old": "UART bridge",
+    "new": "native USB Serial/JTAG, direct polling",
+    "reason": "Actual S3-A identity and successful prior architecture-C0 capture",
+    "prior_evidence": "S3-A_C0_20261108_230827_080820.zip",
+    "observed_flash_bytes": 4194304,
+    "cpu_hz": 240000000,
+    "psram_used": false,
+    "usb_vid_pid": "303a:1001",
+    "historical_com_port": "COM13"
+  },
+  "host_tests": {
+    "command": "pytest -q test_revision_mcu.py test_capture_transport.py",
+    "passed": 13
+  },
+  "numerical_inputs_and_kernels_unchanged_from_archived_code": {
+    "include/revision_fixture.h": "8aa1f0aa0402d77b4bc3d11d60d9c6fe9dcf52d311575711b514f6dfa329e39d",
+    "include/revision_kernels.h": "42dbb2c6304d646178acc9fbb83387d2fbab193a2971d056215ec09b1da2b0ce",
+    "include/matched_fixture.h": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+    "include/matched_kernels.h": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+    "include/revision_identity.h": "07edc5b7fd93b87ddfc8e5193e70f2084d95e5f138e9cfeacbb63134d16c52c7",
+    "revision_manifest.json": "191c442d81451e6e0883845dd585c36d39ab0402861d418293fcbc3b6f3364df",
+    "revision_reference.json": "eaa7abb005fa929338d0e9e3e3a335b631a4680ed6c44b78046798d81b712e2d"
+  },
+  "s3_flash_clock_hz": 80000000,
+  "s3_sdk_compatibility": "Vendor USB PHY helper compiled as C in usb_bench_phy.c; SDK source remains unmodified.",
+  "build_audit": "build_audit.json",
+  "builds_passed": [
+    "mega2560_references",
+    "esp32c3_references",
+    "esp32s3_references"
+  ],
+  "hardware_fpu_instructions_verified": true
+}

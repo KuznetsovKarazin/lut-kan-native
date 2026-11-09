@@ -1,7 +1,13 @@
 #pragma once
 #include <Arduino.h>
 #include <hal/usb_serial_jtag_ll.h>
+#if defined(CONFIG_IDF_TARGET_ESP32S3)
+// IDF 4.4's S3 PHY header contains volatile register copies valid in C but
+// rejected by C++. Keep the vendor helper in a C translation unit.
+extern "C" void sensor_bench_usb_phy_enable(void);
+#else
 #include <hal/usb_phy_ll.h>
+#endif
 
 // Single-owner polling transport for this command/response benchmark only.
 // Avoid the IDF 4.4 interrupt-driven TX queue: an empty queue can leave the
@@ -21,7 +27,11 @@ class UsbBenchSerial : public Print {
  public:
   bool begin() {
     usb_serial_jtag_ll_enable_bus_clock(true);
+#if defined(CONFIG_IDF_TARGET_ESP32S3)
+    sensor_bench_usb_phy_enable();
+#else
     usb_phy_ll_int_jtag_enable(&USB_SERIAL_JTAG);
+#endif
     usb_serial_jtag_ll_disable_intr_mask(USB_SERIAL_JTAG_INTR_SERIAL_IN_EMPTY |
                                         USB_SERIAL_JTAG_INTR_SERIAL_OUT_RECV_PKT);
     // Flush any earlier boot text; do not reset, disconnect or purge RX.

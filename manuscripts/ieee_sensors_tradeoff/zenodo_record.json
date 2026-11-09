@@ -85,5 +85,10 @@
         "sha256": "47862ef9956f6b8fc36d364163ef936e92197d125332f8b1f259556d763a05de"
       }
     }
+  },
+  "matching_git_release": {
+    "tag": "sensors-zenodo-v1.0.0",
+    "commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
+    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0"
   }
 }

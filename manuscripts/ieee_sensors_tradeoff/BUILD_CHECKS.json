@@ -1,5 +1,5 @@
 {
-  "revision_date": "2026-11-08",
+  "revision_date": "2026-11-09",
   "original_evidence_commit": "db39238c1467169b65ff1f3581945e57ee7ffd7a",
   "revision_experiment_commit": "0b828da03ce2132b672a869c37e0e1b0c86a75d5",
   "main_pages": 8,
@@ -27,10 +27,6 @@
   "latex_overfull_boxes": 0,
   "latex_undefined_references_or_citations": 0,
   "rendered_pages_visually_inspected": 19,
-  "sensor_tests": {
-    "passed": 129,
-    "subtests_passed": 8
-  },
   "prospective_mcu_builds": [
     "mega2560_references",
     "esp32c3_references",
@@ -40,7 +36,7 @@
   "physical_sensor_campaign_completed": false,
   "current_journal_specific_template_verified": true,
   "public_data_doi": "10.5281/zenodo.24062383",
-  "note": "Official JSEN class/style bytes and public Zenodo version 1.0.0 are verified. Document/code validation does not establish physical sensor accuracy, energy, WCET or measured peak stack. New seven-kernel device captures and a formal Git release tag remain open.",
+  "note": "Official JSEN template, public Zenodo version 1.0.0 and its matching code tag are verified. Three-board V2 acquisition is prepared, not measured. Physical sensor accuracy, energy, WCET and measured peak stack remain outside the evidence.",
   "standalone_assets_count": 66,
   "refinement_experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
   "experiment_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42529673527",
@@ -86,5 +82,87 @@
       11
     ]
   },
-  "manuscript_template_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42531616115"
+  "manuscript_template_ci_run": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42531616115",
+  "hyperparameter_selection_closed": true,
+  "new_synthetic_trajectories_in_this_revision": 0,
+  "decay_at_t384": {
+    "eta0": 0.5,
+    "tau": 2048,
+    "eta384": 0.42105263157894735,
+    "relative_decrease": 0.1578947368421053
+  },
+  "author_biography_photo_check": "No unconditional requirement in JSEN guide; official May 2024 template says may include biographies; IEEE style manual permits omission.",
+  "targeted_tests_20261109": {
+    "passed": 13,
+    "files": [
+      "test_revision_mcu.py",
+      "test_capture_transport.py"
+    ]
+  },
+  "fixed_v2_hardware_plan": "../../experiments/sensor_recovery/mcu/V2_ACQUISITION_PROTOCOL.txt",
+  "pending_new_acquisitions": [
+    "mega2560:2",
+    "esp32c3:2",
+    "esp32s3:2"
+  ],
+  "matching_git_release": {
+    "tag": "sensors-zenodo-v1.0.0",
+    "commit": "45edb31b3e67821a06e4131d0b82785248de5a5f",
+    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0"
+  },
+  "pre_acquisition_pdf_checks": {
+    "main": {
+      "pages": 8,
+      "changed_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "overfull_boxes": 0,
+      "undefined_references": 0,
+      "no_type3_fonts": true,
+      "doi_hyperlinks": 3
+    },
+    "supplement": {
+      "pages": 11,
+      "changed_pages": [
+        8,
+        9,
+        11
+      ],
+      "overfull_boxes": 0,
+      "undefined_references": 0,
+      "no_type3_fonts": true,
+      "doi_hyperlinks": 3
+    }
+  },
+  "pre_acquisition_changed_pages_visually_inspected": {
+    "main": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "supplement": [
+      8,
+      9,
+      11
+    ]
+  },
+  "historical_sensor_tests": {
+    "passed": 129,
+    "subtests_passed": 8,
+    "experiment_commit": "45edb31b3e67821a06e4131d0b82785248de5a5f"
+  },
+  "pre_acquisition_builds_20261109": [
+    "mega2560_references",
+    "esp32c3_references",
+    "esp32s3_references"
+  ],
+  "s3_native_float_instructions_verified": true
 }

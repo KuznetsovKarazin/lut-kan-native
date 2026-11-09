@@ -15,7 +15,8 @@ ROOT=HERE.parents[2]
 def source_hashes():
     paths=[HERE/"platformio.ini",HERE/"requirements.txt",HERE/"capture.py",HERE/"capture_references.py",
            Path(__file__),HERE/"run_suite.py",HERE/"revision_manifest.json",
-           *sorted((HERE/"include").glob("*.h")),*sorted((HERE/"src").glob("*.cpp"))]
+           *sorted((HERE/"include").glob("*.h")),*sorted((HERE/"src").glob("*.cpp")),
+           *sorted((HERE/"src").glob("*.c"))]
     return {str(p.relative_to(ROOT)):dict(raw_sha256=sha(p),lf_sha256=hashlib.sha256(p.read_bytes().replace(b"\r\n",b"\n")).hexdigest()) for p in paths}
 
 

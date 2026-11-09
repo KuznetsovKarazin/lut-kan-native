@@ -27,7 +27,8 @@ static M_NOINLINE float predict_5(float adc){return Revision::polynomial(adc);}
 static M_NOINLINE float predict_6(float adc){return Revision::physics(adc);}
 static M_NOINLINE float predict_7(float adc){return Revision::polynomial_horner(adc);}
 #include "command_protocol.h"
-#if defined(CONFIG_IDF_TARGET_ESP32C3)
+#if defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32S3)
+#define REVISION_NATIVE_USB
 #include "usb_bench_serial.h"
 static UsbBenchSerial bench_usb;
 #ifdef Serial
@@ -75,7 +76,7 @@ static void run_benchmark(const char *session){
  Serial.println("END_SENSOR_BENCH");
 }
 void setup(){
-#if defined(CONFIG_IDF_TARGET_ESP32C3)
+#if defined(REVISION_NATIVE_USB)
  bench_usb.begin();
 #else
  Serial.begin(115200);
@@ -83,7 +84,7 @@ void setup(){
 }
 void loop(){
  static BenchCommand command;static char last_session[33]={0};int c;
-#if defined(CONFIG_IDF_TARGET_ESP32C3)
+#if defined(REVISION_NATIVE_USB)
  while((c=bench_usb.read())>=0){
 #else
  while(Serial.available()&&(c=Serial.read())>=0){

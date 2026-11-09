@@ -5,7 +5,12 @@ The stronger 32-pair block OLS baseline and extended tau grid are complete.
 New common-fixture Mega/C3 captures ARE needed for a unified frontier; follow
 [mcu/RUN_REFERENCES_RU.txt](mcu/RUN_REFERENCES_RU.txt). Seven implementations include
 Clenshaw and power-basis Horner for the same polynomial. Historical measurements
-remain separate. No physical sensor campaign or DOI has yet been completed.
+remain separate. The evidence is published at https://doi.org/10.5281/zenodo.24062383.
+No physical sensor campaign has been completed. The 9 November V2 plan also
+includes the available S3-A through native USB Serial/JTAG; see
+[mcu/V2_ACQUISITION_PROTOCOL.txt](mcu/V2_ACQUISITION_PROTOCOL.txt).
+The decay grid is fixed: tau=2048 reduces eta only from 0.5 to 0.421 over 384
+references. No third tuning cycle on the prior seeds is planned.
 
 # Sensor calibration recovery
 
@@ -16,9 +21,9 @@ captures now provide measured execution times on the same numerical fixture;
 physical sensor accuracy remains unmeasured.
 
 The [revised IEEE Sensors Journal manuscript](../../manuscripts/ieee_sensors_tradeoff/README.md)
-presents conditional accuracy, storage and update-cost trade-offs: seven main
-pages, five scientific figures, a separate graphical abstract, a ten-page
-supplement and 22 references. It includes the previously omitted physical timings
+presents conditional accuracy, storage and update-cost trade-offs: eight main
+pages, five scientific figures, a separate graphical abstract, an eleven-page
+supplement and 23 references. It includes the previously omitted physical timings
 of polynomial/physical references on the earlier fixture. The two hardware
 fixtures remain separate. Post-review analyses and immutable evidence are indexed
 in [revision results](results/revision_20261108/README.md); they add model-selection

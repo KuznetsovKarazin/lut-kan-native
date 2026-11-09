@@ -15,7 +15,10 @@ step/ramp; integrated MAE 0.0966 C for step and 0.0692 C for ramp. The stronger
 baseline substantially narrows the NLMS advantage.
 
 The decay grid now includes 1024 and 2048. Both families select 2048, again at the
-boundary. 1440 development and 1728 paired-confirmation trajectories reuse the
+boundary. The step falls only from 0.5 to 0.421 over 384 references (15.8%):
+the selected behavior is nearly constant over this horizon. The grid and seeds
+are now closed to further selection. Additional MCU runs use frozen coefficients.
+1440 development and 1728 paired-confirmation trajectories reuse the
 previous seeds: this is post-review reanalysis, not an untouched new holdout.
 Exact input snapshots are hash-checked under data/refinement_*.json. Historical
 512/two-point results are retained in their original files. New plot labels and
@@ -117,7 +120,8 @@ fixture, with strict capture validation and image/source hashes. Mega2560,
 ESP32-C3 and optional ESP32-S3 builds passed. The new kernels passed portable C++
 parity and parser rejection tests; all focused sensor tests pass (129 tests and
 8 subtests). This is not additional board execution. The ESP32-S3 environment
-targets ESP32-S3-DevKitC-1 at 240 MHz through its UART bridge; another board needs
+targets the observed S3-A at 240 MHz through native USB Serial/JTAG, with
+4 MB DIO flash at 80 MHz and no PSRAM; another board needs
 its own verified configuration. Instructions are in `mcu/RUN_REFERENCES_RU.txt`.
 New Mega/C3 acquisitions ARE required for one common-fixture frontier. The
 earlier statement that they need not be rerun does not satisfy that comparison.
@@ -138,8 +142,8 @@ Use this version-specific DOI for the paper. The concept DOI
 MD5: `3f6986c166c4911948fc6f4e3c657f35`. The server checksum matches, and
 the DOI, public record and archive download return HTTP 200 without account authentication.
 The evidence archive remains unchanged; historical draft-status wording inside
-its original components records their preparation date. No formal Git release
-tag is claimed. Real NTC measurements remain absent.
+its original components records their preparation date. The evidence code is also fixed by the [sensors-zenodo-v1.0.0 release](https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.0.0),
+pointing to the archived commit 45edb31. Real NTC measurements remain absent.
 
 ## Для автора
 
@@ -148,3 +152,11 @@ tag is claimed. Real NTC measurements remain absent.
 дополнительный результат — конфликт скорости отслеживания дрейфа, остаточной
 ошибки и памяти для хранения эталонов. Для Sensors Journal полезнее небольшой
 физический опыт с калиброванным эталоном, чем очередное увеличение числа симуляций.
+
+## Acquisition plan fixed on 9 November
+
+Two sessions each on Mega, C3 and S3-A are planned without refitting or further
+selection on the previous seeds. S3-A now uses its observed native USB Serial/JTAG
+connection with 4 MB DIO flash and no PSRAM. See the MCU `V2_ACQUISITION_PROTOCOL.txt`.
+No new captures are claimed. `AUTHOR_REQUIREMENTS_20261109.txt` documents why
+biography/photo omission is not established as an initial-submission defect.
