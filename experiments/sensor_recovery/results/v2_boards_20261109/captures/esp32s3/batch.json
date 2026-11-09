@@ -1,0 +1,264 @@
+{
+  "start_utc": "2026-11-09T10:23:56.548950+00:00",
+  "board": "esp32s3",
+  "port": "COM13",
+  "environment": "esp32s3_references",
+  "requested_runs": 2,
+  "status": "validated",
+  "stage": "complete",
+  "captures": [
+    {
+      "result": "run01.json",
+      "session_id": "094d9f5363ee4ff59543740e67052cc7",
+      "raw_sha256": "4b3b8e9fbf0fdb06f1c293833e868fa0ae1ba72148d35277c2ea5ef4a3131c4b",
+      "result_sha256": "23d852a236c717cfb538b82b1d783c8117e1611af9acd7ef4f32f7a72db9afef"
+    },
+    {
+      "result": "run02.json",
+      "session_id": "47f24aa36e1d4675a091182ecd2c8b8b",
+      "raw_sha256": "dfc8d807cd83cf0227483ce1c0569225f5b8d0641764b192de665804012ada28",
+      "result_sha256": "1841a2e608babdbd819fa1303bf14e6e780cfad0ce1c964c888f3404f7d60973"
+    }
+  ],
+  "source_before": {
+    "experiments\\sensor_recovery\\mcu\\platformio.ini": {
+      "raw_sha256": "36fbc3ac48341c487ec0d29874168209cd49e151154b3b2306231ee799a6e7b0",
+      "lf_sha256": "36fbc3ac48341c487ec0d29874168209cd49e151154b3b2306231ee799a6e7b0"
+    },
+    "experiments\\sensor_recovery\\mcu\\requirements.txt": {
+      "raw_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+      "lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture.py": {
+      "raw_sha256": "172e4570103322d9d76b2ed570a854feaba8afaf6116df24be73213eba880e0e",
+      "lf_sha256": "172e4570103322d9d76b2ed570a854feaba8afaf6116df24be73213eba880e0e"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture_references.py": {
+      "raw_sha256": "0fae7c2f48624f2f2c173aa6a05ecd35a3b15ed49498c895553a951df16e3a08",
+      "lf_sha256": "0fae7c2f48624f2f2c173aa6a05ecd35a3b15ed49498c895553a951df16e3a08"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_references.py": {
+      "raw_sha256": "9ab92270ad201c794d3d2556add15651f82c9772a6689f757dd80009ed2e77db",
+      "lf_sha256": "9ab92270ad201c794d3d2556add15651f82c9772a6689f757dd80009ed2e77db"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_suite.py": {
+      "raw_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3",
+      "lf_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3"
+    },
+    "experiments\\sensor_recovery\\mcu\\revision_manifest.json": {
+      "raw_sha256": "191c442d81451e6e0883845dd585c36d39ab0402861d418293fcbc3b6f3364df",
+      "lf_sha256": "191c442d81451e6e0883845dd585c36d39ab0402861d418293fcbc3b6f3364df"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\command_protocol.h": {
+      "raw_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\fixture.h": {
+      "raw_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\kernels.h": {
+      "raw_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_fixture.h": {
+      "raw_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+      "lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_identity.h": {
+      "raw_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+      "lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_kernels.h": {
+      "raw_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+      "lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\models.h": {
+      "raw_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_coefficients.h": {
+      "raw_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_spline.h": {
+      "raw_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_fixture.h": {
+      "raw_sha256": "8aa1f0aa0402d77b4bc3d11d60d9c6fe9dcf52d311575711b514f6dfa329e39d",
+      "lf_sha256": "8aa1f0aa0402d77b4bc3d11d60d9c6fe9dcf52d311575711b514f6dfa329e39d"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_identity.h": {
+      "raw_sha256": "07edc5b7fd93b87ddfc8e5193e70f2084d95e5f138e9cfeacbb63134d16c52c7",
+      "lf_sha256": "07edc5b7fd93b87ddfc8e5193e70f2084d95e5f138e9cfeacbb63134d16c52c7"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_kernels.h": {
+      "raw_sha256": "42dbb2c6304d646178acc9fbb83387d2fbab193a2971d056215ec09b1da2b0ce",
+      "lf_sha256": "42dbb2c6304d646178acc9fbb83387d2fbab193a2971d056215ec09b1da2b0ce"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\usb_bench_serial.h": {
+      "raw_sha256": "b84418548046012b660141b1e60192d9c2dd6cd3ab3674596df84c7a33b9003a",
+      "lf_sha256": "b84418548046012b660141b1e60192d9c2dd6cd3ab3674596df84c7a33b9003a"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\main.cpp": {
+      "raw_sha256": "ae5ee05be513ac138f72fae82bb0612350c359d8f690b0bbdc8e235401f59f19",
+      "lf_sha256": "ae5ee05be513ac138f72fae82bb0612350c359d8f690b0bbdc8e235401f59f19"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\matched_main.cpp": {
+      "raw_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956",
+      "lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\revision_main.cpp": {
+      "raw_sha256": "abb0669f3bacf1af5aa0cbf66d6f4b6a5857c939c489c38e2e9a2c7b90540493",
+      "lf_sha256": "abb0669f3bacf1af5aa0cbf66d6f4b6a5857c939c489c38e2e9a2c7b90540493"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\usb_bench_phy.c": {
+      "raw_sha256": "abc918c246cdd3b0e6d8c7a352035a683a60b28c7f122ac7278dcf25f93d5a84",
+      "lf_sha256": "abc918c246cdd3b0e6d8c7a352035a683a60b28c7f122ac7278dcf25f93d5a84"
+    }
+  },
+  "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "git_commit": null,
+  "upload_command": [
+    "C:\\Users\\kuzne\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-m",
+    "platformio",
+    "run",
+    "-d",
+    "E:\\IEEE_Sensors\\experiments\\sensor_recovery\\mcu",
+    "-e",
+    "esp32s3_references",
+    "-t",
+    "upload",
+    "--upload-port",
+    "COM13"
+  ],
+  "built_artifacts": {
+    "firmware.elf": {
+      "bytes": 6289904,
+      "sha256": "e4ce8ea92c11a97de31d18995cfa0ecf9d50ffa93d8c58e86c59a46837190393",
+      "archive_path": "firmware/firmware.elf"
+    },
+    "firmware.bin": {
+      "bytes": 254160,
+      "sha256": "3b5a3afff2261c8ca10fa826335c4acd55c1a9a533f1fc747695f505a54d1492",
+      "archive_path": "firmware/firmware.bin"
+    },
+    "bootloader.bin": {
+      "bytes": 14032,
+      "sha256": "9bf9aab34441621d794360ca427cbddc3d62f38a7950f8790696bb3d7986769f",
+      "archive_path": "firmware/bootloader.bin"
+    },
+    "partitions.bin": {
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1",
+      "archive_path": "firmware/partitions.bin"
+    }
+  },
+  "usb_device": {
+    "port": "COM13",
+    "vid": 12346,
+    "pid": 4097,
+    "usb_serial_sha256": "965ee16a038a5107ea306cd8df964701cbbd0369b5007692282a606a759ca8b0"
+  },
+  "end_utc": "2026-11-09T10:24:27.681044+00:00",
+  "source_after": {
+    "experiments\\sensor_recovery\\mcu\\platformio.ini": {
+      "raw_sha256": "36fbc3ac48341c487ec0d29874168209cd49e151154b3b2306231ee799a6e7b0",
+      "lf_sha256": "36fbc3ac48341c487ec0d29874168209cd49e151154b3b2306231ee799a6e7b0"
+    },
+    "experiments\\sensor_recovery\\mcu\\requirements.txt": {
+      "raw_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+      "lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture.py": {
+      "raw_sha256": "172e4570103322d9d76b2ed570a854feaba8afaf6116df24be73213eba880e0e",
+      "lf_sha256": "172e4570103322d9d76b2ed570a854feaba8afaf6116df24be73213eba880e0e"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture_references.py": {
+      "raw_sha256": "0fae7c2f48624f2f2c173aa6a05ecd35a3b15ed49498c895553a951df16e3a08",
+      "lf_sha256": "0fae7c2f48624f2f2c173aa6a05ecd35a3b15ed49498c895553a951df16e3a08"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_references.py": {
+      "raw_sha256": "9ab92270ad201c794d3d2556add15651f82c9772a6689f757dd80009ed2e77db",
+      "lf_sha256": "9ab92270ad201c794d3d2556add15651f82c9772a6689f757dd80009ed2e77db"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_suite.py": {
+      "raw_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3",
+      "lf_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3"
+    },
+    "experiments\\sensor_recovery\\mcu\\revision_manifest.json": {
+      "raw_sha256": "191c442d81451e6e0883845dd585c36d39ab0402861d418293fcbc3b6f3364df",
+      "lf_sha256": "191c442d81451e6e0883845dd585c36d39ab0402861d418293fcbc3b6f3364df"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\command_protocol.h": {
+      "raw_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\fixture.h": {
+      "raw_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\kernels.h": {
+      "raw_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_fixture.h": {
+      "raw_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+      "lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_identity.h": {
+      "raw_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+      "lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\matched_kernels.h": {
+      "raw_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+      "lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\models.h": {
+      "raw_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_coefficients.h": {
+      "raw_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_spline.h": {
+      "raw_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_fixture.h": {
+      "raw_sha256": "8aa1f0aa0402d77b4bc3d11d60d9c6fe9dcf52d311575711b514f6dfa329e39d",
+      "lf_sha256": "8aa1f0aa0402d77b4bc3d11d60d9c6fe9dcf52d311575711b514f6dfa329e39d"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_identity.h": {
+      "raw_sha256": "07edc5b7fd93b87ddfc8e5193e70f2084d95e5f138e9cfeacbb63134d16c52c7",
+      "lf_sha256": "07edc5b7fd93b87ddfc8e5193e70f2084d95e5f138e9cfeacbb63134d16c52c7"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\revision_kernels.h": {
+      "raw_sha256": "42dbb2c6304d646178acc9fbb83387d2fbab193a2971d056215ec09b1da2b0ce",
+      "lf_sha256": "42dbb2c6304d646178acc9fbb83387d2fbab193a2971d056215ec09b1da2b0ce"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\usb_bench_serial.h": {
+      "raw_sha256": "b84418548046012b660141b1e60192d9c2dd6cd3ab3674596df84c7a33b9003a",
+      "lf_sha256": "b84418548046012b660141b1e60192d9c2dd6cd3ab3674596df84c7a33b9003a"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\main.cpp": {
+      "raw_sha256": "ae5ee05be513ac138f72fae82bb0612350c359d8f690b0bbdc8e235401f59f19",
+      "lf_sha256": "ae5ee05be513ac138f72fae82bb0612350c359d8f690b0bbdc8e235401f59f19"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\matched_main.cpp": {
+      "raw_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956",
+      "lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\revision_main.cpp": {
+      "raw_sha256": "abb0669f3bacf1af5aa0cbf66d6f4b6a5857c939c489c38e2e9a2c7b90540493",
+      "lf_sha256": "abb0669f3bacf1af5aa0cbf66d6f4b6a5857c939c489c38e2e9a2c7b90540493"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\usb_bench_phy.c": {
+      "raw_sha256": "abc918c246cdd3b0e6d8c7a352035a683a60b28c7f122ac7278dcf25f93d5a84",
+      "lf_sha256": "abc918c246cdd3b0e6d8c7a352035a683a60b28c7f122ac7278dcf25f93d5a84"
+    }
+  }
+}

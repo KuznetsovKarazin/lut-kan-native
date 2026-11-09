@@ -1,0 +1,311 @@
+{
+  "predict_1": {
+    "symbol": "_ZL9predict_1f",
+    "address": "0x4200197c",
+    "size": 68,
+    "verified_float_instructions": [
+      {
+        "offset": 42,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      },
+      {
+        "offset": 48,
+        "instruction": "mul.s",
+        "bytes": "20002a"
+      },
+      {
+        "offset": 51,
+        "instruction": "add.s",
+        "bytes": "10000a"
+      },
+      {
+        "offset": 57,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 60,
+        "instruction": "add.s",
+        "bytes": "10100a"
+      }
+    ]
+  },
+  "predict_2": {
+    "symbol": "_ZL9predict_2f",
+    "address": "0x420019c0",
+    "size": 100,
+    "verified_float_instructions": [
+      {
+        "offset": 38,
+        "instruction": "float.s",
+        "bytes": "0018ca"
+      },
+      {
+        "offset": 47,
+        "instruction": "float.s",
+        "bytes": "0008ca"
+      },
+      {
+        "offset": 53,
+        "instruction": "mul.s",
+        "bytes": "30112a"
+      },
+      {
+        "offset": 56,
+        "instruction": "mul.s",
+        "bytes": "30002a"
+      },
+      {
+        "offset": 65,
+        "instruction": "add.s",
+        "bytes": "20110a"
+      },
+      {
+        "offset": 68,
+        "instruction": "add.s",
+        "bytes": "20000a"
+      },
+      {
+        "offset": 77,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      },
+      {
+        "offset": 80,
+        "instruction": "mul.s",
+        "bytes": "20002a"
+      },
+      {
+        "offset": 83,
+        "instruction": "add.s",
+        "bytes": "10000a"
+      },
+      {
+        "offset": 89,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 92,
+        "instruction": "add.s",
+        "bytes": "10100a"
+      }
+    ]
+  },
+  "predict_3": {
+    "symbol": "_ZL9predict_3f",
+    "address": "0x42001b50",
+    "size": 39,
+    "verified_float_instructions": [
+      {
+        "offset": 27,
+        "instruction": "mul.s",
+        "bytes": "00122a"
+      },
+      {
+        "offset": 30,
+        "instruction": "add.s",
+        "bytes": "00010a"
+      }
+    ]
+  },
+  "predict_4": {
+    "symbol": "_ZL9predict_4f",
+    "address": "0x42001a24",
+    "size": 78,
+    "verified_float_instructions": [
+      {
+        "offset": 37,
+        "instruction": "mul.s",
+        "bytes": "00012a"
+      },
+      {
+        "offset": 43,
+        "instruction": "add.s",
+        "bytes": "20000a"
+      },
+      {
+        "offset": 49,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 52,
+        "instruction": "add.s",
+        "bytes": "20000a"
+      },
+      {
+        "offset": 55,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 61,
+        "instruction": "add.s",
+        "bytes": "10000a"
+      },
+      {
+        "offset": 67,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 70,
+        "instruction": "add.s",
+        "bytes": "10100a"
+      }
+    ]
+  },
+  "predict_5": {
+    "symbol": "_ZL9predict_5f",
+    "address": "0x4200160c",
+    "size": 107,
+    "verified_float_instructions": [
+      {
+        "offset": 12,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      },
+      {
+        "offset": 30,
+        "instruction": "add.s",
+        "bytes": "00400a"
+      },
+      {
+        "offset": 48,
+        "instruction": "mul.s",
+        "bytes": "20142a"
+      },
+      {
+        "offset": 54,
+        "instruction": "sub.s",
+        "bytes": "30111a"
+      },
+      {
+        "offset": 60,
+        "instruction": "add.s",
+        "bytes": "30110a"
+      },
+      {
+        "offset": 63,
+        "instruction": "mov.s",
+        "bytes": "0032fa"
+      },
+      {
+        "offset": 69,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 81,
+        "instruction": "sub.s",
+        "bytes": "20001a"
+      },
+      {
+        "offset": 84,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      },
+      {
+        "offset": 90,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 93,
+        "instruction": "add.s",
+        "bytes": "10100a"
+      },
+      {
+        "offset": 101,
+        "instruction": "mov.s",
+        "bytes": "0021fa"
+      }
+    ]
+  },
+  "predict_6": {
+    "symbol": "_ZL9predict_6f",
+    "address": "0x420016c4",
+    "size": 122,
+    "verified_float_instructions": [
+      {
+        "offset": 27,
+        "instruction": "sub.s",
+        "bytes": "00111a"
+      },
+      {
+        "offset": 39,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 63,
+        "instruction": "mul.s",
+        "bytes": "20102a"
+      },
+      {
+        "offset": 75,
+        "instruction": "mul.s",
+        "bytes": "00112a"
+      },
+      {
+        "offset": 81,
+        "instruction": "mul.s",
+        "bytes": "00112a"
+      },
+      {
+        "offset": 84,
+        "instruction": "mul.s",
+        "bytes": "20002a"
+      },
+      {
+        "offset": 90,
+        "instruction": "add.s",
+        "bytes": "20000a"
+      },
+      {
+        "offset": 93,
+        "instruction": "add.s",
+        "bytes": "00010a"
+      },
+      {
+        "offset": 114,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      }
+    ]
+  },
+  "predict_7": {
+    "symbol": "_ZL9predict_7f",
+    "address": "0x42001678",
+    "size": 73,
+    "verified_float_instructions": [
+      {
+        "offset": 12,
+        "instruction": "sub.s",
+        "bytes": "10001a"
+      },
+      {
+        "offset": 44,
+        "instruction": "mul.s",
+        "bytes": "00022a"
+      },
+      {
+        "offset": 53,
+        "instruction": "add.s",
+        "bytes": "10000a"
+      },
+      {
+        "offset": 62,
+        "instruction": "mul.s",
+        "bytes": "10002a"
+      },
+      {
+        "offset": 65,
+        "instruction": "add.s",
+        "bytes": "10100a"
+      }
+    ]
+  }
+}

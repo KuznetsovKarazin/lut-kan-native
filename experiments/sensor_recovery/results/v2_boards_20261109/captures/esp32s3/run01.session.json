@@ -1,0 +1,32 @@
+{
+  "session_id": "094d9f5363ee4ff59543740e67052cc7",
+  "board_requested": "esp32s3",
+  "start_utc": "2026-11-09T10:24:25.504501+00:00",
+  "port": "COM13",
+  "mode": "command_references_v2",
+  "status": "validated",
+  "tx_commands": [
+    {
+      "utc": "2026-11-09T10:24:25.544310+00:00",
+      "text": "H"
+    },
+    {
+      "utc": "2026-11-09T10:24:25.745751+00:00",
+      "text": "Q,094d9f5363ee4ff59543740e67052cc7"
+    },
+    {
+      "utc": "2026-11-09T10:24:25.946438+00:00",
+      "text": "R,094d9f5363ee4ff59543740e67052cc7"
+    }
+  ],
+  "capture_script_sha256": "0fae7c2f48624f2f2c173aa6a05ecd35a3b15ed49498c895553a951df16e3a08",
+  "usb_phase": "complete",
+  "hello_delay_s": 0.0,
+  "hello_error_budget": 0,
+  "pre_ready_rejections": [],
+  "run_accepted_utc": "2026-11-09T10:24:25.954194+00:00",
+  "result_sha256": "23d852a236c717cfb538b82b1d783c8117e1611af9acd7ef4f32f7a72db9afef",
+  "end_utc": "2026-11-09T10:24:26.520601+00:00",
+  "raw_sha256": "4b3b8e9fbf0fdb06f1c293833e868fa0ae1ba72148d35277c2ea5ef4a3131c4b",
+  "raw_bytes": 4551
+}

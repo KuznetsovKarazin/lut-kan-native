@@ -1,0 +1,636 @@
+{
+  "metadata": {
+    "SUITE": "matched_references_v2",
+    "SESSION": "4900fb4eb8624264bc90231c82500f3e",
+    "BOARD": "mega2560",
+    "CPU_HZ": "16000000",
+    "FIXTURE_SHA256": "3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb",
+    "PRECISION": "float32"
+  },
+  "payload_bytes": {
+    "lut32_float32": 144,
+    "lut60_int16": 144,
+    "cubic32_unrolled": 144,
+    "horner8": 144,
+    "polynomial": 56,
+    "physics": 32,
+    "polynomial_horner": 56
+  },
+  "accuracy": {
+    "lut32_float32": {
+      "mae_C": 0.055711,
+      "rmse_C": 0.0837515,
+      "max_C": 0.4702148,
+      "max_host_gap_C": 1.526e-05
+    },
+    "lut60_int16": {
+      "mae_C": 0.0478595,
+      "rmse_C": 0.0687363,
+      "max_C": 0.3202744,
+      "max_host_gap_C": 1.526e-05
+    },
+    "cubic32_unrolled": {
+      "mae_C": 0.0444038,
+      "rmse_C": 0.0639407,
+      "max_C": 0.2678528,
+      "max_host_gap_C": 1.526e-05
+    },
+    "horner8": {
+      "mae_C": 0.0455196,
+      "rmse_C": 0.0658783,
+      "max_C": 0.2676544,
+      "max_host_gap_C": 1.526e-05
+    },
+    "polynomial": {
+      "mae_C": 0.0441309,
+      "rmse_C": 0.0633376,
+      "max_C": 0.2489777,
+      "max_host_gap_C": 1.526e-05
+    },
+    "physics": {
+      "mae_C": 0.3298833,
+      "rmse_C": 0.3929548,
+      "max_C": 0.8232117,
+      "max_host_gap_C": 5.341e-05
+    },
+    "polynomial_horner": {
+      "mae_C": 0.0441311,
+      "rmse_C": 0.0633381,
+      "max_C": 0.2489777,
+      "max_host_gap_C": 1.526e-05
+    }
+  },
+  "timings": [
+    {
+      "method": "overhead",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 24288,
+      "checksum": 659.13092
+    },
+    {
+      "method": "overhead",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 23824,
+      "checksum": 659.054565
+    },
+    {
+      "method": "overhead",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 23836,
+      "checksum": 658.980346
+    },
+    {
+      "method": "overhead",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 23828,
+      "checksum": 658.907287
+    },
+    {
+      "method": "overhead",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 23828,
+      "checksum": 658.83374
+    },
+    {
+      "method": "overhead",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 23828,
+      "checksum": 658.757019
+    },
+    {
+      "method": "overhead",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 23824,
+      "checksum": 659.396179
+    },
+    {
+      "method": "overhead",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 23828,
+      "checksum": 659.319458
+    },
+    {
+      "method": "overhead",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 23824,
+      "checksum": 659.2453
+    },
+    {
+      "method": "overhead",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 23840,
+      "checksum": 659.169982
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 336556,
+      "checksum": 102477.476562
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 336516,
+      "checksum": 102488.382812
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 336520,
+      "checksum": 102499.007812
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 336536,
+      "checksum": 102509.953125
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 336544,
+      "checksum": 102520.648437
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 336536,
+      "checksum": 102531.515625
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 336540,
+      "checksum": 102441.898437
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 336532,
+      "checksum": 102452.8125
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 336528,
+      "checksum": 102463.320312
+    },
+    {
+      "method": "lut32_float32",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 336544,
+      "checksum": 102474.578125
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 418092,
+      "checksum": 102478.59375
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 418064,
+      "checksum": 102489.460937
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 418068,
+      "checksum": 102500.117187
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 418064,
+      "checksum": 102511.078125
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 418076,
+      "checksum": 102521.679687
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 418096,
+      "checksum": 102532.640625
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 418084,
+      "checksum": 102443.023437
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 418080,
+      "checksum": 102453.953125
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 418076,
+      "checksum": 102464.5
+    },
+    {
+      "method": "lut60_int16",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 418056,
+      "checksum": 102475.757812
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 745192,
+      "checksum": 102477.007812
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 745168,
+      "checksum": 102487.921875
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 745140,
+      "checksum": 102498.523437
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 745192,
+      "checksum": 102509.523437
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 745168,
+      "checksum": 102520.125
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 745160,
+      "checksum": 102531.09375
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 745192,
+      "checksum": 102441.414062
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 745196,
+      "checksum": 102452.382812
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 745176,
+      "checksum": 102462.90625
+    },
+    {
+      "method": "cubic32_unrolled",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 745172,
+      "checksum": 102474.242187
+    },
+    {
+      "method": "horner8",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 393436,
+      "checksum": 102478.882812
+    },
+    {
+      "method": "horner8",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 393404,
+      "checksum": 102489.71875
+    },
+    {
+      "method": "horner8",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 393408,
+      "checksum": 102500.265625
+    },
+    {
+      "method": "horner8",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 393412,
+      "checksum": 102511.140625
+    },
+    {
+      "method": "horner8",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 393412,
+      "checksum": 102521.742187
+    },
+    {
+      "method": "horner8",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 393420,
+      "checksum": 102532.609375
+    },
+    {
+      "method": "horner8",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 393424,
+      "checksum": 102443.078125
+    },
+    {
+      "method": "horner8",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 393412,
+      "checksum": 102453.953125
+    },
+    {
+      "method": "horner8",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 393416,
+      "checksum": 102464.390625
+    },
+    {
+      "method": "horner8",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 393416,
+      "checksum": 102475.585937
+    },
+    {
+      "method": "polynomial",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 668140,
+      "checksum": 102478.25
+    },
+    {
+      "method": "polynomial",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 668108,
+      "checksum": 102489.09375
+    },
+    {
+      "method": "polynomial",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 668136,
+      "checksum": 102499.648437
+    },
+    {
+      "method": "polynomial",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 668128,
+      "checksum": 102510.5625
+    },
+    {
+      "method": "polynomial",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 668112,
+      "checksum": 102521.140625
+    },
+    {
+      "method": "polynomial",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 668132,
+      "checksum": 102532.109375
+    },
+    {
+      "method": "polynomial",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 668144,
+      "checksum": 102442.570312
+    },
+    {
+      "method": "polynomial",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 668128,
+      "checksum": 102453.484375
+    },
+    {
+      "method": "polynomial",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 668140,
+      "checksum": 102463.921875
+    },
+    {
+      "method": "polynomial",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 668128,
+      "checksum": 102475.164062
+    },
+    {
+      "method": "physics",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 638288,
+      "checksum": 102477.640625
+    },
+    {
+      "method": "physics",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 638256,
+      "checksum": 102488.539062
+    },
+    {
+      "method": "physics",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 638240,
+      "checksum": 102499.1875
+    },
+    {
+      "method": "physics",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 638256,
+      "checksum": 102510.171875
+    },
+    {
+      "method": "physics",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 638232,
+      "checksum": 102520.867187
+    },
+    {
+      "method": "physics",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 638228,
+      "checksum": 102531.828125
+    },
+    {
+      "method": "physics",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 638248,
+      "checksum": 102441.203125
+    },
+    {
+      "method": "physics",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 638228,
+      "checksum": 102452.15625
+    },
+    {
+      "method": "physics",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 638224,
+      "checksum": 102462.6875
+    },
+    {
+      "method": "physics",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 638236,
+      "checksum": 102474.039062
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 458068,
+      "checksum": 102478.25
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 458060,
+      "checksum": 102489.09375
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 458064,
+      "checksum": 102499.648437
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 458048,
+      "checksum": 102510.5625
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 458048,
+      "checksum": 102521.140625
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 458064,
+      "checksum": 102532.109375
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 458056,
+      "checksum": 102442.570312
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 458056,
+      "checksum": 102453.484375
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 458064,
+      "checksum": 102463.921875
+    },
+    {
+      "method": "polynomial_horner",
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 458048,
+      "checksum": 102475.164062
+    }
+  ],
+  "inference_median_us": {
+    "overhead": 11.634765625,
+    "lut32_float32": 164.32421875,
+    "lut60_int16": 204.138671875,
+    "cubic32_unrolled": 363.8544921875,
+    "horner8": 192.0966796875,
+    "polynomial": 326.2353515625,
+    "physics": 311.6396484375,
+    "polynomial_horner": 223.6611328125
+  },
+  "notes": "Synthetic inputs on physical MCU only if acquired from actual device; gross timing, no sensor/energy/WCET claim."
+}
