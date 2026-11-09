@@ -221,7 +221,9 @@ def exp_A_ntc_extended(cfg: dict) -> list[dict]:
         fac_res   = ntc_factory_baseline(unit, data)
         off_res   = fit_onepoint_offset_baseline(
             data["x_cal"], data["y_cal"],
-            data["x_test"], data["y_test"], data["denorm_y"])
+            data["x_test"], data["y_test"], data["denorm_y"],
+            factory_predict=lambda xn: data["norm_y"](
+                unit.T_from_adc_nominal(data["denorm_x"](xn))), point_index=0)
         poly_res  = fit_poly_baseline(
             data["x_cal"], data["y_cal"], 5,
             data["x_test"], data["y_test"], data["denorm_y"])
@@ -351,10 +353,6 @@ def exp_C_ncal_sweep(cfg: dict) -> dict:
     def _sweep(unit, calib_fn, poly_deg, n_values: list) -> dict:
         rows = {}
         for n in n_values:
-            if n < K * L:
-                # Coverage rule violated — skip
-                rows[n] = dict(poly=None, lut=None, lut_std=None)
-                continue
             try:
                 data = calib_fn(unit, n_cal=n, n_val=25, n_test=200, seed=99)
                 poly = fit_poly_baseline(
@@ -404,10 +402,8 @@ def exp_D_lsize_sweep(cfg: dict) -> dict:
     """
     MAE vs. L for NTC at K=1, N_cal=50.
 
-    Result: L=8, L=16 perform WORSE than polynomial.
-    Coverage rule K*L < N_cal is necessary but not sufficient:
-    L must also be large enough to represent the target curve shape.
-    Minimum recommended: L=32 for NTC at N_cal=50.
+    Report all sizes, including L >= N_cal. Sample count alone is not a
+    coverage or learnability theorem; occupancy and regularization matter.
     """
     print("\n=== Experiment D: L sweep (NTC, K=1, N_cal=50) ===")
     unit = make_ntc_units(1, seed=cfg["SENSOR_SEED"])[0]
@@ -430,9 +426,9 @@ def exp_D_lsize_sweep(cfg: dict) -> dict:
             poly=poly["mae_phys"],
             lut=lut_mean,
             lut_std=lut_std,
-            bytes_lut=L,
+            bytes_lut=4 * L,
         )
-        print(f"  L={L:2d} ({L:2d} bytes): "
+        print(f"  L={L:2d} ({4*L:3d} coefficient bytes, float32): "
               f"lut={lut_mean:.4f}+/-{lut_std:.4f}  "
               f"poly={poly['mae_phys']:.4f}  [{winner}]")
     return rows
@@ -693,21 +689,21 @@ def fig_lsweep(l_rows: dict) -> None:
     ax1.set_axisbelow(True)
 
     # Right: Pareto (accuracy vs. storage bytes)
-    ax2.errorbar(Ls, lut_means, yerr=lut_stds, fmt="s-",
+    ax2.errorbar([4*l for l in Ls], lut_means, yerr=lut_stds, fmt="s-",
                  color=C["lut"], lw=2, ms=7, capsize=4,
-                 label="LUT uint8")
+                 label="LUT float32")
     ax2.axhline(poly_ref, color=C["poly"], ls="--", lw=2,
                 label=f"Poly-5  (24 bytes, f32)")
-    ax2.axvline(32, color="gray", ls=":", lw=1,
-                label="L=32 (recommended)", alpha=0.7)
+    ax2.axvline(128, color="gray", ls=":", lw=1,
+                label="L=32 (float32)", alpha=0.7)
     ax2.set_yscale("log")
     ax2.set_ylim(0.05, 3.5)
     ax2.yaxis.set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda y, _: f"{y:.3f}"))
-    ax2.set_xlabel("Storage (bytes, uint8, K=1)", fontsize=11)
+    ax2.set_xlabel("Coefficient storage (bytes, float32, K=1)", fontsize=11)
     ax2.set_ylabel("MAE (deg C, log scale)", fontsize=11)
     ax2.set_title("Accuracy-memory Pareto frontier (NTC)", fontsize=11)
-    ax2.set_xticks(Ls)
+    ax2.set_xticks([4*l for l in Ls])
     ax2.legend(fontsize=9)
     ax2.grid(True, alpha=0.25, lw=0.5, which="both")
     ax2.set_axisbelow(True)

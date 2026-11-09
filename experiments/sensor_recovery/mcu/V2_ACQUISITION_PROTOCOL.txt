@@ -1,0 +1,65 @@
+COMMON-FIXTURE MCU ACQUISITION — FROZEN PLAN
+9 November 2026, before receipt of the new device captures
+
+Purpose
+Measure the same seven fixed implementations on the same inputs, including a
+single-precision FPU target. This is a timing/implementation experiment. Sensor
+accuracy remains synthetic. No physical NTC/LDR experiment is included here.
+
+Fixed inputs and models
+Suite: matched_references_v2
+Fixture SHA-256: 3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb
+Seed 2026110801, distorted NTC, unit 0, repetition 0, B=75.
+Seven implementations: LUT32 float32, LUT60 int16, compact cubic32, piecewise
+Horner8 (144 B each), fitted physics (32 B), degree-9 polynomial Clenshaw and
+the same fitted polynomial in power-basis Horner form (56 B each).
+No refitting, new regularization choice, parameter search or seed replacement.
+The decay grid stops at 2048. No third model-selection cycle on the prior seeds.
+
+Acquisition
+One Mega2560 at 16 MHz, one C3 at 160 MHz, and the available S3-A at 240 MHz.
+Run each with --runs 2 after one upload: six warm command-driven sessions total.
+Every session contains ten 2048-call batches for each of seven models and the
+overhead control: 80 TIME records and seven ACCURACY records. Preserve every
+attempt, including failures; retries get new output directories and session IDs.
+Do not select the fastest session. Partial sessions cannot enter the frontier.
+The S3 profile uses its observed native USB Serial/JTAG connection, 4 MB DIO
+flash at 80 MHz, and no PSRAM. Serial transport and inter-batch waits are outside
+the timed loops. No radios are started. Interrupts/RTOS remain enabled.
+
+Validation
+Require the strict V2 identity, fixture hash, correct CPU frequency and payloads,
+independent command-echo/session IDs, exactly 80 timing and seven parity records,
+finite metrics and host/device prediction gap <= 0.002 C for every model.
+Reparse raw logs and compare the entire parsed result. Verify sidecar hashes,
+batch source-before/source-after identity, and archived firmware image hashes.
+V1 or other-fixture results are retained separately and cannot fill missing V2
+cells. Compile/host checks alone are not physical execution evidence.
+
+Analysis fixed before acquisition
+For each implementation and board, compute the median of ten batch times in
+each session, then the median of the two session medians. Report both session
+values and their range. Retain gross timing; show overhead separately without
+subtracting it. Report noisy-grid MAE and maximum error from this same fixture,
+model payload, and maximum host/device discrepancy.
+Construct a separate seven-model latency–accuracy frontier for each board.
+A point is dominated only when another implementation is no slower and no less
+accurate, with at least one strict inequality. Retain all dominated points.
+Consider payload alongside this two-dimensional view. Do not pool different
+architectures into a single timing frontier or claim independent instruments
+from timing batches. No p-value or between-board confidence interval from n=1.
+
+Interpretation
+Compare rankings within each board. S3 is a useful FPU-equipped target, but also
+changes ISA, clock, memory and toolchain; cross-board differences cannot identify
+a causal FPU speedup. The code is float32; confirm hardware float instructions
+in the S3 ELF before interpreting it as an FPU implementation.
+This protocol does not measure energy, WCET, sensor uncertainty, thermal drift,
+ADC imperfections, or peak stack. It does not validate the simulation as a
+physical population model. Two sessions do not establish board-to-board spread.
+
+Publication
+After valid captures, replace the separated historical rows of the hardware
+figure with common-fixture panels; preserve the historical data in supplement.
+Publish new raw captures as a subsequent evidence version. Do not overwrite
+Zenodo 1.0.0, DOI 10.5281/zenodo.24062383, or reuse its DOI for later measurements.

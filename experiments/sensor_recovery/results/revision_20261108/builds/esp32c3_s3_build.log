@@ -1,0 +1,239 @@
+Processing esp32c3_references (platform: espressif32@6.12.0; board: esp32-c3-devkitm-1; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 6.12.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@6.12.0 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif32 @ ~3.20017.0
+Downloading 0% 10%
+Tool Manager: Warning! Package Mirror: The checksum '5b131ca14aa96311d3432b0062c7443d3b0e6346ec279bd376a75f0a76bcd5d7' of the downloaded file 'framework-arduinoespressif32-3.20017.241212+sha.dcc1105b.tar.gz' does not match to the remote '7dbcfb86f9dfd5ecf6c881ed8226239d9ef63f27e1e1a2ddd87a87762e2ffbc9'
+Tool Manager: Looking for another mirror...
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.20017.241212+sha.dcc1105b has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~2.40900.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Collecting cryptography~=45.0.3
+  Downloading cryptography-45.0.7-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting ecdsa~=0.19.1
+  Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+Collecting bitstring~=4.3.1
+  Downloading bitstring-4.3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting reedsolo~=1.7.0
+  Downloading reedsolo-1.7.0-py3-none-any.whl.metadata (23 kB)
+Collecting intelhex~=2.3.0
+  Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting cffi>=1.14 (from cryptography~=45.0.3)
+  Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting six>=1.9.0 (from ecdsa~=0.19.1)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting bitarray<4.0,>=3.0.0 (from bitstring~=4.3.1)
+  Downloading bitarray-3.12.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting pycparser (from cffi>=1.14->cryptography~=45.0.3)
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Downloading cryptography-45.0.7-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 29.4 MB/s  0:00:00
+Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+Downloading bitstring-4.3.1-py3-none-any.whl (71 kB)
+Downloading reedsolo-1.7.0-py3-none-any.whl (32 kB)
+Downloading intelhex-2.3.0-py2.py3-none-any.whl (50 kB)
+Downloading bitarray-3.12.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (404 kB)
+Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Installing collected packages: reedsolo, intelhex, six, pycparser, bitarray, ecdsa, cffi, bitstring, cryptography
+
+Successfully installed bitarray-3.12.3 bitstring-4.3.1 cffi-2.1.1 cryptography-45.0.7 ecdsa-0.19.2 intelhex-2.3.0 pycparser-3.12 reedsolo-1.7.0 six-1.17.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Tool Manager: tool-esptoolpy@2.40900.250804 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 33 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/esp32c3_references/src/main.cpp.o
+Compiling .pio/build/esp32c3_references/src/matched_main.cpp.o
+Compiling .pio/build/esp32c3_references/src/revision_main.cpp.o
+Building .pio/build/esp32c3_references/bootloader.bin
+Generating partitions .pio/build/esp32c3_references/partitions.bin
+Compiling .pio/build/esp32c3_references/FrameworkArduino/Esp.cpp.o
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 1 ELF section
+Successfully created esp32c3 image.
+Compiling .pio/build/esp32c3_references/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/main.cpp.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/esp32c3_references/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/esp32c3_references/libFrameworkArduino.a
+Indexing .pio/build/esp32c3_references/libFrameworkArduino.a
+Linking .pio/build/esp32c3_references/firmware.elf
+Retrieving maximum program size .pio/build/esp32c3_references/firmware.elf
+Checking size .pio/build/esp32c3_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [          ]   4.3% (used 13948 bytes from 327680 bytes)
+Flash: [==        ]  19.6% (used 256838 bytes from 1310720 bytes)
+Building .pio/build/esp32c3_references/firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32c3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio/build/esp32c3_references/firmware.bin
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 2 ELF sections
+Successfully created esp32c3 image.
+======================== [SUCCESS] Took 522.27 seconds ========================
+
+Processing esp32s3_references (platform: espressif32@6.12.0; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Tool Manager: Installing espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32s3@8.4.0+2021r2-patch5 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 33 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/esp32s3_references/src/main.cpp.o
+Compiling .pio/build/esp32s3_references/src/matched_main.cpp.o
+Compiling .pio/build/esp32s3_references/src/revision_main.cpp.o
+Building .pio/build/esp32s3_references/bootloader.bin
+Generating partitions .pio/build/esp32s3_references/partitions.bin
+esptool.py v4.9.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/esp32s3_references/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/main.cpp.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/esp32s3_references/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/esp32s3_references/libFrameworkArduino.a
+Indexing .pio/build/esp32s3_references/libFrameworkArduino.a
+Linking .pio/build/esp32s3_references/firmware.elf
+Retrieving maximum program size .pio/build/esp32s3_references/firmware.elf
+Checking size .pio/build/esp32s3_references/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   5.7% (used 18564 bytes from 327680 bytes)
+Flash: [=         ]   8.4% (used 282197 bytes from 3342336 bytes)
+Building .pio/build/esp32s3_references/firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32s3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 8MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio/build/esp32s3_references/firmware.bin
+esptool.py v4.9.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 77.45 seconds =========================
+
+Environment         Status    Duration
+------------------  --------  ------------
+esp32c3_references  SUCCESS   00:08:42.269
+esp32s3_references  SUCCESS   00:01:17.446
+========================= 2 succeeded in 00:09:59.715 =========================

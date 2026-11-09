@@ -38,3 +38,6 @@ jobs:
       - name: Run tests
         run: |
           pytest tests/ -q --tb=short
+      - name: Check sensor recovery invariants and portable C kernel
+        run: |
+          python -m pytest experiments/sensor_recovery/test_*.py -q

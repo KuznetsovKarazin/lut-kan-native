@@ -1,0 +1,28 @@
+{
+  "parent_commit": "52156b1bbc5aecd1a448df269a802bc53cc38e09",
+  "host_test_exit_code": 0,
+  "host_test_command": [
+    "/workspace/scratch/f17d1dca18f6/sensor_test_env/bin/python",
+    "-m",
+    "pytest",
+    "experiments/sensor_recovery/test_calibration.py",
+    "experiments/sensor_recovery/test_robust.py",
+    "experiments/sensor_recovery/test_mcu.py",
+    "experiments/sensor_recovery/test_capture.py",
+    "experiments/sensor_recovery/test_capture_transport.py",
+    "-q"
+  ],
+  "legacy_json_unchanged": [
+    "experiments/sensor_recovery/results/mega_capture_20261107/captures/mega2560_capture01.log",
+    "experiments/sensor_recovery/results/mega_repeat_review_20261107/captures/mega2560_capture01.log"
+  ],
+  "numeric_headers_unchanged": [
+    "include/kernels.h",
+    "include/models.h",
+    "include/fixture.h"
+  ],
+  "accuracy_timing_update_function_text_unchanged": true,
+  "build_source_hashes_verified": true,
+  "physical_C3_capture_performed": false,
+  "capture_script_sha256": "594028cdc9482e428f6d3290d2407fe816b388a736d0b8731f0f654422c7bc5f"
+}

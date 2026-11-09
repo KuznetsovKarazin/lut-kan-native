@@ -1,0 +1,29 @@
+{
+  "stage": "confirmation",
+  "seed": 2026110811,
+  "units": 8,
+  "repeats": 2,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "source_sha256": {
+    "refinement_analysis.py": "458572000feb548d99ab61fa73cd8163e91943a4383d368a18bd0bf0f6f3d561",
+    "REFINEMENT_PROTOCOL.md": "351cb926adf42702f5f3b681a8163c19dd2b7453f7b4321a4fb9970faeb4eb0e",
+    "revision_analysis.py": "3d1629b9adc395767f1befa8f4d0742bf70752d9e0dcbe19f2f69759448d8b36",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6",
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9"
+  },
+  "base_commit": "f77cc5073393dfcc51dafe60046f6505e7e3ecc4",
+  "scope": "post-review paired reanalysis of existing seeds",
+  "complete": true,
+  "streams": 288,
+  "trajectories": 1728,
+  "elapsed_seconds": 10.92760944366455,
+  "result_sha256": {
+    "started.json": "87e0e6eeca51548cda947eed96bc617f3efa23bdf81f2e5561a5eabab06c0780",
+    "curves.json": "64943dc0eedfef282e4515d7e83388d0d8442203cf80b0e09ddb191fa085c28b",
+    "records.jsonl.gz": "0d4c75326f63a4baf2df0625685af027ba22c138c840f9a08d3e654c186aef14",
+    "summary.json": "a0b830316441fff6d5170c8bf246bc77e6dedd16ac7391853aa9fc55c3604a94"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "start_utc": "2026-11-08T00:29:16.671911+00:00",
+  "board": "mega2560",
+  "port": "COM12",
+  "environment": "mega2560_opt",
+  "requested_runs": 2,
+  "status": "validated",
+  "stage": "complete",
+  "captures": [
+    {
+      "result": "run01.json",
+      "session_id": "3b6492baf6584f24923ffe6164e00e3f",
+      "raw_sha256": "55c11861cf6874c6926d789a80805232e0d42e739a3eab739e9cb1841f5491ee",
+      "result_sha256": "f6579780d14f23db710e76b07e45439ca2b982d0033ac295185a70e2ac1def2c"
+    },
+    {
+      "result": "run02.json",
+      "session_id": "dd7764d47f334097ab3ccd2145667b6a",
+      "raw_sha256": "55c11861cf6874c6926d789a80805232e0d42e739a3eab739e9cb1841f5491ee",
+      "result_sha256": "f6579780d14f23db710e76b07e45439ca2b982d0033ac295185a70e2ac1def2c"
+    }
+  ],
+  "source_before": {
+    "experiments\\sensor_recovery\\mcu\\platformio.ini": {
+      "raw_sha256": "712e87395e9805defc0bfc87cc564d9abcfa5568a1f823d643655186770508a0",
+      "lf_sha256": "4daf99759eec51b60b8ed79bd79e266e74909f5d35e62bfe819a3a8c14abecad"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture.py": {
+      "raw_sha256": "620a9df74abc7206cabba5117d6acd8605ebaf24c76e5719c40d8fb82368ca34",
+      "lf_sha256": "a0f049c60c53329f28dd441e83b90013b528f30812c03c2e838cc9f8b4ee9d99"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_suite.py": {
+      "raw_sha256": "7eceaa5797a4cbcca1ec04cbcc533f2e30c3e7de0376179fcfc9e1c35240dcf8",
+      "lf_sha256": "8860111e5944be3e23f75b2831a51d3a1307cf0c7a5f61aea4cdf0f6bfacdb88"
+    },
+    "experiments\\sensor_recovery\\mcu\\fixture_manifest.json": {
+      "raw_sha256": "685b7f1df3510b77aa621df81c585946371ec6851b4833a3c825cd1b4623eac0",
+      "lf_sha256": "7b3797b94e6d7163441f854b503bd9e5c48aeab4c5e4ff8199c9a7df87388fe4"
+    },
+    "experiments\\sensor_recovery\\mcu\\optimized_manifest.json": {
+      "raw_sha256": "dc887fbdb9de15cca02bc66444b19e77c65b2393e89a352795f96906e56213ab",
+      "lf_sha256": "89f57fec7268091d2c2e7394c271802b0a2d663b209e686c21324d107ceeee8a"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\command_protocol.h": {
+      "raw_sha256": "2ec504d6710e3212af52bec06f9b687b7271c4aa56d20926db9f22991354172d",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\fixture.h": {
+      "raw_sha256": "1dd3a7918525e91aafa4eebbdebc244639d52e362d1cf8bbff3c4ee5a2ebf4cf",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\kernels.h": {
+      "raw_sha256": "8cf9b1daa56ce66a4c2ad4ef48d6decc7397faf921c7b859efc6c53a03297ee4",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\models.h": {
+      "raw_sha256": "bc2306e166c7e3caa35ddc67cad81d7aeabb36b7abb90d12c35402fc1a7476cc",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_coefficients.h": {
+      "raw_sha256": "1fe79bc6dc732eb55dcc74436531da07655dd4f60072f991fd16e1b7939a0393",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_spline.h": {
+      "raw_sha256": "ba75ad627f0d6113ab8195b5c753f998db1c27b9bd154af77f6fc29372a61163",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\usb_bench_serial.h": {
+      "raw_sha256": "0f9664094ce9e798f863b09e8938bb0b76d37943ba3820bc53af027e63fcc595",
+      "lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\main.cpp": {
+      "raw_sha256": "73f615579435f8dfb1bcf46d9461dad881845612aaee8d03a444f47f35e95215",
+      "lf_sha256": "a7482bd71609bfa733995b11836ce83f831ee11dbad15a4b30cf0fb0b279da5e"
+    }
+  },
+  "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "git_commit": "348c0e589cc44ff36a2abbfa916e99aac2a0158a",
+  "upload_command": [
+    "C:\\Users\\kuzne\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-m",
+    "platformio",
+    "run",
+    "-d",
+    "E:\\lut-kan-native-new\\sensor-recovery-hw\\experiments\\sensor_recovery\\mcu",
+    "-e",
+    "mega2560_opt",
+    "-t",
+    "upload",
+    "--upload-port",
+    "COM12"
+  ],
+  "built_artifacts": {
+    "firmware.elf": {
+      "bytes": 47700,
+      "sha256": "f839ec0aa8686d5fe076480f355f86d3a3ac222eb353a90aaad6aa5b5a6441fd"
+    },
+    "firmware.hex": {
+      "bytes": 85620,
+      "sha256": "230e94ac8d5b78efa5b52d51ec340ead8b5d5ff0ba910cfe76e8a44a181f55b1"
+    }
+  },
+  "usb_device": {
+    "port": "COM12",
+    "vid": 9025,
+    "pid": 66,
+    "usb_serial_sha256": "02af0a76776c114d692e6fae3254dc6abe17e26de00e02503fe6ffc8df2a47fe"
+  },
+  "end_utc": "2026-11-08T00:32:48.333084+00:00",
+  "source_after": {
+    "experiments\\sensor_recovery\\mcu\\platformio.ini": {
+      "raw_sha256": "712e87395e9805defc0bfc87cc564d9abcfa5568a1f823d643655186770508a0",
+      "lf_sha256": "4daf99759eec51b60b8ed79bd79e266e74909f5d35e62bfe819a3a8c14abecad"
+    },
+    "experiments\\sensor_recovery\\mcu\\capture.py": {
+      "raw_sha256": "620a9df74abc7206cabba5117d6acd8605ebaf24c76e5719c40d8fb82368ca34",
+      "lf_sha256": "a0f049c60c53329f28dd441e83b90013b528f30812c03c2e838cc9f8b4ee9d99"
+    },
+    "experiments\\sensor_recovery\\mcu\\run_suite.py": {
+      "raw_sha256": "7eceaa5797a4cbcca1ec04cbcc533f2e30c3e7de0376179fcfc9e1c35240dcf8",
+      "lf_sha256": "8860111e5944be3e23f75b2831a51d3a1307cf0c7a5f61aea4cdf0f6bfacdb88"
+    },
+    "experiments\\sensor_recovery\\mcu\\fixture_manifest.json": {
+      "raw_sha256": "685b7f1df3510b77aa621df81c585946371ec6851b4833a3c825cd1b4623eac0",
+      "lf_sha256": "7b3797b94e6d7163441f854b503bd9e5c48aeab4c5e4ff8199c9a7df87388fe4"
+    },
+    "experiments\\sensor_recovery\\mcu\\optimized_manifest.json": {
+      "raw_sha256": "dc887fbdb9de15cca02bc66444b19e77c65b2393e89a352795f96906e56213ab",
+      "lf_sha256": "89f57fec7268091d2c2e7394c271802b0a2d663b209e686c21324d107ceeee8a"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\command_protocol.h": {
+      "raw_sha256": "2ec504d6710e3212af52bec06f9b687b7271c4aa56d20926db9f22991354172d",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\fixture.h": {
+      "raw_sha256": "1dd3a7918525e91aafa4eebbdebc244639d52e362d1cf8bbff3c4ee5a2ebf4cf",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\kernels.h": {
+      "raw_sha256": "8cf9b1daa56ce66a4c2ad4ef48d6decc7397faf921c7b859efc6c53a03297ee4",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\models.h": {
+      "raw_sha256": "bc2306e166c7e3caa35ddc67cad81d7aeabb36b7abb90d12c35402fc1a7476cc",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_coefficients.h": {
+      "raw_sha256": "1fe79bc6dc732eb55dcc74436531da07655dd4f60072f991fd16e1b7939a0393",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\optimized_spline.h": {
+      "raw_sha256": "ba75ad627f0d6113ab8195b5c753f998db1c27b9bd154af77f6fc29372a61163",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918"
+    },
+    "experiments\\sensor_recovery\\mcu\\include\\usb_bench_serial.h": {
+      "raw_sha256": "0f9664094ce9e798f863b09e8938bb0b76d37943ba3820bc53af027e63fcc595",
+      "lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c"
+    },
+    "experiments\\sensor_recovery\\mcu\\src\\main.cpp": {
+      "raw_sha256": "73f615579435f8dfb1bcf46d9461dad881845612aaee8d03a444f47f35e95215",
+      "lf_sha256": "a7482bd71609bfa733995b11836ce83f831ee11dbad15a4b30cf0fb0b279da5e"
+    }
+  }
+}

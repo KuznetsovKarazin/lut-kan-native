@@ -1,0 +1,61 @@
+{
+  "scope": "paired post-review host simulations and cross-builds; no new MCU captures",
+  "files": {
+    "README.md": {
+      "bytes": 2359,
+      "sha256": "22df100cbf7139a790ae62043866c948a83d56dd3d74a464ad96f073c0e5a133"
+    },
+    "build_audit.json": {
+      "bytes": 2653,
+      "sha256": "7d89ea6b0e46e0993be389e539da7348d082ce16280a7ab01c4951711cba5673"
+    },
+    "builds.log": {
+      "bytes": 5666,
+      "sha256": "2b44c571b82472a4adfc616a87cfce23a5a8f1bf93b2f98cc861c8d846b47096"
+    },
+    "confirmation/curves.json": {
+      "bytes": 264151,
+      "sha256": "64943dc0eedfef282e4515d7e83388d0d8442203cf80b0e09ddb191fa085c28b"
+    },
+    "confirmation/records.jsonl.gz": {
+      "bytes": 4095823,
+      "sha256": "0d4c75326f63a4baf2df0625685af027ba22c138c840f9a08d3e654c186aef14"
+    },
+    "confirmation/run_info.json": {
+      "bytes": 1340,
+      "sha256": "4c7d5fdf7648b8643ca808e3b6010e2abb8dea34d20c9751ba69dc05cedb4fb2"
+    },
+    "confirmation/started.json": {
+      "bytes": 858,
+      "sha256": "87e0e6eeca51548cda947eed96bc617f3efa23bdf81f2e5561a5eabab06c0780"
+    },
+    "confirmation/summary.json": {
+      "bytes": 82557,
+      "sha256": "a0b830316441fff6d5170c8bf246bc77e6dedd16ac7391853aa9fc55c3604a94"
+    },
+    "development/records.jsonl.gz": {
+      "bytes": 6232790,
+      "sha256": "a82dfc4311866859e278ad165e825eacc482311bedaf5044903fedca7e6d0cda"
+    },
+    "development/run_info.json": {
+      "bytes": 1255,
+      "sha256": "1f738d89aad9e1a16f7d950a9230916fbeb1fbf816c53f6e62816276130888ee"
+    },
+    "development/selection.json": {
+      "bytes": 526,
+      "sha256": "dbc2572210d8e8662d253e0aa231f8f1aef7b6fc0e2968ba144b32583f528582"
+    },
+    "development/started.json": {
+      "bytes": 857,
+      "sha256": "e5675081fd9ecfbb09bf92a4d1ac8ba653f47675035390acab6eff247149d6d7"
+    },
+    "host_parity.json": {
+      "bytes": 507,
+      "sha256": "5042ff36ffe7a5a19c1fbd721c70defc5abf8555538b714d47ad7ec24e16756b"
+    },
+    "ols_audit.json": {
+      "bytes": 302,
+      "sha256": "0aae64e47184b1ad0e7f206c4648cf7ca3a8e10b8b0c8e445f88d0cef9727982"
+    }
+  }
+}

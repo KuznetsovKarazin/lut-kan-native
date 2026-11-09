@@ -1,0 +1,722 @@
+{
+  "metadata": {
+    "fixture": [
+      "synthetic_ntc_frontend",
+      "seed20261108",
+      "unit0",
+      "B75"
+    ],
+    "BOARD": "mega2560",
+    "CPU_HZ": "16000000",
+    "FREE_MEMORY_ESTIMATE": "6739"
+  },
+  "payload_bytes": {
+    "overhead": 0,
+    "physics": 32,
+    "polynomial": 56,
+    "cubic16": 80,
+    "kan16": 84,
+    "uniform32_float32": 144,
+    "uniform32_int16": 88,
+    "uniform32_uint8": 56,
+    "nonuniform16_int16": 120
+  },
+  "accuracy": {
+    "physics": {
+      "mae_C": 0.2665035,
+      "rmse_C": 0.3155226,
+      "max_C": 0.6113586,
+      "max_host_gap_C": 5.34e-05
+    },
+    "polynomial": {
+      "mae_C": 0.0476196,
+      "rmse_C": 0.0684677,
+      "max_C": 0.4141846,
+      "max_host_gap_C": 7.6e-06
+    },
+    "cubic16": {
+      "mae_C": 0.0465564,
+      "rmse_C": 0.0672818,
+      "max_C": 0.3909073,
+      "max_host_gap_C": 7.6e-06
+    },
+    "kan16": {
+      "mae_C": 0.0467596,
+      "rmse_C": 0.0674618,
+      "max_C": 0.3905106,
+      "max_host_gap_C": 0.0013905
+    },
+    "uniform32_float32": {
+      "mae_C": 0.0524224,
+      "rmse_C": 0.080729,
+      "max_C": 0.4023132,
+      "max_host_gap_C": 7.6e-06
+    },
+    "uniform32_int16": {
+      "mae_C": 0.0524278,
+      "rmse_C": 0.0807224,
+      "max_C": 0.4015274,
+      "max_host_gap_C": 7.6e-06
+    },
+    "uniform32_uint8": {
+      "mae_C": 0.109483,
+      "rmse_C": 0.1351846,
+      "max_C": 0.5048828,
+      "max_host_gap_C": 7.6e-06
+    },
+    "nonuniform16_int16": {
+      "mae_C": 0.0623459,
+      "rmse_C": 0.0850563,
+      "max_C": 0.43573,
+      "max_host_gap_C": 7.6e-06
+    }
+  },
+  "timings": {
+    "overhead": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 25760,
+        "checksum": 679.310363
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 25268,
+        "checksum": 679.230102
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 25268,
+        "checksum": 679.157592
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 25268,
+        "checksum": 679.083801
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 25272,
+        "checksum": 679.012268
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 25280,
+        "checksum": 678.935424
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 25272,
+        "checksum": 679.565612
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 25268,
+        "checksum": 679.486999
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 25268,
+        "checksum": 679.413757
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 25264,
+        "checksum": 679.339416
+      }
+    ],
+    "physics": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 643924,
+        "checksum": 102476.398437
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 643880,
+        "checksum": 102488.1875
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 643884,
+        "checksum": 102498.804687
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 643888,
+        "checksum": 102509.039062
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 643876,
+        "checksum": 102519.992187
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 643856,
+        "checksum": 102531.390625
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 643876,
+        "checksum": 102441.257812
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 643856,
+        "checksum": 102452.554687
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 643840,
+        "checksum": 102463.210937
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 643856,
+        "checksum": 102473.546875
+      }
+    ],
+    "polynomial": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 666120,
+        "checksum": 102484.976562
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 666084,
+        "checksum": 102496.648437
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 666076,
+        "checksum": 102507.117187
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 666076,
+        "checksum": 102517.296875
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 666088,
+        "checksum": 102528.117187
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 666100,
+        "checksum": 102539.460937
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 666096,
+        "checksum": 102449.75
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 666092,
+        "checksum": 102460.960937
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 666080,
+        "checksum": 102471.5
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 666080,
+        "checksum": 102481.835937
+      }
+    ],
+    "cubic16": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 2323792,
+        "checksum": 102483.773437
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 2323744,
+        "checksum": 102495.4375
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 2323828,
+        "checksum": 102505.929687
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 2323768,
+        "checksum": 102516.148437
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 2323796,
+        "checksum": 102526.976562
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 2323924,
+        "checksum": 102538.367187
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 2323848,
+        "checksum": 102448.539062
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 2323860,
+        "checksum": 102459.773437
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 2323932,
+        "checksum": 102470.320312
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 2323872,
+        "checksum": 102480.671875
+      }
+    ],
+    "kan16": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 2791144,
+        "checksum": 102484.039062
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 2791088,
+        "checksum": 102495.679687
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 2791120,
+        "checksum": 102506.203125
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 2791068,
+        "checksum": 102516.320312
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 2791080,
+        "checksum": 102527.195312
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 2791232,
+        "checksum": 102538.570312
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 2791160,
+        "checksum": 102448.804687
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 2791148,
+        "checksum": 102460.007812
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 2791180,
+        "checksum": 102470.578125
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 2791112,
+        "checksum": 102480.851562
+      }
+    ],
+    "uniform32_float32": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 317540,
+        "checksum": 102482.164062
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 317488,
+        "checksum": 102493.875
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 317480,
+        "checksum": 102504.46875
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 317476,
+        "checksum": 102514.671875
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 317492,
+        "checksum": 102525.398437
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 317496,
+        "checksum": 102536.84375
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 317512,
+        "checksum": 102446.875
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 317496,
+        "checksum": 102458.070312
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 317480,
+        "checksum": 102468.648437
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 317480,
+        "checksum": 102478.992187
+      }
+    ],
+    "uniform32_int16": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 373132,
+        "checksum": 102482.539062
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 373084,
+        "checksum": 102494.21875
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 373072,
+        "checksum": 102504.828125
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 373060,
+        "checksum": 102514.992187
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 373076,
+        "checksum": 102525.726562
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 373072,
+        "checksum": 102537.164062
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 373104,
+        "checksum": 102447.242187
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 373088,
+        "checksum": 102458.414062
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 373072,
+        "checksum": 102469.015625
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 373060,
+        "checksum": 102479.328125
+      }
+    ],
+    "uniform32_uint8": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 372776,
+        "checksum": 102503.09375
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 372716,
+        "checksum": 102514.523437
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 372704,
+        "checksum": 102525.054687
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 372708,
+        "checksum": 102535.21875
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 372716,
+        "checksum": 102545.890625
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 372724,
+        "checksum": 102557.164062
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 372740,
+        "checksum": 102467.320312
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 372716,
+        "checksum": 102478.28125
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 372716,
+        "checksum": 102488.867187
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 372720,
+        "checksum": 102499.203125
+      }
+    ],
+    "nonuniform16_int16": [
+      {
+        "repeat": 0,
+        "calls": 2048,
+        "total_us": 439444,
+        "checksum": 102481.78125
+      },
+      {
+        "repeat": 1,
+        "calls": 2048,
+        "total_us": 439408,
+        "checksum": 102493.390625
+      },
+      {
+        "repeat": 2,
+        "calls": 2048,
+        "total_us": 439384,
+        "checksum": 102503.929687
+      },
+      {
+        "repeat": 3,
+        "calls": 2048,
+        "total_us": 439372,
+        "checksum": 102514.070312
+      },
+      {
+        "repeat": 4,
+        "calls": 2048,
+        "total_us": 439388,
+        "checksum": 102524.859375
+      },
+      {
+        "repeat": 5,
+        "calls": 2048,
+        "total_us": 439400,
+        "checksum": 102536.109375
+      },
+      {
+        "repeat": 6,
+        "calls": 2048,
+        "total_us": 439412,
+        "checksum": 102446.367187
+      },
+      {
+        "repeat": 7,
+        "calls": 2048,
+        "total_us": 439400,
+        "checksum": 102457.476562
+      },
+      {
+        "repeat": 8,
+        "calls": 2048,
+        "total_us": 439372,
+        "checksum": 102468.054687
+      },
+      {
+        "repeat": 9,
+        "calls": 2048,
+        "total_us": 439376,
+        "checksum": 102478.351562
+      }
+    ]
+  },
+  "summary": {
+    "physics": {
+      "gross_us_per_call": 314.392578125,
+      "overhead_subtracted_us_per_call": 302.0546875
+    },
+    "polynomial": {
+      "gross_us_per_call": 325.2373046875,
+      "overhead_subtracted_us_per_call": 312.8994140625
+    },
+    "cubic16": {
+      "gross_us_per_call": 1134.6865234375,
+      "overhead_subtracted_us_per_call": 1122.3486328125
+    },
+    "kan16": {
+      "gross_us_per_call": 1362.857421875,
+      "overhead_subtracted_us_per_call": 1350.51953125
+    },
+    "uniform32_float32": {
+      "gross_us_per_call": 155.0244140625,
+      "overhead_subtracted_us_per_call": 142.6865234375
+    },
+    "uniform32_int16": {
+      "gross_us_per_call": 182.1650390625,
+      "overhead_subtracted_us_per_call": 169.8271484375
+    },
+    "uniform32_uint8": {
+      "gross_us_per_call": 181.990234375,
+      "overhead_subtracted_us_per_call": 169.65234375
+    },
+    "nonuniform16_int16": {
+      "gross_us_per_call": 214.5478515625,
+      "overhead_subtracted_us_per_call": 202.2099609375
+    }
+  },
+  "overhead_us_per_call": 12.337890625,
+  "update_cost_only": [
+    {
+      "repeat": 0,
+      "calls": 2048,
+      "total_us": 509380
+    },
+    {
+      "repeat": 1,
+      "calls": 2048,
+      "total_us": 509384
+    },
+    {
+      "repeat": 2,
+      "calls": 2048,
+      "total_us": 509392
+    },
+    {
+      "repeat": 3,
+      "calls": 2048,
+      "total_us": 509284
+    },
+    {
+      "repeat": 4,
+      "calls": 2048,
+      "total_us": 509336
+    },
+    {
+      "repeat": 5,
+      "calls": 2048,
+      "total_us": 509424
+    },
+    {
+      "repeat": 6,
+      "calls": 2048,
+      "total_us": 509396
+    },
+    {
+      "repeat": 7,
+      "calls": 2048,
+      "total_us": 509388
+    },
+    {
+      "repeat": 8,
+      "calls": 2048,
+      "total_us": 509424
+    },
+    {
+      "repeat": 9,
+      "calls": 2048,
+      "total_us": 509380
+    }
+  ],
+  "notes": "Actual UART timing; numerical synthetic fixture, not physical-sensor validation. Negative corrected timings would indicate unresolved measurement overhead."
+}

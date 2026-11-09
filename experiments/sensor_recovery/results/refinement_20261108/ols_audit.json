@@ -1,0 +1,14 @@
+{
+  "degenerate_blocks": 0,
+  "max_group_final_mae_gap_by_scenario": {
+    "ldr": 1.0047853697073977e-08,
+    "ntc": 4.5070440302108494e-07,
+    "ntc_frontend": 2.6452117354858196e-07
+  },
+  "units": {
+    "ntc": "degC",
+    "ntc_frontend": "degC",
+    "ldr": "log10 lux"
+  },
+  "trajectories": 1728
+}

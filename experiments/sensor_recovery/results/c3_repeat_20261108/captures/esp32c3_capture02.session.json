@@ -1,0 +1,28 @@
+{
+  "session_id": "4f5f93b8abe74f04983320354bedd3ab",
+  "start_utc": "2026-11-07T23:27:30.506953+00:00",
+  "port": "COM11",
+  "mode": "command_v3",
+  "capture_script_sha256": "3251024df04b60e978f206fba9f37b4210f5562da5e47fac19e3abe9be20a58f",
+  "status": "validated",
+  "tx_commands": [
+    {
+      "utc": "2026-11-07T23:27:30.545229+00:00",
+      "text": "H"
+    },
+    {
+      "utc": "2026-11-07T23:27:30.749074+00:00",
+      "text": "Q,4f5f93b8abe74f04983320354bedd3ab"
+    },
+    {
+      "utc": "2026-11-07T23:27:30.952474+00:00",
+      "text": "R,4f5f93b8abe74f04983320354bedd3ab"
+    }
+  ],
+  "usb_phase": "complete",
+  "run_accepted_utc": "2026-11-07T23:27:30.960550+00:00",
+  "result_sha256": "d07a5ecbe0b576aa5993cca7fc27fb5aea98bfa86c8f07b9270a03663641921a",
+  "end_utc": "2026-11-07T23:27:37.501498+00:00",
+  "raw_sha256": "61fb5378adbd8ceb39883fba4a3f25454313ba58024d4afcbdac5c049491fc91",
+  "raw_bytes": 5760
+}

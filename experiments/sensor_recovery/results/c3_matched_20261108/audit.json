@@ -1,0 +1,808 @@
+{
+  "status": "validated",
+  "archive": "c3_matched_20261108_101534_200.zip",
+  "archive_bytes": 2217390,
+  "archive_sha256": "53ceb2ffa59b2a626647d7880c3453fa72168bb9b043b2369f777ef746657b54",
+  "source_commit": "12c6415467b3138c0af7e5b49828a01c0f1066ec",
+  "board": "esp32c3",
+  "start_utc": "2026-11-08T09:15:34.358374+00:00",
+  "end_utc": "2026-11-08T09:15:57.755056+00:00",
+  "source_checks": {
+    "experiments/sensor_recovery/mcu/platformio.ini": {
+      "raw_sha256": "7980c0b385da9983d0b9b24234c59867dd9a2d6f118abef935364ef553451469",
+      "lf_sha256": "86b3ea3d5dc8db4d22d06ed311032560166765a9403eb80c9847dd33c8cb3db2"
+    },
+    "experiments/sensor_recovery/mcu/requirements.txt": {
+      "raw_sha256": "0e6db9d395e01600195e27e7e45478049c4e33f0e494f84c276729ded777b248",
+      "lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f"
+    },
+    "experiments/sensor_recovery/mcu/capture.py": {
+      "raw_sha256": "afc818577f40afa817f42836b88428af6a899b536538270d9f84bf7823a2efee",
+      "lf_sha256": "dde9d8a30045c3f012a5c1290a760587a3e26abfeaf53743ef65c78ff1831db9"
+    },
+    "experiments/sensor_recovery/mcu/capture_matched.py": {
+      "raw_sha256": "a7ba4ef9ae7e9c3d4537403e5d4be1c35469aaf17aba019c9a75bb25d9494e60",
+      "lf_sha256": "7f58bcad8e690a559cc3dd6d09c424622a3b36b36099654b4211628475e2cafc"
+    },
+    "experiments/sensor_recovery/mcu/run_matched.py": {
+      "raw_sha256": "ad6d949079f7b614fe66a0da0ba0dac984fbfdd84c91d54ff557ca5eceacc7fc",
+      "lf_sha256": "e70c4b72ab982a47594ffb141527e6df29f6bfb03b5e0eded2c98c206b12e924"
+    },
+    "experiments/sensor_recovery/mcu/run_suite.py": {
+      "raw_sha256": "bd6ebeaeefad0a4fda0a0051af9fa435b9ce9034c288da1ec7af3bc473c466a4",
+      "lf_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3"
+    },
+    "experiments/sensor_recovery/mcu/matched_manifest.json": {
+      "raw_sha256": "9b8641b870b8a05b178174b6333c0cc9a82ee71329f9d089113931239d7be248",
+      "lf_sha256": "27ce6ce49d9e68496a2aee5a8c8713ff51c2d64db7dd76025c8dee9d81e093f3"
+    },
+    "experiments/sensor_recovery/mcu/include/command_protocol.h": {
+      "raw_sha256": "2ec504d6710e3212af52bec06f9b687b7271c4aa56d20926db9f22991354172d",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934"
+    },
+    "experiments/sensor_recovery/mcu/include/fixture.h": {
+      "raw_sha256": "1dd3a7918525e91aafa4eebbdebc244639d52e362d1cf8bbff3c4ee5a2ebf4cf",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb"
+    },
+    "experiments/sensor_recovery/mcu/include/kernels.h": {
+      "raw_sha256": "8cf9b1daa56ce66a4c2ad4ef48d6decc7397faf921c7b859efc6c53a03297ee4",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78"
+    },
+    "experiments/sensor_recovery/mcu/include/matched_fixture.h": {
+      "raw_sha256": "12ce9d0ce1aed8bd479509d2972311ce139c28c0887e435bff7e8fe342e1168a",
+      "lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e"
+    },
+    "experiments/sensor_recovery/mcu/include/matched_identity.h": {
+      "raw_sha256": "4ab2f2a4bd4dfed1ef663cff67dd13d35fe5163b6fc9ae806b6fa1ab60a25852",
+      "lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3"
+    },
+    "experiments/sensor_recovery/mcu/include/matched_kernels.h": {
+      "raw_sha256": "af4b051f85925d246610e63733e5f0a4736a8ac921ef15e116a21f18dff55cca",
+      "lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000"
+    },
+    "experiments/sensor_recovery/mcu/include/models.h": {
+      "raw_sha256": "bc2306e166c7e3caa35ddc67cad81d7aeabb36b7abb90d12c35402fc1a7476cc",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0"
+    },
+    "experiments/sensor_recovery/mcu/include/optimized_coefficients.h": {
+      "raw_sha256": "1fe79bc6dc732eb55dcc74436531da07655dd4f60072f991fd16e1b7939a0393",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025"
+    },
+    "experiments/sensor_recovery/mcu/include/optimized_spline.h": {
+      "raw_sha256": "ba75ad627f0d6113ab8195b5c753f998db1c27b9bd154af77f6fc29372a61163",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918"
+    },
+    "experiments/sensor_recovery/mcu/include/usb_bench_serial.h": {
+      "raw_sha256": "0f9664094ce9e798f863b09e8938bb0b76d37943ba3820bc53af027e63fcc595",
+      "lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c"
+    },
+    "experiments/sensor_recovery/mcu/src/main.cpp": {
+      "raw_sha256": "e2562d4dda374e3a7684bbc0d24c1ca71e928ac5b41611f44b8eb1bd6e8dddaf",
+      "lf_sha256": "dd5fd22ce50081ceb9e3d4d4725883a0ff28caf75384cad63f8dfc18d48c4722"
+    },
+    "experiments/sensor_recovery/mcu/src/matched_main.cpp": {
+      "raw_sha256": "1242e33dd3e9f608ca1b7b69228a74319ec1788933b5468bc7bd20947873ca32",
+      "lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956"
+    }
+  },
+  "image_checks": {
+    "firmware.elf": {
+      "bytes": 5788876,
+      "sha256": "ebfd8b2446d31545f4342302db4bfb75d4f7de6cf66450fb37fa1ea1433685fb",
+      "archive_path": "firmware/firmware.elf"
+    },
+    "firmware.bin": {
+      "bytes": 295152,
+      "sha256": "b55e53200e197895f17e1a7801018fb9c032fe6e59f9a6049de5e0b31267e2be",
+      "archive_path": "firmware/firmware.bin"
+    },
+    "bootloader.bin": {
+      "bytes": 13248,
+      "sha256": "30d47ab1f344cfa69f6b2f718ffa72fc7baea6db047eaabefea162db29e6821c",
+      "archive_path": "firmware/bootloader.bin"
+    },
+    "partitions.bin": {
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1",
+      "archive_path": "firmware/partitions.bin"
+    }
+  },
+  "source_before_equals_after": true,
+  "files": {
+    "batch.json": {
+      "bytes": 11897,
+      "sha256": "4687728b96696fcc089e7149da86cc436faab3def449ba21f871da4b67e7c655"
+    },
+    "firmware/bootloader.bin": {
+      "bytes": 13248,
+      "sha256": "30d47ab1f344cfa69f6b2f718ffa72fc7baea6db047eaabefea162db29e6821c"
+    },
+    "firmware/firmware.bin": {
+      "bytes": 295152,
+      "sha256": "b55e53200e197895f17e1a7801018fb9c032fe6e59f9a6049de5e0b31267e2be"
+    },
+    "firmware/firmware.elf": {
+      "bytes": 5788876,
+      "sha256": "ebfd8b2446d31545f4342302db4bfb75d4f7de6cf66450fb37fa1ea1433685fb"
+    },
+    "firmware/partitions.bin": {
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1"
+    },
+    "packages.txt": {
+      "bytes": 711,
+      "sha256": "67fe0899c87b918679369d1873318770d8a5a5711464284dd12739b6743410ad"
+    },
+    "run01.console.txt": {
+      "bytes": 20258,
+      "sha256": "efdfe693577a47d4843a74ebb52f21fc813c87dbae5a220eeafd63bb754bb000"
+    },
+    "run01.json": {
+      "bytes": 57262,
+      "sha256": "fac0d3e8a78f7c75105f53bc97ca69049f72af9f7d8efc2c478729a39802b7ce"
+    },
+    "run01.log": {
+      "bytes": 20058,
+      "sha256": "59ab9c0bb693a3ee84093d1049787feed008f41ae7c93d6f1166d024f2668ff6"
+    },
+    "run01.session.json": {
+      "bytes": 994,
+      "sha256": "09da6babac5fc95910b86b3ed174868e7fdf5354d126cb8b120a10687d688a68"
+    },
+    "run02.console.txt": {
+      "bytes": 20258,
+      "sha256": "de4861d86d68f8a227583fbafa2f449131edf96db80fe9e68f928518c432571a"
+    },
+    "run02.json": {
+      "bytes": 57262,
+      "sha256": "25c4ade188d5326a8f117c40af1fca5280bb52bdce47f813ea6650c253734841"
+    },
+    "run02.log": {
+      "bytes": 20058,
+      "sha256": "6ff1778cd7286cb5a38b443a5bd1720555d938f748e04a8b0f18ea89cddda075"
+    },
+    "run02.session.json": {
+      "bytes": 994,
+      "sha256": "d165098f2f33819e3b29bea9446019ca32baa09b54a024dcb8f564f5bc35b97a"
+    },
+    "upload.log": {
+      "bytes": 3840,
+      "sha256": "b3f8088904a2059cd80f86077890bb852198f6605b565fac4ac12fecf9eab9f3"
+    }
+  },
+  "sessions": [
+    {
+      "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+      "start_utc": "2026-11-08T09:15:47.106806+00:00",
+      "end_utc": "2026-11-08T09:15:52.346202+00:00",
+      "max_prediction_gap_C": 1.526e-05,
+      "max_checkpoint_gap_C": 1.49e-05,
+      "max_timed_state_gap_C": 1.192e-05,
+      "counts": {
+        "accuracy": 4,
+        "timings": 50,
+        "state_checks": 96,
+        "update_accuracy": 12,
+        "update_timings": 120,
+        "update_overhead": 30
+      }
+    },
+    {
+      "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+      "start_utc": "2026-11-08T09:15:52.461845+00:00",
+      "end_utc": "2026-11-08T09:15:57.712062+00:00",
+      "max_prediction_gap_C": 1.526e-05,
+      "max_checkpoint_gap_C": 1.49e-05,
+      "max_timed_state_gap_C": 1.192e-05,
+      "counts": {
+        "accuracy": 4,
+        "timings": 50,
+        "state_checks": 96,
+        "update_accuracy": 12,
+        "update_timings": 120,
+        "update_overhead": 30
+      }
+    }
+  ],
+  "static": [
+    {
+      "method": "lut32_float32",
+      "payload_bytes": 144,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 12.051025390625,
+          "min_us": 12.05029296875,
+          "max_us": 12.05126953125,
+          "mae_C": 0.055711,
+          "rmse_C": 0.0837515,
+          "max_C": 0.4702148,
+          "max_host_gap_C": 1.526e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 12.051025390625,
+          "min_us": 12.05029296875,
+          "max_us": 12.05126953125,
+          "mae_C": 0.055711,
+          "rmse_C": 0.0837515,
+          "max_C": 0.4702148,
+          "max_host_gap_C": 1.526e-05
+        }
+      ]
+    },
+    {
+      "method": "lut60_int16",
+      "payload_bytes": 144,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 15.71484375,
+          "min_us": 15.71484375,
+          "max_us": 15.71533203125,
+          "mae_C": 0.0478595,
+          "rmse_C": 0.0687363,
+          "max_C": 0.3202744,
+          "max_host_gap_C": 1.526e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 15.71484375,
+          "min_us": 15.71484375,
+          "max_us": 15.71533203125,
+          "mae_C": 0.0478595,
+          "rmse_C": 0.0687363,
+          "max_C": 0.3202744,
+          "max_host_gap_C": 1.526e-05
+        }
+      ]
+    },
+    {
+      "method": "cubic32_unrolled",
+      "payload_bytes": 144,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 28.54345703125,
+          "min_us": 28.54345703125,
+          "max_us": 28.54443359375,
+          "mae_C": 0.0444039,
+          "rmse_C": 0.0639407,
+          "max_C": 0.2678528,
+          "max_host_gap_C": 1.526e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 28.54345703125,
+          "min_us": 28.54345703125,
+          "max_us": 28.546875,
+          "mae_C": 0.0444039,
+          "rmse_C": 0.0639407,
+          "max_C": 0.2678528,
+          "max_host_gap_C": 1.526e-05
+        }
+      ]
+    },
+    {
+      "method": "horner8",
+      "payload_bytes": 144,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 13.984130859375,
+          "min_us": 13.98388671875,
+          "max_us": 13.98779296875,
+          "mae_C": 0.0455196,
+          "rmse_C": 0.0658783,
+          "max_C": 0.2676544,
+          "max_host_gap_C": 1.526e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 13.984130859375,
+          "min_us": 13.98388671875,
+          "max_us": 13.9873046875,
+          "mae_C": 0.0455196,
+          "rmse_C": 0.0658783,
+          "max_C": 0.2676544,
+          "max_host_gap_C": 1.526e-05
+        }
+      ]
+    }
+  ],
+  "online": [
+    {
+      "drift": "none",
+      "method": "lut_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 24.611979166666668,
+          "min_us": 24.611979166666668,
+          "max_us": 24.6328125,
+          "drift": "none",
+          "method": "lut_nlms",
+          "mae_C": 0.0566184,
+          "rmse_C": 0.0952108,
+          "max_C": 0.5463257,
+          "max_host_metric_gap_C": 1.19e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 24.611979166666668,
+          "min_us": 24.611979166666668,
+          "max_us": 24.635416666666668,
+          "drift": "none",
+          "method": "lut_nlms",
+          "mae_C": 0.0566184,
+          "rmse_C": 0.0952108,
+          "max_C": 0.5463257,
+          "max_host_metric_gap_C": 1.19e-06
+        }
+      ]
+    },
+    {
+      "drift": "none",
+      "method": "lut_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 43.776041666666664,
+          "min_us": 43.776041666666664,
+          "max_us": 43.794270833333336,
+          "drift": "none",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.0566184,
+          "rmse_C": 0.0952108,
+          "max_C": 0.5463257,
+          "max_host_metric_gap_C": 1.19e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 43.776041666666664,
+          "min_us": 43.776041666666664,
+          "max_us": 43.809895833333336,
+          "drift": "none",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.0566184,
+          "rmse_C": 0.0952108,
+          "max_C": 0.5463257,
+          "max_host_metric_gap_C": 1.19e-06
+        }
+      ]
+    },
+    {
+      "drift": "none",
+      "method": "cubic_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 52.65625,
+          "min_us": 52.65625,
+          "max_us": 52.700520833333336,
+          "drift": "none",
+          "method": "cubic_nlms",
+          "mae_C": 0.0436144,
+          "rmse_C": 0.0635431,
+          "max_C": 0.297226,
+          "max_host_metric_gap_C": 1.37e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 52.65625,
+          "min_us": 52.65625,
+          "max_us": 52.705729166666664,
+          "drift": "none",
+          "method": "cubic_nlms",
+          "mae_C": 0.0436144,
+          "rmse_C": 0.0635431,
+          "max_C": 0.297226,
+          "max_host_metric_gap_C": 1.37e-06
+        }
+      ]
+    },
+    {
+      "drift": "none",
+      "method": "cubic_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 71.8203125,
+          "min_us": 71.8203125,
+          "max_us": 71.84895833333333,
+          "drift": "none",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0436144,
+          "rmse_C": 0.0635431,
+          "max_C": 0.297226,
+          "max_host_metric_gap_C": 1.37e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 71.8203125,
+          "min_us": 71.8203125,
+          "max_us": 71.85677083333333,
+          "drift": "none",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0436144,
+          "rmse_C": 0.0635431,
+          "max_C": 0.297226,
+          "max_host_metric_gap_C": 1.37e-06
+        }
+      ]
+    },
+    {
+      "drift": "step",
+      "method": "lut_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 24.614583333333332,
+          "min_us": 24.614583333333332,
+          "max_us": 24.638020833333332,
+          "drift": "step",
+          "method": "lut_nlms",
+          "mae_C": 0.0589095,
+          "rmse_C": 0.0989754,
+          "max_C": 0.5484619,
+          "max_host_metric_gap_C": 2.8e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 24.614583333333332,
+          "min_us": 24.614583333333332,
+          "max_us": 24.6328125,
+          "drift": "step",
+          "method": "lut_nlms",
+          "mae_C": 0.0589095,
+          "rmse_C": 0.0989754,
+          "max_C": 0.5484619,
+          "max_host_metric_gap_C": 2.8e-06
+        }
+      ]
+    },
+    {
+      "drift": "step",
+      "method": "lut_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 43.78125,
+          "min_us": 43.78125,
+          "max_us": 43.799479166666664,
+          "drift": "step",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.0589095,
+          "rmse_C": 0.0989754,
+          "max_C": 0.5484619,
+          "max_host_metric_gap_C": 2.8e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 43.78125,
+          "min_us": 43.78125,
+          "max_us": 43.8046875,
+          "drift": "step",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.0589095,
+          "rmse_C": 0.0989754,
+          "max_C": 0.5484619,
+          "max_host_metric_gap_C": 2.8e-06
+        }
+      ]
+    },
+    {
+      "drift": "step",
+      "method": "cubic_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 52.6640625,
+          "min_us": 52.6640625,
+          "max_us": 52.729166666666664,
+          "drift": "step",
+          "method": "cubic_nlms",
+          "mae_C": 0.0446434,
+          "rmse_C": 0.0658679,
+          "max_C": 0.4407349,
+          "max_host_metric_gap_C": 1.106e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 52.6640625,
+          "min_us": 52.6640625,
+          "max_us": 52.723958333333336,
+          "drift": "step",
+          "method": "cubic_nlms",
+          "mae_C": 0.0446434,
+          "rmse_C": 0.0658679,
+          "max_C": 0.4407349,
+          "max_host_metric_gap_C": 1.106e-05
+        }
+      ]
+    },
+    {
+      "drift": "step",
+      "method": "cubic_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 71.86197916666667,
+          "min_us": 71.86197916666667,
+          "max_us": 71.890625,
+          "drift": "step",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0446434,
+          "rmse_C": 0.0658679,
+          "max_C": 0.4407349,
+          "max_host_metric_gap_C": 1.106e-05
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 71.86197916666667,
+          "min_us": 71.86197916666667,
+          "max_us": 71.89583333333333,
+          "drift": "step",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0446434,
+          "rmse_C": 0.0658679,
+          "max_C": 0.4407349,
+          "max_host_metric_gap_C": 1.106e-05
+        }
+      ]
+    },
+    {
+      "drift": "ramp",
+      "method": "lut_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 24.6171875,
+          "min_us": 24.6171875,
+          "max_us": 24.643229166666668,
+          "drift": "ramp",
+          "method": "lut_nlms",
+          "mae_C": 0.058707,
+          "rmse_C": 0.0987618,
+          "max_C": 0.546402,
+          "max_host_metric_gap_C": 8.17e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 24.6171875,
+          "min_us": 24.6171875,
+          "max_us": 24.640625,
+          "drift": "ramp",
+          "method": "lut_nlms",
+          "mae_C": 0.058707,
+          "rmse_C": 0.0987618,
+          "max_C": 0.546402,
+          "max_host_metric_gap_C": 8.17e-06
+        }
+      ]
+    },
+    {
+      "drift": "ramp",
+      "method": "lut_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 43.78125,
+          "min_us": 43.78125,
+          "max_us": 43.815104166666664,
+          "drift": "ramp",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.058707,
+          "rmse_C": 0.0987618,
+          "max_C": 0.546402,
+          "max_host_metric_gap_C": 8.17e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 43.78125,
+          "min_us": 43.78125,
+          "max_us": 43.802083333333336,
+          "drift": "ramp",
+          "method": "lut_projected_nlms",
+          "mae_C": 0.058707,
+          "rmse_C": 0.0987618,
+          "max_C": 0.546402,
+          "max_host_metric_gap_C": 8.17e-06
+        }
+      ]
+    },
+    {
+      "drift": "ramp",
+      "method": "cubic_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 0,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 52.666666666666664,
+          "min_us": 52.666666666666664,
+          "max_us": 52.684895833333336,
+          "drift": "ramp",
+          "method": "cubic_nlms",
+          "mae_C": 0.0443521,
+          "rmse_C": 0.0657204,
+          "max_C": 0.4482956,
+          "max_host_metric_gap_C": 7.09e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 52.666666666666664,
+          "min_us": 52.666666666666664,
+          "max_us": 52.684895833333336,
+          "drift": "ramp",
+          "method": "cubic_nlms",
+          "mae_C": 0.0443521,
+          "rmse_C": 0.0657204,
+          "max_C": 0.4482956,
+          "max_host_metric_gap_C": 7.09e-06
+        }
+      ]
+    },
+    {
+      "drift": "ramp",
+      "method": "cubic_projected_nlms",
+      "persistent_bytes": 148,
+      "workspace_bytes": 160,
+      "sessions": [
+        {
+          "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+          "repeats": 10,
+          "median_us": 71.85677083333333,
+          "min_us": 71.85677083333333,
+          "max_us": 71.90885416666667,
+          "drift": "ramp",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0443521,
+          "rmse_C": 0.0657204,
+          "max_C": 0.4482956,
+          "max_host_metric_gap_C": 7.09e-06
+        },
+        {
+          "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+          "repeats": 10,
+          "median_us": 71.85677083333333,
+          "min_us": 71.85677083333333,
+          "max_us": 71.88802083333333,
+          "drift": "ramp",
+          "method": "cubic_projected_nlms",
+          "mae_C": 0.0443521,
+          "rmse_C": 0.0657204,
+          "max_C": 0.4482956,
+          "max_host_metric_gap_C": 7.09e-06
+        }
+      ]
+    }
+  ],
+  "overhead": [
+    {
+      "session_id": "646fff2706d34a228f77cc5fc0b4348d",
+      "inference": {
+        "repeats": 10,
+        "median_us": 0.69970703125,
+        "min_us": 0.69970703125,
+        "max_us": 0.72314453125
+      },
+      "update": {
+        "none": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.4270833333333333
+        },
+        "step": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.4244791666666667
+        },
+        "ramp": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.421875
+        }
+      }
+    },
+    {
+      "session_id": "62438f47b06a4c158d6e6d17d7861d74",
+      "inference": {
+        "repeats": 10,
+        "median_us": 0.69970703125,
+        "min_us": 0.69970703125,
+        "max_us": 0.7236328125
+      },
+      "update": {
+        "none": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.4270833333333333
+        },
+        "step": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.4244791666666667
+        },
+        "ramp": {
+          "repeats": 10,
+          "median_us": 1.2083333333333333,
+          "min_us": 1.2083333333333333,
+          "max_us": 1.421875
+        }
+      }
+    }
+  ],
+  "notes": "Gross medians within each acquisition; same-board sessions are not independent boards. Synthetic labelled fixture; no physical sensor accuracy.",
+  "redactions": [
+    {
+      "original": "batch.json",
+      "saved": "batch.redacted.json",
+      "sha256": "e79a3d35ece098fea55a3e67fb83a085e1e7cf77e68944ca75cb801b1797e9cc",
+      "mac_count": 0,
+      "user_path_count": 1
+    },
+    {
+      "original": "upload.log",
+      "saved": "upload.redacted.log",
+      "sha256": "7a8969ab5090bc00985e5601af15788acc37f1c1ce6142a4877494fa43c2bd05",
+      "mac_count": 1,
+      "user_path_count": 0
+    }
+  ]
+}

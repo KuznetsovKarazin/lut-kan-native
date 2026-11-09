@@ -1,0 +1,21 @@
+{
+  "parent_commit": "d71c82346bfcf0e65338f843623caaf12f1a3a16",
+  "focused_tests_command": [
+    "/workspace/scratch/f17d1dca18f6/sensor_test_env/bin/python",
+    "-m",
+    "pytest",
+    "experiments/sensor_recovery/test_calibration.py",
+    "experiments/sensor_recovery/test_capture.py",
+    "experiments/sensor_recovery/test_capture_transport.py",
+    "experiments/sensor_recovery/test_device_review.py",
+    "experiments/sensor_recovery/test_mcu.py",
+    "experiments/sensor_recovery/test_robust.py",
+    "experiments/sensor_recovery/test_usb_fifo.py",
+    "-q"
+  ],
+  "focused_test_exit_code": 0,
+  "audit_reproduced_from_saved_copies": true,
+  "firmware_and_capture_script_unchanged": true,
+  "physical_capture_source": "user supplied Windows/COM11 capture; not produced in the host test environment",
+  "raw_log_sha256": "0d3bd6086103f48dabc59d3d63753b181149c1df867175d26dade6a94a6d7520"
+}

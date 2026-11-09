@@ -1,0 +1,41 @@
+{
+  "session_id": "4b8c535d310f4115a71678cedf6c28d1",
+  "board_requested": "mega2560",
+  "start_utc": "2026-11-08T09:44:53.701475+00:00",
+  "port": "COM12",
+  "mode": "command_matched_v1",
+  "status": "validated",
+  "tx_commands": [
+    {
+      "utc": "2026-11-08T09:44:55.779927+00:00",
+      "text": "H"
+    },
+    {
+      "utc": "2026-11-08T09:44:56.796730+00:00",
+      "text": "H"
+    },
+    {
+      "utc": "2026-11-08T09:44:57.001887+00:00",
+      "text": "Q,4b8c535d310f4115a71678cedf6c28d1"
+    },
+    {
+      "utc": "2026-11-08T09:44:57.206740+00:00",
+      "text": "R,4b8c535d310f4115a71678cedf6c28d1"
+    }
+  ],
+  "capture_script_sha256": "b4cb797ba4c9f278d255efa2fcf04dc991573d990536e3ae2a55ef95f838f84a",
+  "usb_phase": "complete",
+  "hello_delay_s": 2.0,
+  "hello_error_budget": 3,
+  "pre_ready_rejections": [
+    {
+      "utc": "2026-11-08T09:44:55.981875+00:00",
+      "line": "ERROR,INVALID_COMMAND"
+    }
+  ],
+  "run_accepted_utc": "2026-11-08T09:44:57.233926+00:00",
+  "result_sha256": "df0aa9f7b2f82b2b4aef04db35db798f7aca572e4b85f5f830b8cf482c0c0886",
+  "end_utc": "2026-11-08T09:45:58.788536+00:00",
+  "raw_sha256": "406f90edac8404ae368f68807df9bb27dc2466dbd08476478d4a3a63eeeb884e",
+  "raw_bytes": 20303
+}

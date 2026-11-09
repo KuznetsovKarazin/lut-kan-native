@@ -1,0 +1,34 @@
+[
+  {
+    "board": "mega2560",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 17,
+    "flash_bytes": 730,
+    "elf_sha256": "e306d8dbd41e1c4572a4154600d95f0fb100e495b729738ec2571f14eed17852"
+  },
+  {
+    "board": "mega2560",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 1280,
+    "flash_bytes": 28990,
+    "elf_sha256": "7f3e7c67265bf2984dca129a8de1c9f2affdf0b9c0f446f7f78ae06e54ec24e2"
+  },
+  {
+    "board": "esp32c3",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 218848,
+    "elf_sha256": "d84bd59ccdb81a702deccd465ab52a5ad0360467914d794acb9e2c760cb3bbf9"
+  },
+  {
+    "board": "esp32c3",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 13964,
+    "flash_bytes": 264798,
+    "elf_sha256": "dcd0cae415e628145cc3bb5ca5ade7259dbd54cecb9e89ef5deefc963c9a5719"
+  }
+]

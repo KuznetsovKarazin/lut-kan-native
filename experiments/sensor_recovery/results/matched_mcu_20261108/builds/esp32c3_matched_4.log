@@ -1,0 +1,92 @@
+Processing esp32c3_matched (platform: espressif32@6.12.0; board: esp32-c3-devkitm-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 33 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+Compiling .pio/build/esp32c3_matched/src/main.cpp.o
+Compiling .pio/build/esp32c3_matched/src/matched_main.cpp.o
+Building .pio/build/esp32c3_matched/bootloader.bin
+Generating partitions .pio/build/esp32c3_matched/partitions.bin
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 1 ELF section
+Successfully created esp32c3 image.
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/main.cpp.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/esp32c3_matched/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/esp32c3_matched/libFrameworkArduino.a
+Indexing .pio/build/esp32c3_matched/libFrameworkArduino.a
+Linking .pio/build/esp32c3_matched/firmware.elf
+Retrieving maximum program size .pio/build/esp32c3_matched/firmware.elf
+Checking size .pio/build/esp32c3_matched/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [          ]   4.1% (used 13484 bytes from 327680 bytes)
+Flash: [==        ]  16.7% (used 219296 bytes from 1310720 bytes)
+Building .pio/build/esp32c3_matched/firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32c3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio/build/esp32c3_matched/firmware.bin
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 2 ELF sections
+Successfully created esp32c3 image.
+========================= [SUCCESS] Took 2.86 seconds =========================
+
+Environment      Status    Duration
+---------------  --------  ------------
+esp32c3_matched  SUCCESS   00:00:02.864
+========================= 1 succeeded in 00:00:02.864 =========================

@@ -1,0 +1,48 @@
+{
+  "stage": "confirmation",
+  "units": 8,
+  "repeats": 3,
+  "seed": 2026110801,
+  "start_utc": "2026-11-08T07:24:35.977752+00:00",
+  "base_git_head": "d84d07f2033ae111beccbac437c69db2b669a801",
+  "working_tree_dirty": true,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "experiments/sensor_recovery/run_matched_adaptation.py",
+    "confirmation",
+    "--out",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/confirmation",
+    "--selection",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/development/selected_parameters.json"
+  ],
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "source_sha256": {
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6",
+    "run_matched_adaptation.py": "a1bc2a543971ee8c1c0bee2a7ff44f8bc70447ddfb01d942f518b230195ad59d",
+    "MATCHED_ADAPTATION_PROTOCOL.md": "0c3d59891cbf4517da7cfa124b761191f6cf514768a4adfd51dce9c71084b744"
+  },
+  "provenance": "new reconstruction run; synthetic parametric measurements",
+  "physical_sensor_measurements": false,
+  "new_mcu_measurements": false,
+  "streams": 432,
+  "trajectories": 3888,
+  "failed_trajectories": 0,
+  "selection_sha256": "5de20afc5fbc9f0299e0e0489bdec2d706992b91f671c24d050ab6c28a28153e",
+  "elapsed_seconds": 59.12921380996704,
+  "complete": true,
+  "end_utc": "2026-11-08T07:25:35.111422+00:00",
+  "result_sha256": {
+    "raw_trajectories.jsonl.gz": "92c20a4d011c5f1c62b19527cad1b7cd24dfe6eaaacd8241d9cafc4edce20fcb",
+    "selected_parameters.json": "5de20afc5fbc9f0299e0e0489bdec2d706992b91f671c24d050ab6c28a28153e",
+    "started.json": "6a22223ecd58bd660cfe2efd51e014c8e700046f43523473df2048bc9d091810",
+    "streams.jsonl.gz": "7e118a8bf0cdfa8a0ed150efc38805f9a7a47815b3f06f12723ab82b88b47090"
+  }
+}

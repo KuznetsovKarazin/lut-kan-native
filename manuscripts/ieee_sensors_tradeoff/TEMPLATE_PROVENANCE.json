@@ -1,0 +1,32 @@
+{
+  "status": "OFFICIAL_DOWNLOADED_JSEN_ZIP_VERIFIED",
+  "date": "2026-11-08",
+  "source_url": "https://template-selector.ieee.org/secure/templateSelector/downloadTemplate?publicationTypeId=1&titleId=121&articleId=3&fileId=449",
+  "archive_filename": "IEEE-JSEN-LaTeX-template-202405.zip",
+  "archive_bytes": 1206310,
+  "archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
+  "files": {
+    "ieeecolor.cls": {
+      "bytes": 225507,
+      "sha256": "51d9f42a1eacc153a3f9adff08dcdb5118c4c891efb437c7cbc7664e6462d5c2",
+      "unmodified_from_official_zip": true
+    },
+    "jsen.sty": {
+      "bytes": 194,
+      "sha256": "7d9a30f7827ab93fbe8480526940f94c467d9ca120a094e46093693274dba9b9",
+      "unmodified_from_official_zip": true
+    },
+    "IEEEtran.bst": {
+      "bytes": 57748,
+      "sha256": "314f0ece704568faf827011bac498650691b2b5ee06320720830e782416d5a5f",
+      "unmodified_from_official_zip": true
+    }
+  },
+  "working_document_differences": [
+    "First page uses normal running heading without publisher logo or unassigned volume/date metadata.",
+    "Body color reset after subsection headings; sole author kept together and centered.",
+    "Header height increased by 5 pt with compensating top-margin change; body geometry unchanged.",
+    "Separate vector graphical abstract variant in the sample-compatible colored panel.",
+    "Supplement retains its earlier one-column layout."
+  ]
+}

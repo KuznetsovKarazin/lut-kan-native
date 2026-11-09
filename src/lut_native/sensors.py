@@ -2,8 +2,8 @@
 sensors.py — Physical sensor simulation for TIM calibration study (v14).
 
 Six sensor families:
-  NTC thermistor       — Beta equation,        B ±3%       [real manufacturer data]
-  Type K thermocouple  — NIST ITS-90 model,    Seebeck ±0.15%  [real NIST data]
+  NTC thermistor       — synthetic Beta model, B ±3%
+  Type K thermocouple  — synthetic NIST ITS-90 curve, Seebeck ±0.15%
   LDR photoresistor    — Power-law R(E),        gamma ±10%  [parametric, datasheet]
   MQ gas sensor        — Power-law Rs/R0,       A ±15%      [parametric]
   pH electrode         — Nernst equation,       S ±5%       [parametric]
@@ -12,7 +12,7 @@ Six sensor families:
 New in v14
 ----------
 - Type K thermocouple with NIST ITS-90 polynomial model (real data reference)
-- LDR photoresistor (logarithmic response — strong nonlinearity, LUT wins)
+- LDR photoresistor (logarithmic response)
 - fit_shh_baseline(): Steinhart-Hart fit on N noisy calibration points (fair comparison)
 - fit_onepoint_offset_baseline(): single-point offset calibration baseline
 - All baselines unified through a common interface
@@ -96,7 +96,7 @@ def ntc_calibration_data(unit: NTCSensorUnit, n_cal=50, n_val=25, n_test=200,
         x_cal=norm_x(adc_cal), y_cal=norm_y(T_cal),
         x_val=norm_x(adc_val), y_val=norm_y(T_val),
         x_test=norm_x(adc_test), y_test=norm_y(T_test),
-        T_test=T_test, denorm_y=denorm_y, norm_x=norm_x, denorm_x=denorm_x,
+        T_test=T_test, norm_y=norm_y, denorm_y=denorm_y, norm_x=norm_x, denorm_x=denorm_x,
         unit=unit, sensor_type="ntc", physical_unit="°C", T_range=unit.T_range,
     )
 
@@ -570,36 +570,32 @@ def fit_poly_baseline(x_cal, y_cal, degree: int, x_test, y_test,
 
 
 def fit_onepoint_offset_baseline(x_cal, y_cal, x_test, y_test,
-                                  denorm_y=None, poly_degree: int = 5) -> dict:
+                                  denorm_y=None, *, factory_predict=None,
+                                  point_index: int = 0) -> dict:
     """
-    Single-point offset calibration (v14 new baseline).
+    Correct a fixed factory model using exactly one reference label.
 
-    Represents the simplest field calibration used in practice:
-        1. Factory polynomial predicts T_factory(ADC)
-        2. One reference measurement gives δ = T_ref - T_factory(ADC_ref)
-        3. Correction: T_cal(ADC) = T_factory(ADC) + δ
-
-    Implementation: fit the factory polynomial on calibration data,
-    compute the median residual δ = median(y_cal - y_factory(x_cal)),
-    shift all test predictions by δ.  This approximates single-point
-    offset without requiring explicit access to the factory model parameters.
+    factory_predict accepts and returns the same coordinates as x_cal/y_cal.
+    It must be specified independently of this unit's calibration labels.
+    point_index is selected before observing calibration errors. The previous
+    all-data polynomial/median implementation was not one-point calibration.
     """
-    # Step 1: fit factory polynomial on all calibration points
-    coeffs = np.polyfit(x_cal.astype(float), y_cal.astype(float), poly_degree)
-    y_factory_cal  = np.polyval(coeffs, x_cal.astype(float)).astype(np.float32)
-    y_factory_test = np.polyval(coeffs, x_test.astype(float)).astype(np.float32)
-
-    # Step 2: estimate constant offset from a single midpoint measurement
-    # (simulate as median of all calibration residuals = best-case single point)
-    residuals = y_cal - y_factory_cal
-    delta = float(np.median(residuals))
-
-    # Step 3: shift factory prediction by delta
+    if not callable(factory_predict):
+        raise ValueError("Supply an independently specified factory_predict callable")
+    x_cal, y_cal = np.asarray(x_cal), np.asarray(y_cal)
+    if x_cal.ndim != 1 or y_cal.shape != x_cal.shape:
+        raise ValueError("Calibration arrays must have matching one-dimensional shapes")
+    if not 0 <= point_index < len(x_cal):
+        raise ValueError("point_index is outside the calibration array")
+    factory_ref = np.asarray(factory_predict(x_cal[point_index:point_index+1]))
+    delta = float(y_cal[point_index] - factory_ref.item())
+    y_factory_test = np.asarray(factory_predict(np.asarray(x_test)), dtype=np.float32)
     y_pred = (y_factory_test + delta).astype(np.float32)
     mse = float(np.mean((y_pred - y_test) ** 2))
     mae_phys = float(np.mean(np.abs(denorm_y(y_pred) - denorm_y(y_test)))) \
                if denorm_y is not None else None
-    return dict(delta=delta, coeffs=coeffs, y_pred=y_pred, mse=mse, mae_phys=mae_phys)
+    return dict(delta=delta, y_pred=y_pred, mse=mse, mae_phys=mae_phys,
+                n_reference_used=1, point_index=point_index)
 
 
 def fit_shh_baseline(x_cal, y_cal, x_test, y_test, denorm_y,

@@ -1,0 +1,102 @@
+{
+  "seed": 20261108,
+  "scenario": "ntc_frontend",
+  "unit": 0,
+  "repeat": 0,
+  "budget": 75,
+  "reference_sha256": "9013cab695da8cd3e89d3b7569399ca701243ca078ad4774866be4fb196f0439",
+  "header_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+  "transform": {
+    "x_mid": 0.42445626854896545,
+    "x_half": 0.36850714683532715,
+    "y_mid": 50.0,
+    "y_half": 50.0
+  },
+  "models": [
+    {
+      "id": 1,
+      "name": "physics",
+      "payload_bytes": 32,
+      "hyper": {}
+    },
+    {
+      "id": 2,
+      "name": "polynomial",
+      "payload_bytes": 56,
+      "hyper": {
+        "degree": 9,
+        "val_mse": 2.0308839276002856e-06
+      }
+    },
+    {
+      "id": 3,
+      "name": "cubic16",
+      "payload_bytes": 80,
+      "hyper": {
+        "n_coeff": 16,
+        "lambda_2": 0.0,
+        "val_mse": 1.9696692235424727e-06
+      }
+    },
+    {
+      "id": 4,
+      "name": "kan16",
+      "payload_bytes": 84,
+      "hyper": {
+        "n_coeff": 16,
+        "lambda_2": 0.0,
+        "val_mse": 1.967285509397494e-06
+      }
+    },
+    {
+      "id": 5,
+      "name": "uniform32_float32",
+      "payload_bytes": 144,
+      "hyper": {
+        "lambda_2": 0.0001,
+        "val_mse": 4.041082239694275e-06,
+        "monotone": true,
+        "nonuniform": false,
+        "grid_source": "train_inputs_only"
+      }
+    },
+    {
+      "id": 6,
+      "name": "uniform32_int16",
+      "payload_bytes": 88,
+      "hyper": {
+        "lambda_2": 0.0001,
+        "val_mse": 4.041082239694275e-06,
+        "monotone": true,
+        "nonuniform": false,
+        "grid_source": "train_inputs_only"
+      }
+    },
+    {
+      "id": 7,
+      "name": "uniform32_uint8",
+      "payload_bytes": 56,
+      "hyper": {
+        "lambda_2": 0.0001,
+        "val_mse": 4.041082239694275e-06,
+        "monotone": true,
+        "nonuniform": false,
+        "grid_source": "train_inputs_only"
+      }
+    },
+    {
+      "id": 8,
+      "name": "nonuniform16_int16",
+      "payload_bytes": 120,
+      "hyper": {
+        "lambda_2": 0.0,
+        "val_mse": 3.6712465058677396e-06,
+        "monotone": true,
+        "nonuniform": true,
+        "grid_source": "train_inputs_only"
+      }
+    }
+  ],
+  "physical_measurements": false,
+  "parity_tolerance_degC": 0.002
+}

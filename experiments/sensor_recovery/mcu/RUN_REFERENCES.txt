@@ -1,0 +1,44 @@
+SEVEN-MODEL COMMON-FIXTURE ACQUISITION
+
+Status: completed on 9 November 2026, two validated warm sessions per board.
+This procedure supports reproduction; no additional run is needed to complete
+the published V2 comparison. See ../results/v2_boards_20261109/RESULTS.md.
+
+The fixed inputs and fitted models are identical across Mega2560, ESP32-C3
+and ESP32-S3. The seven predictors include both Clenshaw and power-basis Horner
+forms of the same degree-nine polynomial, each with a 56-byte payload.
+Accuracy is synthetic; physical boards measure execution time only.
+
+Use a fresh checkout and an empty output directory. The command compiles and
+replaces the selected board's firmware; preserve any application firmware first.
+No sensor connection is needed. Close Serial Monitor before acquisition.
+
+From the repository root in PowerShell:
+py -m pip install -r experiments\sensor_recovery\mcu\requirements.txt
+py -m serial.tools.list_ports
+
+Use the actual port in place of COM7. Run only the connected board's command:
+py experiments\sensor_recovery\mcu\run_references.py --board mega2560 --port COM7 --out runs\mega_v2_new --runs 2
+py experiments\sensor_recovery\mcu\run_references.py --board esp32c3 --port COM7 --out runs\c3_v2_new --runs 2
+py experiments\sensor_recovery\mcu\run_references.py --board esp32s3 --port COM7 --out runs\s3_v2_new --runs 2
+
+Recorded clocks: Mega 16 MHz, C3 160 MHz, S3 240 MHz. The S3 environment uses
+native USB Serial/JTAG (VID:PID 303A:1001), 4 MB DIO flash at 80 MHz and no PSRAM.
+It is not the UART configuration. Verify configuration before using another board.
+
+One upload is followed by two command-driven sessions. Do not reset/disconnect
+or start another serial client during capture. PlatformIO downloads its pinned
+toolchains on first use. Each session requires 80 TIME and seven ACCURACY
+records, the V2 fixture identity, a unique session ID and END_SENSOR_BENCH.
+The runner saves original logs, parsed JSON, sidecars, source/image hashes,
+package versions and firmware images. Keep the complete ZIP, including failures.
+Never combine partial runs or edit FAIL records. Always use a new output name.
+
+Expected completion:
+Validated 2 complete baseline captures. Board may be disconnected.
+
+The unchanged V2_ACQUISITION_PROTOCOL.txt is the pre-acquisition protocol.
+No fitting, seed selection or hyperparameter search is part of acquisition.
+Separate frontiers are constructed per board. Two sessions of one board do not
+estimate between-board variation. Energy, WCET, peak stack and physical sensor
+uncertainty are not measured by this procedure.

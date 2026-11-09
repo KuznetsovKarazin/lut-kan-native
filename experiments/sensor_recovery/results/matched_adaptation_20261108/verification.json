@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "static_rows": 3312,
+  "development_streams": 144,
+  "development_trajectories": 3168,
+  "confirmation_streams": 432,
+  "confirmation_trajectories": 3888,
+  "replay_selection": "unit=0, repeat=0, every scenario/budget/drift/method",
+  "exact_static_model_replays": 138,
+  "exact_confirmation_trajectory_replays": 162,
+  "exact_confirmation_stream_replays": 18,
+  "verified": "source/result SHA256, stream links, unique inventories, selection identity, exact numerical replay"
+}

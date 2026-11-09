@@ -1,0 +1,15 @@
+{
+  "stage": "audit",
+  "base_commit": "7f2a9d8c61e13e973c44fab92a6cef71d4cca2da",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "units": 8,
+  "repeats": 2,
+  "source_sha256": {
+    "revision_analysis.py": "3d1629b9adc395767f1befa8f4d0742bf70752d9e0dcbe19f2f69759448d8b36",
+    "REVIEW_REVISION_PROTOCOL.md": "8f577f6cffb690fe84739e542b35d2612139dd5b3d867edda219f10e2840ba5d",
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6"
+  }
+}

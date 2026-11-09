@@ -1,0 +1,26 @@
+Resolving mega2560 dependencies...
+Platform atmelavr @ 5.1.0 (required: atmelavr @ 5.1.0)
+├── framework-arduino-avr @ 5.2.0 (required: platformio/framework-arduino-avr @ ~5.2.0)
+└── toolchain-atmelavr @ 1.70300.191015 (required: platformio/toolchain-atmelavr @ ~1.70300.0)
+
+
+Resolving esp32c3 dependencies...
+Platform espressif32 @ 6.12.0 (required: espressif32 @ 6.12.0)
+├── framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ ~3.20017.0)
+├── tool-esptoolpy @ 2.40900.250804 (required: platformio/tool-esptoolpy @ ~2.40900.0)
+└── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+
+
+Resolving mega2560_opt dependencies...
+Platform atmelavr @ 5.1.0 (required: atmelavr @ 5.1.0)
+├── framework-arduino-avr @ 5.2.0 (required: platformio/framework-arduino-avr @ ~5.2.0)
+└── toolchain-atmelavr @ 1.70300.191015 (required: platformio/toolchain-atmelavr @ ~1.70300.0)
+
+
+Resolving esp32c3_opt dependencies...
+Platform espressif32 @ 6.12.0 (required: espressif32 @ 6.12.0)
+├── framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ ~3.20017.0)
+├── tool-esptoolpy @ 2.40900.250804 (required: platformio/tool-esptoolpy @ ~2.40900.0)
+└── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+
+

@@ -1,0 +1,6 @@
+{
+  "local_pre_implementation_commit": "af4d6ab70037ea9f5e0fd798f132448ccfd8a99a",
+  "published_protocol_commit": "f2f75c1f0837ecfb5249c9e460a18c8d92fc31a9",
+  "identical_protocol_tree": "eec9d030cd79399ca46127b11d7c0f606b684f53",
+  "note": "Protocol was locally committed before implementation and measurements. This identical tree was remotely published after preparation; no remote preregistration is claimed."
+}

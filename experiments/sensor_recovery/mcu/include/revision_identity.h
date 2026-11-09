@@ -1,0 +1,2 @@
+#pragma once
+#define REVISION_FIXTURE_SHA256 "3a71bae72e72126a822ea6a847382c6bb9ac922f71302f29fdbc6ed7cfd03afb"

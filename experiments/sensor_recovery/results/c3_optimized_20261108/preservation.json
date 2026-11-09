@@ -1,0 +1,66 @@
+{
+  "original_archive_sha256": "cdadaa18b4bfb3ccf6161fa3cceffbe5cc1a21c615b553e7034b99bbb8237b3d",
+  "files": [
+    {
+      "archive_member": "batch.json",
+      "saved_path": "acquisition/batch.json",
+      "byte_identical": true,
+      "stored_sha256": "e29167d3081a335b1748bc3a6059a241f28a3cca450907f6e23d62b59dda3821"
+    },
+    {
+      "archive_member": "run01.console.txt",
+      "saved_path": "acquisition/run01.console.txt",
+      "byte_identical": true,
+      "stored_sha256": "223dee652eebe746f05d4f50400b088baa58de36b66295be3fde7764fe0849d2"
+    },
+    {
+      "archive_member": "run01.json",
+      "saved_path": "captures/esp32c3_capture01.json",
+      "byte_identical": true,
+      "stored_sha256": "bd69d7e38b04c199bde46b737f13ca81cd3f960169db1b59f0e02f4099e03039"
+    },
+    {
+      "archive_member": "run01.log",
+      "saved_path": "captures/esp32c3_capture01.log",
+      "byte_identical": true,
+      "stored_sha256": "8ddedf7d1ac7e629b79a39a1656e537f2ffaf186193709b2756e2148165dbf72"
+    },
+    {
+      "archive_member": "run01.session.json",
+      "saved_path": "captures/esp32c3_capture01.session.json",
+      "byte_identical": true,
+      "stored_sha256": "461ba066a37c8fbb27a7f678c9809b0b36e493d89f6ddbf22e4323bb700d32dd"
+    },
+    {
+      "archive_member": "run02.console.txt",
+      "saved_path": "acquisition/run02.console.txt",
+      "byte_identical": true,
+      "stored_sha256": "6f1f8809c0c6d2300186e9f12da942e97add901dbc2f706dbe37d6646e4f5ff6"
+    },
+    {
+      "archive_member": "run02.json",
+      "saved_path": "captures/esp32c3_capture02.json",
+      "byte_identical": true,
+      "stored_sha256": "653372f39d621b204c85fbffc1a656bb7233fc483d53f7f010982a0d95e3ea21"
+    },
+    {
+      "archive_member": "run02.log",
+      "saved_path": "captures/esp32c3_capture02.log",
+      "byte_identical": true,
+      "stored_sha256": "a9a60924778eb5301128fcba198b6cb5c6c81e8f543fee9ac41ed63601e73a75"
+    },
+    {
+      "archive_member": "run02.session.json",
+      "saved_path": "captures/esp32c3_capture02.session.json",
+      "byte_identical": true,
+      "stored_sha256": "d4981e9beb1b36695383466b16eaad76037a40362af8518f75f04c8550b870b0"
+    },
+    {
+      "archive_member": "upload.log",
+      "saved_path": "acquisition/upload_redacted.log",
+      "byte_identical": false,
+      "stored_sha256": "a586d28bc9515c56fa4891c74d10f13c755d50f5e41b3c3e85ff456f88d7dd57"
+    }
+  ],
+  "redaction": "One device MAC-address line is redacted from the repository copy of upload.log; original upload-log SHA-256 is recorded in batch_audit.json. Other nine archive members are byte-identical."
+}

@@ -1,0 +1,209 @@
+{
+  "revision_date": "2026-11-09",
+  "revision": "Published Zenodo 1.1.0 and explicit implementation-specific LUT trade-off",
+  "main_pages": 8,
+  "supplement_pages": 12,
+  "main_numbered_figures": 5,
+  "main_tables": 3,
+  "supplement_figures": 2,
+  "supplement_tables": 13,
+  "references": 24,
+  "abstract_whitespace_delimited_words": 208,
+  "pdf_checks": {
+    "main": {
+      "pages": 8,
+      "standalone_text_identical": true,
+      "overfull_boxes": 0,
+      "undefined_references_or_citations": 0,
+      "no_type3_fonts": true
+    },
+    "supplement": {
+      "pages": 12,
+      "standalone_text_identical": true,
+      "overfull_boxes": 0,
+      "undefined_references_or_citations": 0,
+      "no_type3_fonts": true
+    }
+  },
+  "pages_visually_inspected": {
+    "main": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "supplement": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "cover_letter_pages": 1,
+  "asset_regeneration": {
+    "standalone": true,
+    "files_compared": 56,
+    "byte_identical": true,
+    "static_photo_copied_unchanged": true,
+    "not_generated_by_script": []
+  },
+  "new_tests": {
+    "passed": 129,
+    "subtests_passed": 8,
+    "command": "python -m pytest experiments/sensor_recovery -q",
+    "historical_sensor_v14_test_not_rerun": "Local torch is unavailable; subsequent GitHub CI passed the full tests/ suite and sensor_recovery tests on Python 3.10, 3.11 and 3.12."
+  },
+  "v2_hardware": {
+    "evidence_commit": "df1906500c609bf8eabe41862432f79475548ba9",
+    "pre_acquisition_commit": "755ffe07d04fe053f8e626a54b1ec8637dbf2ba2",
+    "suite": "matched_references_v2",
+    "boards": [
+      "mega2560",
+      "esp32c3",
+      "esp32s3"
+    ],
+    "sessions_per_board": 2,
+    "timing_records": 480,
+    "accuracy_records": 42,
+    "predictors": 7,
+    "source_files_verified": 24,
+    "source_before_after_equal": true,
+    "raw_log_to_json_exact": true,
+    "archived_firmware_hashes_verified": true,
+    "captured_s3_elf_float_instruction_bytes_verified": true,
+    "max_device_host_prediction_gap_celsius": 5.341e-05,
+    "summary": "../../experiments/sensor_recovery/results/v2_boards_20261109/summary.json",
+    "new_s3_update_timings": false,
+    "new_sensor_measurements": false
+  },
+  "raw_v2_reproduction": "All output files reproduced byte for byte; all 24 source files and firmware/sidecar hashes verified from the original ZIPs.",
+  "raw_result_files_unchanged": true,
+  "remaining_cyrillic_text_files": 0,
+  "changed_markdown_relative_links_valid": true,
+  "compiler_flags_evidence": "data/compiler_from_captured_elf.json",
+  "photograph_provenance": "data/mcu_photo.json",
+  "new_sensor_measurements": false,
+  "new_hardware_acquisitions_in_this_editorial_revision": 0,
+  "new_synthetic_trajectories_in_this_editorial_revision": 0,
+  "hyperparameter_selection_closed": true,
+  "decay_at_t384": {
+    "eta0": 0.5,
+    "tau": 2048,
+    "eta384": 0.42105263157894735,
+    "relative_decrease": 0.1578947368421053
+  },
+  "template_archive_sha256": "4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755",
+  "official_template_files_unchanged": true,
+  "author_biography_photo_check": "No unconditional requirement in JSEN guide; official May 2024 template says may include biographies; IEEE style manual permits omission.",
+  "published_zenodo": {
+    "version": "1.0.0",
+    "doi": "10.5281/zenodo.24062383",
+    "tag": "sensors-zenodo-v1.0.0"
+  },
+  "new_zenodo": {
+    "status": "PUBLISHED_OPEN",
+    "record_id": "24082229",
+    "version": "1.1.0",
+    "doi": "10.5281/zenodo.24082229",
+    "doi_url": "https://doi.org/10.5281/zenodo.24082229",
+    "record_url": "https://zenodo.org/records/24082229",
+    "publication_date": "2026-11-09",
+    "public_access_verified_without_authentication": true,
+    "files": [
+      {
+        "filename": "IEEE_Sensors_V1_1_Evidence_2026-11-09.zip",
+        "bytes": 19558339,
+        "checksum": "md5:67114053996fbacc05f5e90fae71eb5a"
+      },
+      {
+        "filename": "IEEE_Sensors_Zenodo_Deposit_2026-11-08.zip",
+        "bytes": 234018558,
+        "checksum": "md5:3f6986c166c4911948fc6f4e3c657f35"
+      }
+    ],
+    "archived_code_commit": "5ced774e40a94e57220c213499eccd6d2af425b4",
+    "original_archive_preserved_unchanged": true
+  },
+  "limits": [
+    "Synthetic sensor accuracy and drift",
+    "One board per architecture, two warm sessions",
+    "No physical sensor uncertainty budget",
+    "No O2 or code-layout sensitivity",
+    "No measured FMA-enabled improvement",
+    "No fixed-point polynomial or Cortex-M4F/M33 target",
+    "No S3 adaptation timing, energy, WCET or measured peak stack"
+  ],
+  "github_ci": {
+    "commit": "5ced774e40a94e57220c213499eccd6d2af425b4",
+    "checks": [
+      {
+        "name": "test (3.10)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42617284677/job/129160197695"
+      },
+      {
+        "name": "test (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42617284677/job/129160197539"
+      },
+      {
+        "name": "test (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/KuznetsovKarazin/lut-kan-native/actions/runs/42617284677/job/129160197514"
+      }
+    ]
+  },
+  "publication_update_changes_data_or_kernels": false,
+  "final_pdf_checks": {
+    "main": {
+      "pages": 8,
+      "overfull": 0,
+      "undefined": 0,
+      "no_type3": true,
+      "new_doi_links": 2,
+      "standalone_text_identical": true
+    },
+    "supplement": {
+      "pages": 12,
+      "overfull": 0,
+      "undefined": 0,
+      "no_type3": true,
+      "new_doi_links": 3,
+      "standalone_text_identical": true
+    }
+  },
+  "final_changed_pages_visually_inspected": {
+    "main": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "supplement": [
+      5,
+      12
+    ]
+  },
+  "matching_git_release": {
+    "tag": "sensors-zenodo-v1.1.0",
+    "commit": "5ced774e40a94e57220c213499eccd6d2af425b4",
+    "url": "https://github.com/KuznetsovKarazin/lut-kan-native/releases/tag/sensors-zenodo-v1.1.0",
+    "published": true
+  }
+}

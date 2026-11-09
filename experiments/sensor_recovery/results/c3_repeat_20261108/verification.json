@@ -1,0 +1,55 @@
+{
+  "review_test_command": [
+    "/workspace/scratch/f17d1dca18f6/sensor_test_env/bin/python",
+    "-m",
+    "pytest",
+    "experiments/sensor_recovery/test_device_review.py",
+    "-q"
+  ],
+  "review_test_exit_code": 0,
+  "verified_complete_command_sessions": 2,
+  "distinct_session_ids": true,
+  "all_accuracy_fields_identical": true,
+  "repeatability_independently_recomputed": true,
+  "firmware_and_capture_script_modified": false,
+  "limitation": "Two command acquisitions on one C3; not independent-board or cold-boot replication.",
+  "source_commit": "a10208244d0ff3ec5e73eaf644c4314783d75e3d",
+  "uploaded_sources": [
+    {
+      "stored_capture": "esp32c3_capture01",
+      "uploaded_stem": "c3_usb3_20261108_001641_902",
+      "files": [
+        {
+          "name": "c3_usb3_20261108_001641_902.log",
+          "sha256": "0d3bd6086103f48dabc59d3d63753b181149c1df867175d26dade6a94a6d7520"
+        },
+        {
+          "name": "c3_usb3_20261108_001641_902.json",
+          "sha256": "b7a711774de5a89affe231d5aa94669aa51ad6e2aee8843790c813aeff8e5250"
+        },
+        {
+          "name": "c3_usb3_20261108_001641_902.session.json",
+          "sha256": "c4aecd402f53f95b61eaf8d6537c1dbdf632a5fb80cdd3d693c4333e2fcada1a"
+        }
+      ]
+    },
+    {
+      "stored_capture": "esp32c3_capture02",
+      "uploaded_stem": "c3_usb3_repeat_20261108_002728_602",
+      "files": [
+        {
+          "name": "c3_usb3_repeat_20261108_002728_602.log",
+          "sha256": "61fb5378adbd8ceb39883fba4a3f25454313ba58024d4afcbdac5c049491fc91"
+        },
+        {
+          "name": "c3_usb3_repeat_20261108_002728_602.json",
+          "sha256": "d07a5ecbe0b576aa5993cca7fc27fb5aea98bfa86c8f07b9270a03663641921a"
+        },
+        {
+          "name": "c3_usb3_repeat_20261108_002728_602.session.json",
+          "sha256": "c3ec14640d3f875f14fcb4eb8427f17a7b565ea07f053ca13ca27cf288fe18e6"
+        }
+      ]
+    }
+  ]
+}

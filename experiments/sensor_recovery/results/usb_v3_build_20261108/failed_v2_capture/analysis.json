@@ -1,0 +1,14 @@
+{
+  "session_id": "d2d81a1695da4b559ea86a493bd379ae",
+  "raw_sha256": "f584d763d5d8aaff43ebd04b45709aa6f74b244ce296cb0c0aa1a594e3c98133",
+  "raw_bytes": 29,
+  "received_lines": [
+    "READY,SENSOR_USB_V2,esp32c3"
+  ],
+  "script_matches_parent_windows_crlf": true,
+  "valid_run_token": true,
+  "header_received": false,
+  "device_run_acceptance_confirmed": false,
+  "usable_timing_records": 0,
+  "interpretation": "The host wrote H and R; the device returned READY only. This does not establish whether R was received or the benchmark executed. TX queue restart is a source-level hypothesis, not a confirmed hardware diagnosis."
+}

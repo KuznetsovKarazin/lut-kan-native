@@ -1,0 +1,21 @@
+{
+  "parent_commit": "6361c1c7afdc342c850aed596b52ab75d9454732",
+  "host_tests_command": [
+    "/workspace/scratch/f17d1dca18f6/sensor_test_env/bin/python",
+    "-m",
+    "pytest",
+    "experiments/sensor_recovery/test_calibration.py",
+    "experiments/sensor_recovery/test_capture.py",
+    "experiments/sensor_recovery/test_capture_transport.py",
+    "experiments/sensor_recovery/test_mcu.py",
+    "experiments/sensor_recovery/test_robust.py",
+    "experiments/sensor_recovery/test_usb_fifo.py",
+    "-q"
+  ],
+  "host_tests_exit_code": 0,
+  "source_hashes_verified": true,
+  "numerical_headers_and_measured_function_text_unchanged": true,
+  "legacy_mega_results_unchanged": true,
+  "physical_C3_v3_capture_performed": false,
+  "capture_script_sha256": "be89cd789511ae7bd0d8a65b8d65fd22ffd52a40646b6559549f39ab1d32b218"
+}

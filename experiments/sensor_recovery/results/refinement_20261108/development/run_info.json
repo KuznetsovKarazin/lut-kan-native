@@ -1,0 +1,28 @@
+{
+  "stage": "development",
+  "seed": 2026110810,
+  "units": 4,
+  "repeats": 2,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "source_sha256": {
+    "refinement_analysis.py": "458572000feb548d99ab61fa73cd8163e91943a4383d368a18bd0bf0f6f3d561",
+    "REFINEMENT_PROTOCOL.md": "351cb926adf42702f5f3b681a8163c19dd2b7453f7b4321a4fb9970faeb4eb0e",
+    "revision_analysis.py": "3d1629b9adc395767f1befa8f4d0742bf70752d9e0dcbe19f2f69759448d8b36",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6",
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9"
+  },
+  "base_commit": "f77cc5073393dfcc51dafe60046f6505e7e3ecc4",
+  "scope": "post-review paired reanalysis of existing seeds",
+  "complete": true,
+  "streams": 144,
+  "trajectories": 1440,
+  "elapsed_seconds": 14.340658187866211,
+  "result_sha256": {
+    "started.json": "e5675081fd9ecfbb09bf92a4d1ac8ba653f47675035390acab6eff247149d6d7",
+    "selection.json": "dbc2572210d8e8662d253e0aa231f8f1aef7b6fc0e2968ba144b32583f528582",
+    "records.jsonl.gz": "a82dfc4311866859e278ad165e825eacc482311bedaf5044903fedca7e6d0cda"
+  }
+}

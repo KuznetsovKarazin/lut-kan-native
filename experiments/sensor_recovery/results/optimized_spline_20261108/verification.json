@@ -1,0 +1,27 @@
+{
+  "parent_commit": "a06f384365927146386b25170a84651ea8482323",
+  "test_command": [
+    "/workspace/scratch/f17d1dca18f6/sensor_test_env/bin/python",
+    "-m",
+    "pytest",
+    "experiments/sensor_recovery/test_calibration.py",
+    "experiments/sensor_recovery/test_capture.py",
+    "experiments/sensor_recovery/test_capture_transport.py",
+    "experiments/sensor_recovery/test_device_review.py",
+    "experiments/sensor_recovery/test_mcu.py",
+    "experiments/sensor_recovery/test_optimized_spline.py",
+    "experiments/sensor_recovery/test_robust.py",
+    "experiments/sensor_recovery/test_suite_runner.py",
+    "experiments/sensor_recovery/test_usb_fifo.py",
+    "-q"
+  ],
+  "test_exit_code": 0,
+  "original_fixture_and_kernels_unchanged": true,
+  "default_eight_model_predictions_bit_identical_on_1005_points": true,
+  "old_physical_capture_json_unchanged": true,
+  "export_byte_reproducible": true,
+  "all_sixteen_build_source_hashes_verified": true,
+  "new_physical_MCU_timing_performed": false,
+  "all_three_host_run_source_hashes_verified": true,
+  "host_repeat_aggregation_recomputed": true
+}

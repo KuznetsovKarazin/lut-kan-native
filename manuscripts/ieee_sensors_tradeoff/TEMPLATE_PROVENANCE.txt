@@ -1,0 +1,23 @@
+IEEE SENSORS JOURNAL — OFFICIAL TEMPLATE VERIFIED
+8 November 2026
+
+The official IEEE selector was used in the author's Chrome browser:
+https://template-selector.ieee.org/secure/templateSelector/downloadTemplate?publicationTypeId=1&titleId=121&articleId=3&fileId=449
+Publication: IEEE Sensors Journal; Original research and Brief; LaTeX.
+The downloaded IEEE-JSEN-LaTeX-template-202405.zip was subsequently made available
+for byte-level inspection. ZIP integrity passed. Archive size: 1206310 bytes.
+SHA-256: 4ae0c0672b36a8463e1e159e181b69087c8a25dd71aefe75e0d0058936527755
+
+ieeecolor.cls, jsen.sty and IEEEtran.bst in this source package are unmodified
+copies of the exact files in that archive; their sizes and hashes appear in
+TEMPLATE_PROVENANCE.json. The publisher class includes its May 2024 changes.
+The prior temporary class distribution is no longer used.
+The colored abstract/graphic structure follows the supplied jsen.tex sample.
+
+Working-document differences (not class edits): no publisher logo or unassigned
+volume/date/copyright values; normal first-page running heading; explicit body
+color reset after subsections; one centered author name; header height +5 pt with
+compensating top-margin adjustment; separate readable vector abstract graphic.
+Class body font/column/margin settings are retained. The supplement remains a
+separate one-column document. Final editorial review and submission checks are
+still needed; verified source identity does not imply acceptance by the journal.

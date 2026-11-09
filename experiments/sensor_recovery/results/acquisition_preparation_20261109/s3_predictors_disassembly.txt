@@ -1,0 +1,225 @@
+4200197c <predict_1(float)>:
+4200197c:	006136        	entry	a1, 48
+4200197f:	f9c6b1        	l32r	a11, 42000098 <_stext+0x78>
+42001982:	20a220        	or	a10, a2, a2
+42001985:	fff665        	call8	420018ec <Matched::normalize(float, Matched::Transform const&)>
+42001988:	0cc1c2        	addi	a12, a1, 12
+4200198b:	fb1c      	movi.n	a11, 31
+4200198d:	fff9e5        	call8	4200192c <Matched::interval(float, int, float&)>
+42001990:	f9c391        	l32r	a9, 4200009c <_stext+0x7c>
+42001993:	f9c381        	l32r	a8, 420000a0 <_stext+0x80>
+42001996:	11aae0        	slli	a10, a10, 2
+42001999:	99aa      	add.n	a9, a9, a10
+4200199b:	88aa      	add.n	a8, a8, a10
+4200199d:	000913        	lsi	f1, a9, 0
+420019a0:	000803        	lsi	f0, a8, 0
+420019a3:	030123        	lsi	f2, a1, 12
+420019a6:	1a0010        	sub.s	f0, f0, f1
+420019a9:	f9a321        	l32r	a2, 42000038 <_stext+0x18>
+420019ac:	2a0020        	mul.s	f0, f0, f2
+420019af:	0a0010        	add.s	f0, f0, f1
+420019b2:	fa1250        	wfr	f1, a2
+420019b5:	2a0010        	mul.s	f0, f0, f1
+420019b8:	0a1010        	add.s	f1, f0, f1
+420019bb:	fa2140        	rfr	a2, f1
+420019be:	f01d      	retw.n
+
+
+420019c0 <predict_2(float)>:
+420019c0:	006136        	entry	a1, 48
+420019c3:	f9b8b1        	l32r	a11, 420000a4 <_stext+0x84>
+420019c6:	20a220        	or	a10, a2, a2
+420019c9:	fff225        	call8	420018ec <Matched::normalize(float, Matched::Transform const&)>
+420019cc:	0cc1c2        	addi	a12, a1, 12
+420019cf:	bb3c      	movi.n	a11, 59
+420019d1:	fff5a5        	call8	4200192c <Matched::interval(float, int, float&)>
+420019d4:	f9b591        	l32r	a9, 420000a8 <_stext+0x88>
+420019d7:	118af0        	slli	a8, a10, 1
+420019da:	898a      	add.n	a8, a9, a8
+420019dc:	aa1b      	addi.n	a10, a10, 1
+420019de:	009882        	l16si	a8, a8, 0
+420019e1:	11aaf0        	slli	a10, a10, 1
+420019e4:	a9aa      	add.n	a10, a9, a10
+420019e6:	ca1800        	float.s	f1, a8, 0
+420019e9:	009a82        	l16si	a8, a10, 0
+420019ec:	f9b021        	l32r	a2, 420000ac <_stext+0x8c>
+420019ef:	ca0800        	float.s	f0, a8, 0
+420019f2:	fa3250        	wfr	f3, a2
+420019f5:	2a1130        	mul.s	f1, f1, f3
+420019f8:	2a0030        	mul.s	f0, f0, f3
+420019fb:	f9ad21        	l32r	a2, 420000b0 <_stext+0x90>
+420019fe:	fa2250        	wfr	f2, a2
+42001a01:	0a1120        	add.s	f1, f1, f2
+42001a04:	0a0020        	add.s	f0, f0, f2
+42001a07:	030123        	lsi	f2, a1, 12
+42001a0a:	f98b21        	l32r	a2, 42000038 <_stext+0x18>
+42001a0d:	1a0010        	sub.s	f0, f0, f1
+42001a10:	2a0020        	mul.s	f0, f0, f2
+42001a13:	0a0010        	add.s	f0, f0, f1
+42001a16:	fa1250        	wfr	f1, a2
+42001a19:	2a0010        	mul.s	f0, f0, f1
+42001a1c:	0a1010        	add.s	f1, f0, f1
+42001a1f:	fa2140        	rfr	a2, f1
+42001a22:	f01d      	retw.n
+
+
+42001b50 <predict_3(float)>:
+42001b50:	004136        	entry	a1, 32
+42001b53:	f95cb1        	l32r	a11, 420000c4 <_stext+0xa4>
+42001b56:	20a220        	or	a10, a2, a2
+42001b59:	ffd925        	call8	420018ec <Matched::normalize(float, Matched::Transform const&)>
+42001b5c:	f95bb1        	l32r	a11, 420000c8 <_stext+0xa8>
+42001b5f:	fff165        	call8	42001a74 <Matched::cubic32(float, float const*)>
+42001b62:	f93521        	l32r	a2, 42000038 <_stext+0x18>
+42001b65:	fa2a50        	wfr	f2, a10
+42001b68:	fa0250        	wfr	f0, a2
+42001b6b:	2a1200        	mul.s	f1, f2, f0
+42001b6e:	0a0100        	add.s	f0, f1, f0
+42001b71:	fa2040        	rfr	a2, f0
+42001b74:	000090        	retw
+	...
+
+
+42001a24 <predict_4(float)>:
+42001a24:	006136        	entry	a1, 48
+42001a27:	f9a3b1        	l32r	a11, 420000b4 <_stext+0x94>
+42001a2a:	20a220        	or	a10, a2, a2
+42001a2d:	ffebe5        	call8	420018ec <Matched::normalize(float, Matched::Transform const&)>
+42001a30:	0cc1c2        	addi	a12, a1, 12
+42001a33:	8b0c      	movi.n	a11, 8
+42001a35:	ffef65        	call8	4200192c <Matched::interval(float, int, float&)>
+42001a38:	f9a081        	l32r	a8, 420000b8 <_stext+0x98>
+42001a3b:	11aac0        	slli	a10, a10, 4
+42001a3e:	aa8a      	add.n	a10, a10, a8
+42001a40:	030113        	lsi	f1, a1, 12
+42001a43:	000a03        	lsi	f0, a10, 0
+42001a46:	010a23        	lsi	f2, a10, 4
+42001a49:	2a0100        	mul.s	f0, f1, f0
+42001a4c:	f97b21        	l32r	a2, 42000038 <_stext+0x18>
+42001a4f:	0a0020        	add.s	f0, f0, f2
+42001a52:	020a23        	lsi	f2, a10, 8
+42001a55:	2a0010        	mul.s	f0, f0, f1
+42001a58:	0a0020        	add.s	f0, f0, f2
+42001a5b:	2a0010        	mul.s	f0, f0, f1
+42001a5e:	030a13        	lsi	f1, a10, 12
+42001a61:	0a0010        	add.s	f0, f0, f1
+42001a64:	fa1250        	wfr	f1, a2
+42001a67:	2a0010        	mul.s	f0, f0, f1
+42001a6a:	0a1010        	add.s	f1, f0, f1
+42001a6d:	fa2140        	rfr	a2, f1
+42001a70:	f01d      	retw.n
+	...
+
+
+4200160c <predict_5(float)>:
+4200160c:	004136        	entry	a1, 32
+4200160f:	fa8531        	l32r	a3, 42000024 <_stext+0x4>
+42001612:	fa0250        	wfr	f0, a2
+42001615:	fa1350        	wfr	f1, a3
+42001618:	1a0010        	sub.s	f0, f0, f1
+4200161b:	fa83b1        	l32r	a11, 42000028 <_stext+0x8>
+4200161e:	faa040        	rfr	a10, f0
+42001621:	fa8681        	l32r	a8, 4200003c <_stext+0x1c>
+42001624:	0008e0        	callx8	a8
+42001627:	fa0a50        	wfr	f0, a10
+4200162a:	0a4000        	add.s	f4, f0, f0
+4200162d:	fa7c21        	l32r	a2, 42000020 <_stext>
+42001630:	fa7f81        	l32r	a8, 4200002c <_stext+0xc>
+42001633:	fa7f91        	l32r	a9, 42000030 <_stext+0x10>
+42001636:	fa3250        	wfr	f3, a2
+42001639:	fa2250        	wfr	f2, a2
+4200163c:	2a1420        	mul.s	f1, f4, f2
+4200163f:	fcc882        	addi	a8, a8, -4
+42001642:	1a1130        	sub.s	f1, f1, f3
+42001645:	010833        	lsi	f3, a8, 4
+42001648:	0a1130        	add.s	f1, f1, f3
+4200164b:	fa3200        	mov.s	f3, f2
+4200164e:	1f9987        	bne	a9, a8, 42001671 <predict_5(float)+0x65>
+42001651:	2a0010        	mul.s	f0, f0, f1
+42001654:	fa7821        	l32r	a2, 42000034 <_stext+0x14>
+42001657:	fa7831        	l32r	a3, 42000038 <_stext+0x18>
+4200165a:	fa1250        	wfr	f1, a2
+4200165d:	1a0020        	sub.s	f0, f0, f2
+42001660:	1a0010        	sub.s	f0, f0, f1
+42001663:	fa1350        	wfr	f1, a3
+42001666:	2a0010        	mul.s	f0, f0, f1
+42001669:	0a1010        	add.s	f1, f0, f1
+4200166c:	fa2140        	rfr	a2, f1
+4200166f:	f01d      	retw.n
+42001671:	fa2100        	mov.s	f2, f1
+42001674:	fff106        	j	4200163c <predict_5(float)+0x30>
+	...
+
+
+420016c4 <predict_6(float)>:
+420016c4:	004136        	entry	a1, 32
+420016c7:	fa60b1        	l32r	a11, 42000048 <_stext+0x28>
+420016ca:	20a220        	or	a10, a2, a2
+420016cd:	0ec6e5        	call8	4201033c <fmaxf>
+420016d0:	fa5fb1        	l32r	a11, 4200004c <_stext+0x2c>
+420016d3:	0ec9a5        	call8	4201036c <fminf>
+420016d6:	fa5f21        	l32r	a2, 42000054 <_stext+0x34>
+420016d9:	fa0a50        	wfr	f0, a10
+420016dc:	fa1250        	wfr	f1, a2
+420016df:	1a1100        	sub.s	f1, f1, f0
+420016e2:	fa5b21        	l32r	a2, 42000050 <_stext+0x30>
+420016e5:	fab140        	rfr	a11, f1
+420016e8:	fa1250        	wfr	f1, a2
+420016eb:	2a0010        	mul.s	f0, f0, f1
+420016ee:	faa040        	rfr	a10, f0
+420016f1:	fa5281        	l32r	a8, 4200003c <_stext+0x1c>
+420016f4:	0008e0        	callx8	a8
+420016f7:	0ecda5        	call8	420103d0 <logf>
+420016fa:	fa5721        	l32r	a2, 42000058 <_stext+0x38>
+420016fd:	fa0a50        	wfr	f0, a10
+42001700:	fa2250        	wfr	f2, a2
+42001703:	2a1020        	mul.s	f1, f0, f2
+42001706:	fa5521        	l32r	a2, 4200005c <_stext+0x3c>
+42001709:	fa52a1        	l32r	a10, 42000054 <_stext+0x34>
+4200170c:	fa2250        	wfr	f2, a2
+4200170f:	2a1100        	mul.s	f1, f1, f0
+42001712:	fa5321        	l32r	a2, 42000060 <_stext+0x40>
+42001715:	2a1100        	mul.s	f1, f1, f0
+42001718:	2a0020        	mul.s	f0, f0, f2
+4200171b:	fa2250        	wfr	f2, a2
+4200171e:	0a0020        	add.s	f0, f0, f2
+42001721:	0a0100        	add.s	f0, f1, f0
+42001724:	fab040        	rfr	a11, f0
+42001727:	fa4581        	l32r	a8, 4200003c <_stext+0x1c>
+4200172a:	0008e0        	callx8	a8
+4200172d:	fa4d31        	l32r	a3, 42000064 <_stext+0x44>
+42001730:	fa0a50        	wfr	f0, a10
+42001733:	fa1350        	wfr	f1, a3
+42001736:	1a0010        	sub.s	f0, f0, f1
+42001739:	fa2040        	rfr	a2, f0
+4200173c:	f01d      	retw.n
+	...
+
+
+42001678 <predict_7(float)>:
+42001678:	004136        	entry	a1, 32
+4200167b:	fa6a31        	l32r	a3, 42000024 <_stext+0x4>
+4200167e:	fa0250        	wfr	f0, a2
+42001681:	fa1350        	wfr	f1, a3
+42001684:	1a0010        	sub.s	f0, f0, f1
+42001687:	fa68b1        	l32r	a11, 42000028 <_stext+0x8>
+4200168a:	faa040        	rfr	a10, f0
+4200168d:	fa6b81        	l32r	a8, 4200003c <_stext+0x1c>
+42001690:	0008e0        	callx8	a8
+42001693:	fa6b21        	l32r	a2, 42000040 <_stext+0x20>
+42001696:	fa6b91        	l32r	a9, 42000044 <_stext+0x24>
+42001699:	fa2a50        	wfr	f2, a10
+4200169c:	fa0250        	wfr	f0, a2
+4200169f:	980c      	movi.n	a8, 9
+420016a1:	0b8876        	loop	a8, 420016b0 <predict_7(float)+0x38>
+420016a4:	2a0200        	mul.s	f0, f2, f0
+420016a7:	080913        	lsi	f1, a9, 32
+420016aa:	fcc992        	addi	a9, a9, -4
+420016ad:	0a0010        	add.s	f0, f0, f1
+420016b0:	fa6231        	l32r	a3, 42000038 <_stext+0x18>
+420016b3:	fa1350        	wfr	f1, a3
+420016b6:	2a0010        	mul.s	f0, f0, f1
+420016b9:	0a1010        	add.s	f1, f0, f1
+420016bc:	fa2140        	rfr	a2, f1
+420016bf:	f01d      	retw.n
+420016c1:	000000        	ill

@@ -1,0 +1,3 @@
+# Full raw records are preserved in the separate dated data archive.
+# Keep the repository's run metadata, summaries and reproducibility commands.
+*/*.jsonl.gz

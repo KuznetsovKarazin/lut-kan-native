@@ -1,0 +1,130 @@
+[
+  {
+    "board": "mega2560_opt",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 17,
+    "flash_bytes": 730,
+    "elf_sha256": "e306d8dbd41e1c4572a4154600d95f0fb100e495b729738ec2571f14eed17852"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 2,
+    "mode": "footprint_only",
+    "ram_bytes": 57,
+    "flash_bytes": 1878,
+    "elf_sha256": "2f57c62a401ccf7b206a121bdcdbd32fd77e3c508505e51a980ef938744b3ad4"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 3,
+    "mode": "footprint_only",
+    "ram_bytes": 81,
+    "flash_bytes": 2684,
+    "elf_sha256": "6255a6a73269ad420db7ecc9aa0bd5257b72ca196ca88f306249eced420f9dd8"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 5,
+    "mode": "footprint_only",
+    "ram_bytes": 145,
+    "flash_bytes": 2354,
+    "elf_sha256": "3a3de7a31ea98c64b345b0f930f26294e0816bb55f7f1762d46f473b7fe3ee5b"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 6,
+    "mode": "footprint_only",
+    "ram_bytes": 81,
+    "flash_bytes": 2330,
+    "elf_sha256": "3d8101767dd0e96054e7725d8ee2ac42f47f894dfb6d1ab7812897d03693bc4c"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 9,
+    "mode": "footprint_only",
+    "ram_bytes": 81,
+    "flash_bytes": 2780,
+    "elf_sha256": "07ee32984fc8afd186cdfc8daae9672525d8394eddbc54b1614aa88c6c0093da"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": 10,
+    "mode": "footprint_only",
+    "ram_bytes": 225,
+    "flash_bytes": 2388,
+    "elf_sha256": "15f2b771d1eeb4bca50cbd8a8a1d23d55c5f55527bb95c7e7bc6d9ebde8b2651"
+  },
+  {
+    "board": "mega2560_opt",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 1564,
+    "flash_bytes": 30434,
+    "elf_sha256": "202c1dd9f3b70f04c1e48daddaa40f63924314f417f53f6659820f5330569bff"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 0,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 218848,
+    "elf_sha256": "80f9a96e70dc561f6231c3fb680ab950c56358cbcda14e2d6591c66742c53e6b"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 2,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219114,
+    "elf_sha256": "8d4f4ac479a3519c6354613142b63245c5b2a8afce8670964daa22772463efc9"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 3,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219514,
+    "elf_sha256": "c5e4f11fdfb7f9311d46fe58ec358ee43e8c144ca9b770140b5f9380625dd222"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 5,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219286,
+    "elf_sha256": "1eb3a6e2e495d8b58d4e10969780f77d28c970f3db22407c16a601d78749210d"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 6,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219290,
+    "elf_sha256": "5eb089144e8d2a1e80e74a241d7fe51a38ebac630d3c0fb8d7697e6cc344993b"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 9,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219560,
+    "elf_sha256": "c2bbdd315bb3159af41863d7fdcc99d9a79b27bd517e4808c5a22d01506bcf27"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": 10,
+    "mode": "footprint_only",
+    "ram_bytes": 13484,
+    "flash_bytes": 219360,
+    "elf_sha256": "de65de610bb3178e5f970e6122bcd992f99ac6894fd01bb3a8184096e467275f"
+  },
+  {
+    "board": "esp32c3_opt",
+    "model": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 13964,
+    "flash_bytes": 265944,
+    "elf_sha256": "6d7ed6e2bae05fdc90232e10213439aced1ebf14e7bee41bc9b8adcf2c8e9e3e"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "stage": "development",
+  "units": 4,
+  "repeats": 2,
+  "seed": 2026110800,
+  "start_utc": "2026-11-08T07:23:28.343462+00:00",
+  "base_git_head": "2f9b9ce507fb653753d11558da169814f639d98e",
+  "working_tree_dirty": true,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "experiments/sensor_recovery/run_matched_adaptation.py",
+    "development",
+    "--out",
+    "experiments/sensor_recovery/results/matched_adaptation_20261108/development"
+  ],
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "source_sha256": {
+    "calibration.py": "f601cc7641fbd0c9f4ee17829caf7c4332aca6fc40d1487d6845fa50d10f6ce1",
+    "robust.py": "bf9dd520e29541fb9a76d40f127d6f857eabbfb2ce3a1e82eaea60533886e4f9",
+    "matched_adaptation.py": "a3836803d96069d309d243ca0ba4f1f058f28d092ea37a899bf387c76dba36c6",
+    "run_matched_adaptation.py": "a1bc2a543971ee8c1c0bee2a7ff44f8bc70447ddfb01d942f518b230195ad59d",
+    "MATCHED_ADAPTATION_PROTOCOL.md": "0c3d59891cbf4517da7cfa124b761191f6cf514768a4adfd51dce9c71084b744"
+  },
+  "provenance": "new reconstruction run; synthetic parametric measurements",
+  "physical_sensor_measurements": false,
+  "new_mcu_measurements": false,
+  "streams": 144,
+  "trajectories": 3168,
+  "selected_parameters": {
+    "lut_nlms": 0.5,
+    "lut_projected_nlms": 0.5,
+    "cubic_nlms": 0.5,
+    "cubic_projected_nlms": 0.5,
+    "cubic_rls": 0.98,
+    "poly_rls": 0.98
+  },
+  "elapsed_seconds": 31.311218738555908,
+  "complete": true,
+  "end_utc": "2026-11-08T07:23:59.658901+00:00",
+  "result_sha256": {
+    "candidate_results.jsonl.gz": "c3c2d8df0f5ae0672983784166e8f04998d602028b900f42208e152cd95ddb9c",
+    "selected_parameters.json": "5de20afc5fbc9f0299e0e0489bdec2d706992b91f671c24d050ab6c28a28153e",
+    "started.json": "fb3da9967dd37b050204e5d5a0029dbbcedbe0ac50e1f6ebc5f3e1edc6ebc44a",
+    "streams.jsonl.gz": "6f789eeb867f2ba00e6da287beba796d00d5d9f8338601f80d4de7b574304f76"
+  }
+}

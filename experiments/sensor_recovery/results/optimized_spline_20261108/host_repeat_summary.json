@@ -1,0 +1,148 @@
+{
+  "host_only": true,
+  "process_repetitions": 3,
+  "profiles": {
+    "O2": [
+      {
+        "method": "polynomial",
+        "process_medians_ns": [
+          11.97281265258789,
+          12.117607116699219,
+          9.603073120117188
+        ],
+        "median_ns": 11.97281265258789,
+        "min_process_median_ns": 9.603073120117188,
+        "max_process_median_ns": 12.117607116699219
+      },
+      {
+        "method": "cubic16",
+        "process_medians_ns": [
+          25.60285186767578,
+          27.841163635253906,
+          25.630168914794922
+        ],
+        "median_ns": 25.630168914794922,
+        "min_process_median_ns": 25.60285186767578,
+        "max_process_median_ns": 27.841163635253906
+      },
+      {
+        "method": "cubic16_unrolled",
+        "process_medians_ns": [
+          7.182029724121094,
+          8.889915466308594,
+          7.679756164550781
+        ],
+        "median_ns": 7.679756164550781,
+        "min_process_median_ns": 7.182029724121094,
+        "max_process_median_ns": 8.889915466308594
+      },
+      {
+        "method": "cubic16_horner",
+        "process_medians_ns": [
+          3.7968978881835938,
+          4.2032012939453125,
+          4.014739990234375
+        ],
+        "median_ns": 4.014739990234375,
+        "min_process_median_ns": 3.7968978881835938,
+        "max_process_median_ns": 4.2032012939453125
+      },
+      {
+        "method": "uniform32_float32",
+        "process_medians_ns": [
+          3.4313621520996094,
+          3.9449005126953125,
+          3.4882469177246094
+        ],
+        "median_ns": 3.4882469177246094,
+        "min_process_median_ns": 3.4313621520996094,
+        "max_process_median_ns": 3.9449005126953125
+      },
+      {
+        "method": "uniform32_int16",
+        "process_medians_ns": [
+          4.736000061035156,
+          5.129463195800781,
+          4.696685791015625
+        ],
+        "median_ns": 4.736000061035156,
+        "min_process_median_ns": 4.696685791015625,
+        "max_process_median_ns": 5.129463195800781
+      }
+    ],
+    "Os": [
+      {
+        "method": "polynomial",
+        "process_medians_ns": [
+          11.308856964111328,
+          10.128807067871094,
+          14.926998138427734
+        ],
+        "median_ns": 11.308856964111328,
+        "min_process_median_ns": 10.128807067871094,
+        "max_process_median_ns": 14.926998138427734
+      },
+      {
+        "method": "cubic16",
+        "process_medians_ns": [
+          26.32762908935547,
+          27.929874420166016,
+          26.62405776977539
+        ],
+        "median_ns": 26.62405776977539,
+        "min_process_median_ns": 26.32762908935547,
+        "max_process_median_ns": 27.929874420166016
+      },
+      {
+        "method": "cubic16_unrolled",
+        "process_medians_ns": [
+          9.238910675048828,
+          9.246170043945312,
+          8.607433319091797
+        ],
+        "median_ns": 9.238910675048828,
+        "min_process_median_ns": 8.607433319091797,
+        "max_process_median_ns": 9.246170043945312
+      },
+      {
+        "method": "cubic16_horner",
+        "process_medians_ns": [
+          5.980655670166016,
+          5.830474853515625,
+          5.774467468261719
+        ],
+        "median_ns": 5.830474853515625,
+        "min_process_median_ns": 5.774467468261719,
+        "max_process_median_ns": 5.980655670166016
+      },
+      {
+        "method": "uniform32_float32",
+        "process_medians_ns": [
+          6.124076843261719,
+          5.9725189208984375,
+          5.885871887207031
+        ],
+        "median_ns": 5.9725189208984375,
+        "min_process_median_ns": 5.885871887207031,
+        "max_process_median_ns": 6.124076843261719
+      },
+      {
+        "method": "uniform32_int16",
+        "process_medians_ns": [
+          6.424400329589844,
+          5.8916015625,
+          5.927593231201172
+        ],
+        "median_ns": 5.927593231201172,
+        "min_process_median_ns": 5.8916015625,
+        "max_process_median_ns": 6.424400329589844
+      }
+    ]
+  },
+  "source_files": {
+    "analysis.json": "53773a952a3f7b72b52063b8edaa99e9bdd4f52d7d916b336a063651b668268a",
+    "host_repeat02/analysis.json": "bc861f08ded733a42e66a77a81595236f4355f5bcb4a09dd1ee0e36306e216f1",
+    "host_repeat03/analysis.json": "a398630a45e0c537889af4582082233d2adcad332b14b244398fac5a8420d327"
+  },
+  "aggregation": "For each process/profile/method take the median of its 15 batches; summarize the three process medians using median, minimum and maximum."
+}

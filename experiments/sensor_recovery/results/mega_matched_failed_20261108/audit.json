@@ -1,0 +1,199 @@
+{
+  "archive": "mega_matched_20261108_103108_182.zip",
+  "archive_bytes": 89501,
+  "archive_sha256": "71330e87cc040a91fc302eebb926b34f746c305db030e80d99b5a33333e8f1fc",
+  "zip_crc_pass": true,
+  "source_commit": "12c6415467b3138c0af7e5b49828a01c0f1066ec",
+  "board": "mega2560",
+  "port": "COM12",
+  "start_utc": "2026-11-08T09:31:09.700048+00:00",
+  "end_utc": "2026-11-08T09:31:31.009692+00:00",
+  "status": "failed_before_benchmark",
+  "stage": "capture_1",
+  "phase": "hello",
+  "upload_pass": true,
+  "flash_verified_bytes": 49552,
+  "static_ram_bytes": 1949,
+  "completed_captures": 0,
+  "requested_runs": 2,
+  "tx_commands": [
+    {
+      "utc": "2026-11-08T09:31:30.781443+00:00",
+      "text": "H"
+    }
+  ],
+  "raw_response": "ERROR,INVALID_COMMAND\r\n",
+  "source_before_equals_after": true,
+  "source_checks": [
+    {
+      "path": "experiments/sensor_recovery/mcu/platformio.ini",
+      "raw_sha256": "7980c0b385da9983d0b9b24234c59867dd9a2d6f118abef935364ef553451469",
+      "lf_sha256": "86b3ea3d5dc8db4d22d06ed311032560166765a9403eb80c9847dd33c8cb3db2",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/requirements.txt",
+      "raw_sha256": "0e6db9d395e01600195e27e7e45478049c4e33f0e494f84c276729ded777b248",
+      "lf_sha256": "adc34a2af082f3eb4781dcf747b9984cb659cadd0f18a3637a260fca4528343f",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/capture.py",
+      "raw_sha256": "afc818577f40afa817f42836b88428af6a899b536538270d9f84bf7823a2efee",
+      "lf_sha256": "dde9d8a30045c3f012a5c1290a760587a3e26abfeaf53743ef65c78ff1831db9",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/capture_matched.py",
+      "raw_sha256": "a7ba4ef9ae7e9c3d4537403e5d4be1c35469aaf17aba019c9a75bb25d9494e60",
+      "lf_sha256": "7f58bcad8e690a559cc3dd6d09c424622a3b36b36099654b4211628475e2cafc",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/run_matched.py",
+      "raw_sha256": "ad6d949079f7b614fe66a0da0ba0dac984fbfdd84c91d54ff557ca5eceacc7fc",
+      "lf_sha256": "e70c4b72ab982a47594ffb141527e6df29f6bfb03b5e0eded2c98c206b12e924",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/run_suite.py",
+      "raw_sha256": "bd6ebeaeefad0a4fda0a0051af9fa435b9ce9034c288da1ec7af3bc473c466a4",
+      "lf_sha256": "0eebdde8e896fd6e03c1b13cbdf42f8a1d4ac07883b731025425623e6aeba3f3",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/matched_manifest.json",
+      "raw_sha256": "9b8641b870b8a05b178174b6333c0cc9a82ee71329f9d089113931239d7be248",
+      "lf_sha256": "27ce6ce49d9e68496a2aee5a8c8713ff51c2d64db7dd76025c8dee9d81e093f3",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/command_protocol.h",
+      "raw_sha256": "2ec504d6710e3212af52bec06f9b687b7271c4aa56d20926db9f22991354172d",
+      "lf_sha256": "232dd585dcadbf0e1a25bbfdd2a66667c566fb4533928649abd7bdee00f00934",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/fixture.h",
+      "raw_sha256": "1dd3a7918525e91aafa4eebbdebc244639d52e362d1cf8bbff3c4ee5a2ebf4cf",
+      "lf_sha256": "edcf216a6508e0d78b5893b6fa6fbe12d0a141bdcf2c47e1795e84228c49fbbb",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/kernels.h",
+      "raw_sha256": "8cf9b1daa56ce66a4c2ad4ef48d6decc7397faf921c7b859efc6c53a03297ee4",
+      "lf_sha256": "001584d1e2afffee8ab964e414049947619b0dfede87da54442fe652079c4d78",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_fixture.h",
+      "raw_sha256": "12ce9d0ce1aed8bd479509d2972311ce139c28c0887e435bff7e8fe342e1168a",
+      "lf_sha256": "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_identity.h",
+      "raw_sha256": "4ab2f2a4bd4dfed1ef663cff67dd13d35fe5163b6fc9ae806b6fa1ab60a25852",
+      "lf_sha256": "7f4b6bd3dfe12b39bbf1c0ea38e76c0a9dc4961f552573a4905fe44bfdab41b3",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/matched_kernels.h",
+      "raw_sha256": "af4b051f85925d246610e63733e5f0a4736a8ac921ef15e116a21f18dff55cca",
+      "lf_sha256": "f55c0a01d50e48e2c5c1c737a6f1a77636376e8603c7f654fdbe41ca79116000",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/models.h",
+      "raw_sha256": "bc2306e166c7e3caa35ddc67cad81d7aeabb36b7abb90d12c35402fc1a7476cc",
+      "lf_sha256": "1ae868294cc7d291dafb3511262b668c87e8108f56c8f3977839c62cf3c46cb0",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/optimized_coefficients.h",
+      "raw_sha256": "1fe79bc6dc732eb55dcc74436531da07655dd4f60072f991fd16e1b7939a0393",
+      "lf_sha256": "daedd520930c631ce6bde1f2850c977fda53e814fc9bdee040792905b2152025",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/optimized_spline.h",
+      "raw_sha256": "ba75ad627f0d6113ab8195b5c753f998db1c27b9bd154af77f6fc29372a61163",
+      "lf_sha256": "8c9670abc67dd525b6a2dd18a4b03dc761c31fd36aabd521eef48c1e35598918",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/include/usb_bench_serial.h",
+      "raw_sha256": "0f9664094ce9e798f863b09e8938bb0b76d37943ba3820bc53af027e63fcc595",
+      "lf_sha256": "a631a299227cf3615d3d245c9f5d3c68946d924f2a2d0edf09ec77b54e7edf1c",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/src/main.cpp",
+      "raw_sha256": "e2562d4dda374e3a7684bbc0d24c1ca71e928ac5b41611f44b8eb1bd6e8dddaf",
+      "lf_sha256": "dd5fd22ce50081ceb9e3d4d4725883a0ff28caf75384cad63f8dfc18d48c4722",
+      "pinned_commit_match": true
+    },
+    {
+      "path": "experiments/sensor_recovery/mcu/src/matched_main.cpp",
+      "raw_sha256": "1242e33dd3e9f608ca1b7b69228a74319ec1788933b5468bc7bd20947873ca32",
+      "lf_sha256": "9007abc816a620fe7af2fa56a398197e7c54d8beb43ff436f533bc92109ac956",
+      "pinned_commit_match": true
+    }
+  ],
+  "image_checks": {
+    "firmware.elf": {
+      "bytes": 67224,
+      "sha256": "0f9ce921f54eae2034f49aae963b3e612d20ee72b59792ecd653d7645c7e714b",
+      "archive_path": "firmware/firmware.elf"
+    },
+    "firmware.hex": {
+      "bytes": 139391,
+      "sha256": "3366faeb1cdfce0ad6caf8d17274b442044d5f685762d7cf06799bb5f4a27045",
+      "archive_path": "firmware/firmware.hex"
+    }
+  },
+  "files": {
+    "batch.json": {
+      "bytes": 11033,
+      "sha256": "e6867850130c5f8cef00353a7f17f612df612ff662687864161ebb7ed0fe6b00"
+    },
+    "firmware/firmware.elf": {
+      "bytes": 67224,
+      "sha256": "0f9ce921f54eae2034f49aae963b3e612d20ee72b59792ecd653d7645c7e714b"
+    },
+    "firmware/firmware.hex": {
+      "bytes": 139391,
+      "sha256": "3366faeb1cdfce0ad6caf8d17274b442044d5f685762d7cf06799bb5f4a27045"
+    },
+    "packages.txt": {
+      "bytes": 389,
+      "sha256": "d14ea99ec1986f8f01be7bef77a8d4ecdbb8349d8fb31abedc46d930377dd5d9"
+    },
+    "run01.console.txt": {
+      "bytes": 189,
+      "sha256": "3443f19d93d5db5fa89bc5737e30a8414f7a47b7a51338eed05a5aa52a93a92c"
+    },
+    "run01.log": {
+      "bytes": 23,
+      "sha256": "a7ad33138ac1a54475907fd40eed6e03980813fd99fd3fcf5f8aa4fb1a0046bf"
+    },
+    "run01.session.json": {
+      "bytes": 698,
+      "sha256": "aa7adc4f94600a225489a74487acfe2e1b13986e3fe65ad7b037236df8e7b748"
+    },
+    "upload.log": {
+      "bytes": 4686,
+      "sha256": "99e43d2a328dd5c33d413820e6dacdbd9175657dedd3da9e23e5faa2496b4c12"
+    }
+  },
+  "redactions": [
+    {
+      "original_name": "batch.json",
+      "saved_name": "batch.redacted.json",
+      "original_sha256": "e6867850130c5f8cef00353a7f17f612df612ff662687864161ebb7ed0fe6b00",
+      "saved_sha256": "e95646ec467857ef06178e92cdcb86b71922b5b1758c33bdb565827d99ddba1c",
+      "user_path_replacements": 1
+    }
+  ],
+  "conclusion": "Upload and image/source checks pass. The first H greeting was rejected before READY, Q or R; no benchmark results exist. The log does not identify the exact bytes received by the MCU or prove a reset/bootloader cause."
+}

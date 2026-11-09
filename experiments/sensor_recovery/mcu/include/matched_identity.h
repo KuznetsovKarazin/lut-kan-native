@@ -1,0 +1,2 @@
+#pragma once
+#define MATCHED_FIXTURE_SHA256 "84f731bf405e7dde82ee9a82e1dd17143dcbada4a0851df2bf00a1da3836187e"

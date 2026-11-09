@@ -1,0 +1,9 @@
+{
+  "platform": "linux",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "inherited_pythonioencoding": "cp1251",
+  "inherited_pythonutf8": "0",
+  "before_returncode": 1,
+  "after_returncode": 0,
+  "note": "Linux host with emulated CP1251 streams. Not a Windows device capture."
+}

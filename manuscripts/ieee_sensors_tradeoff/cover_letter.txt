@@ -1,0 +1,22 @@
+9 November 2026
+
+Dear Editor,
+
+Please consider the manuscript "Accuracy, Storage, and Update Cost in Reference-Assisted Sensor Calibration" for publication as a regular paper in IEEE Sensors Journal.
+
+The paper examines the resource costs of calibration representations on embedded processors. It combines exact stored-payload accounting with controlled comparisons of approximation error and reference-assisted recalibration. The sequential study includes least-squares affine correction, causal batch refitting, NLMS and RLS. A common synthetic fixture compares seven implementations on Mega2560, ESP32-C3 and ESP32-S3, including compact and expanded splines and two evaluations of the same fitted polynomial.
+
+The results establish conditional trade-offs. A float32 lookup table is fastest on Mega2560 and C3; polynomial Horner is slightly faster and smaller on the tested S3 build. Update speed also trades against residual error. We distinguish stored model size from adaptation state, workspace and firmware size, and report negative results and model-selection limitations.
+
+This is an implementation study. Accuracy, noise and drift are evaluated on controlled synthetic responses with known ground truth; physical boards provide execution measurements and numerical agreement checks. The manuscript does not claim measured sensor accuracy or a completed uncertainty budget. This scope is stated in the abstract, introduction and limitations.
+
+The submission includes a separate supplement and graphical abstract. Code, numerical inputs, raw board logs, archived firmware images and validation records are available through the repository and data links in the manuscript. AI assistance in writing and code is disclosed in the acknowledgments.
+
+Sincerely,
+Oleksandr Kuznetsov
+Department of Theoretical and Applied Sciences, eCampus University, Italy
+Department of Intelligent Software Systems and Technologies,
+School of Computer Science and Artificial Intelligence,
+V.N. Karazin Kharkiv National University, Ukraine
+oleksandr.kuznetsov@uniecampus.it
+ORCID: 0000-0003-2331-6326

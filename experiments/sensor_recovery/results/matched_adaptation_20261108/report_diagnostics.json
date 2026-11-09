@@ -1,0 +1,11 @@
+{
+  "static_evaluations": 3312,
+  "confirmation_trajectories": 3888,
+  "confirmation_failures": [],
+  "projected_order_violations": 0,
+  "horner144_better_mean_count": 12,
+  "horner144_comparisons": 12,
+  "maximum_normalized_horner_value_gap": 1.7881393432617188e-07,
+  "maximum_normalized_horner_derivative_gap": 8.717179298400879e-07,
+  "report_source_sha256": "156396cd67feb4d09dd1ba8ee2251fed4fe2200c7527dc8101f41be4a17b3ccb"
+}

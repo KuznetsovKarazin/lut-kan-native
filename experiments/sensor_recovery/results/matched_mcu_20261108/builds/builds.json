@@ -1,0 +1,404 @@
+[
+  {
+    "board": "mega2560_matched",
+    "model_id": 0,
+    "mode": "individual_deployment",
+    "ram_bytes": 21,
+    "flash_bytes": 734,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 12980,
+        "sha256": "de670af777265a72375bc629729616bf690d3d94bb8eed9878082bebf504b8bf"
+      },
+      "firmware.hex": {
+        "bytes": 2092,
+        "sha256": "59217efa59bad544c76343403f4338329621f2dffed469c33f4b52f10ef0f25f"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 1,
+    "mode": "individual_deployment",
+    "ram_bytes": 165,
+    "flash_bytes": 2340,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 15408,
+        "sha256": "461caec78c6bb2d5b4f6e3f35d81e5f67da2eda57f2147c4686760995dbc13a6"
+      },
+      "firmware.hex": {
+        "bytes": 6604,
+        "sha256": "1541e9fbc86c29010fba197b426d037b8ccc57c24f086ae56e2c6e743f3c8564"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 2,
+    "mode": "individual_deployment",
+    "ram_bytes": 165,
+    "flash_bytes": 2404,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 15472,
+        "sha256": "d7e51fa0c2787ee9ab8a89195efc37aa2a5951be4a164ee7cada45c7e4114ff1"
+      },
+      "firmware.hex": {
+        "bytes": 6784,
+        "sha256": "f9ba5ad1e23bce2c19a07ad685320cd1775b8692f0f45109f5446ba22fc7b3ba"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 3,
+    "mode": "individual_deployment",
+    "ram_bytes": 165,
+    "flash_bytes": 2842,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 15908,
+        "sha256": "360ab7ae523344327382f521281315e88492d96b7e49449ed5588de73fef3c2d"
+      },
+      "firmware.hex": {
+        "bytes": 8024,
+        "sha256": "0d467f893e37c2537e98138bb7053de3a96b6ea6d8df4133d591630047aa5a1e"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 4,
+    "mode": "individual_deployment",
+    "ram_bytes": 165,
+    "flash_bytes": 2324,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 15396,
+        "sha256": "1ba22a17f83c22aeb0216cb7e9dd1256505572352484aa263b9f627b170a3944"
+      },
+      "firmware.hex": {
+        "bytes": 6559,
+        "sha256": "c335c07cf38608c492d126fad0467ce830599ca73a6d421e82017d6e8d03ce3f"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 11,
+    "mode": "individual_deployment",
+    "ram_bytes": 169,
+    "flash_bytes": 2834,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 15948,
+        "sha256": "5ea875aa9cbcc0bca3fa0a7fe8615818b62e907e6e7943fe6ba5b135d360d8f3"
+      },
+      "firmware.hex": {
+        "bytes": 7995,
+        "sha256": "fd7d0c131e11e88458e0855ef667dc8ac4d1741f2fe6c72ee8ad2f5eb3457078"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 12,
+    "mode": "individual_deployment",
+    "ram_bytes": 329,
+    "flash_bytes": 3376,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 16596,
+        "sha256": "29e78523899382c8092f68bf3fbf96a1af897e2e1226eaae8e04d2b5f27f2c98"
+      },
+      "firmware.hex": {
+        "bytes": 9521,
+        "sha256": "c7716aa30e57eab0167215ba6a0a38796b7e2d27b83e9507c42d598c6371f739"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 13,
+    "mode": "individual_deployment",
+    "ram_bytes": 169,
+    "flash_bytes": 3424,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 16544,
+        "sha256": "0eb01ca13bca2366d43024c07ddf76dafecf4eb15afc5464167f39f00e7dfaa8"
+      },
+      "firmware.hex": {
+        "bytes": 9656,
+        "sha256": "2d379673ede995ad00e38bb43e3035aff7714be26de4e738b254ee8a1a444171"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": 14,
+    "mode": "individual_deployment",
+    "ram_bytes": 329,
+    "flash_bytes": 3962,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 17180,
+        "sha256": "8b7ce62b517aa8ddb8837b7e5af16335ed449a116a25e6aa2ee04e88378e8167"
+      },
+      "firmware.hex": {
+        "bytes": 11174,
+        "sha256": "b4b2bb052716874eb03ec0077fd2450591bcc12068be495529cf4b63abc85ee4"
+      }
+    }
+  },
+  {
+    "board": "mega2560_matched",
+    "model_id": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 1949,
+    "flash_bytes": 49552,
+    "artifacts": {
+      "firmware.elf": {
+        "bytes": 67128,
+        "sha256": "f68c5cc6a84186b3e4bd14141557bd72f0f909d1bdd2244a40f70a1ccb74e263"
+      },
+      "firmware.hex": {
+        "bytes": 139391,
+        "sha256": "3366faeb1cdfce0ad6caf8d17274b442044d5f685762d7cf06799bb5f4a27045"
+      }
+    },
+    "near_flash_arrays": [
+      {
+        "symbol": "_ZL19matched_initial_lut",
+        "address": 296,
+        "size_bytes": 144,
+        "end": 440
+      },
+      {
+        "symbol": "_ZL21matched_initial_cubic",
+        "address": 440,
+        "size_bytes": 144,
+        "end": 584
+      },
+      {
+        "symbol": "_ZL25matched_reference_metrics",
+        "address": 12872,
+        "size_bytes": 144,
+        "end": 13016
+      },
+      {
+        "symbol": "_ZL11matched_adc",
+        "address": 35064,
+        "size_bytes": 1604,
+        "end": 36668
+      },
+      {
+        "symbol": "_ZL13matched_truth",
+        "address": 33460,
+        "size_bytes": 1604,
+        "end": 35064
+      },
+      {
+        "symbol": "_ZL18matched_stream_adc",
+        "address": 22436,
+        "size_bytes": 4608,
+        "end": 27044
+      },
+      {
+        "symbol": "_ZL24matched_stream_reference",
+        "address": 17828,
+        "size_bytes": 4608,
+        "end": 22436
+      },
+      {
+        "symbol": "_ZL17matched_final_adc",
+        "address": 13016,
+        "size_bytes": 4812,
+        "end": 17828
+      },
+      {
+        "symbol": "_ZL16matched_expected",
+        "address": 27044,
+        "size_bytes": 6416,
+        "end": 33460
+      },
+      {
+        "symbol": "_ZL24matched_reference_states",
+        "address": 584,
+        "size_bytes": 12288,
+        "end": 12872
+      }
+    ]
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 0,
+    "mode": "individual_deployment",
+    "ram_bytes": 13484,
+    "flash_bytes": 218848,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 228768,
+        "sha256": "cf986112cfef5f3200126247e764256d61a26c205283d3873e7e7bc2eed519a5"
+      },
+      "firmware.elf": {
+        "bytes": 5388704,
+        "sha256": "27e4614ef2126d8c1c64c0df6c8ff24355249c5fe359dfdce97c64096cd43116"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 1,
+    "mode": "individual_deployment",
+    "ram_bytes": 13484,
+    "flash_bytes": 219276,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 229232,
+        "sha256": "cd44f6eeef02171d4f6d977b7eb9ed4a75fc2d42dc9ad3093a76f3f7bad386e8"
+      },
+      "firmware.elf": {
+        "bytes": 5391176,
+        "sha256": "b697fe47b0eb427cae3f38263388adbfff33cb831456fc93e40a8a85236e639d"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 2,
+    "mode": "individual_deployment",
+    "ram_bytes": 13484,
+    "flash_bytes": 219382,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 229344,
+        "sha256": "df43232263acc346bae896182f18af00804e444c00870d840e82a72f90b5c5fd"
+      },
+      "firmware.elf": {
+        "bytes": 5390784,
+        "sha256": "e02e7b2df2ccfb9ad786605951fc3a28e3befc9b65256f7e87ed63191825d5b2"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 3,
+    "mode": "individual_deployment",
+    "ram_bytes": 13484,
+    "flash_bytes": 219718,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 229728,
+        "sha256": "c0cdc45d5a78cc97dec1c74668476470836be9195028d122836efbd32e395ba6"
+      },
+      "firmware.elf": {
+        "bytes": 5393992,
+        "sha256": "945d3ad8e5760b91118139ad0b1b744a140b37fe4c6526ad8cb2fd37de279f59"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 4,
+    "mode": "individual_deployment",
+    "ram_bytes": 13484,
+    "flash_bytes": 219296,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 229232,
+        "sha256": "dea6ecec84b8963a7839dc3a6eed3aa135efd0416f6cc146a178df102c2c823c"
+      },
+      "firmware.elf": {
+        "bytes": 5390432,
+        "sha256": "a35c781cea51e30273fc21e8601a9d46fd7aca595fed5330c563c1e993c82c85"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 11,
+    "mode": "individual_deployment",
+    "ram_bytes": 13636,
+    "flash_bytes": 219586,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 229584,
+        "sha256": "11cef5e95a90ba944524c63a30b16ce72d21541cf5aee7b0f4210a287a98ffa0"
+      },
+      "firmware.elf": {
+        "bytes": 5393452,
+        "sha256": "828a044349315d1b12b2fd293659c75e2519c00df39b2f48a6cf8146e55efa45"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 12,
+    "mode": "individual_deployment",
+    "ram_bytes": 13796,
+    "flash_bytes": 219964,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 230048,
+        "sha256": "b076a48c148c1625b65cd4e8730ed8626d378dcb13d46ceac9c271846dda732e"
+      },
+      "firmware.elf": {
+        "bytes": 5395504,
+        "sha256": "b56687e755fc07fad18f624320f0e870257d144e61e6e680acf2fdb7f9460cfc"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 13,
+    "mode": "individual_deployment",
+    "ram_bytes": 13636,
+    "flash_bytes": 220074,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 230144,
+        "sha256": "2f9ef9c355aa2ba57b12e66e87150979f2fd1c643ca8c3f0e37beaecb3e15c8c"
+      },
+      "firmware.elf": {
+        "bytes": 5396128,
+        "sha256": "c9a115aae4b9589eb37e64faaa94f9102c492958cc60b313aa5bb58a0edd3310"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": 14,
+    "mode": "individual_deployment",
+    "ram_bytes": 13796,
+    "flash_bytes": 220460,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 230624,
+        "sha256": "d68ef54453d5782bb69f9bca219cae79b7476c66e5332696e6cd5ff372fdff3e"
+      },
+      "firmware.elf": {
+        "bytes": 5397988,
+        "sha256": "bb72bf6a95776f0963852ee2d7cd4e14f5b00d643c2333bfc8d822486bbab64a"
+      }
+    }
+  },
+  {
+    "board": "esp32c3_matched",
+    "model_id": -1,
+    "mode": "full_benchmark",
+    "ram_bytes": 14252,
+    "flash_bytes": 282748,
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 295072,
+        "sha256": "a2cb32fe07c3f7e4918475d1370e42fb7ba200036932360f02f0d0760896c958"
+      },
+      "firmware.elf": {
+        "bytes": 5776420,
+        "sha256": "76f58df861fd34c57be0cf3f8c924af1e7d6a78ad2062ce53da9883fa6e703e7"
+      }
+    }
+  }
+]

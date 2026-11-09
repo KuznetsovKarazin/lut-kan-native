@@ -1,0 +1,14 @@
+{
+  "session_id": "3b6492baf6584f24923ffe6164e00e3f",
+  "start_utc": "2026-11-08T00:29:30.889913+00:00",
+  "port": "COM12",
+  "mode": "legacy_auto_start",
+  "capture_script_sha256": "620a9df74abc7206cabba5117d6acd8605ebaf24c76e5719c40d8fb82368ca34",
+  "status": "validated",
+  "tx_commands": [],
+  "usb_phase": "complete",
+  "result_sha256": "f6579780d14f23db710e76b07e45439ca2b982d0033ac295185a70e2ac1def2c",
+  "end_utc": "2026-11-08T00:31:09.596461+00:00",
+  "raw_sha256": "55c11861cf6874c6926d789a80805232e0d42e739a3eab739e9cb1841f5491ee",
+  "raw_bytes": 6895
+}
